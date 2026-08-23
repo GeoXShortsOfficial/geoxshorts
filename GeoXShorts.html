@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GeoXShorts</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#07070b;
+  color:#fff;
+}
+nav{
+  padding:20px;
+  border-bottom:1px solid #22222b;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo{
+  font-size:24px;
+  font-weight:800;
+}
+.logo span{color:#a855f7}
+.badge{
+  color:#c084fc;
+  font-size:13px;
+}
+.hero{
+  max-width:850px;
+  margin:auto;
+  padding:70px 20px;
+  text-align:center;
+}
+h1{
+  font-size:clamp(42px,9vw,76px);
+  margin:20px 0 12px;
+}
+.gradient{
+  background:linear-gradient(90deg,#a855f7,#ec4899);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.description{
+  color:#999;
+  font-size:18px;
+  line-height:1.6;
+}
+.box{
+  margin:40px auto;
+  padding:10px;
+  max-width:700px;
+  background:#111118;
+  border:1px solid #292936;
+  border-radius:22px;
+  display:flex;
+  gap:10px;
+}
+input{
+  flex:1;
+  min-width:0;
+  padding:17px;
+  border-radius:15px;
+  border:1px solid #30303b;
+  background:#08080c;
+  color:#fff;
+  font-size:16px;
+}
+button{
+  padding:0 22px;
+  border:0;
+  border-radius:15px;
+  background:linear-gradient(90deg,#9333ea,#db2777);
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+.status{
+  color:#aaa;
+  margin-top:20px;
+}
+.features{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+.feature{
+  background:#111118;
+  border:1px solid #25252d;
+  padding:12px 16px;
+  border-radius:14px;
+  color:#bbb;
+}
+@media(max-width:600px){
+  .box{flex-direction:column}
+  button{height:52px}
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">Geo<span>X</span>Shorts</div>
+  <div class="badge">AI VIDEO CLIPS</div>
+</nav>
+
+<main class="hero">
+
+  <div class="badge">✦ TURN LONG VIDEOS INTO SHORTS</div>
+
+  <h1>
+    Your video.<br>
+    <span class="gradient">5 Shorts.</span>
+  </h1>
+
+  <p class="description">
+    Transform a long video into 5 vertical Shorts,
+    ready to preview and download.
+  </p>
+
+  <div class="box">
+    <input id="url" type="url" placeholder="Paste your video URL...">
+    <button id="generateBtn" onclick="generateShorts()">
+      Generate Shorts
+    </button>
+  </div>
+
+  <div id="status" class="status">
+    🎬 Ready when you are.
+  </div>
+
+  <div class="features">
+    <div class="feature">🎯 5 Best Moments</div>
+    <div class="feature">📱 1080×1920</div>
+    <div class="feature">⏱️ 20–60s</div>
+    <div class="feature">⬇️ Download</div>
+  </div>
+
+</main>
+
+<script>
+async function generateShorts(){
+
+  const url=document.getElementById("url").value.trim();
+  const button=document.getElementById("generateBtn");
+  const status=document.getElementById("status");
+
+  if(!url){
+    status.textContent="⚠️ Paste a video URL first.";
+    return;
+  }
+
+  button.disabled=true;
+  status.textContent="📥 Downloading video...";
+
+  try{
+
+    const download=await fetch("http://192.168.0.80:8080/api/download",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({url})
+    });
+
+    const data=await download.json();
+
+    if(!data.success){
+      throw new Error(data.error || "Download failed.");
+    }
+
+    status.textContent="🧠 Finding the best moments...";
+
+    const response=await fetch("/api/generate",{
+      method:"POST"
+    });
+
+    const result=await response.json();
+
+    if(!result.success){
+      throw new Error(result.error || "Generation failed.");
+    }
+
+    status.textContent="✂️ Generating your 5 Shorts...";
+
+  }catch(error){
+
+    status.innerHTML=
+      "❌ "+error.message;
+
+  }finally{
+
+    button.disabled=false;
+
+  }
+}
+</script>
+
+</body>
+</html>
