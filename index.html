@@ -1226,6 +1226,527 @@ font-size:11px;color:#999
 }
 </style>
 
+
+<style id="geoUIRebuildV1">
+
+/* =========================================================
+   GeoXShorts🎬 — UI REBUILD V1
+   UI ONLY — nu modifică engine-urile existente
+   ========================================================= */
+
+/* ---------- ROOT ---------- */
+
+:root{
+  --gx-bg:#08060d;
+  --gx-panel:#100c18;
+  --gx-panel-2:#140f1d;
+  --gx-border:#2a2034;
+  --gx-border-active:#9147d8;
+  --gx-purple:#a855f7;
+  --gx-purple-2:#7c3aed;
+  --gx-text:#f7f3fb;
+  --gx-muted:#9b93a6;
+  --gx-danger:#ef4444;
+  --gx-radius:14px;
+}
+
+html,
+body{
+  background:
+    radial-gradient(circle at 50% -10%,rgba(126,58,237,.13),transparent 35%),
+    var(--gx-bg) !important;
+  color:var(--gx-text) !important;
+}
+
+/* ---------- TOP HEADER ---------- */
+
+body > nav{
+  position:sticky !important;
+  top:0 !important;
+  z-index:1000 !important;
+
+  height:58px !important;
+  min-height:58px !important;
+  padding:0 14px !important;
+
+  display:flex !important;
+  align-items:center !important;
+  justify-content:space-between !important;
+
+  background:rgba(8,6,13,.94) !important;
+  border-bottom:1px solid #21182a !important;
+
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+}
+
+body > nav .logo{
+  font-size:21px !important;
+  line-height:1 !important;
+  letter-spacing:-.03em !important;
+}
+
+body > nav .logo .geo{
+  color:#a855f7 !important;
+  font-weight:900 !important;
+}
+
+body > nav .logo .xshorts{
+  color:#fff !important;
+  font-weight:900 !important;
+}
+
+body > nav .logo-emoji{
+  font-size:18px !important;
+}
+
+/* ascunde elementul vechi din dreapta */
+body > nav .badge{
+  display:none !important;
+}
+
+/* ---------- HERO = EDITOR AREA ---------- */
+
+main.hero{
+  width:100% !important;
+  max-width:none !important;
+
+  margin:0 !important;
+  padding:0 0 24px !important;
+
+  text-align:left !important;
+}
+
+/* eliminate orice spațiu inutil */
+main.hero > h1,
+main.hero > .description,
+main.hero > .features,
+main.hero > .box{
+  display:none !important;
+}
+
+/* ---------- MAIN WORKSPACE ---------- */
+
+#geoProWorkspace{
+  width:min(1180px,calc(100% - 20px)) !important;
+
+  margin:12px auto 0 !important;
+  padding:10px !important;
+
+  display:grid !important;
+
+  grid-template-columns:minmax(0,1fr) !important;
+
+  grid-template-areas:
+    "stage"
+    "tools"
+    "properties"
+    "timeline" !important;
+
+  gap:10px !important;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(21,15,30,.98),
+      rgba(10,8,14,.98)
+    ) !important;
+
+  border:1px solid var(--gx-border) !important;
+  border-radius:18px !important;
+
+  box-shadow:
+    0 18px 60px rgba(0,0,0,.38),
+    inset 0 1px rgba(255,255,255,.02) !important;
+}
+
+/* ---------- PREVIEW STAGE ---------- */
+
+#geoProWorkspace .geo-stage{
+  grid-area:stage !important;
+
+  width:100% !important;
+  min-height:0 !important;
+
+  height:min(62vh,690px) !important;
+
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  position:relative !important;
+  overflow:hidden !important;
+
+  padding:18px !important;
+
+  background:
+    radial-gradient(
+      circle at center,
+      #17111f 0%,
+      #0d0a11 52%,
+      #08060d 100%
+    ) !important;
+
+  border:1px solid #241b2d !important;
+  border-radius:16px !important;
+}
+
+/* fundal discret de editor */
+#geoProWorkspace .geo-stage::before{
+  content:"";
+  position:absolute;
+  inset:0;
+
+  pointer-events:none;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(255,255,255,.018) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      rgba(255,255,255,.018) 1px,
+      transparent 1px
+    );
+
+  background-size:24px 24px;
+  opacity:.18;
+}
+
+#geoProWorkspace .geo-stage-label{
+  position:absolute !important;
+
+  top:10px !important;
+  left:12px !important;
+
+  z-index:4 !important;
+
+  padding:5px 8px !important;
+
+  border:1px solid #2a2033 !important;
+  border-radius:7px !important;
+
+  background:rgba(8,6,13,.72) !important;
+
+  color:#81788c !important;
+  font-size:10px !important;
+  letter-spacing:.06em !important;
+}
+
+/* ---------- PREVIEW VIDEO ---------- */
+
+#geoProWorkspace #videoPreview,
+#geoProWorkspace video{
+  position:relative !important;
+  z-index:3 !important;
+
+  max-width:100% !important;
+  max-height:100% !important;
+
+  width:auto !important;
+  height:auto !important;
+
+  aspect-ratio:9/16 !important;
+
+  object-fit:contain !important;
+
+  background:#000 !important;
+
+  border-radius:10px !important;
+
+  box-shadow:
+    0 18px 45px rgba(0,0,0,.48),
+    0 0 0 1px rgba(255,255,255,.035) !important;
+}
+
+/* ---------- TOOLBAR ---------- */
+
+#geoProWorkspace .geo-sidebar{
+  grid-area:tools !important;
+
+  width:100% !important;
+  min-width:0 !important;
+
+  display:flex !important;
+  flex-direction:row !important;
+  flex-wrap:nowrap !important;
+  align-items:center !important;
+
+  gap:7px !important;
+
+  padding:7px !important;
+
+  overflow-x:auto !important;
+  overflow-y:hidden !important;
+
+  background:#0b0910 !important;
+
+  border:1px solid #241b2d !important;
+  border-radius:13px !important;
+
+  scrollbar-width:none !important;
+}
+
+#geoProWorkspace .geo-sidebar::-webkit-scrollbar{
+  display:none !important;
+}
+
+#geoProWorkspace .geo-sidebar .geo-panel-title{
+  display:none !important;
+}
+
+#geoProWorkspace .geo-tool{
+  flex:0 0 auto !important;
+
+  width:auto !important;
+  min-width:82px !important;
+  height:40px !important;
+
+  margin:0 !important;
+  padding:0 12px !important;
+
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+
+  border-radius:10px !important;
+  border:1px solid #30253a !important;
+
+  background:#15101b !important;
+
+  color:#cfc6d8 !important;
+
+  font-size:11px !important;
+  font-weight:800 !important;
+
+  white-space:nowrap !important;
+
+  transition:
+    background .16s ease,
+    border-color .16s ease,
+    transform .16s ease !important;
+}
+
+#geoProWorkspace .geo-tool:hover{
+  transform:translateY(-1px) !important;
+
+  background:#21152b !important;
+  border-color:#8145b5 !important;
+
+  color:#fff !important;
+}
+
+#geoProWorkspace .geo-tool.active{
+  background:
+    linear-gradient(
+      135deg,
+      #6d28d9,
+      #9333ea
+    ) !important;
+
+  border-color:#a855f7 !important;
+
+  color:#fff !important;
+
+  box-shadow:
+    0 6px 18px rgba(124,58,237,.24) !important;
+}
+
+/* ---------- PROPERTIES ---------- */
+
+#geoProWorkspace .geo-properties{
+  grid-area:properties !important;
+
+  width:100% !important;
+  min-width:0 !important;
+
+  margin:0 !important;
+
+  padding:11px !important;
+
+  background:#0c0910 !important;
+
+  border:1px solid #241b2d !important;
+  border-radius:13px !important;
+}
+
+/* compact context panel */
+#geoProWorkspace .geo-properties .geo-panel-title{
+  margin:0 0 8px !important;
+
+  color:#e9d7ff !important;
+
+  font-size:11px !important;
+  font-weight:900 !important;
+
+  letter-spacing:.12em !important;
+}
+
+/* toate panourile interne compacte */
+#geoProWorkspace .geo-properties > *{
+  box-sizing:border-box !important;
+}
+
+/* ---------- TIMELINE ---------- */
+
+#geoProWorkspace .geo-timeline{
+  grid-area:timeline !important;
+
+  width:100% !important;
+  min-width:0 !important;
+
+  margin:0 !important;
+  padding:10px !important;
+
+  background:#0b0910 !important;
+
+  border:1px solid #241b2d !important;
+  border-radius:13px !important;
+
+  overflow:hidden !important;
+}
+
+#geoProWorkspace .geo-timeline .geo-panel-title{
+  margin:0 0 7px !important;
+
+  color:#d8ccdf !important;
+
+  font-size:10px !important;
+  font-weight:900 !important;
+
+  letter-spacing:.1em !important;
+}
+
+#geoProWorkspace .geo-track{
+  height:32px !important;
+
+  margin-top:7px !important;
+
+  background:#121019 !important;
+
+  border:1px solid #27202e !important;
+  border-radius:7px !important;
+}
+
+#geoProWorkspace .geo-clip{
+  height:22px !important;
+  top:5px !important;
+
+  border-radius:5px !important;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(255,255,255,.06) !important;
+}
+
+#geoProWorkspace .geo-playhead{
+  width:2px !important;
+
+  background:#fff !important;
+
+  box-shadow:
+    0 0 8px rgba(192,132,252,.8) !important;
+
+  z-index:8 !important;
+}
+
+/* ---------- UPLOAD ---------- */
+
+.editor-upload-only{
+  width:min(1180px,calc(100% - 20px)) !important;
+
+  margin:10px auto 0 !important;
+
+  display:flex !important;
+  justify-content:center !important;
+}
+
+.editor-upload-only .upload-btn{
+  min-width:180px !important;
+  width:auto !important;
+
+  min-height:42px !important;
+
+  padding:0 18px !important;
+
+  border-radius:10px !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #7c3aed,
+      #a855f7
+    ) !important;
+}
+
+/* ---------- CLEANUP ---------- */
+
+#geoProWorkspace .geo-properties .control{
+  margin-top:8px !important;
+  padding:10px !important;
+
+  background:#100c16 !important;
+
+  border:1px solid #211827 !important;
+  border-radius:10px !important;
+}
+
+/* ---------- MOBILE ---------- */
+
+@media(max-width:700px){
+
+  #geoProWorkspace{
+    width:calc(100% - 10px) !important;
+
+    margin:7px auto 0 !important;
+    padding:7px !important;
+
+    gap:7px !important;
+
+    border-radius:14px !important;
+  }
+
+  #geoProWorkspace .geo-stage{
+    height:min(64vh,620px) !important;
+    padding:10px !important;
+
+    border-radius:12px !important;
+  }
+
+  #geoProWorkspace .geo-tool{
+    min-width:76px !important;
+    height:38px !important;
+
+    padding:0 9px !important;
+
+    font-size:10px !important;
+  }
+
+  #geoProWorkspace .geo-sidebar{
+    padding:6px !important;
+    border-radius:11px !important;
+  }
+
+  #geoProWorkspace .geo-timeline{
+    padding:8px !important;
+  }
+
+  body > nav{
+    height:52px !important;
+    min-height:52px !important;
+  }
+
+  body > nav .logo{
+    font-size:19px !important;
+  }
+
+  .editor-upload-only{
+    width:calc(100% - 10px) !important;
+  }
+}
+
+</style>
+
 </head>
 
 <body>
