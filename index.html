@@ -100,7 +100,113 @@ button{
   .box{flex-direction:column}
   button{height:52px}
 }
-</style>
+
+.editor{
+  max-width:700px;
+  margin:30px auto;
+  padding:22px;
+  background:#111118;
+  border:1px solid #292936;
+  border-radius:22px;
+}
+
+.editor-title{
+  font-size:18px;
+  font-weight:800;
+  margin-bottom:18px;
+}
+
+.upload-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-height:52px;
+  border-radius:15px;
+  background:linear-gradient(90deg,#9333ea,#db2777);
+  font-weight:bold;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.upload-btn:hover{
+  transform:translateY(-1px);
+  opacity:.95;
+}
+
+.preview-wrap{
+  width:min(100%,320px);
+  aspect-ratio:9/16;
+  margin:20px auto 12px;
+  background:#08080c;
+  border:1px solid #30303b;
+  border-radius:18px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+#videoPreview{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:none;
+  background:#000;
+}
+
+.empty-preview{
+  text-align:center;
+  color:#888;
+  padding:25px;
+  line-height:1.5;
+}
+
+.empty-icon{
+  font-size:42px;
+  margin-bottom:10px;
+}
+
+.empty-preview small{
+  display:block;
+  margin-top:8px;
+  color:#666;
+}
+
+.video-info{
+  text-align:center;
+  color:#aaa;
+  font-size:14px;
+  min-height:20px;
+  word-break:break-word;
+}
+
+.video-actions{
+  display:flex;
+  gap:10px;
+  margin-top:14px;
+}
+
+.secondary-btn{
+  flex:1;
+  min-height:48px;
+  padding:0 16px;
+  border:1px solid #30303b;
+  border-radius:14px;
+  background:#181820;
+  color:#fff;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.secondary-btn:hover{
+  background:#22222c;
+}
+
+.danger-btn{
+  color:#fda4af;
+}
+.editor{max-width:760px;margin:35px auto;padding:22px;background:#111118;border:1px solid #292936;border-radius:24px;text-align:left}.editor-title{font-size:20px;font-weight:800;margin-bottom:18px}.upload-btn{display:flex;align-items:center;justify-content:center;height:54px;border-radius:15px;background:linear-gradient(90deg,#9333ea,#db2777);font-weight:bold;cursor:pointer}.preview-wrap{position:relative;width:min(100%,330px);aspect-ratio:9/16;margin:22px auto;background:#000;border-radius:20px;overflow:hidden}.preview-wrap video{width:100%;height:100%;object-fit:contain}.caption{position:absolute;left:5%;right:5%;bottom:12%;text-align:center;font-size:26px;font-weight:900;text-shadow:0 2px 5px #000}.control{background:#0b0b10;border:1px solid #292936;border-radius:15px;padding:14px;margin-top:12px}.control input{width:100%}.export-btn{width:100%;height:52px;margin-top:14px}</style>
 </head>
 
 <body>
@@ -131,6 +237,32 @@ button{
     </button>
   </div>
 
+  <div class="editor">
+    <div class="editor-title">🎬 Video Preview</div>
+
+    <label class="upload-btn" for="videoInput">
+      📤 Upload Video
+    </label>
+    <input id="videoInput" type="file" accept="video/*" hidden>
+
+    <div id="previewWrap" class="preview-wrap">
+      <div class="empty-preview">
+        <div class="empty-icon">🎬</div>
+        <div>Upload a video to preview it</div>
+        <small>Vertical 9:16 preview</small>
+      </div>
+
+      <video id="videoPreview" controls playsinline></video>
+    </div>
+
+    <div id="videoInfo" class="video-info"></div>
+
+    <div class="video-actions">
+      <button id="playBtn" class="secondary-btn" type="button">▶️ Play</button>
+      <button id="removeBtn" class="secondary-btn danger-btn" type="button">🗑️ Remove</button>
+    </div>
+  </div>
+
   <div id="status" class="status">
     🎬 Ready when you are.
   </div>
@@ -145,6 +277,77 @@ button{
 </main>
 
 <script>
+let selectedVideoURL = null;
+
+const videoInput = document.getElementById("videoInput");
+const videoPreview = document.getElementById("videoPreview");
+const previewWrap = document.getElementById("previewWrap");
+const videoInfo = document.getElementById("videoInfo");
+const playBtn = document.getElementById("playBtn");
+const removeBtn = document.getElementById("removeBtn");
+
+videoInput.addEventListener("change", function(){
+  const file = this.files[0];
+
+  if(!file) return;
+
+  if(selectedVideoURL){
+    URL.revokeObjectURL(selectedVideoURL);
+  }
+
+  selectedVideoURL = URL.createObjectURL(file);
+
+  videoPreview.src = selectedVideoURL;
+  videoPreview.style.display = "block";
+
+  const empty = previewWrap.querySelector(".empty-preview");
+  if(empty) empty.style.display = "none";
+
+  videoInfo.textContent =
+    file.name + " • " + (file.size / 1024 / 1024).toFixed(1) + " MB";
+
+  videoPreview.load();
+});
+
+playBtn.addEventListener("click", function(){
+  if(!videoPreview.src) return;
+
+  if(videoPreview.paused){
+    videoPreview.play();
+    playBtn.textContent = "⏸️ Pause";
+  }else{
+    videoPreview.pause();
+    playBtn.textContent = "▶️ Play";
+  }
+});
+
+videoPreview.addEventListener("play", function(){
+  playBtn.textContent = "⏸️ Pause";
+});
+
+videoPreview.addEventListener("pause", function(){
+  playBtn.textContent = "▶️ Play";
+});
+
+removeBtn.addEventListener("click", function(){
+  if(selectedVideoURL){
+    URL.revokeObjectURL(selectedVideoURL);
+    selectedVideoURL = null;
+  }
+
+  videoPreview.pause();
+  videoPreview.removeAttribute("src");
+  videoPreview.load();
+  videoPreview.style.display = "none";
+
+  const empty = previewWrap.querySelector(".empty-preview");
+  if(empty) empty.style.display = "block";
+
+  videoInfo.textContent = "";
+  videoInput.value = "";
+  playBtn.textContent = "▶️ Play";
+});
+
 async function generateShorts(){
 
   const url=document.getElementById("url").value.trim();
@@ -200,5 +403,14 @@ async function generateShorts(){
 }
 </script>
 
-</body>
+<script>
+const vi=document.getElementById("videoInput"),v=document.getElementById("videoPreview"),tl=document.getElementById("timeline"),ci=document.getElementById("captionInput"),ct=document.getElementById("captionText"),vol=document.getElementById("volume"),es=document.getElementById("editorStatus");
+vi.onchange=()=>{const f=vi.files[0];if(!f)return;v.src=URL.createObjectURL(f);es.textContent="✅ Video loaded.";};
+v.onloadedmetadata=()=>tl.max=v.duration;
+v.ontimeupdate=()=>tl.value=v.currentTime;
+tl.oninput=()=>v.currentTime=tl.value;
+ci.oninput=()=>ct.textContent=ci.value;
+vol.oninput=()=>v.volume=vol.value;
+document.getElementById("exportBtn").onclick=()=>es.textContent=v.src?"ℹ️ Export renderer ready for server connection.":"⚠️ Upload a video first.";
+</script></body>
 </html>
