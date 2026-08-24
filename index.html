@@ -759,6 +759,473 @@ margin-top:9px;text-align:center;
 font-size:11px;color:#999
 }
 </style>
+
+<style id="geoCapCutLayout">
+/* ============================================================
+   GEOXSHORTS — CAPCUT-STYLE HORIZONTAL EDITOR
+   Safe layout override — nu șterge funcționalitatea existentă
+   ============================================================ */
+
+#geoProWorkspace{
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) !important;
+  grid-template-areas:
+    "stage"
+    "tools"
+    "properties"
+    "timeline" !important;
+  gap:12px !important;
+  width:min(1180px,calc(100% - 24px)) !important;
+  margin:20px auto !important;
+  padding:14px !important;
+  background:linear-gradient(145deg,#111018,#15121d) !important;
+  border:1px solid #30243d !important;
+  border-radius:20px !important;
+  box-sizing:border-box !important;
+}
+
+#geoProWorkspace .geo-sidebar{
+  grid-area:tools !important;
+  display:flex !important;
+  flex-direction:row !important;
+  align-items:center !important;
+  gap:7px !important;
+  width:100% !important;
+  min-width:0 !important;
+  padding:8px !important;
+  overflow-x:auto !important;
+  overflow-y:hidden !important;
+  background:#0c0b11 !important;
+  border:1px solid #2a2234 !important;
+  border-radius:14px !important;
+}
+
+#geoProWorkspace .geo-sidebar .geo-panel-title{
+  display:none !important;
+}
+
+#geoProWorkspace .geo-tool{
+  flex:0 0 auto !important;
+  width:auto !important;
+  min-width:88px !important;
+  height:42px !important;
+  padding:0 13px !important;
+  margin:0 !important;
+  border-radius:11px !important;
+  border:1px solid #33273e !important;
+  background:#17131e !important;
+  color:#d9d2e1 !important;
+  font-size:12px !important;
+  font-weight:700 !important;
+  white-space:nowrap !important;
+  cursor:pointer !important;
+  transition:all .18s ease !important;
+}
+
+#geoProWorkspace .geo-tool:hover{
+  border-color:#a855f7 !important;
+  background:#21172b !important;
+  transform:translateY(-1px) !important;
+}
+
+#geoProWorkspace .geo-tool.active{
+  color:#fff !important;
+  border-color:#a855f7 !important;
+  background:linear-gradient(135deg,#7c3aed,#a855f7) !important;
+  box-shadow:0 5px 18px rgba(168,85,247,.22) !important;
+}
+
+#geoProWorkspace .geo-properties{
+  grid-area:properties !important;
+  min-width:0 !important;
+  width:100% !important;
+  margin:0 !important;
+  padding:14px !important;
+  background:#0d0b12 !important;
+  border:1px solid #2a2234 !important;
+  border-radius:14px !important;
+  box-sizing:border-box !important;
+}
+
+#geoProWorkspace .geo-properties .geo-panel-title{
+  color:#e9d5ff !important;
+  font-size:13px !important;
+  letter-spacing:.08em !important;
+}
+
+#geoProWorkspace .geo-timeline{
+  grid-area:timeline !important;
+  width:100% !important;
+  min-width:0 !important;
+  margin:0 !important;
+  box-sizing:border-box !important;
+}
+
+#geoProWorkspace .geo-stage,
+#geoProWorkspace .geo-editor-stage,
+#geoProWorkspace .geo-preview{
+  grid-area:stage !important;
+  min-width:0 !important;
+}
+
+#geoProWorkspace .geo-timeline{
+  border-radius:14px !important;
+}
+
+@media (max-width:700px){
+  #geoProWorkspace{
+    width:calc(100% - 12px) !important;
+    padding:8px !important;
+    gap:8px !important;
+  }
+
+  #geoProWorkspace .geo-tool{
+    min-width:78px !important;
+    height:38px !important;
+    padding:0 10px !important;
+    font-size:11px !important;
+  }
+}
+
+/* Scrollbar discret pentru bara de tool-uri */
+#geoProWorkspace .geo-sidebar::-webkit-scrollbar{
+  height:5px;
+}
+
+#geoProWorkspace .geo-sidebar::-webkit-scrollbar-thumb{
+  background:#5b3a72;
+  border-radius:10px;
+}
+</style>
+
+
+<style id="geoCapCutFinalLayout">
+/* =========================================================
+   GeoXShorts — Final CapCut-style editor layout
+   ========================================================= */
+
+#geoProWorkspace{
+  display:grid!important;
+  grid-template-columns:minmax(0,1fr)!important;
+  grid-template-areas:
+    "stage"
+    "tools"
+    "properties"
+    "timeline"!important;
+  gap:12px!important;
+  width:min(1180px,calc(100% - 24px))!important;
+  margin:20px auto!important;
+  padding:14px!important;
+  background:linear-gradient(145deg,#100d16,#17121f 55%,#100d16)!important;
+  border:1px solid #33243f!important;
+  border-radius:20px!important;
+  box-shadow:0 18px 55px rgba(0,0,0,.35),0 0 35px rgba(168,85,247,.06)!important;
+}
+
+/* VIDEO */
+#geoProWorkspace .geo-stage,
+#geoProWorkspace .geo-editor-stage,
+#geoProWorkspace .geo-preview{
+  grid-area:stage!important;
+  min-width:0!important;
+}
+
+/* HORIZONTAL TOOLBAR */
+#geoProWorkspace .geo-sidebar{
+  grid-area:tools!important;
+  display:flex!important;
+  flex-direction:row!important;
+  align-items:center!important;
+  gap:8px!important;
+  width:100%!important;
+  min-width:0!important;
+  padding:8px!important;
+  overflow-x:auto!important;
+  overflow-y:hidden!important;
+  background:rgba(10,8,14,.92)!important;
+  border:1px solid #30213d!important;
+  border-radius:15px!important;
+  scrollbar-width:thin!important;
+}
+
+#geoProWorkspace .geo-sidebar .geo-panel-title{
+  display:none!important;
+}
+
+#geoProWorkspace .geo-tool{
+  flex:0 0 auto!important;
+  width:auto!important;
+  min-width:88px!important;
+  height:42px!important;
+  padding:0 13px!important;
+  margin:0!important;
+  border-radius:11px!important;
+  border:1px solid #34263f!important;
+  background:#17121d!important;
+  color:#ddd5e6!important;
+  font-size:12px!important;
+  font-weight:750!important;
+  white-space:nowrap!important;
+  cursor:pointer!important;
+  transition:.18s ease!important;
+}
+
+#geoProWorkspace .geo-tool:hover{
+  border-color:#b56cff!important;
+  background:#21162d!important;
+  transform:translateY(-1px)!important;
+}
+
+#geoProWorkspace .geo-tool.active{
+  color:#fff!important;
+  border-color:#b56cff!important;
+  background:linear-gradient(135deg,#7c3aed,#a855f7,#c084fc)!important;
+  box-shadow:0 6px 22px rgba(168,85,247,.25)!important;
+}
+
+/* ACTIVE PROPERTY AREA */
+#geoProWorkspace .geo-properties{
+  grid-area:properties!important;
+  width:100%!important;
+  min-width:0!important;
+  margin:0!important;
+  padding:14px!important;
+  box-sizing:border-box!important;
+  background:#0d0a12!important;
+  border:1px solid #30213d!important;
+  border-radius:15px!important;
+}
+
+#geoProWorkspace .geo-properties .geo-panel-title{
+  color:#ead8ff!important;
+  letter-spacing:.08em!important;
+}
+
+/* TIMELINE */
+#geoProWorkspace .geo-timeline{
+  grid-area:timeline!important;
+  width:100%!important;
+  min-width:0!important;
+  margin:0!important;
+  box-sizing:border-box!important;
+  border-radius:15px!important;
+}
+
+/* SMALLER, CLEANER INTERNAL CONTROLS */
+#geoProWorkspace .geo-properties input,
+#geoProWorkspace .geo-properties select,
+#geoProWorkspace .geo-properties textarea{
+  max-width:100%!important;
+  box-sizing:border-box!important;
+}
+
+#geoProWorkspace .geo-properties .geo-text-pro,
+#geoProWorkspace .geo-properties .geo-audio-pro,
+#geoProWorkspace .geo-properties .geo-effects-pro,
+#geoProWorkspace .geo-properties #geoCaptionsPro,
+#geoProWorkspace .geo-properties #geoAudioTracksPro,
+#geoProWorkspace .geo-properties #geoSmartExportFree{
+  margin-top:10px!important;
+}
+
+/* REMOVE "PRO" LABELS FROM FREE EDITOR UI */
+#geoProWorkspace .geo-properties .geo-panel-title{
+  text-transform:none!important;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+  #geoProWorkspace{
+    width:calc(100% - 12px)!important;
+    padding:8px!important;
+    gap:8px!important;
+  }
+
+  #geoProWorkspace .geo-tool{
+    min-width:82px!important;
+    height:40px!important;
+    padding:0 10px!important;
+  }
+}
+</style>
+
+
+<style id="geoCompactCapCutUI">
+/* GEOXSHORTS — COMPACT CAPCUT UI
+   UI ONLY — nu modifică editorul/JS-ul existent
+*/
+#geoProWorkspace{
+  width:min(1280px,calc(100% - 20px)) !important;
+  margin:16px auto !important;
+  padding:12px !important;
+  display:grid !important;
+  grid-template-columns:minmax(0,1fr) !important;
+  grid-template-areas:
+    "stage"
+    "tools"
+    "properties"
+    "timeline" !important;
+  gap:10px !important;
+  background:linear-gradient(145deg,#100d16,#17121f) !important;
+  border:1px solid #30233d !important;
+  border-radius:18px !important;
+  box-shadow:0 12px 40px rgba(0,0,0,.28) !important;
+}
+
+/* PREVIEW — principal */
+#geoProWorkspace .geo-stage,
+#geoProWorkspace .geo-editor-stage,
+#geoProWorkspace .geo-preview{
+  grid-area:stage !important;
+  min-width:0 !important;
+}
+
+/* TOOLBAR — TOTUL PE UN SINGUR RÂND */
+#geoProWorkspace .geo-sidebar{
+  grid-area:tools !important;
+  display:flex !important;
+  flex-direction:row !important;
+  flex-wrap:nowrap !important;
+  align-items:center !important;
+  gap:7px !important;
+  width:100% !important;
+  min-width:0 !important;
+  padding:7px !important;
+  overflow-x:auto !important;
+  overflow-y:hidden !important;
+  scrollbar-width:none !important;
+  background:rgba(8,7,12,.92) !important;
+  border:1px solid #2b2135 !important;
+  border-radius:13px !important;
+}
+
+#geoProWorkspace .geo-sidebar::-webkit-scrollbar{
+  display:none !important;
+}
+
+#geoProWorkspace .geo-sidebar .geo-panel-title{
+  display:none !important;
+}
+
+#geoProWorkspace .geo-tool{
+  flex:0 0 auto !important;
+  width:auto !important;
+  min-width:78px !important;
+  height:40px !important;
+  margin:0 !important;
+  padding:0 11px !important;
+  border-radius:10px !important;
+  border:1px solid #34283e !important;
+  background:#17121d !important;
+  color:#d8d0df !important;
+  font-size:12px !important;
+  font-weight:750 !important;
+  white-space:nowrap !important;
+  cursor:pointer !important;
+  transition:transform .16s ease,border-color .16s ease,
+             background .16s ease,box-shadow .16s ease !important;
+}
+
+#geoProWorkspace .geo-tool:hover{
+  transform:translateY(-1px) !important;
+  border-color:#9b5de5 !important;
+  background:#21182a !important;
+}
+
+#geoProWorkspace .geo-tool.active{
+  color:#fff !important;
+  border-color:#a855f7 !important;
+  background:linear-gradient(135deg,#6d28d9,#a855f7) !important;
+  box-shadow:0 5px 16px rgba(168,85,247,.25) !important;
+}
+
+/* PROPERTIES — compact, nu ocupă jumătate de ecran */
+#geoProWorkspace .geo-properties{
+  grid-area:properties !important;
+  width:100% !important;
+  min-width:0 !important;
+  margin:0 !important;
+  padding:12px !important;
+  box-sizing:border-box !important;
+  background:#0c0a10 !important;
+  border:1px solid #2b2135 !important;
+  border-radius:13px !important;
+}
+
+#geoProWorkspace .geo-properties .geo-panel-title{
+  margin-bottom:8px !important;
+  color:#eadcff !important;
+  font-size:12px !important;
+  letter-spacing:.08em !important;
+}
+
+/* CONTROALELE DIN PROPERTIES — MAI MULTE PE RÂND */
+#geoProWorkspace .geo-properties .geo-text-pro,
+#geoProWorkspace .geo-properties .geo-audio-pro,
+#geoProWorkspace .geo-properties .geo-effects-pro,
+#geoProWorkspace .geo-properties #geoCaptionsPro,
+#geoProWorkspace .geo-properties #geoAudioTracksPro,
+#geoProWorkspace .geo-properties #geoSmartExportFree{
+  margin-top:8px !important;
+  padding:10px !important;
+  border-radius:11px !important;
+}
+
+#geoProWorkspace .geo-properties input,
+#geoProWorkspace .geo-properties select,
+#geoProWorkspace .geo-properties textarea{
+  max-width:100% !important;
+  box-sizing:border-box !important;
+}
+
+/* TIMELINE — compact */
+#geoProWorkspace .geo-timeline{
+  grid-area:timeline !important;
+  width:100% !important;
+  min-width:0 !important;
+  margin:0 !important;
+  padding:10px !important;
+  box-sizing:border-box !important;
+  border-radius:13px !important;
+}
+
+/* BUTOANELE DIN PANOURI — ORIZONTALE */
+#geoProWorkspace .geo-audio-row,
+#geoProWorkspace .geo-text-actions,
+#geoProWorkspace .geo-effects-grid,
+#geoProWorkspace .geo-audio-buttons{
+  display:flex !important;
+  flex-direction:row !important;
+  flex-wrap:wrap !important;
+  gap:7px !important;
+}
+
+#geoProWorkspace .geo-audio-row button,
+#geoProWorkspace .geo-text-actions button,
+#geoProWorkspace .geo-effects-grid button,
+#geoProWorkspace .geo-audio-buttons button{
+  flex:1 1 110px !important;
+  min-width:90px !important;
+}
+
+/* MOBILE */
+@media(max-width:700px){
+  #geoProWorkspace{
+    width:calc(100% - 10px) !important;
+    margin:8px auto !important;
+    padding:8px !important;
+    gap:8px !important;
+  }
+
+  #geoProWorkspace .geo-tool{
+    min-width:72px !important;
+    height:38px !important;
+    padding:0 9px !important;
+    font-size:11px !important;
+  }
+}
+</style>
+
 </head>
 
 <body>
@@ -774,7 +1241,7 @@ font-size:11px;color:#999
 
   <h1>
     Your video.<br>
-    <span class="gradient">5 Shorts.</span>
+    <span class="gradient">Shorts.</span>
   </h1>
 
   <p class="description">
@@ -783,10 +1250,6 @@ font-size:11px;color:#999
   </p>
 
   <div class="box">
-    <input id="url" type="url" placeholder="Paste your video URL...">
-    <button id="generateBtn" onclick="generateShorts()">
-      Generate Shorts
-    </button>
   </div>
 
 
@@ -994,7 +1457,7 @@ async function generateShorts(){
       throw new Error(result.error || "Generation failed.");
     }
 
-    status.textContent="✂️ Generating your 5 Shorts...";
+    status.textContent="✂️ Generating your Shorts...";
 
   }catch(error){
 
@@ -1370,7 +1833,7 @@ const old=document.getElementById("geoTextPro2");
 if(old)old.remove();
 props.insertAdjacentHTML("beforeend",`
 <div id="geoTextPro2" class="geo-text-pro">
-<div class="geo-panel-title">📝 TEXT PRO</div>
+
 <input id="geoTxt" placeholder="Scrie textul...">
 <select id="geoFont"><option>Arial</option><option>Inter</option><option>Impact</option><option>Georgia</option><option>Courier New</option></select>
 <label>🎨 Culoare <input id="geoColor" type="color" value="#ffffff"></label>
@@ -1428,7 +1891,7 @@ if(!props)return;
 if(document.getElementById("geoAudioPro"))return;
 props.insertAdjacentHTML("beforeend",`
 <div id="geoAudioPro" class="geo-audio-pro">
-<div class="geo-panel-title">🎵 AUDIO PRO</div>
+
 <input id="geoAudioFile" type="file" accept="audio/*">
 <div id="geoAudioName" class="geo-audio-name">Niciun fișier audio</div>
 <div class="geo-audio-row">
@@ -1537,7 +2000,7 @@ if(!props || document.getElementById("geoExportPro")) return;
 
 props.insertAdjacentHTML("beforeend",`
 <div id="geoExportPro" class="geo-export-pro">
- <div class="geo-panel-title">📤 EXPORT PRO</div>
+ 
  <button id="geoExportBtn">⬇️ Export Video</button>
  <div id="geoExportStatus" class="geo-export-status">Ready to export</div>
 </div>
@@ -3989,3 +4452,30 @@ document.getElementById("geoStartExport")
 </script>
 </body>
 </html>
+
+<style id="geoFreeUiCleanup">
+/* GeoXShorts — free editor cleanup */
+#url,
+#generateBtn,
+.geo-text-pro,
+.geo-audio-pro,
+.geo-export-pro,
+#geoCaptionsPro .pro-badge,
+.pro-badge{
+  display:none!important;
+}
+
+/* Bara principală rămâne orizontală */
+#geoProWorkspace .geo-sidebar{
+  display:flex!important;
+  flex-direction:row!important;
+  flex-wrap:nowrap!important;
+  overflow-x:auto!important;
+}
+
+/* Instrumentele rămân carduri mici, unul lângă altul */
+#geoProWorkspace .geo-tool{
+  flex:0 0 auto!important;
+  white-space:nowrap!important;
+}
+</style>
