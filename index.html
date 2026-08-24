@@ -1249,7 +1249,6 @@ font-size:11px;color:#999
     <button class="geo-tool">🎵 Audio</button>
     <button class="geo-tool">✨ Effects</button>
     <button class="geo-tool">🎨 Filters</button>
-    <button class="geo-tool">🎚️ Adjust</button>
     <button class="geo-tool">🏷️ Captions</button>
     <button class="geo-tool">🖼️ Stickers</button>
     <button class="geo-tool">↗️ Transitions</button>
@@ -1555,10 +1554,6 @@ $("muteBtn").onclick=function(){v.muted=!v.muted;this.textContent=v.muted?"🔊 
       <button class="geo-tool">B&W</button>`,
 
     "Adjust":`
-      <div class="geo-panel-title">ADJUST</div>
-      <p style="color:#999;font-size:12px">Folosește panoul Adjust pentru reglaje profesionale.</p>`,
-
-    "Captions":`
       <div class="geo-panel-title">CAPTIONS</div>
       <button class="geo-tool">✨ Auto Captions</button>
       <button class="geo-tool">＋ Add Caption</button>
@@ -2399,7 +2394,6 @@ props.insertAdjacent
 <button class="geo-tab active" data-tab="media">🎬 Media</button>
 <button class="geo-tab" data-tab="text">📝 Text</button>
 <button class="geo-tab" data-tab="audio">🎵 Audio</button>
-<button class="geo-tab" data-tab="adjust">🎨 Adjust</button>
 <button class="geo-tab" data-tab="effects">✨ Effects</button>
 <button class="geo-tab" data-tab="export">📤 Export</button>
 </div>
@@ -2408,7 +2402,6 @@ props.insertAdjacent
 <button class="geo-tab active" data-tab="media">🎬 Media</button>
 <button class="geo-tab" data-tab="text">📝 Text</button>
 <button class="geo-tab" data-tab="audio">🎵 Audio</button>
-<button class="geo-tab" data-tab="adjust">🎨 Adjust</button>
 <button class="geo-tab" data-tab="effects">✨ Effects</button>
 <button class="geo-tab" data-tab="export">📤 Export</button>
 </div>
@@ -4757,5 +4750,17 @@ main.hero,
 .geo-toolbar::-webkit-scrollbar,
 .geo-sidebar::-webkit-scrollbar{
   height:5px;
+}
+</style>
+
+<style id="geoNoAdjustUI">
+#adjustPanel,
+.adjust-panel,
+.adjust-header,
+.adjust-grid,
+[data-tab="adjust"],
+.geo-tool[data-tool="adjust"],
+.geo-tool[data-action="adjust"] {
+  display:none !important;
 }
 </style>
