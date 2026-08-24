@@ -1236,20 +1236,7 @@ font-size:11px;color:#999
 </nav>
 
 <main class="hero">
-
-  <div class="badge">✦ TURN LONG VIDEOS INTO SHORTS</div>
-
-  <h1>
-    Your video.<br>
-    <span class="gradient">Shorts.</span>
-  </h1>
-
-  <p class="description">
-    Transform a long video into 5 vertical Shorts,
-    ready to preview and download.
-  </p>
-
-  <div class="box">
+<div class="box">
   </div>
 
 
@@ -1304,40 +1291,10 @@ font-size:11px;color:#999
   </section>
 
 </section>
-
-
-<div class="editor">
-    <div class="editor-title">🎬 Video Preview</div>
-
-    <label class="upload-btn" for="videoInput">
-      📤 Upload Video
-    </label>
-    <input id="videoInput" type="file" accept="video/*" hidden>
-
-    <div id="previewWrap" class="preview-wrap">
-      <div class="empty-preview">
-        <div class="empty-icon">🎬</div>
-        <div>Upload a video to preview it</div>
-        <small>Vertical 9:16 preview</small>
-      </div>
-
-      <video id="videoPreview" controls playsinline></video>
-    </div>
-
-    <div id="videoInfo" class="video-info"></div>
-
-    <div class="video-actions">
-      <button id="playBtn" class="secondary-btn" type="button">▶️ Play</button>
-      <button id="removeBtn" class="secondary-btn danger-btn" type="button">🗑️ Remove</button>
-    </div>
-  </div>
-
-  <div id="status" class="status">
-    🎬 Ready when you are.
-  </div>
-
-  <div class="features">
-    <div class="feature">🎯 5 Best Moments</div>
+<div class="editor-upload-only">
+  <label class="upload-btn" for="videoInput">📤 Upload Video</label>
+  <input id="videoInput" type="file" accept="video/*" hidden>
+</div>
     <div class="feature">📱 1080×1920</div>
     <div class="feature">⏱️ 20–60s</div>
     <div class="feature">⬇️ Download</div>
@@ -1498,70 +1455,6 @@ $("muteBtn").onclick=function(){v.muted=!v.muted;this.textContent=v.muted?"🔊 
 })();
 </script>
 <section id="aboutGeoXShorts" style="max-width:1180px;margin:30px auto 60px;padding:30px;background:#0d0d13;border:1px solid #292936;border-radius:24px;text-align:left"><h2 style="margin-top:0">About GeoXShorts 🎬</h2><p style="color:#aaa;line-height:1.7">GeoXShorts este un proiect independent creat de <strong style="white-space:nowrap">Geo FF</strong>, dedicat creării rapide de videoclipuri verticale și Shorts.</p><p style="color:#aaa;line-height:1.7">Proiectul este dezvoltat cu ajutorul instrumentelor AI, iar direcția, conceptul și deciziile finale aparțin creatorului.</p><div style="margin:20px 0;padding:16px;border-radius:15px;background:#0b1610;border:1px solid #1c4b2a;color:#9ae6b4;line-height:1.6">🛡️ <strong>Trust & Transparency</strong><br>GeoXShorts este un proiect independent și identificabil. Nu solicităm parole de social media, parole GitHub sau date bancare pentru utilizarea de bază a editorului.</div><h3>Creator & Social Media</h3><div style="display:flex;flex-wrap:wrap;gap:10px"><a class="feature" href="https://youtube.com/@geo_ff" target="_blank">▶ YouTube</a><a class="feature" href="https://www.tiktok.com/@geo_ff.hs" target="_blank">♪ TikTok</a><a class="feature" href="https://www.instagram.com/geo_ff.hs" target="_blank">◎ Instagram</a><a class="feature" href="https://github.com/GeoXShortsOfficial/geoxshorts" target="_blank">⌘ GitHub</a><a class="feature" href="https://discord.gg/cTwvS6xfY" target="_blank">💬 Discord Server</a></div><p style="color:#888;margin-top:18px">Discord: <strong style="color:#ddd">geoff2003</strong></p><div style="margin-top:20px;padding:14px;background:#111118;border:1px solid #292936;border-radius:14px;color:#aaa">📧 <strong style="color:#fff">Support</strong><br>Official support email will be published here before the public launch.</div></section>
-<div id="adjustPanel" class="adjust-panel">
-  <div class="adjust-header">
-    <strong>🎨 Adjust</strong>
-    <button type="button" id="resetAdjust">Reset</button>
-  </div>
-
-  <div class="adjust-grid">
-    <label>☀️ Brightness <output id="brightnessVal">0</output>
-      <input id="brightness" type="range" min="-100" max="100" value="0">
-    </label>
-
-    <label>◐ Contrast <output id="contrastVal">0</output>
-      <input id="contrast" type="range" min="-100" max="100" value="0">
-    </label>
-
-    <label>🎨 Saturation <output id="saturationVal">0</output>
-      <input id="saturation" type="range" min="-100" max="100" value="0">
-    </label>
-
-    <label>🌡️ Temperature <output id="temperatureVal">0</output>
-      <input id="temperature" type="range" min="-100" max="100" value="0">
-    </label>
-
-    <label>🟢 Tint <output id="tintVal">0</output>
-      <input id="tint" type="range" min="-100" max="100" value="0">
-    </label>
-
-    <label>✨ Clarity <output id="clarityVal">0</output>
-      <input id="clarity" type="range" min="-100" max="100" value="0">
-    </label>
-
-    <label>🌑 Highlights <output id="highlightsVal">0</output>
-      <input id="highlights" type="range" min="-100" max="100" value="0">
-    </label>
-
-    <label>🌒 Shadows <output id="shadowsVal">0</output>
-      <input id="shadows" type="range" min="-100" max="100" value="0">
-    </label>
-
-    <label>⚪ Whites <output id="whitesVal">0</output>
-      <input id="whites" type="range" min="-100" max="100" value="0">
-    </label>
-
-    <label>⚫ Blacks <output id="blacksVal">0</output>
-      <input id="blacks" type="range" min="-100" max="100" value="0">
-    </label>
-
-    <label>🎞️ Exposure <output id="exposureVal">0</output>
-      <input id="exposure" type="range" min="-100" max="100" value="0">
-    </label>
-
-    <label>🌫️ Fade <output id="fadeVal">0</output>
-      <input id="fade" type="range" min="0" max="100" value="0">
-    </label>
-
-    <label>🎚️ Vignette <output id="vignetteVal">0</output>
-      <input id="vignette" type="range" min="0" max="100" value="0">
-    </label>
-
-    <label>🖌️ Grain <output id="grainVal">0</output>
-      <input id="grain" type="range" min="0" max="100" value="0">
-    </label>
-  </div>
-</div>
 
 
 <script id="adjustScript">
@@ -3500,7 +3393,7 @@ if(document.getElementById("geoCaptionsPro"))return;
 
 props.insertAdjacentHTML("beforeend",`
 <div id="geoCaptionsPro">
-<div class="geo-cap-title">📝 CAPTIONS PRO</div>
+<div class="geo-cap-title">📝 CAPTIONS</div>
 
 <div class="geo-cap-field">
 <label>Text</label>
@@ -4688,5 +4581,181 @@ document.getElementById("geoStartExport")
 <style id="geoHideOldAbout">
 #aboutGeoXShorts{
   display:none!important;
+}
+</style>
+
+
+<style id="geoFinalEditorCleanup">
+/* Ascunde complet elementele demo/vechi */
+.editor-title,
+#aboutGeoXShorts,
+#adjustPanel,
+#geoCaptionsPro,
+.geo-pro-panel,
+.geo-adjust-panel {
+  display:none !important;
+}
+
+/* Cardurile inițiale dispar până la upload */
+#video-preview-card,
+.video-preview-card,
+.preview-placeholder,
+.upload-preview-card {
+  display:none;
+}
+
+/* Bara de unelte rămâne jos, orizontală */
+.geo-tools,
+.geo-toolbar,
+.toolbar,
+.tabs {
+  overflow-x:auto !important;
+  overflow-y:hidden !important;
+  flex-wrap:nowrap !important;
+  white-space:nowrap !important;
+  flex-direction:row !important;
+}
+
+/* Fără scroll vertical în zona uneltelor */
+.geo-tools::-webkit-scrollbar,
+.geo-toolbar::-webkit-scrollbar,
+.toolbar::-webkit-scrollbar {
+  height:5px;
+}
+
+.geo-tools > *,
+.geo-toolbar > *,
+.toolbar > *,
+.tabs > * {
+  flex:0 0 auto !important;
+}
+
+/* Tema mov deschis */
+body {
+  background:#eadcff !important;
+  color:#2b1645 !important;
+}
+
+header,
+.workspace,
+.timeline-container,
+.toolbar {
+  background:#eadcff !important;
+  border-color:#c9a7ee !important;
+}
+
+/* Upload simplu */
+#video-input {
+  display:none !important;
+}
+
+.btn-upload {
+  display:inline-flex !important;
+  align-items:center;
+  justify-content:center;
+  background:#c084fc !important;
+  color:#2b1645 !important;
+  border:0 !important;
+}
+
+/* Nu acoperim preview-ul cu toolbar-ul */
+.toolbar,
+.geo-toolbar,
+.geo-tools {
+  position:relative !important;
+  margin-top:16px !important;
+}
+
+/* Captions, nu Caption Pro */
+.geo-cap-title {
+  font-size:0 !important;
+}
+.geo-cap-title::after {
+  content:"CAPTIONS";
+  font-size:12px;
+}
+
+/* bara neagră demo */
+.ready-preview-download,
+.transform-shorts-banner,
+.black-bottom-bar,
+#shorts-banner {
+  display:none !important;
+}
+</style>
+
+
+<style id="geoFinalLayoutV2">
+.editor-upload-only{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  margin:28px auto 18px;
+}
+
+.geo-pro-workspace{
+  margin-top:24px !important;
+  background:#eadcff !important;
+}
+
+.geo-sidebar{
+  display:flex !important;
+  flex-direction:row !important;
+  gap:8px !important;
+  overflow-x:auto !important;
+  overflow-y:hidden !important;
+  white-space:nowrap !important;
+}
+
+.geo-sidebar .geo-tool{
+  flex:0 0 auto !important;
+}
+
+.geo-properties{
+  margin-top:20px !important;
+}
+
+.geo-stage{
+  min-height:420px !important;
+}
+
+.geo-stage:empty::after{
+  content:"";
+}
+
+#previewWrap{
+  display:none;
+}
+
+#videoPreview{
+  max-width:100%;
+  max-height:520px;
+  border-radius:14px;
+}
+
+.geo-toolbar,
+.geo-tools,
+.toolbar,
+.tabs{
+  flex-direction:row !important;
+  flex-wrap:nowrap !important;
+  overflow-x:auto !important;
+  overflow-y:hidden !important;
+}
+
+body,
+main.hero,
+.geo-pro-workspace,
+.geo-sidebar,
+.geo-stage,
+.geo-properties,
+.geo-timeline{
+  background:#eadcff !important;
+}
+
+.geo-tools::-webkit-scrollbar,
+.geo-toolbar::-webkit-scrollbar,
+.geo-sidebar::-webkit-scrollbar{
+  height:5px;
 }
 </style>
