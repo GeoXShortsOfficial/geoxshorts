@@ -1290,14 +1290,30 @@ font-size:11px;color:#999
   </section>
 
 </section>
+
 <div class="editor-upload-only">
   <label class="upload-btn" for="videoInput">📤 Upload Video</label>
   <input id="videoInput" type="file" accept="video/*" hidden>
 </div>
-    <div class="feature">📱 1080×1920</div>
-    <div class="feature">⏱️ 20–60s</div>
-    <div class="feature">⬇️ Download</div>
+
+<div class="editor-after-upload" id="editorAfterUpload" style="display:none;">
+  <div id="previewWrap" class="preview-wrap">
+    <div class="empty-preview">
+      <div class="empty-icon">🎬</div>
+      <div>Upload a video to preview it</div>
+      <small>Vertical 9:16 preview</small>
+    </div>
+    <video id="videoPreview" controls playsinline style="display:none;"></video>
   </div>
+
+  <div id="videoInfo" class="video-info"></div>
+
+  <div class="video-actions">
+    <button id="playBtn" class="secondary-btn" type="button">▶️ Play</button>
+    <button id="removeBtn" class="secondary-btn danger-btn" type="button">🗑️ Remove</button>
+  </div>
+</div>
+
 
 </main>
 
@@ -1322,6 +1338,8 @@ videoInput.addEventListener("change", function(){
 
   selectedVideoURL = URL.createObjectURL(file);
 
+  document.getElementById("editorAfterUpload").style.display = "block";
+  previewWrap.style.display = "block";
   videoPreview.src = selectedVideoURL;
   videoPreview.style.display = "block";
 
@@ -1370,6 +1388,8 @@ removeBtn.addEventListener("click", function(){
 
   videoInfo.textContent = "";
   videoInput.value = "";
+  document.getElementById("editorAfterUpload").style.display = "none";
+  previewWrap.style.display = "none";
   playBtn.textContent = "▶️ Play";
 });
 
@@ -4806,5 +4826,61 @@ nav [class*="ai"],
 nav [id*="ai"],
 nav .ai-video {
   display: none !important;
+}
+</style>
+
+<style id="geoThemeFinal">
+html, body {
+  background: #140822 !important;
+  color: #f5f3ff !important;
+}
+
+.logo .geo,
+.logo .xshorts {
+  font-weight: 900 !important;
+}
+
+.logo .geo {
+  color: #a855f7 !important;
+}
+
+.logo .xshorts {
+  color: #ffffff !important;
+}
+
+nav {
+  background: #140822 !important;
+  border-color: #3b1768 !important;
+}
+
+nav .badge {
+  display: none !important;
+}
+
+#geoAboutMenuBtn {
+  width: 46px !important;
+  height: 46px !important;
+  background: #7c3aed !important;
+  border: 1px solid #a855f7 !important;
+  color: #fff !important;
+  border-radius: 12px !important;
+}
+</style>
+
+<style id="geoUploadPreviewFix">
+.editor-after-upload{
+  width:min(100%,760px);
+  margin:18px auto 0;
+}
+
+.editor-after-upload .preview-wrap{
+  margin:0 auto;
+}
+
+.video-actions{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-top:12px;
 }
 </style>
