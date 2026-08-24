@@ -207,7 +207,23 @@ button{
   color:#fda4af;
 }
 .editor{max-width:760px;margin:35px auto;padding:22px;background:#111118;border:1px solid #292936;border-radius:24px;text-align:left}.editor-title{font-size:20px;font-weight:800;margin-bottom:18px}.upload-btn{display:flex;align-items:center;justify-content:center;height:54px;border-radius:15px;background:linear-gradient(90deg,#9333ea,#db2777);font-weight:bold;cursor:pointer}.preview-wrap{position:relative;width:min(100%,330px);aspect-ratio:9/16;margin:22px auto;background:#000;border-radius:20px;overflow:hidden}.preview-wrap video{width:100%;height:100%;object-fit:contain}.caption{position:absolute;left:5%;right:5%;bottom:12%;text-align:center;font-size:26px;font-weight:900;text-shadow:0 2px 5px #000}.control{background:#0b0b10;border:1px solid #292936;border-radius:15px;padding:14px;margin-top:12px}.control input{width:100%}.export-btn{width:100%;height:52px;margin-top:14px}</style>
-</head>
+<style>
+.editor{max-width:850px;margin:40px auto;padding:22px;background:#101017;border:1px solid #292936;border-radius:24px;text-align:left}
+.editor-title{font-size:22px;font-weight:800;margin-bottom:18px}
+.upload-btn,.action-btn{display:flex;align-items:center;justify-content:center;min-height:52px;padding:0 18px;border-radius:15px;background:linear-gradient(90deg,#9333ea,#db2777);font-weight:800;cursor:pointer;border:0;color:#fff}
+.preview-wrap{position:relative;width:min(100%,360px);aspect-ratio:9/16;margin:22px auto;background:#000;border-radius:20px;overflow:hidden;border:1px solid #292936}
+.preview-wrap video{width:100%;height:100%;object-fit:contain}
+.caption{position:absolute;left:5%;right:5%;bottom:12%;text-align:center;font-weight:900;text-shadow:0 3px 8px #000;pointer-events:none;white-space:pre-wrap;word-break:break-word}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.control{background:#0b0b10;border:1px solid #292936;border-radius:15px;padding:14px}
+.control.full{grid-column:1/-1}
+.control label{display:block;color:#aaa;font-size:13px;margin-bottom:8px}
+.control input,.control select{width:100%}
+.control input[type=text],.control select{padding:12px;border-radius:10px;border:1px solid #30303b;background:#08080c;color:#fff}
+.editor-actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+.editor-status{margin-top:18px;color:#aaa;min-height:24px}
+@media(max-width:600px){.controls,.editor-actions{grid-template-columns:1fr}.control.full{grid-column:auto}}
+</style></head>
 
 <body>
 
@@ -274,7 +290,28 @@ button{
     <div class="feature">⬇️ Download</div>
   </div>
 
-</main>
+<section class="editor">
+<div class="editor-title">🎬 GeoXShorts Editor</div>
+<label class="upload-btn" for="videoInput">📤 Upload Video</label>
+<input id="videoInput" type="file" accept="video/*" hidden>
+<div class="preview-wrap"><video id="videoPreview" controls playsinline></video><div id="captionText" class="caption"></div></div>
+<div class="controls">
+<div class="control full"><label>✂️ Start</label><input id="startTime" type="range" min="0" max="0" step=".01" value="0"><span id="startLabel">0.00s</span></div>
+<div class="control full"><label>✂️ End</label><input id="endTime" type="range" min="0" max="0" step=".01" value="0"><span id="endLabel">0.00s</span></div>
+<div class="control full"><label>📝 Caption</label><input id="captionInput" type="text" placeholder="Write your caption..."></div>
+<div class="control"><label>🔤 Text size</label><input id="captionSize" type="range" min="16" max="64" value="30"></div>
+<div class="control"><label>🎨 Text color</label><input id="captionColor" type="color" value="#ffffff"></div>
+<div class="control"><label>📍 Position</label><select id="captionPosition"><option value="top">Top</option><option value="center">Center</option><option value="bottom" selected>Bottom</option></select></div>
+<div class="control"><label>🔊 Volume</label><input id="volume" type="range" min="0" max="1" step=".01" value="1"></div>
+<div class="control full"><label>🎵 Background music</label><input id="musicInput" type="file" accept="audio/*"></div>
+</div>
+<div class="editor-actions">
+<button id="muteBtn" class="action-btn">🔇 Mute</button>
+<button id="downloadBtn" class="action-btn">⬇️ Download</button>
+<button id="exportBtn" class="action-btn">🎬 Export Short 1080×1920</button>
+</div>
+<div id="editorStatus" class="editor-status">🎬 Upload a video to begin.</div>
+</section></main>
 
 <script>
 let selectedVideoURL = null;
@@ -412,5 +449,23 @@ tl.oninput=()=>v.currentTime=tl.value;
 ci.oninput=()=>ct.textContent=ci.value;
 vol.oninput=()=>v.volume=vol.value;
 document.getElementById("exportBtn").onclick=()=>es.textContent=v.src?"ℹ️ Export renderer ready for server connection.":"⚠️ Upload a video first.";
+</script><script>
+(function(){
+const $=id=>document.getElementById(id),v=$("videoPreview");
+let videoFile=null,url=null;
+$("videoInput").onchange=function(){videoFile=this.files[0];if(!videoFile)return;if(url)URL.revokeObjectURL(url);url=URL.createObjectURL(videoFile);v.src=url;v.load();$("editorStatus").textContent="✅ Video loaded.";};
+v.onloadedmetadata=function(){let d=v.duration||0;$("startTime").max=d;$("endTime").max=d;$("endTime").value=d;$("endLabel").textContent=d.toFixed(2)+"s";};
+$("startTime").oninput=function(){if(+this.value>=+$("endTime").value)this.value=Math.max(0,+$("endTime").value-.01);$("startLabel").textContent=(+this.value).toFixed(2)+"s";};
+$("endTime").oninput=function(){if(+this.value<=+$("startTime").value)this.value=Math.min(v.duration,+$("startTime").value+.01);$("endLabel").textContent=(+this.value).toFixed(2)+"s";};
+v.ontimeupdate=function(){if(+$("endTime").value&&v.currentTime>=+$("endTime").value){v.pause();v.currentTime=+$("startTime").value;}};
+$("captionInput").oninput=function(){$("captionText").textContent=this.value;};
+$("captionSize").oninput=function(){$("captionText").style.fontSize=this.value+"px";};
+$("captionColor").oninput=function(){$("captionText").style.color=this.value;};
+$("captionPosition").onchange=function(){let c=$("captionText");c.style.top=this.value==="top"?"10%":this.value==="center"?"42%":"auto";c.style.bottom=this.value==="bottom"?"12%":"auto";};
+$("volume").oninput=function(){v.volume=+this.value;};
+$("muteBtn").onclick=function(){v.muted=!v.muted;this.textContent=v.muted?"🔊 Unmute":"🔇 Mute";};
+$("downloadBtn").onclick=function(){if(!videoFile){$("editorStatus").textContent="⚠️ Upload a video first.";return;}let a=document.createElement("a");a.href=url;a.download=videoFile.name;a.click();};
+$("exportBtn").onclick=function(){$("editorStatus").textContent=videoFile?"🚀 Export pipeline ready — backend connection is the next step.":"⚠️ Upload a video first.";};
+})();
 </script></body>
 </html>
