@@ -4593,3 +4593,100 @@ document.getElementById("geoStartExport")
   }
 }
 </style>
+
+<style id="geoAboutMenu">
+#geoAboutMenu{
+  position:fixed;
+  top:12px;
+  right:14px;
+  z-index:9999;
+}
+
+#geoAboutMenuBtn{
+  width:38px;
+  height:38px;
+  border:1px solid #c084fc;
+  border-radius:10px;
+  background:#d8b4fe;
+  color:#3b0764;
+  font-size:20px;
+  font-weight:800;
+  cursor:pointer;
+}
+
+#geoAboutPanel{
+  display:none;
+  position:absolute;
+  top:46px;
+  right:0;
+  width:220px;
+  padding:10px;
+  background:#e9d5ff;
+  border:1px solid #c084fc;
+  border-radius:14px;
+  box-shadow:0 12px 35px rgba(88,28,135,.25);
+}
+
+#geoAboutPanel.open{
+  display:block;
+}
+
+.geo-about-item{
+  display:block;
+  width:100%;
+  padding:10px;
+  margin:3px 0;
+  border:0;
+  border-radius:9px;
+  background:transparent;
+  color:#3b0764;
+  text-align:left;
+  font-size:12px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+.geo-about-item:hover{
+  background:#d8b4fe;
+}
+</style>
+
+<div id="geoAboutMenu">
+  <button id="geoAboutMenuBtn" type="button" aria-label="Mai multe">⋮</button>
+
+  <div id="geoAboutPanel">
+    <button class="geo-about-item">About GeoXShorts</button>
+    <button class="geo-about-item">Cum funcționează</button>
+    <button class="geo-about-item">Funcții</button>
+    <button class="geo-about-item">FAQ</button>
+    <button class="geo-about-item">Contact</button>
+    <button class="geo-about-item">Privacy Policy</button>
+    <button class="geo-about-item">Terms of Service</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  const btn=document.getElementById('geoAboutMenuBtn');
+  const panel=document.getElementById('geoAboutPanel');
+
+  if(!btn || !panel) return;
+
+  btn.addEventListener('click',function(e){
+    e.stopPropagation();
+    panel.classList.toggle('open');
+  });
+
+  document.addEventListener('click',function(e){
+    if(!panel.contains(e.target) && e.target!==btn){
+      panel.classList.remove('open');
+    }
+  });
+})();
+</script>
+
+<style id="geoHideOldAbout">
+#aboutGeoXShorts{
+  display:none!important;
+}
+</style>
