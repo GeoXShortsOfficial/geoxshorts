@@ -2930,15 +2930,7 @@ const props=document.querySelector(".geo-properties");
 if(!props)return;
 if(document.getElementById("geoEditorTabs"))return;
 
-props.insertAdjacent
-<div id="geoEditorTabs">
-<button class="geo-tab active" data-tab="media">🎬 Media</button>
-<button class="geo-tab" data-tab="text">📝 Text</button>
-<button class="geo-tab" data-tab="audio">🎵 Audio</button>
-<button class="geo-tab" data-tab="effects">✨ Effects</button>
-<button class="geo-tab" data-tab="export">📤 Export</button>
-</div>
-("afterbegin",`
+props.insertAdjacentHTML("afterbegin", `
 <div id="geoEditorTabs">
 <button class="geo-tab active" data-tab="media">🎬 Media</button>
 <button class="geo-tab" data-tab="text">📝 Text</button>
@@ -3003,16 +2995,15 @@ section("media");
 })();
 </script>
 
-<script id="geoTimelineProEngine">
-(function(){
+<script id="geoTimelineProEngine">(function(){
+const v=document.getElementById("videoPreview");
+const t=document.querySelector(".geo-timeline");
+if(!v||!t)return;
 
-const video=document.getElementById("videoPreview");
-const timeline=document.querySelector(".geo-timeline");
+const old=document.getElementById("geoTimelinePro");
+if(old)old.remove();
 
-if(!video || !timeline)return;
-if(document.getElementById("geoTimelinePro"))return;
-
-timeline.insertAdjacent
+t.insertAdjacentHTML("beforeend",`
 <div id="geoTimelinePro">
 <div class="geo-time-row">
 <span id="geoCurrentTime">00:00</span>
@@ -3020,353 +3011,134 @@ timeline.insertAdjacent
 </div>
 <input id="geoTimelineSeek" type="range" min="0" max="1000" value="0">
 <div class="geo-marker-row">
-<button class="geo-marker" id="geoMarkStart">✂️ Mark Start</button>
-<button class="geo-marker" id="geoMarkEnd">✂️ Mark End</button>
-<button class="geo-marker" id="geoJumpStart">⏮️ Start</button>
-<button class="geo-marker" id="geoJumpEnd">⏭️ End</button>
+<button id="geoMarkStart">✂️ Start</button>
+<button id="geoMarkEnd">✂️ End</button>
+<button id="geoJumpStart">⏮️ Start</button>
+<button id="geoJumpEnd">⏭️ End</button>
 </div>
-</div>
-("beforeend",`
-<div id="geoTimelinePro">
-<div class="geo-time-row">
-<span id="geoCurrentTime">00:00</span>
-<span id="geoDuration">00:00</span>
-</div>
-<input id="geoTimelineSeek" type="range" min="0" max="1000" value="0">
-<div class="geo-marker-row">
-<button class="geo-marker" id="geoMarkStart">✂️ Mark Start</button>
-<button class="geo-marker" id="geoMarkEnd">✂️ Mark End</button>
-<button class="geo-marker" id="geoJumpStart">⏮️ Start</button>
-<button class="geo-marker" id="geoJumpEnd">⏭️ End</button>
-</div>
-</div>
-`);
+</div>`);
 
 const seek=document.getElementById("geoTimelineSeek");
-const current=document.getElementById("geoCurrentTime");
-const duration=document.getElementById("geoDuration");
+const cur=document.getElementById("geoCurrentTime");
+const dur=document.getElementById("geoDuration");
 
-let markStart=null;
-let markEnd=null;
-
-function format(t){
- if(!Number.isFinite(t))return "00:00";
- const m=Math.floor(t/60);
- const sec=Math.floor(t%60);
- return String(m).padStart(2,"0")+":"+String(sec).padStart(2,"0");
+function fmt(x){
+x=Number(x)||0;
+let m=Math.floor(x/60),s=Math.floor(x%60);
+return String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
 }
 
 function update(){
- const d=video.duration||0;
- const t=video.currentTime||0;
- current.textContent=format(t);
- duration.textContent=format(d);
- seek.value=d?Math.round((t/d)*1000):0;
+let d=v.duration||0;
+cur.textContent=fmt(v.currentTime);
+dur.textContent=fmt(d);
+seek.value=d?Math.round(v.currentTime/d*1000):0;
 }
 
-video.addEventListener("loadedmetadata",update);
-video.addEventListener("timeupdate",update);
-video.addEventListener("durationchange",update);
+v.addEventListener("loadedmetadata",update);
+v.addEventListener("timeupdate",update);
 
-seek.addEventListener("input",()=>{
- if(video.duration){
-   video.currentTime=(Number(seek.value)/1000)*video.duration;
- }
-});
-
-document.getElementById("geoJumpStart").onclick=()=>{
- video.currentTime=0;
+seek.oninput=()=>{
+if(v.duration)v.currentTime=seek.value/1000*v.duration;
 };
 
+document.getElementById("geoJumpStart").onclick=()=>v.currentTime=0;
+
 document.getElementById("geoJumpEnd").onclick=()=>{
- if(video.duration)video.currentTime=Math.max(0,video.duration-.05);
+if(v.duration)v.currentTime=Math.max(0,v.duration-.05);
 };
 
 document.getElementById("geoMarkStart").onclick=()=>{
- markStart=video.currentTime;
- document.getElementById("geoMarkStart").textContent=
-   "✂️ Start "+format(markStart);
+document.getElementById("geoMarkStart").textContent="✂️ Start "+fmt(v.currentTime);
 };
 
 document.getElementById("geoMarkEnd").onclick=()=>{
- markEnd=video.currentTime;
- document.getElementById("geoMarkEnd").textContent=
-   "✂️ End "+format(markEnd);
+document.getElementById("geoMarkEnd").textContent="✂️ End "+fmt(v.currentTime);
 };
 
 update();
+})();</script>
 
-})();
-</script>
+<script id="geoKeyframesEngine">(function(){
+const v=document.getElementById("videoPreview");
+const p=document.querySelector(".geo-properties");
+if(!v||!p)return;
 
-<script id="geoKeyframesEngine">
-(function(){
+const old=document.getElementById("geoKeyframesPro");
+if(old)old.remove();
 
-const video=document.getElementById("videoPreview");
-const props=document.querySelector(".geo-properties");
-
-if(!video||!props)return;
-if(document.getElementById("geoKeyframesPro"))return;
-
-props.insertAdjacent
+p.insertAdjacentHTML("beforeend",`
 <div id="geoKeyframesPro">
 <div class="geo-kf-title">🔑 KEYFRAMES PRO</div>
-
-<div class="geo-kf-grid">
-<label>🔍 Zoom
-<input id="geoKfZoom" type="range" min="50" max="300" value="100">
-</label>
-
-<label>↔️ Position X
-<input id="geoKfX" type="range" min="-100" max="100" value="0">
-</label>
-
-<label>↕️ Position Y
-<input id="geoKfY" type="range" min="-100" max="100" value="0">
-</label>
-
-<label>🔄 Rotation
-<input id="geoKfRotation" type="range" min="-180" max="180" value="0">
-</label>
-
-<label>🌫️ Opacity
-<input id="geoKfOpacity" type="range" min="0" max="100" value="100">
-</label>
-</div>
-
-<div class="geo-kf-actions">
+<label>🔍 Zoom <input id="geoKfZoom" type="range" min="50" max="300" value="100"></label>
+<label>↔️ X <input id="geoKfX" type="range" min="-100" max="100" value="0"></label>
+<label>↕️ Y <input id="geoKfY" type="range" min="-100" max="100" value="0"></label>
+<label>🔄 Rotation <input id="geoKfRotation" type="range" min="-180" max="180" value="0"></label>
+<label>🌫️ Opacity <input id="geoKfOpacity" type="range" min="0" max="100" value="100"></label>
 <button id="geoAddKeyframe">🔑 Add</button>
 <button id="geoDeleteKeyframe">🗑️ Delete</button>
 <button id="geoResetKeyframes">↩️ Reset</button>
-</div>
-
 <div id="geoKeyframeList"></div>
-</div>
-("beforeend",`
-<div id="geoKeyframesPro">
-<div class="geo-kf-title">🔑 KEYFRAMES PRO</div>
+</div>`);
 
-<div class="geo-kf-grid">
-<label>🔍 Zoom
-<input id="geoKfZoom" type="range" min="50" max="300" value="100">
-</label>
-
-<label>↔️ Position X
-<input id="geoKfX" type="range" min="-100" max="100" value="0">
-</label>
-
-<label>↕️ Position Y
-<input id="geoKfY" type="range" min="-100" max="100" value="0">
-</label>
-
-<label>🔄 Rotation
-<input id="geoKfRotation" type="range" min="-180" max="180" value="0">
-</label>
-
-<label>🌫️ Opacity
-<input id="geoKfOpacity" type="range" min="0" max="100" value="100">
-</label>
-</div>
-
-<div class="geo-kf-actions">
-<button id="geoAddKeyframe">🔑 Add</button>
-<button id="geoDeleteKeyframe">🗑️ Delete</button>
-<button id="geoResetKeyframes">↩️ Reset</button>
-</div>
-
-<div id="geoKeyframeList"></div>
-</div>
-`);
-
-const zoom=document.getElementById("geoKfZoom");
-const posX=document.getElementById("geoKfX");
-const posY=document.getElementById("geoKfY");
-const rotation=document.getElementById("geoKfRotation");
-const opacity=document.getElementById("geoKfOpacity");
+const z=document.getElementById("geoKfZoom");
+const x=document.getElementById("geoKfX");
+const y=document.getElementById("geoKfY");
+const r=document.getElementById("geoKfRotation");
+const o=document.getElementById("geoKfOpacity");
 const list=document.getElementById("geoKeyframeList");
-
-let keyframes=[];
-let selected=-1;
+let keys=[],sel=-1;
 
 function state(){
- return {
-  time:video.currentTime||0,
-  zoom:Number(zoom.value),
-  x:Number(posX.value),
-  y:Number(posY.value),
-  rotation:Number(rotation.value),
-  opacity:Number(opacity.value)
- };
+return {
+time:v.currentTime||0,
+zoom:+z.value,x:+x.value,y:+y.value,
+rotation:+r.value,opacity:+o.value
+};
 }
 
 function apply(k){
- if(!k)return;
-
- zoom.value=k.zoom;
- posX.value=k.x;
- posY.value=k.y;
- rotation.value=k.rotation;
- opacity.value=k.opacity;
-
- video.style.transform=
-   "translate("+(k.x/2)+"%,"+(k.y/2)+"%) "+
-   "scale("+(k.zoom/100)+") "+
-   "rotate("+k.rotation+"deg)";
-
- video.style.opacity=k.opacity/100;
+if(!k)return;
+z.value=k.zoom;x.value=k.x;y.value=k.y;
+r.value=k.rotation;o.value=k.opacity;
+v.style.transform=
+`translate(${k.x/2}%,${k.y/2}%) scale(${k.zoom/100}) rotate(${k.rotation}deg)`;
+v.style.opacity=k.opacity/100;
 }
 
-function interpolate(a,b,t){
- return {
-  time:video.currentTime,
-  zoom:a.zoom+(b.zoom-a.zoom)*t,
-  x:a.x+(b.x-a.x)*t,
-  y:a.y+(b.y-a.y)*t,
-  rotation:a.rotation+(b.rotation-a.rotation)*t,
-  opacity:a.opacity+(b.opacity-a.opacity)*t
- };
-}
-
-function renderList(){
-
- list.inner
-<div id="geoKeyframesPro">
-<div class="geo-kf-title">🔑 KEYFRAMES PRO</div>
-
-<div class="geo-kf-grid">
-<label>🔍 Zoom
-<input id="geoKfZoom" type="range" min="50" max="300" value="100">
-</label>
-
-<label>↔️ Position X
-<input id="geoKfX" type="range" min="-100" max="100" value="0">
-</label>
-
-<label>↕️ Position Y
-<input id="geoKfY" type="range" min="-100" max="100" value="0">
-</label>
-
-<label>🔄 Rotation
-<input id="geoKfRotation" type="range" min="-180" max="180" value="0">
-</label>
-
-<label>🌫️ Opacity
-<input id="geoKfOpacity" type="range" min="0" max="100" value="100">
-</label>
-</div>
-
-<div class="geo-kf-actions">
-<button id="geoAddKeyframe">🔑 Add</button>
-<button id="geoDeleteKeyframe">🗑️ Delete</button>
-<button id="geoResetKeyframes">↩️ Reset</button>
-</div>
-
-<div id="geoKeyframeList"></div>
-</div>
-="";
-
- keyframes.forEach((k,i)=>{
-  const b=document.createElement("button");
-  b.className="geo-kf-chip"+(i===selected?" active":"");
-  b.textContent="🔑 "+i+" • "+k.time.toFixed(2)+"s";
-
-  b.onclick=()=>{
-   selected=i;
-   video.currentTime=k.time;
-   apply(k);
-   renderList();
-  };
-
-  list.appendChild(b);
- });
-}
-
-function animate(){
-
- if(keyframes.length===0)return;
-
- const t=video.currentTime;
-
- if(t<=keyframes[0].time){
-   apply(keyframes[0]);
-   return;
- }
-
- const last=keyframes[keyframes.length-1];
-
- if(t>=last.time){
-   apply(last);
-   return;
- }
-
- let a=keyframes[0];
- let b=keyframes[1];
-
- for(let i=0;i<keyframes.length-1;i++){
-   if(t>=keyframes[i].time && t<=keyframes[i+1].time){
-     a=keyframes[i];
-     b=keyframes[i+1];
-     break;
-   }
- }
-
- const span=b.time-a.time;
- const progress=span?((t-a.time)/span):0;
-
- apply(interpolate(a,b,progress));
+function render(){
+list.innerHTML="";
+keys.forEach((k,i)=>{
+const b=document.createElement("button");
+b.textContent=(i+1)+" • "+k.time.toFixed(2)+"s";
+b.onclick=()=>{sel=i;apply(k)};
+list.appendChild(b);
+});
 }
 
 document.getElementById("geoAddKeyframe").onclick=()=>{
-
- const k=state();
-
- const existing=keyframes.findIndex(
-   x=>Math.abs(x.time-k.time)<0.05
- );
-
- if(existing>=0){
-   keyframes[existing]=k;
-   selected=existing;
- }else{
-   keyframes.push(k);
-   keyframes.sort((a,b)=>a.time-b.time);
-   selected=keyframes.findIndex(x=>x===k);
- }
-
- renderList();
+keys.push(state());
+keys.sort((a,b)=>a.time-b.time);
+sel=keys.length-1;
+render();
 };
 
 document.getElementById("geoDeleteKeyframe").onclick=()=>{
-
- if(selected<0)return;
-
- keyframes.splice(selected,1);
- selected=-1;
- renderList();
+if(sel<0)return;
+keys.splice(sel,1);
+sel=-1;
+render();
 };
 
 document.getElementById("geoResetKeyframes").onclick=()=>{
-
- keyframes=[];
- selected=-1;
-
- zoom.value=100;
- posX.value=0;
- posY.value=0;
- rotation.value=0;
- opacity.value=100;
-
- video.style.transform="";
- video.style.opacity="1";
-
- renderList();
+keys=[];sel=-1;
+v.style.transform="";
+v.style.opacity=1;
+render();
 };
 
-video.addEventListener("timeupdate",animate);
-video.addEventListener("seeked",animate);
-
-})();
-</script>
+render();
+})();</script>
 
 <div id="geoKfTimeline"></div>
 
@@ -3453,40 +3225,7 @@ const props=document.querySelector(".geo-properties");
 if(!video||!props)return;
 if(document.getElementById("geoChromaKeyPro"))return;
 
-props.insertAdjacent
-<div id="geoChromaKeyPro">
-<div class="geo-chroma-title">🟢 GREEN SCREEN / CHROMA KEY</div>
-
-<div class="geo-chroma-row">
-<label>🎨 Key Color</label>
-<input id="geoChromaColor" type="color" value="#00ff00">
-</div>
-
-<div class="geo-chroma-row">
-<label>🎯 Tolerance</label>
-<input id="geoChromaTolerance" type="range" min="0" max="180" value="75">
-</div>
-
-<div class="geo-chroma-row">
-<label>🌫️ Feather</label>
-<input id="geoChromaFeather" type="range" min="0" max="100" value="20">
-</div>
-
-<div class="geo-chroma-row">
-<label>🧹 Spill Reduction</label>
-<input id="geoChromaSpill" type="range" min="0" max="100" value="25">
-</div>
-
-<div class="geo-chroma-buttons">
-<button id="geoChromaToggle">🟢 Enable</button>
-<button id="geoChromaReset">↩️ Reset</button>
-</div>
-
-<div id="geoChromaStatus" class="geo-chroma-status">
-Green Screen disabled
-</div>
-</div>
-("beforeend",`
+props.insertAdjacentHTML("beforeend", `
 <div id="geoChromaKeyPro">
 <div class="geo-chroma-title">🟢 GREEN SCREEN / CHROMA KEY</div>
 
@@ -3687,185 +3426,151 @@ video.addEventListener("play",()=>{
 
 <script id="geoTransformEngine">
 (function(){
+  const video = document.getElementById("videoPreview");
+  const props = document.querySelector(".geo-properties");
 
-const video=document.getElementById("videoPreview");
-const props=document.querySelector(".geo-properties");
+  if (!video || !props) return;
 
-if(!video||!props)return;
-if(document.getElementById("geoTransformPro"))return;
+  const old = document.getElementById("geoTransformPro");
+  if (old) old.remove();
 
-props.insertAdjacent
-<div id="geoTransformPro">
+  props.insertAdjacentHTML("beforeend", `
+    <div id="geoTransformPro">
+      <div class="geo-transform-title">🎯 TRANSFORM PRO</div>
 
-<div class="geo-transform-title">🎯 TRANSFORM PRO</div>
+      <div class="geo-transform-row">
+        <label>↔️ X</label>
+        <input id="geoTransformX" type="range" min="-100" max="100" value="0">
+        <span id="geoTransformXVal" class="geo-transform-value">0</span>
+      </div>
 
-<div class="geo-transform-row">
-<label>↔️ X</label>
-<input id="geoTransformX" type="range" min="-100" max="100" value="0">
-<span id="geoTransformXVal" class="geo-transform-value">0</span>
-</div>
+      <div class="geo-transform-row">
+        <label>↕️ Y</label>
+        <input id="geoTransformY" type="range" min="-100" max="100" value="0">
+        <span id="geoTransformYVal" class="geo-transform-value">0</span>
+      </div>
 
-<div class="geo-transform-row">
-<label>↕️ Y</label>
-<input id="geoTransformY" type="range" min="-100" max="100" value="0">
-<span id="geoTransformYVal" class="geo-transform-value">0</span>
-</div>
+      <div class="geo-transform-row">
+        <label>🔍 Scale</label>
+        <input id="geoTransformScale" type="range" min="25" max="400" value="100">
+        <span id="geoTransformScaleVal" class="geo-transform-value">100%</span>
+      </div>
 
-<div class="geo-transform-row">
-<label>🔍 Scale</label>
-<input id="geoTransformScale" type="range" min="25" max="400" value="100">
-<span id="geoTransformScaleVal" class="geo-transform-value">100%</span>
-</div>
+      <div class="geo-transform-row">
+        <label>🔄 Rotation</label>
+        <input id="geoTransformRotation" type="range" min="-180" max="180" value="0">
+        <span id="geoTransformRotationVal" class="geo-transform-value">0°</span>
+      </div>
 
-<div class="geo-transform-row">
-<label>🔄 Rotation</label>
-<input id="geoTransformRotation" type="range" min="-180" max="180" value="0">
-<span id="geoTransformRotationVal" class="geo-transform-value">0°</span>
-</div>
+      <div class="geo-transform-row">
+        <label>🌫️ Opacity</label>
+        <input id="geoTransformOpacity" type="range" min="0" max="100" value="100">
+        <span id="geoTransformOpacityVal" class="geo-transform-value">100%</span>
+      </div>
 
-<div class="geo-transform-buttons">
-<button id="geoFlipH">↔️ Flip H</button>
-<button id="geoFlipV">↕️ Flip V</button>
-<button id="geoFit">⬜ Fit</button>
-<button id="geoFill">🔲 Fill</button>
-<button id="geoCrop">✂️ Crop Mode</button>
-<button id="geoTransformReset">↩️ Reset</button>
-</div>
+      <div class="geo-transform-buttons">
+        <button type="button" id="geoFlipH">↔️ Flip H</button>
+        <button type="button" id="geoFlipV">↕️ Flip V</button>
+        <button type="button" id="geoFit">⬜ Fit</button>
+        <button type="button" id="geoFill">🔲 Fill</button>
+        <button type="button" id="geoCrop">✂️ Crop Mode</button>
+        <button type="button" id="geoTransformReset">↩️ Reset</button>
+      </div>
+    </div>
+  `);
 
-</div>
-("beforeend",`
-<div id="geoTransformPro">
+  const x = document.getElementById("geoTransformX");
+  const y = document.getElementById("geoTransformY");
+  const scale = document.getElementById("geoTransformScale");
+  const rotation = document.getElementById("geoTransformRotation");
+  const opacity = document.getElementById("geoTransformOpacity");
 
-<div class="geo-transform-title">🎯 TRANSFORM PRO</div>
+  const xv = document.getElementById("geoTransformXVal");
+  const yv = document.getElementById("geoTransformYVal");
+  const sv = document.getElementById("geoTransformScaleVal");
+  const rv = document.getElementById("geoTransformRotationVal");
+  const ov = document.getElementById("geoTransformOpacityVal");
 
-<div class="geo-transform-row">
-<label>↔️ X</label>
-<input id="geoTransformX" type="range" min="-100" max="100" value="0">
-<span id="geoTransformXVal" class="geo-transform-value">0</span>
-</div>
+  let flipH = 1;
+  let flipV = 1;
+  let mode = "fit";
 
-<div class="geo-transform-row">
-<label>↕️ Y</label>
-<input id="geoTransformY" type="range" min="-100" max="100" value="0">
-<span id="geoTransformYVal" class="geo-transform-value">0</span>
-</div>
+  function apply(){
+    const X = Number(x.value);
+    const Y = Number(y.value);
+    const S = Number(scale.value) / 100;
+    const R = Number(rotation.value);
+    const O = Number(opacity.value) / 100;
 
-<div class="geo-transform-row">
-<label>🔍 Scale</label>
-<input id="geoTransformScale" type="range" min="25" max="400" value="100">
-<span id="geoTransformScaleVal" class="geo-transform-value">100%</span>
-</div>
+    xv.textContent = X;
+    yv.textContent = Y;
+    sv.textContent = scale.value + "%";
+    rv.textContent = R + "°";
+    ov.textContent = opacity.value + "%";
 
-<div class="geo-transform-row">
-<label>🔄 Rotation</label>
-<input id="geoTransformRotation" type="range" min="-180" max="180" value="0">
-<span id="geoTransformRotationVal" class="geo-transform-value">0°</span>
-</div>
+    video.style.transform =
+      "translate(" + X + "%," + Y + "%) " +
+      "scale(" + (S * flipH) + "," + (S * flipV) + ") " +
+      "rotate(" + R + "deg)";
 
-<div class="geo-transform-buttons">
-<button id="geoFlipH">↔️ Flip H</button>
-<button id="geoFlipV">↕️ Flip V</button>
-<button id="geoFit">⬜ Fit</button>
-<button id="geoFill">🔲 Fill</button>
-<button id="geoCrop">✂️ Crop Mode</button>
-<button id="geoTransformReset">↩️ Reset</button>
-</div>
+    video.style.opacity = O;
+    video.style.objectFit = mode === "fill" || mode === "crop"
+      ? "cover"
+      : "contain";
+  }
 
-</div>
-`);
+  [x, y, scale, rotation, opacity].forEach(el => {
+    el.addEventListener("input", apply);
+  });
 
-const x=document.getElementById("geoTransformX");
-const y=document.getElementById("geoTransformY");
-const scale=document.getElementById("geoTransformScale");
-const rotation=document.getElementById("geoTransformRotation");
+  document.getElementById("geoFlipH").onclick = () => {
+    flipH *= -1;
+    apply();
+  };
 
-const xv=document.getElementById("geoTransformXVal");
-const yv=document.getElementById("geoTransformYVal");
-const sv=document.getElementById("geoTransformScaleVal");
-const rv=document.getElementById("geoTransformRotationVal");
+  document.getElementById("geoFlipV").onclick = () => {
+    flipV *= -1;
+    apply();
+  };
 
-let flipH=1;
-let flipV=1;
-let mode="fit";
+  document.getElementById("geoFit").onclick = () => {
+    mode = "fit";
+    x.value = 0;
+    y.value = 0;
+    scale.value = 100;
+    rotation.value = 0;
+    opacity.value = 100;
+    flipH = 1;
+    flipV = 1;
+    apply();
+  };
 
-function apply(){
+  document.getElementById("geoFill").onclick = () => {
+    mode = "fill";
+    x.value = 0;
+    y.value = 0;
+    scale.value = 100;
+    apply();
+  };
 
- const X=Number(x.value);
- const Y=Number(y.value);
- const S=Number(scale.value)/100;
- const R=Number(rotation.value);
+  document.getElementById("geoCrop").onclick = () => {
+    mode = mode === "crop" ? "fit" : "crop";
+    apply();
+  };
 
- xv.textContent=X;
- yv.textContent=Y;
- sv.textContent=Number(scale.value)+"%";
- rv.textContent=R+"°";
+  document.getElementById("geoTransformReset").onclick = () => {
+    mode = "fit";
+    x.value = 0;
+    y.value = 0;
+    scale.value = 100;
+    rotation.value = 0;
+    opacity.value = 100;
+    flipH = 1;
+    flipV = 1;
+    apply();
+  };
 
- video.style.transform=
-   "translate("+X+"%,"+Y+"%) "+
-   "scale("+S*flipH+"," + S*flipV + ") "+
-   "rotate("+R+"deg)";
-
- if(mode==="fill"){
-   video.style.objectFit="cover";
- }else{
-   video.style.objectFit="contain";
- }
-
-}
-
-[x,y,scale,rotation].forEach(el=>{
- el.addEventListener("input",apply);
-});
-
-document.getElementById("geoFlipH").onclick=()=>{
- flipH*=-1;
- apply();
-};
-
-document.getElementById("geoFlipV").onclick=()=>{
- flipV*=-1;
- apply();
-};
-
-document.getElementById("geoFit").onclick=()=>{
- mode="fit";
- scale.value=100;
- x.value=0;
- y.value=0;
- rotation.value=0;
- flipH=1;
- flipV=1;
- apply();
-};
-
-document.getElementById("geoFill").onclick=()=>{
- mode="fill";
- scale.value=100;
- x.value=0;
- y.value=0;
- apply();
-};
-
-document.getElementById("geoCrop").onclick=()=>{
- mode=mode==="crop"?"fit":"crop";
- video.style.objectFit=mode==="crop"?"cover":"contain";
-};
-
-document.getElementById("geoTransformReset").onclick=()=>{
- mode="fit";
- x.value=0;
- y.value=0;
- scale.value=100;
- rotation.value=0;
- flipH=1;
- flipV=1;
- video.style.transform="";
- video.style.objectFit="contain";
- apply();
-};
-
-apply();
-
+  apply();
 })();
 </script>
 
@@ -4129,35 +3834,7 @@ const video=document.getElementById("videoPreview");
 if(!props||!video)return;
 if(document.getElementById("geoCanvasPro"))return;
 
-props.insertAdjacent
-<div id="geoCanvasPro">
-
-<div class="geo-canvas-title">📐 CANVAS & RESIZE PRO</div>
-
-<div class="geo-canvas-presets">
-<button data-ratio="9:16">📱 9:16</button>
-<button data-ratio="16:9">🖥️ 16:9</button>
-<button data-ratio="1:1">⬜ 1:1</button>
-</div>
-
-<div class="geo-canvas-actions">
-<button id="geoCanvasFit">⬜ Fit</button>
-<button id="geoCanvasFill">🔲 Fill</button>
-<button id="geoCanvasBlur">🌫️ Blur BG</button>
-<button id="geoCanvasReset">↩️ Reset</button>
-</div>
-
-<div class="geo-canvas-row">
-<label>🔍 Canvas Zoom</label>
-<input id="geoCanvasZoom" type="range" min="50" max="200" value="100">
-</div>
-
-<div id="geoCanvasStatus" class="geo-canvas-status">
-Canvas: 9:16 • Shorts
-</div>
-
-</div>
-("beforeend",`
+props.insertAdjacentHTML("beforeend", `
 <div id="geoCanvasPro">
 
 <div class="geo-canvas-title">📐 CANVAS & RESIZE PRO</div>
@@ -4281,325 +3958,108 @@ setRatio("9:16");
 })();
 </script>
 
-<script id="geoAudioTracksEngine">
-(function(){
+<script id="geoAudioTracksEngine">(function(){
+const p=document.querySelector(".geo-properties");
+const v=document.getElementById("videoPreview");
+if(!p||!v)return;
 
-const props=document.querySelector(".geo-properties");
-const video=document.getElementById("videoPreview");
+const old=document.getElementById("geoAudioTracksPro");
+if(old)old.remove();
 
-if(!props||!video)return;
-if(document.getElementById("geoAudioTracksPro"))return;
-
-props.insertAdjacent
+p.insertAdjacentHTML("beforeend",`
 <div id="geoAudioTracksPro">
-
 <div class="geo-audio-title">🎵 AUDIO TRACKS PRO</div>
-
 <div class="geo-audio-buttons">
 <button id="geoAddAudio">＋ Add Audio</button>
 <button id="geoRecordVoice">🎙️ Voice-over</button>
 </div>
-
 <input id="geoAudioFile" type="file" accept="audio/*" hidden>
-
 <div id="geoAudioTracksList"></div>
-
 <div id="geoAudioStatus" class="geo-audio-status">
 No audio tracks
 </div>
+</div>`);
 
-</div>
-("beforeend",`
-<div id="geoAudioTracksPro">
-
-<div class="geo-audio-title">🎵 AUDIO TRACKS PRO</div>
-
-<div class="geo-audio-buttons">
-<button id="geoAddAudio">＋ Add Audio</button>
-<button id="geoRecordVoice">🎙️ Voice-over</button>
-</div>
-
-<input id="geoAudioFile" type="file" accept="audio/*" hidden>
-
-<div id="geoAudioTracksList"></div>
-
-<div id="geoAudioStatus" class="geo-audio-status">
-No audio tracks
-</div>
-
-</div>
-`);
-
-const fileInput=document.getElementById("geoAudioFile");
+const file=document.getElementById("geoAudioFile");
+const add=document.getElementById("geoAddAudio");
+const voice=document.getElementById("geoRecordVoice");
 const list=document.getElementById("geoAudioTracksList");
 const status=document.getElementById("geoAudioStatus");
 
-const tracks=[];
-let recorder=null;
-let recordingStream=null;
-let recordingChunks=[];
+let tracks=[];
 
-function format(t){
- if(!Number.isFinite(t))return "00:00";
- const m=Math.floor(t/60);
- const sec=Math.floor(t%60);
- return String(m).padStart(2,"0")+":"+String(sec).padStart(2,"0");
-}
+add.onclick=()=>file.click();
 
-function createTrack(name,url){
+file.onchange=()=>{
+const f=file.files&&file.files[0];
+if(!f)return;
 
- const audio=new Audio(url);
- audio.preload="auto";
+const url=URL.createObjectURL(f);
 
- const track={
-  id:Date.now()+Math.random(),
-  name,
-  url,
-  audio,
-  start:0,
-  volume:1,
-  muted:false,
-  loop:false,
-  fadeIn:0,
-  fadeOut:0
- };
+tracks.push({
+name:f.name,
+url:url,
+volume:1
+});
 
- tracks.push(track);
 render();
-return track;
-}
+file.value="";
+};
 
 function render(){
+list.innerHTML="";
 
- list.inner
-<div id="geoAudioTracksPro">
-
-<div class="geo-audio-title">🎵 AUDIO TRACKS PRO</div>
-
-<div class="geo-audio-buttons">
-<button id="geoAddAudio">＋ Add Audio</button>
-<button id="geoRecordVoice">🎙️ Voice-over</button>
-</div>
-
-<input id="geoAudioFile" type="file" accept="audio/*" hidden>
-
-<div id="geoAudioTracksList"></div>
-
-<div id="geoAudioStatus" class="geo-audio-status">
-No audio tracks
-</div>
-
-</div>
-="";
-
- tracks.forEach((track,index)=>{
-
-  const box=document.createElement("div");
-  box.className="geo-audio-track";
-
-  box.inner
-<div id="geoAudioTracksPro">
-
-<div class="geo-audio-title">🎵 AUDIO TRACKS PRO</div>
-
-<div class="geo-audio-buttons">
-<button id="geoAddAudio">＋ Add Audio</button>
-<button id="geoRecordVoice">🎙️ Voice-over</button>
-</div>
-
-<input id="geoAudioFile" type="file" accept="audio/*" hidden>
-
-<div id="geoAudioTracksList"></div>
-
-<div id="geoAudioStatus" class="geo-audio-status">
-No audio tracks
-</div>
-
-</div>
-=`
-   <div class="geo-audio-track-head">
-    <span>🎵 ${track.name}</span>
-    <button data-remove="${index}">🗑️</button>
-   </div>
-
-   <label style="font-size:10px;color:#888">
-    Volume
-    <input data-volume="${index}" type="range"
-      min="0" max="100" value="${track.volume*100}">
-   </label>
-
-   <label style="font-size:10px;color:#888">
-    Start
-    <input data-start="${index}" type="range"
-      min="0" max="100" value="${Math.min(100,track.start)}">
-   </label>
-
-   <div style="display:flex;gap:5px;margin-top:7px">
-    <button data-mute="${index}">
-      ${track.muted?"🔇 Muted":"🔊 Mute"}
-    </button>
-    <button data-loop="${index}">
-      ${track.loop?"🔁 Loop ON":"🔁 Loop"}
-    </button>
-   </div>
-  `;
-
-  list.appendChild(box);
- });
-
- status.textContent=
- tracks.length+
- (tracks.length===1?" audio track":" audio tracks");
+if(!tracks.length){
+status.textContent="No audio tracks";
+return;
 }
 
-document.getElementById("geoAddAudio").onclick=()=>{
- fileInput.click();
+status.textContent=tracks.length+" audio track"+
+(tracks.length===1?"":"s");
+
+tracks.forEach((t,i)=>{
+const box=document.createElement("div");
+box.className="geo-audio-track";
+
+const name=document.createElement("span");
+name.textContent=t.name;
+
+const audio=document.createElement("audio");
+audio.controls=true;
+audio.src=t.url;
+
+const vol=document.createElement("input");
+vol.type="range";
+vol.min=0;
+vol.max=100;
+vol.value=100;
+
+vol.oninput=()=>{
+t.volume=Number(vol.value)/100;
+audio.volume=t.volume;
 };
 
-fileInput.onchange=()=>{
-
- const file=fileInput.files?.[0];
- if(!file)return;
-
- const url=URL.createObjectURL(file);
- createTrack(file.name,url);
-
- fileInput.value="";
+const del=document.createElement("button");
+del.textContent="🗑️";
+del.onclick=()=>{
+URL.revokeObjectURL(t.url);
+tracks.splice(i,1);
+render();
 };
 
-list.addEventListener("input",e=>{
-
- const i=e.target.dataset.volume;
-
- if(i!==undefined){
-  tracks[i].volume=Number(e.target.value)/100;
-  tracks[i].audio.volume=tracks[i].muted?0:tracks[i].volume;
- }
-
- const st=e.target.dataset.start;
-
- if(st!==undefined){
-  tracks[st].start=Number(e.target.value);
- }
+box.append(name,audio,vol,del);
+list.appendChild(box);
 });
 
-list.addEventListener("click",e=>{
+}
 
- const remove=e.target.dataset.remove;
-
- if(remove!==undefined){
-  const t=tracks[Number(remove)];
-  t.audio.pause();
-  URL.revokeObjectURL(t.url);
-  tracks.splice(Number(remove),1);
-  render();
-  return;
- }
-
- const mute=e.target.dataset.mute;
-
- if(mute!==undefined){
-  const t=tracks[Number(mute)];
-  t.muted=!t.muted;
-  t.audio.muted=t.muted;
-  render();
-  return;
- }
-
- const loop=e.target.dataset.loop;
-
- if(loop!==undefined){
-  const t=tracks[Number(loop)];
-  t.loop=!t.loop;
-  t.audio.loop=t.loop;
-  render();
- }
-});
-
-document.getElementById("geoRecordVoice").onclick=async()=>{
-
- const button=document.getElementById("geoRecordVoice");
-
- if(recorder && recorder.state==="recording"){
-  recorder.stop();
-  button.textContent="🎙️ Voice-over";
-  return;
- }
-
- if(!navigator.mediaDevices?.getUserMedia){
-  status.textContent="Microphone unavailable in this browser";
-  return;
- }
-
- try{
-
-  recordingStream=
-   await navigator.mediaDevices.getUserMedia({audio:true});
-
-  recordingChunks=[];
-
-  recorder=new MediaRecorder(recordingStream);
-
-  recorder.ondataavailable=e=>{
-   if(e.data.size)recordingChunks.push(e.data);
-  };
-
-  recorder.onstop=()=>{
-
-   const blob=new Blob(recordingChunks,{type:"audio/webm"});
-   const url=URL.createObjectURL(blob);
-
-   createTrack("Voice-over",url);
-
-   recordingStream.getTracks().forEach(t=>t.stop());
-   recordingStream=null;
-  };
-
-  recorder.start();
-  button.textContent="⏹️ Stop Recording";
-  status.textContent="🎙️ Recording voice-over...";
-
- }catch(err){
-
-  status.textContent="Microphone permission denied";
- }
+voice.onclick=()=>{
+status.textContent="Voice-over: selectează înregistrarea audio";
+file.click();
 };
-
-video.addEventListener("timeupdate",()=>{
-
- const now=video.currentTime;
-
- tracks.forEach(t=>{
-
-  const shouldPlay=
-   now>=t.start &&
-   now<=t.start+(t.audio.duration||Infinity);
-
-  if(shouldPlay && video.playing){
-   if(t.audio.paused){
-    try{t.audio.currentTime=0}catch(e){}
-    t.audio.play().catch(()=>{});
-   }
-  }else if(!shouldPlay && !t.audio.paused){
-   t.audio.pause();
-  }
-
-  t.audio.volume=t.muted?0:t.volume;
- });
-});
-
-video.addEventListener("pause",()=>{
- tracks.forEach(t=>t.audio.pause());
-});
-
-video.addEventListener("ended",()=>{
- tracks.forEach(t=>t.audio.pause());
-});
 
 render();
-
-})();
-</script>
+})();</script>
 
 <script id="geoEnhanceFreeEngine">
 (function(){
@@ -4610,196 +4070,7 @@ const video = document.getElementById("videoPreview");
 if(!props || !video) return;
 if(document.getElementById("geoEnhanceFree")) return;
 
-props.insertAdjacent
-<div id="geoEnhanceFree">
-
-<div class="geo-enhance-title">
-✨ QUICK ENHANCE • FREE
-</div>
-
-<div class="geo-enhance-grid">
-<button id="geoQuickEnhance">✨ Quick Enhance</button>
-<button id="geoResetEnhance">↩️ Reset</button>
-</div>
-
-<div class="geo-enhance-control">
-<label>
-<span>🔎 Claritate</span>
-<span id="geoClarityValue">0</span>
-</label>
-<input id="geoClarity" type="range" min="0" max="100" value="0">
-</div>
-
-<div class="geo-enhance-control">
-<label>
-<span>🧩 Structură</span>
-<span id="geoStructureValue">0</span>
-</label>
-<input id="geoStructure" type="range" min="0" max="100" value="0">
-</div>
-
-<div class="geo-enhance-control">
-<label>
-<span>☀️ Contrast</span>
-<span id="geoContrastValue">0</span>
-</label>
-<input id="geoContrast" type="range" min="-50" max="50" value="0">
-</div>
-
-<div class="geo-enhance-control">
-<label>
-<span>🎨 Saturație</span>
-<span id="geoSaturationValue">0</span>
-</label>
-<input id="geoSaturation" type="range" min="-50" max="50" value="0">
-</div>
-
-<div id="geoEnhanceStatus" class="geo-enhance-status">
-Ajustări gratuite • fără AI
-</div>
-
-</div>
-("beforeend", `
-
-`);
-
-const clarity = document.getElementById("geoClarity");
-const structure = document.getElementById("geoStructure");
-const contrast = document.getElementById("geoContrast");
-const saturation = document.getElementById("geoSaturation");
-
-const clarityValue = document.getElementById("geoClarityValue");
-const structureValue = document.getElementById("geoStructureValue");
-const contrastValue = document.getElementById("geoContrastValue");
-const saturationValue = document.getElementById("geoSaturationValue");
-
-const status = document.getElementById("geoEnhanceStatus");
-
-function applyEnhance(){
-
- const c = Number(clarity.value);
- const st = Number(structure.value);
- const co = Number(contrast.value);
- const sa = Number(saturation.value);
-
- clarityValue.textContent = c;
- structureValue.textContent = st;
- contrastValue.textContent = co;
- saturationValue.textContent = sa;
-
- /*
-  Claritatea și structura sunt simulate în browser
-  prin filtre CSS. Nu pretindem că reconstruim
-  detalii care nu există în videoclip.
- */
-
- const contrastAmount = 1 + (co / 100);
- const saturationAmount = 1 + (sa / 100);
-
- const sharpenAmount = 1 + (c + st * 0.5) / 100;
-
- video.style.filter =
-   `contrast(${contrastAmount}) ` +
-   `saturate(${saturationAmount}) ` +
-   `brightness(1)`;
-
- video.style.imageRendering =
-   sharpenAmount > 1.15 ? "auto" : "auto";
-
- status.textContent =
-   "Claritate " + c +
-   " • Structură " + st +
-   " • Contrast " + co +
-   " • Saturație " + sa;
-}
-
-function reset(){
-
- clarity.value = 0;
- structure.value = 0;
- contrast.value = 0;
- saturation.value = 0;
-
- video.style.filter = "";
-
- applyEnhance();
-
- status.textContent =
-   "Ajustările au fost resetate";
-}
-
-document
-.querySelectorAll("#geoEnhanceFree input")
-.forEach(input=>{
- input.addEventListener("input", applyEnhance);
-});
-
-document.getElementById("geoQuickEnhance").onclick=()=>{
-
- clarity.value = 35;
- structure.value = 30;
- contrast.value = 8;
- saturation.value = 5;
-
- applyEnhance();
-
- status.textContent =
-   "✨ Quick Enhance aplicat";
-};
-
-document.getElementById("geoResetEnhance").onclick=reset;
-
-applyEnhance();
-
-})();
-</script>
-
-<script id="geoSmartExportFreeEngine">
-(function(){
-
-const props=document.querySelector(".geo-properties");
-const video=document.getElementById("videoPreview");
-
-if(!props || !video)return;
-if(document.getElementById("geoSmartExportFree"))return;
-
-props.insertAdjacent
-<div id="geoSmartExportFree">
-
-<div class="geo-export-title">
-📤 SMART EXPORT • FREE
-</div>
-
-<div class="geo-export-grid">
-<select id="geoExportResolution">
-<option value="1080">1080p</option>
-<option value="720">720p</option>
-</select>
-
-<select id="geoExportFPS">
-<option value="30">30 FPS</option>
-<option value="60">60 FPS</option>
-</select>
-
-<button id="geoCheckExport">
-🔍 Verifică
-</button>
-
-<button id="geoStartExport">
-📤 Export
-</button>
-</div>
-
-<div id="geoExportCheck" class="geo-export-check">
-Apasă „Verifică” înainte de export.
-</div>
-
-<div id="geoSmartExportStatus" class="geo-export-status">
-1080p • 30/60 FPS • FREE
-</div>
-
-</div>
-("beforeend",`
+props.insertAdjacentHTML("beforeend", `
 
 `);
 
