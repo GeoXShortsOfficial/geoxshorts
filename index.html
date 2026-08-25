@@ -2356,7 +2356,11 @@ align-items:flex-start!important;
 }
 </style>
 
-</head>
+<style id="geoExportRepairCSS">
+#geoRealExport{display:inline-flex!important;align-items:center!important;justify-content:center!important;min-width:145px!important;height:50px!important;padding:0 20px!important;border:0!important;border-radius:12px!important;background:linear-gradient(90deg,#7e22ce,#a855f7)!important;color:#fff!important;font-weight:800!important;cursor:pointer!important}
+#geoRealExport:disabled{opacity:.55!important}
+#geoExportRepairStatus{display:block!important;margin-top:7px!important;text-align:center!important;color:#aaa!important;font-size:11px!important}
+</style></head>
 
 <body>
 
@@ -6340,140 +6344,168 @@ tabs.forEach(tab=>{
 </script>
 
 
-<script id="geoRealExportEngine">
+
+
+<script id="geoExportRepairEngine">
 (function(){
 "use strict";
-function boot(){
+function install(){
  const video=document.getElementById("videoPreview");
- const wrap=document.getElementById("previewWrap");
- if(!video||!wrap)return;
+ if(!video)return;
 
- let old=wrap.parentElement;
- if(old && !document.querySelector(".geo-preview-export-row")){
-   const row=document.createElement("div");
-   row.className="geo-preview-export-row";
-   wrap.parentNode.insertBefore(row,wrap);
-   row.appendChild(wrap);
+ let btn=document.getElementById("geoRealExport");
+ if(!btn){
+   const candidates=[...document.querySelectorAll("button")];
+   btn=candidates.find(x=>/export/i.test(x.textContent||""));
+ }
+ if(!btn)return;
 
-   const box=document.createElement("div");
-   box.className="geo-export-top";
-   box.innerHTML='<button id="geoRealExport" type="button">⬇️ Export</button><div id="geoRealExportStatus">Ready to export</div>';
-   row.appendChild(box);
+ if(btn.id!=="geoRealExport"){
+   const n=btn.cloneNode(true);
+   n.id="geoRealExport";
+   btn.replaceWith(n);
+   btn=n;
  }
 
- const btn=document.getElementById("geoRealExport");
- const status=document.getElementById("geoRealExportStatus");
- if(!btn||btn.dataset.ready)return;
- btn.dataset.ready="1";
+ if(btn.dataset.exportRepair==="1")return;
+ btn.dataset.exportRepair="1";
 
- btn.onclick=async function(){
-   if(!video.src||video.readyState<2){
-     status.textContent="Upload a video first.";
+ let status=document.getElementById("geoExportRepairStatus");
+ if(!status){
+   status=document.createElement("div");
+   status.id="geoExportRepairStatus";
+   btn.parentNode.appendChild(status);
+ }
+ status.textContent="Ready";
+
+ btn.onclick=async function(e){
+   e.preventDefault();
+   e.stopPropagation();
+
+   const v=document.getElementById("videoPreview");
+   if(!v||!v.src){
+     status.textContent="❌ Upload a video first";
+     return;
+   }
+   if(!window.MediaRecorder||!HTMLCanvasElement.prototype.captureStream){
+     status.textContent="❌ Browser export not supported";
      return;
    }
 
    btn.disabled=true;
-   status.textContent="Preparing export…";
+   status.textContent="Preparing…";
 
    try{
-     const w=1080,h=1920;
+     await new Promise(resolve=>{
+       if(v.readyState>=2)resolve();
+       else v.addEventListener("loadeddata",resolve,{once:true});
+     });
+
+     const duration=v.duration;
+     if(!isFinite(duration)||duration<=0)throw Error("Video duration unavailable");
+
      const canvas=document.createElement("canvas");
-     canvas.width=w;canvas.height=h;
+     canvas.width=1080;
+     canvas.height=1920;
      const ctx=canvas.getContext("2d");
 
-     const draw=()=>{
+     function draw(){
        ctx.fillStyle="#000";
-       ctx.fillRect(0,0,w,h);
-
-       const vw=video.videoWidth||w;
-       const vh=video.videoHeight||h;
-       const scale=Math.min(w/vw,h/vh);
+       ctx.fillRect(0,0,1080,1920);
+       const vw=v.videoWidth||1080;
+       const vh=v.videoHeight||1920;
+       const scale=Math.min(1080/vw,1920/vh);
        const dw=vw*scale,dh=vh*scale;
-       const x=(w-dw)/2,y=(h-dh)/2;
-       ctx.drawImage(video,x,y,dw,dh);
-     };
+       ctx.drawImage(v,(1080-dw)/2,(1920-dh)/2,dw,dh);
+     }
 
-     const stream=canvas.captureStream(60);
-     const mime=
-       MediaRecorder.isTypeSupported("video/webm;codecs=vp9")
-       ?"video/webm;codecs=vp9":
-       "video/webm";
+     const stream=canvas.captureStream(30);
+     const types=[
+       "video/webm;codecs=vp9",
+       "video/webm;codecs=vp8",
+       "video/webm"
+     ];
+     const mime=types.find(x=>MediaRecorder.isTypeSupported(x));
+     if(!mime)throw Error("No supported video format");
 
-     const rec=new MediaRecorder(stream,{mimeType:mime});
+     const recorder=new MediaRecorder(stream,{mimeType:mime});
      const chunks=[];
 
-     rec.ondataavailable=e=>{
-       if(e.data&&e.data.size)chunks.push(e.data);
+     recorder.ondataavailable=function(ev){
+       if(ev.data&&ev.data.size)chunks.push(ev.data);
      };
 
-     rec.onstop=()=>{
+     recorder.onerror=function(){
+       status.textContent="❌ Export error";
+       btn.disabled=false;
+     };
+
+     recorder.onstop=function(){
+       if(!chunks.length){
+         status.textContent="❌ Empty export";
+         btn.disabled=false;
+         return;
+       }
        const blob=new Blob(chunks,{type:mime});
        const url=URL.createObjectURL(blob);
-       const a=document.createElement("a");
-       a.href=url;
-       a.download="GeoXShorts-export.webm";
-       document.body.appendChild(a);
-       a.click();
-       a.remove();
-       setTimeout(()=>URL.revokeObjectURL(url),2000);
+       const link=document.createElement("a");
+       link.href=url;
+       link.download="GeoXShorts-Export.webm";
+       link.style.display="none";
+       document.body.appendChild(link);
+       link.click();
+       setTimeout(()=>{
+         link.remove();
+         URL.revokeObjectURL(url);
+       },3000);
        status.textContent="✅ Export complete";
        btn.disabled=false;
      };
 
-     rec.onerror=()=>{
-       status.textContent="❌ Export failed";
-       btn.disabled=false;
-     };
-
-     const oldTime=video.currentTime||0;
-     video.pause();
-     video.currentTime=0;
-
-     await new Promise(r=>{
-       if(video.readyState>=2)r();
-       else video.addEventListener("loadeddata",r,{once:true});
+     v.pause();
+     v.currentTime=0;
+     await new Promise(resolve=>{
+       const f=()=>{v.removeEventListener("seeked",f);resolve()};
+       v.addEventListener("seeked",f);
+       setTimeout(resolve,500);
      });
 
-     const duration=video.duration;
-     if(!isFinite(duration)||duration<=0)throw new Error("Invalid video duration");
-
-     rec.start(250);
+     draw();
+     recorder.start(250);
      status.textContent="Exporting 0%…";
+     await v.play();
 
      const timer=setInterval(()=>{
        draw();
-       const pct=Math.min(100,(video.currentTime/duration)*100);
-       status.textContent="Exporting "+Math.round(pct)+"%…";
-       if(video.ended){
+       const pct=Math.min(100,(v.currentTime/duration)*100);
+       status.textContent="Exporting "+Math.floor(pct)+"%…";
+       if(v.ended){
          clearInterval(timer);
          draw();
-         rec.stop();
+         if(recorder.state!=="inactive")recorder.stop();
        }
-     },1000/60);
+     },33);
 
-     video.play();
-     video.onended=()=>{
+     v.onended=function(){
        clearInterval(timer);
        draw();
-       if(rec.state!=="inactive")rec.stop();
-       video.currentTime=oldTime;
+       if(recorder.state!=="inactive")recorder.stop();
      };
 
-   }catch(e){
-     console.error("GeoXShorts export:",e);
-     status.textContent="❌ Export failed: "+e.message;
+   }catch(err){
+     console.error("GeoXShorts export repair:",err);
+     status.textContent="❌ "+err.message;
      btn.disabled=false;
    }
  };
 }
-if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",boot);
-else boot();
-setTimeout(boot,1000);
-setTimeout(boot,2500);
+install();
+document.addEventListener("DOMContentLoaded",install);
+setTimeout(install,500);
+setTimeout(install,1500);
+setTimeout(install,3000);
 })();
-</script>
-
-</body>
+</script></body>
 </html>
 
 <style id="geoFreeUiCleanup">
