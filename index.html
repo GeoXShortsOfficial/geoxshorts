@@ -665,7 +665,7 @@ margin-top:9px;text-align:center;color:#999;font-size:11px
 </style>
 
 <style id="geoAudioTracksStyles">
-#geoAudioTracksPro{
+#geoAudioTracks{
 margin-top:12px;padding:14px;background:#100d15;
 border:1px solid #382248;border-radius:16px
 }
@@ -1023,7 +1023,7 @@ font-size:11px;color:#999
 #geoProWorkspace .geo-properties .geo-audio-pro,
 #geoProWorkspace .geo-properties .geo-effects-pro,
 #geoProWorkspace .geo-properties #geoCaptionsPro,
-#geoProWorkspace .geo-properties #geoAudioTracksPro,
+#geoProWorkspace .geo-properties #geoAudioTracks,
 #geoProWorkspace .geo-properties #geoSmartExportFree{
   margin-top:10px!important;
 }
@@ -1164,7 +1164,7 @@ font-size:11px;color:#999
 #geoProWorkspace .geo-properties .geo-audio-pro,
 #geoProWorkspace .geo-properties .geo-effects-pro,
 #geoProWorkspace .geo-properties #geoCaptionsPro,
-#geoProWorkspace .geo-properties #geoAudioTracksPro,
+#geoProWorkspace .geo-properties #geoAudioTracks,
 #geoProWorkspace .geo-properties #geoSmartExportFree{
   margin-top:8px !important;
   padding:10px !important;
@@ -3605,7 +3605,7 @@ function section(name){
  const map={
    media:["videoInput","volume","editorStatus"],
    text:["geoTextPro2"],
-   audio:["geoAudioPro"],
+   audio:["geoAudioPro","geoAudioTracks"],
    adjust:["adjustPanel"],
    effects:["geoEffectsPro"],
    export:["geoExportPro"]
@@ -4617,16 +4617,16 @@ setRatio("9:16");
 </script>
 
 <script id="geoAudioTracksEngine">(function(){
-const p=document.querySelector(".geo-properties");
+const p=document.getElementById("geoAudioPro");
 const v=document.getElementById("videoPreview");
 if(!p||!v)return;
 
-const old=document.getElementById("geoAudioTracksPro");
+const old=document.getElementById("geoAudioTracks");
 if(old)old.remove();
 
 p.insertAdjacentHTML("beforeend",`
-<div id="geoAudioTracksPro">
-<div class="geo-audio-title">🎵 AUDIO TRACKS PRO</div>
+<div id="geoAudioTracks">
+<div class="geo-audio-title">🎵 AUDIO TRACKS</div>
 <div class="geo-audio-buttons">
 <button id="geoAddAudio">＋ Add Audio</button>
 <button id="geoRecordVoice">🎙️ Voice-over</button>
@@ -5962,7 +5962,7 @@ tabs.forEach(tab=>{
     [
       "geoTextPro2",
       "geoAudioPro",
-      "geoAudioTracksPro",
+      "geoAudioTracks",
       "geoEffectsPro",
       "geoExportPro",
       "geoTransformPro",
@@ -6089,7 +6089,7 @@ tabs.forEach(tab=>{
 #geoProWorkspace .geo-properties .geo-audio-pro,
 #geoProWorkspace .geo-properties .geo-effects-pro,
 #geoProWorkspace .geo-properties #geoCaptionsPro,
-#geoProWorkspace .geo-properties #geoAudioTracksPro,
+#geoProWorkspace .geo-properties #geoAudioTracks,
 #geoProWorkspace .geo-properties #geoSmartExportFree{
   margin-top:6px!important;
   padding:8px!important;
