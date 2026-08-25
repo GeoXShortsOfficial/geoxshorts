@@ -4483,138 +4483,7 @@ apply();
 })();
 </script>
 
-<script id="geoCanvasEngine">
-(function(){
 
-const props=document.querySelector(".geo-properties");
-const video=document.getElementById("videoPreview");
-
-if(!props||!video)return;
-if(document.getElementById("geoCanvasPro"))return;
-
-props.insertAdjacentHTML("beforeend", `
-<div id="geoCanvasPro">
-
-<div class="geo-canvas-title">📐 CANVAS & RESIZE PRO</div>
-
-<div class="geo-canvas-presets">
-<button data-ratio="9:16">📱 9:16</button>
-<button data-ratio="16:9">🖥️ 16:9</button>
-<button data-ratio="1:1">⬜ 1:1</button>
-</div>
-
-<div class="geo-canvas-actions">
-<button id="geoCanvasFit">⬜ Fit</button>
-<button id="geoCanvasFill">🔲 Fill</button>
-<button id="geoCanvasBlur">🌫️ Blur BG</button>
-<button id="geoCanvasReset">↩️ Reset</button>
-</div>
-
-<div class="geo-canvas-row">
-<label>🔍 Canvas Zoom</label>
-<input id="geoCanvasZoom" type="range" min="50" max="200" value="100">
-</div>
-
-<div id="geoCanvasStatus" class="geo-canvas-status">
-Canvas: 9:16 • Shorts
-</div>
-
-</div>
-`);
-
-const stage=video.parentElement;
-const zoom=document.getElementById("geoCanvasZoom");
-const status=document.getElementById("geoCanvasStatus");
-const buttons=document.querySelectorAll("#geoCanvasPro [data-ratio]");
-
-let ratio="9:16";
-let fitMode="contain";
-let blur=false;
-
-function setRatio(r){
-
-ratio=r;
-
-buttons.forEach(b=>{
- b.classList.toggle("active",b.dataset.ratio===r);
-});
-
-if(stage){
-
- if(r==="9:16")stage.style.aspectRatio="9 / 16";
- if(r==="16:9")stage.style.aspectRatio="16 / 9";
- if(r==="1:1")stage.style.aspectRatio="1 / 1";
-
- stage.style.overflow="hidden";
-}
-
-status.textContent=
-"Canvas: "+r+
-(r==="9:16"?" • Shorts":
-r==="16:9"?" • YouTube":" • Square");
-
-apply();
-}
-
-function apply(){
-
-video.style.objectFit=fitMode;
-video.style.transform=
-"scale("+(Number(zoom.value)/100)+")";
-
-if(blur){
-
- video.style.background="transparent";
-
- if(stage){
-   stage.style.backgroundImage=
-     "linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.25)),"+
-     "url('')";
- }
-}else{
- video.style.background="";
-}
-
-}
-
-buttons.forEach(b=>{
- b.addEventListener("click",()=>setRatio(b.dataset.ratio));
-});
-
-document.getElementById("geoCanvasFit").onclick=()=>{
- fitMode="contain";
- zoom.value=100;
- apply();
-};
-
-document.getElementById("geoCanvasFill").onclick=()=>{
- fitMode="cover";
- zoom.value=100;
- apply();
-};
-
-document.getElementById("geoCanvasBlur").onclick=()=>{
- blur=!blur;
- document.getElementById("geoCanvasBlur").textContent=
- blur?"🌫️ Blur BG ON":"🌫️ Blur BG";
- apply();
-};
-
-document.getElementById("geoCanvasReset").onclick=()=>{
- ratio="9:16";
- fitMode="contain";
- blur=false;
- zoom.value=100;
- document.getElementById("geoCanvasBlur").textContent="🌫️ Blur BG";
- setRatio("9:16");
-};
-
-zoom.addEventListener("input",apply);
-
-setRatio("9:16");
-
-})();
-</script>
 
 <script id="geoAudioTracksEngine">(function(){
 const p=document.getElementById("geoAudioPro");
@@ -5982,7 +5851,173 @@ tabs.forEach(tab=>{
 })();
 </script>
 
-<script id="gx10wire">(()=>{const q=x=>document.getElementById(x),u=()=>{q("gxl").textContent="🔓";q("gxl").classList.add("gxs");localStorage.setItem("geoxPremiumUnlocked","1");q("gxp").textContent="Unlock complete ✓"};q("gxy").onclick=()=>{window.open("https://youtube.com/@geo_ff","_blank");u()};q("gxi").onclick=()=>{window.open("https://www.instagram.com/geo_ff.hs","_blank");u()};q("gxe").onclick=()=>q("geoExportBtn")?.click()})();</script><div id="geoExportCollapsedUI"><button id="geoExportCollapsedButton" type="button" aria-expanded="false" aria-controls="gx10">📤 Export</button></div><script id="geoExportCollapsedEngine">(function(){function init(){var panel=document.getElementById("gx10"),btn=document.getElementById("geoExportCollapsedButton");if(!panel||!btn)return;if(panel.dataset.collapsedReady==="1")return;panel.dataset.collapsedReady="1";panel.classList.remove("geo-export-open");btn.setAttribute("aria-expanded","false");btn.addEventListener("click",function(e){e.preventDefault();e.stopPropagation();var open=panel.classList.toggle("geo-export-open");btn.setAttribute("aria-expanded",open?"true":"false");btn.textContent=open?"✕ Close Export":"📤 Export";});document.addEventListener("click",function(e){if(!panel.classList.contains("geo-export-open"))return;if(e.target===btn||panel.contains(e.target))return;panel.classList.remove("geo-export-open");btn.setAttribute("aria-expanded","false");btn.textContent="📤 Export";});}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();})();</script></body>
+<script id="gx10wire">(()=>{const q=x=>document.getElementById(x),u=()=>{q("gxl").textContent="🔓";q("gxl").classList.add("gxs");localStorage.setItem("geoxPremiumUnlocked","1");q("gxp").textContent="Unlock complete ✓"};q("gxy").onclick=()=>{window.open("https://youtube.com/@geo_ff","_blank");u()};q("gxi").onclick=()=>{window.open("https://www.instagram.com/geo_ff.hs","_blank");u()};q("gxe").onclick=()=>q("geoExportBtn")?.click()})();</script><div id="geoExportCollapsedUI"><button id="geoExportCollapsedButton" type="button" aria-expanded="false" aria-controls="gx10">📤 Export</button></div><script id="geoExportCollapsedEngine">(function(){function init(){var panel=document.getElementById("gx10"),btn=document.getElementById("geoExportCollapsedButton");if(!panel||!btn)return;if(panel.dataset.collapsedReady==="1")return;panel.dataset.collapsedReady="1";panel.classList.remove("geo-export-open");btn.setAttribute("aria-expanded","false");btn.addEventListener("click",function(e){e.preventDefault();e.stopPropagation();var open=panel.classList.toggle("geo-export-open");btn.setAttribute("aria-expanded",open?"true":"false");btn.textContent=open?"✕ Close Export":"📤 Export";});document.addEventListener("click",function(e){if(!panel.classList.contains("geo-export-open"))return;if(e.target===btn||panel.contains(e.target))return;panel.classList.remove("geo-export-open");btn.setAttribute("aria-expanded","false");btn.textContent="📤 Export";});}if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init,{once:true});else init();})();</script>
+<script id="geoCanvasEngine">
+(function(){
+  "use strict";
+
+  const video=document.getElementById("videoPreview");
+  const wrap=document.getElementById("previewWrap");
+  const panel=document.getElementById("geoCanvasPro");
+
+  if(!video || !wrap || !panel){
+    console.warn("GeoXShorts Canvas Resize: elemente lipsă");
+    return;
+  }
+
+  const buttons=[...panel.querySelectorAll("button")];
+
+  const find=(...names)=>{
+    const wanted=names.map(x=>x.toLowerCase());
+    return buttons.find(b=>{
+      const t=(b.textContent||"").trim().toLowerCase();
+      return wanted.some(x=>t===x || t.includes(x));
+    });
+  };
+
+  const b916=find("9:16");
+  const b169=find("16:9");
+  const b11=find("1:1");
+  const bFit=find("fit");
+  const bFill=find("fill");
+  const bBlurOn=find("blur bg on");
+  const bBlurOff=find("blur bg off");
+  const bReset=find("reset");
+
+  let state={
+    ratio:"9:16",
+    mode:"fit",
+    blur:false
+  };
+
+  function setRatio(ratio){
+    state.ratio=ratio;
+
+    if(ratio==="9:16"){
+      wrap.style.aspectRatio="9 / 16";
+    }else if(ratio==="16:9"){
+      wrap.style.aspectRatio="16 / 9";
+    }else if(ratio==="1:1"){
+      wrap.style.aspectRatio="1 / 1";
+    }
+
+    wrap.style.width="min(100%, 360px)";
+    wrap.style.height="auto";
+
+    applyMode();
+    updateActive();
+    updateLabel();
+  }
+
+  function applyMode(){
+    if(state.mode==="fill"){
+      video.style.objectFit="cover";
+    }else{
+      video.style.objectFit="contain";
+    }
+
+    video.style.width="100%";
+    video.style.height="100%";
+
+    if(state.blur){
+      wrap.style.background=
+        "linear-gradient(rgba(0,0,0,.18),rgba(0,0,0,.18)),#000";
+      video.style.filter="none";
+    }else{
+      wrap.style.background="#000";
+      video.style.filter="none";
+    }
+  }
+
+  function setMode(mode){
+    state.mode=mode;
+    applyMode();
+    updateActive();
+  }
+
+  function setBlur(enabled){
+    state.blur=enabled;
+
+    if(enabled){
+      wrap.style.background="#000";
+      wrap.style.boxShadow="inset 0 0 80px rgba(168,85,247,.08)";
+    }else{
+      wrap.style.background="#000";
+      wrap.style.boxShadow="";
+    }
+
+    updateActive();
+  }
+
+  function reset(){
+    state={
+      ratio:"9:16",
+      mode:"fit",
+      blur:false
+    };
+
+    wrap.style.aspectRatio="9 / 16";
+    wrap.style.width="min(100%,360px)";
+    wrap.style.height="auto";
+    wrap.style.background="#000";
+    wrap.style.boxShadow="";
+    video.style.width="100%";
+    video.style.height="100%";
+    video.style.objectFit="contain";
+    video.style.filter="none";
+
+    updateActive();
+    updateLabel();
+  }
+
+  function updateActive(){
+    buttons.forEach(b=>b.classList.remove("active"));
+
+    if(state.ratio==="9:16" && b916)b916.classList.add("active");
+    if(state.ratio==="16:9" && b169)b169.classList.add("active");
+    if(state.ratio==="1:1" && b11)b11.classList.add("active");
+
+    if(state.mode==="fit" && bFit)bFit.classList.add("active");
+    if(state.mode==="fill" && bFill)bFill.classList.add("active");
+
+    if(state.blur && bBlurOn)bBlurOn.classList.add("active");
+    if(!state.blur && bBlurOff)bBlurOff.classList.add("active");
+  }
+
+  function updateLabel(){
+    const label=document.querySelector(".geo-stage-label");
+    if(label){
+      label.textContent="PREVIEW • "+state.ratio;
+    }
+
+    const status=panel.querySelector(".geo-canvas-status");
+    if(status){
+      status.textContent=
+        "Canvas "+state.ratio+
+        " • "+state.mode.toUpperCase()+
+        " • Blur "+(state.blur?"ON":"OFF");
+    }
+  }
+
+  if(b916)b916.onclick=()=>setRatio("9:16");
+  if(b169)b169.onclick=()=>setRatio("16:9");
+  if(b11)b11.onclick=()=>setRatio("1:1");
+
+  if(bFit)bFit.onclick=()=>setMode("fit");
+  if(bFill)bFill.onclick=()=>setMode("fill");
+
+  if(bBlurOn)bBlurOn.onclick=()=>setBlur(true);
+  if(bBlurOff)bBlurOff.onclick=()=>setBlur(false);
+
+  if(bReset)bReset.onclick=reset;
+
+  reset();
+
+  console.log("✅ GeoXShorts Canvas Resize PRO engine activ");
+})();
+</script>
+
+</body>
 </html>
 
 <style id="geoFreeUiCleanup">
