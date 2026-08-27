@@ -2377,6 +2377,43 @@ body {
 }
 </style>
 
+
+<style id="geox-ui">
+:root{
+--gx-bg:#0d0912;--gx-surface:#120a1b;--gx-surface2:#19121f;
+--gx-border:#38234b;--gx-text:#f5f3ff;--gx-muted:#b9aeca;
+--gx-purple:#6d28d9;--gx-purple2:#9333ea;--gx-purple3:#a855f7;
+}
+html,body{background:radial-gradient(1000px 500px at 50% -8%,rgba(124,58,237,.28),transparent 68%),var(--gx-bg)!important;color:var(--gx-text)!important}
+body{min-height:100vh}
+nav{background:rgba(20,8,34,.96)!important;border-color:var(--gx-border)!important;backdrop-filter:blur(14px)}
+.logo .geo{color:var(--gx-purple2)!important;font-weight:900!important}
+.logo .xshorts{color:#fff!important;font-weight:900!important}
+nav .badge{display:none!important}
+#geoAboutMenuBtn{width:44px!important;height:44px!important;border-radius:12px!important;background:linear-gradient(135deg,var(--gx-purple),var(--gx-purple2))!important;border:1px solid var(--gx-purple3)!important;color:#fff!important;box-shadow:0 6px 22px rgba(124,58,237,.28)!important}
+#geoProWorkspace,.geo-pro-workspace{background:transparent!important;color:var(--gx-text)!important}
+#geoProWorkspace .geo-sidebar{display:flex!important;flex-direction:row!important;align-items:center!important;gap:8px!important}
+#geoProWorkspace .geo-stage{width:100%!important;min-width:0!important;padding:9px!important;margin-bottom:10px!important;overflow-x:auto!important;overflow-y:hidden!important;background:rgba(18,10,27,.96)!important;border:1px solid var(--gx-border)!important;border-radius:var(--gx-radius,16px)!important}
+#geoProWorkspace .geo-sidebar .geo-panel-title{display:none!important}
+#geoProWorkspace .geo-tool{flex:0 0 auto!important;min-width:82px!important;height:42px!important;padding:0 13px!important;margin:0!important;border-radius:11px!important;border:1px solid #38234b!important;background:#19121f!important;color:#ddd5e6!important;font-size:12px!important;font-weight:750!important;white-space:nowrap!important;transition:.18s ease!important}
+#geoProWorkspace .geo-tool:hover{border-color:var(--gx-purple2)!important;background:#251632!important;transform:translateY(-1px)!important}
+#geoProWorkspace .geo-tool.active{color:#fff!important;border-color:var(--gx-purple3)!important;background:linear-gradient(135deg,#6d28d9,#9333ea,#a855f7)!important;box-shadow:0 6px 22px rgba(168,85,247,.25)!important}
+#geoProWorkspace .geo-stage{background:#0d0912!important;border:1px solid var(--gx-border)!important;border-radius:16px!important;min-height:420px!important;box-shadow:0 12px 35px rgba(0,0,0,.22)!important}
+#videoPreview{max-width:100%!important;max-height:520px!important;border-radius:14px!important}
+#geoProWorkspace .geo-properties{background:#100b17!important;border:1px solid var(--gx-border)!important;border-radius:15px!important;color:var(--gx-text)!important;padding:14px!important;box-sizing:border-box!important}
+#geoProWorkspace .geo-properties .geo-panel-title{color:#ead8ff!important;font-weight:800!important;letter-spacing:.05em!important}
+#geoProWorkspace .geo-properties input,#geoProWorkspace .geo-properties select,#geoProWorkspace .geo-properties textarea{max-width:100%!important;box-sizing:border-box!important;background:#19111f!important;color:#f5f3ff!important;border:1px solid #3a2548!important;border-radius:9px!important}
+#geoProWorkspace .geo-properties input:focus,#geoProWorkspace .geo-properties select:focus,#geoProWorkspace .geo-properties textarea:focus{outline:none!important;border-color:var(--gx-purple2)!important;box-shadow:0 0 0 2px rgba(168,85,247,.12)!important}
+#geoProWorkspace .geo-timeline{background:#0d0912!important;border:1px solid var(--gx-border)!important;border-radius:15px!important}
+button{transition:.18s ease}
+button:hover{transform:translateY(-1px)}
+@media(max-width:700px){
+#geoProWorkspace .geo-sidebar{overflow-x:auto!important;padding-bottom:4px!important}
+#geoProWorkspace .geo-tool{min-width:76px!important;height:40px!important;padding:0 10px!important}
+#geoProWorkspace .geo-properties{padding:10px!important}
+#geoProWorkspace .geo-stage{min-height:300px!important}
+}
+</style>
 </head>
 
 <body>
@@ -3370,7 +3407,7 @@ btn.onclick=async function(){
 
      /* GEOX10 watermark */if(showWatermark){ctx.save();ctx.textAlign="right";ctx.textBaseline="bottom";ctx.font=Math.max(13,canvas.width*.013)+"px Arial";ctx.fillStyle="#a855f7";ctx.fillText("GeoX",canvas.width-50,canvas.height-20);ctx.fillStyle="#fff";ctx.fillText("Shorts",canvas.width-14,canvas.height-20);ctx.font=Math.max(10,canvas.width*.009)+"px Arial";ctx.fillStyle="#a855f7";ctx.fillText("✦",canvas.width-14,canvas.height-34);ctx.restore();}
 
-     requestAnimationFrame(draw);
+     q("gxp").textContent=`Exporting ${Math.min(99,Math.round(video.currentTime/video.duration*100))}% • ${res}p • ${fps} FPS`;requestAnimationFrame(draw);
    }
 
    draw();
@@ -4089,7 +4126,7 @@ function draw(){
    ctx.putImageData(image,0,0);
  }
 
- animation=requestAnimationFrame(draw);
+ animation=q("gxp").textContent=`Exporting ${Math.min(99,Math.round(video.currentTime/video.duration*100))}% • ${res}p • ${fps} FPS`;requestAnimationFrame(draw);
 }
 
 function enable(){
@@ -6397,12 +6434,19 @@ function init(){
   let audioCtx=null,source=null,dest=null;
 
   try{
-   audioCtx=new (window.AudioContext||window.webkitAudioContext)();
-   dest=audioCtx.createMediaStreamDestination();
-   source=audioCtx.createMediaElementSource(video);
-   source.connect(dest);
-   source.connect(audioCtx.destination);
-   if(audioCtx.state==="suspended")await audioCtx.resume();
+   if(!window.__geoAudio){
+audioCtx=new (window.AudioContext||window.webkitAudioContext)();
+dest=audioCtx.createMediaStreamDestination();
+source=audioCtx.createMediaElementSource(video);
+source.connect(dest);
+source.connect(audioCtx.destination);
+window.__geoAudio={audioCtx:audioCtx,dest:dest,source:source};
+}else{
+audioCtx=window.__geoAudio.audioCtx;
+dest=window.__geoAudio.dest;
+source=window.__geoAudio.source;
+}
+if(audioCtx.state==="suspended")await audioCtx.resume();
    dest.stream.getAudioTracks().forEach(t=>stream.addTrack(t));
 
    video.muted=false;
@@ -6432,7 +6476,7 @@ function init(){
     a.click();
     setTimeout(()=>URL.revokeObjectURL(a.href),3000);
     video.pause();video.currentTime=oldTime;video.muted=wasMuted;
-    if(audioCtx)audioCtx.close().catch(()=>{});
+    
     btn.disabled=false;
     q("gxp").textContent=`✅ Export complete • ${res}p • ${fps} FPS • Audio ON`;
    };
@@ -6446,19 +6490,19 @@ function init(){
     const dw=vw*scale,dh=vh*scale;
     ctx.fillStyle="#000";ctx.fillRect(0,0,W,H);
     ctx.drawImage(video,(W-dw)/2,(H-dh)/2,dw,dh);
-    if(rec.state==="recording")requestAnimationFrame(draw);
+    if(rec.state==="recording")q("gxp").textContent=`Exporting ${Math.min(99,Math.round(video.currentTime/video.duration*100))}% • ${res}p • ${fps} FPS`;requestAnimationFrame(draw);
    }
 
    rec.start(250);
-   q("gxp").textContent=`Exporting ${res}p • ${fps} FPS • ${Math.round(bitrate/1000000)} Mbps • Audio ON`;
-   requestAnimationFrame(draw);
+   q("gxp").textContent=`Exporting 0% • ${res}p • ${fps} FPS • ${Math.round(bitrate/1000000)} Mbps • Audio ON`;
+   q("gxp").textContent=`Exporting ${Math.min(99,Math.round(video.currentTime/video.duration*100))}% • ${res}p • ${fps} FPS`;requestAnimationFrame(draw);
 
   }catch(err){
    console.error("GeoXShorts export:",err);
    q("gxp").textContent="❌ Export failed: "+err.message;
    video.muted=wasMuted;
    btn.disabled=false;
-   if(audioCtx)audioCtx.close().catch(()=>{});
+   /* AudioContext păstrat pentru exporturi repetate. */
   }
  };
 }
