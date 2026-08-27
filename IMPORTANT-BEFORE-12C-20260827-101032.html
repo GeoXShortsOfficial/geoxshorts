@@ -349,30 +349,7 @@ document.addEventListener("keydown",e=>{
 bar();
 })();
 </script>
-<style id="gx12c">.gxpanel{display:flex;flex-wrap:wrap;gap:8px;padding:10px 0}.gxpanel button,.gxpanel label{border:1px solid #49305a;background:#24142f;color:#fff;border-radius:10px;padding:9px 12px;font-weight:700;cursor:pointer}.gxpanel input{display:inline-block;width:70px;margin-left:5px;background:#120a18;color:#fff;border:1px solid #49305a;border-radius:6px;padding:5px}</style>
-<script id="gx12c-engine">
-(()=>{const $=id=>document.getElementById(id);
-function panel(){
- if($("gxpanel")||!$("tools"))return;
- let p=document.createElement("div");p.id="gxpanel";p.className="gxpanel";
- p.innerHTML='<button data-a="rotate">↻ Rotate</button><button data-a="flip">↔ Flip</button><button data-a="brightness">☀ Brightness</button><button data-a="contrast">◐ Contrast</button><button data-a="speed">⚡ Speed</button><button data-a="fullscreen">⛶ Fullscreen</button><button data-a="clear">✕ Clear Preview</button><label>Zoom <input id="gxzoom" type="range" min="50" max="150" value="100"></label>';
- $("tools").parentNode.insertBefore(p,$("tools"));
- p.onclick=e=>{let b=e.target.closest("[data-a]");if(b)run(b.dataset.a)}
- $("gxzoom").oninput=e=>{let v=$("preview").querySelector("video,img");if(v)v.style.transform=`scale(${e.target.value/100})`}
-}
-function run(a){
- let v=$("preview").querySelector("video,img");if(!v)return;
- if(a==="rotate")v.style.transform=(v.dataset.r=+(v.dataset.r||0)+90),v.style.transform+=`rotate(${v.dataset.r}deg)`;
- if(a==="flip")v.style.transform="scaleX(-1)";
- if(a==="brightness")v.style.filter="brightness(1.2)";
- if(a==="contrast")v.style.filter="contrast(1.25)";
- if(a==="speed"&&v.tagName==="VIDEO")v.playbackRate=v.playbackRate>=2?1:v.playbackRate+0.5;
- if(a==="fullscreen")v.requestFullscreen?.();
- if(a==="clear")$("preview").innerHTML="Selectează materiale pentru preview";
-}
-const oe=window.openEditor;window.openEditor=()=>{oe();panel()};panel();
-})();
-</script></body></html>
+</body></html>
 <style id="gx-unified-brand">
 .gx,.gx-grad{letter-spacing:-.5px}
 .shorts,.gx-shorts{margin-left:0!important;padding-left:0!important;letter-spacing:-.5px}
