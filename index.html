@@ -6549,6 +6549,43 @@ document.getElementById("geoMultiImages")?.addEventListener("change",e=>{
  if(!box){box=document.createElement("div");box.id="gxImageList";box.className="gx-multi-list";document.querySelector(".editor-upload-only")?.appendChild(box)}
  box.innerHTML=fs.map(f=>'<div class="gx-multi-item">🖼️ '+f.name+'</div>').join("");
 });
+</script><style id="GX_PRO_EDITOR">
+:root{--gx:#8b5cf6;--gx2:#ec4899;--gxbg:#120820;--gxpanel:#1b1028;--gxline:#342044}
+html,body{background:radial-gradient(900px 500px at 50% -15%,#39205b,transparent 65%),var(--gxbg)!important}
+#geoProWorkspace{width:min(1440px,calc(100% - 24px))!important;margin:12px auto!important;background:#11091b!important;border:1px solid var(--gxline)!important;border-radius:18px!important;box-shadow:0 20px 70px #0008!important}
+#geoProWorkspace button,.gxPro button{transition:.18s ease!important}
+#geoProWorkspace button:hover,.gxPro button:hover{transform:translateY(-1px);filter:brightness(1.18)}
+.gxPro{display:grid;grid-template-columns:74px 1fr;min-height:680px;background:#160c21;border-radius:16px;overflow:hidden}
+.gxTools{display:flex;flex-direction:column;gap:5px;padding:9px;background:#100817;border-right:1px solid var(--gxline)}
+.gxTools button{border:0;background:transparent;color:#bbb;padding:9px 3px;border-radius:9px;font-size:10px;cursor:pointer}
+.gxTools button:hover,.gxTools button.on{background:#2b1740;color:#fff}
+.gxMain{display:grid;grid-template-rows:54px 1fr 175px;min-width:0}
+.gxTop{display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid var(--gxline)}
+.gxTop button{background:#24132f;color:#eee;border:1px solid #402653;border-radius:9px;padding:8px 11px}
+.gxTop .primary{background:linear-gradient(90deg,var(--gx),var(--gx2));border:0;font-weight:800}
+.gxCanvas{display:flex;align-items:center;justify-content:center;padding:22px;background:#0e0715}
+.gxCanvas .gxFrame{width:min(430px,65%);aspect-ratio:9/16;background:#000;border:1px solid #402653;border-radius:12px;display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 15px 50px #000}
+.gxBottom{border-top:1px solid var(--gxline);background:#140a1e;padding:10px;overflow:auto}
+.gxTrack{height:42px;margin:6px 0;background:#21112e;border:1px solid #382047;border-radius:7px;display:flex;align-items:center;padding:5px;gap:5px}
+.gxClip{height:30px;min-width:90px;background:linear-gradient(90deg,#6334a0,#a03c86);border-radius:5px;padding:7px;color:#fff;font-size:10px;cursor:pointer}
+.gxPanel{position:absolute;z-index:9999;background:#1b1028;border:1px solid #4a2a60;border-radius:12px;padding:12px;min-width:220px;box-shadow:0 20px 50px #0009;color:#eee}
+.gxPanel button{display:block;width:100%;margin:4px 0;padding:8px;border:0;border-radius:7px;background:#281638;color:#eee;text-align:left}
+@media(max-width:800px){.gxPro{grid-template-columns:60px 1fr}.gxMain{grid-template-rows:50px 1fr 145px}.gxTools button{font-size:8px}.gxCanvas .gxFrame{width:82%}}
+</style><script id="GX_PRO_ENGINE">
+(()=>{if(window.__GXPRO)return;window.__GXPRO=1;
+const W=document.getElementById("geoProWorkspace");if(!W)return;
+const tools=["Media","Audio","Text","Effects","Filters","Transitions","Speed","Volume","Crop","Rotate","Opacity","Captions","PiP","Keyframes","Canvas","Export"];
+const bar=document.createElement("div");bar.className="gxPro";
+bar.innerHTML=`<aside class="gxTools">${tools.map(x=>`<button data-t="${x}">${x}</button>`).join("")}</aside><main class="gxMain"><header class="gxTop"><b>GeoXShorts Pro</b><span style="flex:1"></span><button data-a="undo">↶</button><button data-a="redo">↷</button><button data-a="import">＋ Media</button><button class="primary" data-a="export">Export 1080p</button></header><section class="gxCanvas"><div class="gxFrame" id="gxFrame"><span>🎬<br>Drop media here</span></div></section><section class="gxBottom"><div id="gxTracks"><div class="gxTrack" data-track="Video"></div><div class="gxTrack" data-track="Audio"></div><div class="gxTrack" data-track="Text"></div></div></section></main>`;
+W.replaceChildren(bar);
+const input=document.createElement("input");input.type="file";input.multiple=true;input.accept="video/*,image/*,audio/*";input.hidden=true;document.body.appendChild(input);
+let history=[],future=[];
+function snap(){history.push(bar.innerHTML);if(history.length>20)history.shift();future=[]}
+function media(files){snap();let f=[...files],frame=document.getElementById("gxFrame"),tr=document.querySelector('[data-track="Video"]');tr.innerHTML="";f.forEach(x=>{let c=document.createElement("div");c.className="gxClip";c.textContent=x.name;c.onclick=()=>{if(x.type.startsWith("video/")){frame.innerHTML="";let v=document.createElement("video");v.src=URL.createObjectURL(x);v.controls=true;v.playsInline=true;v.style="width:100%;height:100%;object-fit:contain";frame.append(v)}else if(x.type.startsWith("image/")){frame.innerHTML="";let i=document.createElement("img");i.src=URL.createObjectURL(x);i.style="width:100%;height:100%;object-fit:contain";frame.append(i)}};tr.append(c)})}
+bar.onclick=e=>{let b=e.target.closest("button");if(!b)return;if(b.dataset.a==="import"){input.click();return}if(b.dataset.a==="export"){alert("Export engine pregătit: 1080p");return}if(b.dataset.a==="undo"){if(history.length){future.push(bar.innerHTML);bar.innerHTML=history.pop()}}else if(b.dataset.a==="redo"){if(future.length){history.push(bar.innerHTML);bar.innerHTML=future.pop()}}else if(b.dataset.t){snap();let panel=document.createElement("div");panel.className="gxPanel";panel.innerHTML="<b>"+b.dataset.t+"</b>";["Add","Apply","Reset"].forEach(x=>{let q=document.createElement("button");q.textContent=x+" "+b.dataset.t;q.onclick=()=>{panel.remove();alert(x+" "+b.dataset.t)};panel.append(q)});b.parentElement.parentElement.append(panel);panel.style.left="80px";panel.style.top="60px"}};
+input.onchange=()=>media(input.files);
+document.addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&e.key==="z"){e.preventDefault();bar.querySelector('[data-a="undo"]')?.click()}});
+})();
 </script></body>
 </html>
 
