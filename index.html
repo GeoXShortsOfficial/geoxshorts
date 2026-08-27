@@ -411,6 +411,291 @@ button{
 .geo-audio-row button{flex:1;height:38px;border-radius:9px;background:#1a1422;border:1px solid #382648;color:#ddd}
 .geo-audio-name{font-size:12px;color:#aaa;margin-top:8px;overflow:hidden;text-overflow:ellipsis}
 </style>
+
+<style id="geoEffectsStyles">
+.geo-effects-pro{margin-top:14px;padding:14px;background:#111018;border:1px solid #34214d;border-radius:16px}
+.geo-effects-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.geo-effects-grid button{height:38px;border-radius:9px;background:#1a1422;border:1px solid #382648;color:#ddd}
+.geo-effects-grid button:hover,.geo-effects-grid button.active{border-color:#a855f7;background:#241634}
+</style>
+
+<style id="geoExportStyles">
+.geo-export-pro{
+ margin-top:14px;padding:14px;background:#111018;
+ border:1px solid #34214d;border-radius:16px
+}
+.geo-export-pro button{
+ width:100%;height:46px;border:0;border-radius:11px;
+ background:linear-gradient(90deg,#9333ea,#db2777);
+ color:#fff;font-weight:800;font-size:15px
+}
+.geo-export-status{
+ margin-top:9px;text-align:center;color:#aaa;font-size:12px
+}
+</style>
+
+<style id="geoEditorTabsStyles">
+#geoEditorTabs{
+display:flex;gap:5px;overflow-x:auto;padding:8px;
+background:#0d0b12;border:1px solid #2b2038;border-radius:14px;
+margin-bottom:10px;scrollbar-width:none
+}
+#geoEditorTabs::-webkit-scrollbar{display:none}
+.geo-tab{
+flex:0 0 auto;border:1px solid #30263a;background:#15111b;
+color:#aaa;border-radius:9px;padding:9px 12px;font-weight:700;
+font-size:12px;cursor:pointer
+}
+.geo-tab.active{
+background:linear-gradient(90deg,#7e22ce,#a855f7);
+border-color:#a855f7;color:#fff
+}
+.geo-tool-section{transition:.2s}
+.geo-tool-section.geo-hidden{display:none!important}
+</style>
+
+<style id="geoTimelineProStyles">
+#geoTimelinePro{
+margin-top:10px;padding:12px;background:#0e0c13;
+border:1px solid #30203f;border-radius:14px
+}
+.geo-time-row{
+display:flex;justify-content:space-between;
+color:#aaa;font-size:12px;margin-bottom:7px
+}
+#geoTimelineSeek{
+width:100%;accent-color:#a855f7;
+height:6px;cursor:pointer
+}
+.geo-marker-row{
+display:flex;gap:6px;margin-top:9px;flex-wrap:wrap
+}
+.geo-marker{
+padding:5px 8px;border-radius:7px;
+background:#1a1322;border:1px solid #352343;
+color:#bbb;font-size:11px
+}
+.geo-marker:hover{border-color:#a855f7;color:#fff}
+</style>
+
+<style id="geoKeyframesStyles">
+#geoKeyframesPro{
+margin-top:12px;padding:14px;background:#100d15;
+border:1px solid #382248;border-radius:16px
+}
+.geo-kf-title{font-weight:800;color:#eee;margin-bottom:10px}
+.geo-kf-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.geo-kf-grid label{font-size:11px;color:#999}
+.geo-kf-grid input{width:100%;accent-color:#a855f7}
+.geo-kf-actions{display:flex;gap:7px;margin-top:10px}
+.geo-kf-actions button{
+flex:1;height:38px;border-radius:9px;
+background:#19131f;border:1px solid #3b2550;color:#ddd
+}
+.geo-kf-actions button:hover{border-color:#a855f7}
+#geoKeyframeList{
+margin-top:10px;display:flex;gap:5px;flex-wrap:wrap
+}
+.geo-kf-chip{
+padding:6px 8px;border-radius:8px;
+background:#1c1425;border:1px solid #412957;
+color:#ccc;font-size:11px;cursor:pointer
+}
+.geo-kf-chip.active{border-color:#c084fc;color:#fff}
+</style>
+
+<style id="geoKfTimelineStyles">
+#geoKfTimeline{
+position:relative;height:34px;margin-top:8px;
+background:#0b0910;border:1px solid #2e1d3d;
+border-radius:10px;overflow:hidden
+}
+.geo-kf-dot{
+position:absolute;top:9px;width:15px;height:15px;
+border-radius:50%;background:#c084fc;
+border:2px solid #fff;transform:translateX(-50%);
+cursor:pointer;box-shadow:0 0 10px #a855f7;
+z-index:3
+}
+.geo-kf-dot:hover{transform:translateX(-50%) scale(1.25)}
+.geo-kf-playhead{
+position:absolute;top:0;bottom:0;width:2px;
+background:#fff;opacity:.75;pointer-events:none;
+z-index:4
+}
+</style>
+
+<style id="geoChromaStyles">
+#geoChromaKeyPro{
+margin-top:12px;padding:14px;background:#100d15;
+border:1px solid #382248;border-radius:16px
+}
+.geo-chroma-title{font-weight:800;color:#eee;margin-bottom:10px}
+.geo-chroma-row{display:flex;align-items:center;gap:9px;margin:9px 0}
+.geo-chroma-row label{font-size:12px;color:#aaa;flex:1}
+.geo-chroma-row input[type=range]{width:52%;accent-color:#a855f7}
+#geoChromaColor{
+width:42px;height:32px;padding:2px;border:1px solid #4a315b;
+border-radius:7px;background:#111
+}
+.geo-chroma-buttons{display:flex;gap:7px;margin-top:10px}
+.geo-chroma-buttons button{
+flex:1;height:38px;border-radius:9px;
+background:#19131f;border:1px solid #3b2550;color:#ddd
+}
+.geo-chroma-buttons button:hover{border-color:#a855f7}
+.geo-chroma-status{
+margin-top:9px;color:#999;font-size:11px;text-align:center
+}
+#geoChromaCanvas{
+display:none;position:absolute;inset:0;width:100%;height:100%;
+object-fit:contain;pointer-events:none
+}
+</style>
+
+<style id="geoTransformStyles">
+#geoTransformPro{
+margin-top:12px;padding:14px;background:#100d15;
+border:1px solid #382248;border-radius:16px
+}
+.geo-transform-title{font-weight:800;color:#eee;margin-bottom:10px}
+.geo-transform-row{
+display:flex;align-items:center;gap:9px;margin:8px 0
+}
+.geo-transform-row label{
+font-size:12px;color:#aaa;min-width:75px
+}
+.geo-transform-row input[type=range]{
+flex:1;accent-color:#a855f7
+}
+.geo-transform-value{
+width:45px;text-align:right;color:#ddd;font-size:11px
+}
+.geo-transform-buttons{
+display:grid;grid-template-columns:1fr 1fr;
+gap:7px;margin-top:10px
+}
+.geo-transform-buttons button{
+height:36px;border-radius:9px;
+background:#19131f;border:1px solid #3b2550;color:#ddd
+}
+.geo-transform-buttons button:hover{border-color:#a855f7}
+</style>
+
+<style id="geoCaptionsStyles">
+#geoCaptionsPro{
+margin-top:12px;padding:14px;background:#100d15;
+border:1px solid #382248;border-radius:16px
+}
+.geo-cap-title{font-weight:800;color:#eee;margin-bottom:10px}
+.geo-cap-field{margin:9px 0;color:#aaa;font-size:11px}
+.geo-cap-field input[type=text],
+.geo-cap-field input[type=number],
+.geo-cap-field select{
+width:100%;height:38px;margin-top:5px;padding:7px 9px;
+border-radius:9px;border:1px solid #30283a;
+background:#08080c;color:#fff
+}
+.geo-cap-field textarea{
+width:100%;min-height:65px;margin-top:5px;padding:8px 9px;
+border-radius:9px;border:1px solid #30283a;
+background:#08080c;color:#fff;resize:vertical
+}
+.geo-cap-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.geo-cap-range{width:100%;accent-color:#a855f7;margin-top:5px}
+.geo-cap-check{display:flex;align-items:center;gap:7px;color:#bbb;font-size:11px}
+.geo-cap-buttons{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px}
+.geo-cap-buttons button{
+height:37px;border-radius:9px;background:#19131f;
+border:1px solid #3b2550;color:#ddd
+}
+.geo-cap-buttons button:hover{border-color:#a855f7}
+.geo-caption-overlay{
+position:absolute;z-index:120;left:50%;top:50%;
+transform:translate(-50%,-50%);
+max-width:86%;padding:4px 12px;
+font-weight:800;text-align:center;white-space:pre-wrap;
+word-break:break-word;pointer-events:none;
+line-height:1.05;
+display:none
+}
+.geo-caption-overlay.cap-pop{animation:geoCapPop .28s ease-out both}
+.geo-caption-overlay.cap-fade{animation:geoCapFade .28s ease-out both}
+.geo-caption-overlay.cap-slide{animation:geoCapSlide .28s ease-out both}
+@keyframes geoCapPop{
+from{opacity:0;transform:translate(-50%,-50%) scale(.72)}
+to{opacity:1;transform:translate(-50%,-50%) scale(1)}
+}
+@keyframes geoCapFade{
+from{opacity:0}to{opacity:1}
+}
+@keyframes geoCapSlide{
+from{opacity:0;transform:translate(-50%,-38%)}
+to{opacity:1;transform:translate(-50%,-50%)}
+}
+</style>
+
+<style id="geoCanvasStyles">
+#geoCanvasPro{
+margin-top:12px;padding:14px;background:#100d15;
+border:1px solid #382248;border-radius:16px
+}
+.geo-canvas-title{font-weight:800;color:#eee;margin-bottom:10px}
+.geo-canvas-presets{
+display:grid;grid-template-columns:repeat(3,1fr);gap:7px
+}
+.geo-canvas-presets button,
+.geo-canvas-actions button{
+height:38px;border-radius:9px;
+background:#19131f;border:1px solid #3b2550;color:#ddd
+}
+.geo-canvas-presets button.active{
+background:linear-gradient(90deg,#7e22ce,#a855f7);
+border-color:#c084fc;color:#fff
+}
+.geo-canvas-actions{
+display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px
+}
+.geo-canvas-row{margin-top:10px}
+.geo-canvas-row label{font-size:11px;color:#aaa}
+.geo-canvas-row input{width:100%;accent-color:#a855f7}
+.geo-canvas-status{
+margin-top:9px;text-align:center;color:#999;font-size:11px
+}
+</style>
+
+<style id="geoAudioTracksStyles">
+#geoAudioTracksPro{
+margin-top:12px;padding:14px;background:#100d15;
+border:1px solid #382248;border-radius:16px
+}
+.geo-audio-title{font-weight:800;color:#eee;margin-bottom:10px}
+.geo-audio-buttons{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.geo-audio-buttons button{
+height:38px;border-radius:9px;background:#19131f;
+border:1px solid #3b2550;color:#ddd
+}
+.geo-audio-buttons button:hover{border-color:#a855f7}
+.geo-audio-track{
+margin-top:10px;padding:10px;border-radius:10px;
+background:#0b0910;border:1px solid #2e1d3d
+}
+.geo-audio-track-head{
+display:flex;justify-content:space-between;
+align-items:center;color:#ddd;font-size:11px
+}
+.geo-audio-track input[type=range]{
+width:100%;accent-color:#a855f7;margin-top:8px
+}
+.geo-audio-track button{
+height:28px;padding:0 8px;border-radius:7px;
+background:#18131e;border:1px solid #39254a;color:#ccc
+}
+.geo-audio-track button:hover{border-color:#a855f7}
+.geo-audio-status{
+margin-top:9px;color:#999;font-size:11px;text-align:center
+}
+</style>
 </head>
 
 <body>
@@ -536,7 +821,7 @@ button{
 <div class="editor-title">🎬 GeoXShorts Editor</div>
 <label class="upload-btn" for="videoInput">📤 Upload Video</label>
 <input id="videoInput" type="file" accept="video/*" hidden>
-<div class="preview-wrap"><video id="videoPreview" controls playsinline></video><div id="captionText" class="caption"></div></div>
+<div class="preview-wrap"><video id="legacyVideoPreview" controls playsinline></video><div id="captionText" class="caption"></div></div>
 <div class="controls">
 <div class="control full"><label>✂️ Start</label><input id="startTime" type="range" min="0" max="0" step=".01" value="0"><span id="startLabel">0.00s</span></div>
 <div class="control full"><label>✂️ End</label><input id="endTime" type="range" min="0" max="0" step=".01" value="0"><span id="endLabel">0.00s</span></div>
@@ -1151,6 +1436,2033 @@ document.getElementById("geoAudioRemove").onclick=()=>{
  url=null;
  name.textContent="Niciun fișier audio";
 };
+})();
+</script>
+
+<script id="geoEffectsEngine">
+(function(){
+const props=document.querySelector(".geo-properties");
+if(!props||document.getElementById("geoEffectsPro"))return;
+props.insertAdjacentHTML("beforeend",`
+<div id="geoEffectsPro" class="geo-effects-pro">
+<div class="geo-panel-title">✨ EFFECTS & FILTERS</div>
+<div class="geo-effects-grid">
+<button data-effect="none">Original</button>
+<button data-effect="cinema">Cinematic</button>
+<button data-effect="vivid">Vivid</button>
+<button data-effect="warm">Warm</button>
+<button data-effect="cool">Cool</button>
+<button data-effect="bw">B&W</button>
+<button data-effect="dramatic">Dramatic</button>
+<button data-effect="dream">Dream</button>
+<button data-effect="vintage">Vintage</button>
+<button data-effect="noir">Noir</button>
+<button data-effect="neon">Neon</button>
+<button data-effect="fade">Fade</button>
+</div>
+</div>
+`);
+const buttons=document.querySelectorAll("#geoEffectsPro button");
+function apply(effect){
+ const v=document.getElementById("videoPreview");
+ if(!v)return;
+ const f={
+  none:"none",
+  cinema:"contrast(1.18) saturate(1.12) brightness(.96)",
+  vivid:"contrast(1.12) saturate(1.55) brightness(1.04)",
+  warm:"sepia(.18) saturate(1.25) brightness(1.04)",
+  cool:"hue-rotate(185deg) saturate(1.15) brightness(1.02)",
+  bw:"grayscale(1) contrast(1.12)",
+  dramatic:"contrast(1.45) saturate(1.15) brightness(.88)",
+  dream:"brightness(1.12) saturate(1.18) blur(.2px)",
+  vintage:"sepia(.42) contrast(1.08) saturate(.82)",
+  noir:"grayscale(1) contrast(1.5) brightness(.82)",
+  neon:"contrast(1.3) saturate(2) brightness(1.1)",
+  fade:"contrast(.88) saturate(.7) brightness(1.08)"
+ }[effect]||"none";
+ v.style.filter=f;
+}
+buttons.forEach(b=>b.onclick=()=>{
+ buttons.forEach(x=>x.classList.remove("active"));
+ b.classList.add("active");
+ apply(b.dataset.effect);
+});
+})();
+</script>
+
+<script id="geoExportEngine">
+(function(){
+
+const props=document.querySelector(".geo-properties");
+if(!props || document.getElementById("geoExportPro")) return;
+
+props.insertAdjacentHTML("beforeend",`
+<div id="geoExportPro" class="geo-export-pro">
+ <div class="geo-panel-title">📤 EXPORT PRO</div>
+ <button id="geoExportBtn">⬇️ Export Video</button>
+ <div id="geoExportStatus" class="geo-export-status">Ready to export</div>
+</div>
+`);
+
+const btn=document.getElementById("geoExportBtn");
+const status=document.getElementById("geoExportStatus");
+
+btn.onclick=async function(){
+
+ const video=document.getElementById("videoPreview");
+
+ if(!video || !video.src){
+
+   status.textContent="⚠️ Încarcă mai întâi un videoclip.";
+   return;
+
+ }
+
+ if(!window.MediaRecorder){
+
+   status.textContent="❌ Browserul nu suportă export video.";
+   return;
+
+ }
+
+ try{
+
+   btn.disabled=true;
+   status.textContent="🎬 Pregătesc exportul...";
+
+   const canvas=document.createElement("canvas");
+   canvas.width=1080;
+   canvas.height=1920;
+
+   const ctx=canvas.getContext("2d");
+
+   const stream=canvas.captureStream(30);
+
+   const recorder=new MediaRecorder(
+     stream,
+     {mimeType:"video/webm;codecs=vp9"}
+   );
+
+   const chunks=[];
+
+   recorder.ondataavailable=e=>{
+     if(e.data && e.data.size) chunks.push(e.data);
+   };
+
+   recorder.onstop=()=>{
+
+     const blob=new Blob(chunks,{type:"video/webm"});
+     const url=URL.createObjectURL(blob);
+
+     const a=document.createElement("a");
+     a.href=url;
+     a.download="GeoXShorts-Export.webm";
+     document.body.appendChild(a);
+     a.click();
+     a.remove();
+
+     setTimeout(()=>URL.revokeObjectURL(url),3000);
+
+     status.textContent="✅ Export finalizat!";
+     btn.disabled=false;
+
+   };
+
+   video.currentTime=0;
+
+   await video.play();
+
+   recorder.start();
+
+   status.textContent="🔴 Export în desfășurare...";
+
+   function draw(){
+
+     if(video.paused || video.ended){
+
+       recorder.stop();
+       return;
+
+     }
+
+     ctx.fillStyle="#000";
+     ctx.fillRect(0,0,canvas.width,canvas.height);
+
+     const ratio=Math.min(
+       canvas.width/video.videoWidth,
+       canvas.height/video.videoHeight
+     );
+
+     const w=video.videoWidth*ratio;
+     const h=video.videoHeight*ratio;
+
+     ctx.drawImage(
+       video,
+       (canvas.width-w)/2,
+       (canvas.height-h)/2,
+       w,
+       h
+     );
+
+     const text=document.querySelector(".geo-overlay");
+
+     if(text){
+
+       const style=getComputedStyle(text);
+
+       ctx.save();
+
+       ctx.globalAlpha=parseFloat(style.opacity)||1;
+       ctx.fillStyle=style.color;
+       ctx.font=
+         style.fontStyle+" "+
+         style.fontWeight+" "+
+         style.fontSize+
+         " Arial";
+
+       ctx.textAlign="center";
+       ctx.textBaseline="middle";
+
+       ctx.shadowColor="rgba(0,0,0,.8)";
+       ctx.shadowBlur=12;
+
+       ctx.fillText(
+         text.textContent,
+         canvas.width/2,
+         canvas.height/2
+       );
+
+       ctx.restore();
+
+     }
+
+     requestAnimationFrame(draw);
+
+   }
+
+   draw();
+
+ }catch(err){
+
+   console.error(err);
+   status.textContent="❌ Export eșuat.";
+   btn.disabled=false;
+
+ }
+
+};
+
+})();
+</script>
+
+<script id="geoIntegrationEngine">
+(function(){
+  const video = document.getElementById("videoPreview");
+  if (!video) {
+    console.log("GeoXShorts: preview not found");
+    return;
+  }
+
+  const status = document.getElementById("editorStatus");
+  const audioInput = document.getElementById("geoAudioFile");
+  const audio = new Audio();
+  audio.preload = "auto";
+  let audioURL = null;
+
+  function setStatus(text){
+    if(status) status.textContent = text;
+  }
+
+  /* VIDEO -> UI */
+  video.addEventListener("loadedmetadata", () => {
+    setStatus("🎬 Video ready • " + Math.round(video.duration || 0) + "s");
+  });
+
+  video.addEventListener("play", () => {
+    if(audio.src && !audio.paused){
+      audio.play().catch(()=>{});
+    }
+    setStatus("▶️ Playing");
+  });
+
+  video.addEventListener("pause", () => {
+    if(!audio.paused) audio.pause();
+    setStatus("⏸️ Paused");
+  });
+
+  video.addEventListener("timeupdate", () => {
+    const progress = video.duration ? video.currentTime / video.duration : 0;
+
+    /* Actualizează orice progress/timeline range existent */
+    document.querySelectorAll('input[type="range"]').forEach(el => {
+      const id = (el.id || "").toLowerCase();
+      if(id.includes("timeline") || id.includes("seek") || id.includes("progress")){
+        if(!el.dataset.geoControl){
+          el.value = Math.round(progress * (Number(el.max) || 100));
+        }
+      }
+    });
+
+    /* Sincronizare audio */
+    if(audio.src && Math.abs(audio.currentTime - video.currentTime) > 0.35){
+      audio.currentTime = video.currentTime;
+    }
+  });
+
+  video.addEventListener("seeked", () => {
+    if(audio.src){
+      try { audio.currentTime = video.currentTime; } catch(e){}
+    }
+  });
+
+  video.addEventListener("ended", () => {
+    if(audio.src) audio.pause();
+    setStatus("✅ Video finished");
+  });
+
+  /* TIMELINE / SEEK CONTROLS */
+  document.querySelectorAll('input[type="range"]').forEach(el => {
+    const id = (el.id || "").toLowerCase();
+
+    if(id.includes("timeline") || id.includes("seek") || id.includes("progress")){
+      el.dataset.geoControl = "1";
+
+      el.addEventListener("input", () => {
+        if(video.duration){
+          const max = Number(el.max) || 100;
+          video.currentTime = (Number(el.value) / max) * video.duration;
+        }
+      });
+    }
+  });
+
+  /* AUDIO */
+  if(audioInput){
+    audioInput.addEventListener("change", () => {
+      const file = audioInput.files && audioInput.files[0];
+      if(!file) return;
+
+      if(audioURL) URL.revokeObjectURL(audioURL);
+
+      audioURL = URL.createObjectURL(file);
+      audio.src = audioURL;
+      audio.currentTime = video.currentTime || 0;
+
+      setStatus("🎵 Audio loaded: " + file.name);
+    });
+  }
+
+  /* AUDIO VOLUME */
+  const volume = document.getElementById("geoAudioVolume");
+  if(volume){
+    const updateVolume = () => {
+      audio.volume = Math.max(0, Math.min(1, Number(volume.value) / 100));
+    };
+    volume.addEventListener("input", updateVolume);
+    updateVolume();
+  }
+
+  /* PLAY BUTTON */
+  const playBtn = document.getElementById("geoAudioPlay");
+  if(playBtn){
+    playBtn.addEventListener("click", () => {
+      if(!audio.src) return;
+      if(audio.paused) audio.play().catch(()=>{});
+      else audio.pause();
+    });
+  }
+
+  /* MUTE */
+  const muteBtn = document.getElementById("geoAudioMute");
+  if(muteBtn){
+    muteBtn.addEventListener("click", () => {
+      audio.muted = !audio.muted;
+    });
+  }
+
+  console.log("GeoXShorts Integration Engine ready");
+  setStatus("💜 GeoXShorts Editor ready");
+})();
+</script>
+
+
+<script id="geoEditorTabsEngine">
+(function(){
+
+const props=document.querySelector(".geo-properties");
+if(!props)return;
+if(document.getElementById("geoEditorTabs"))return;
+
+props.insertAdjacent
+<div id="geoEditorTabs">
+<button class="geo-tab active" data-tab="media">🎬 Media</button>
+<button class="geo-tab" data-tab="text">📝 Text</button>
+<button class="geo-tab" data-tab="audio">🎵 Audio</button>
+<button class="geo-tab" data-tab="adjust">🎨 Adjust</button>
+<button class="geo-tab" data-tab="effects">✨ Effects</button>
+<button class="geo-tab" data-tab="export">📤 Export</button>
+</div>
+("afterbegin",`
+<div id="geoEditorTabs">
+<button class="geo-tab active" data-tab="media">🎬 Media</button>
+<button class="geo-tab" data-tab="text">📝 Text</button>
+<button class="geo-tab" data-tab="audio">🎵 Audio</button>
+<button class="geo-tab" data-tab="adjust">🎨 Adjust</button>
+<button class="geo-tab" data-tab="effects">✨ Effects</button>
+<button class="geo-tab" data-tab="export">📤 Export</button>
+</div>
+`);
+
+const tabs=document.querySelectorAll(".geo-tab");
+
+function section(name){
+
+ const map={
+   media:["videoInput","volume","editorStatus"],
+   text:["geoTextPro2"],
+   audio:["geoAudioPro"],
+   adjust:["adjustPanel"],
+   effects:["geoEffectsPro"],
+   export:["geoExportPro"]
+ };
+
+ const wanted=map[name]||[];
+
+ props.querySelectorAll(
+   ".geo-text-pro,.geo-audio-pro,.geo-effects-pro,.geo-export-pro,.adjust-panel"
+ ).forEach(el=>{
+   el.classList.add("geo-hidden");
+ });
+
+ wanted.forEach(id=>{
+   const el=document.getElementById(id);
+   if(el)el.classList.remove("geo-hidden");
+ });
+
+ if(name==="media"){
+   props.querySelectorAll("input,button,.status,.editor-status").forEach(el=>{
+     if(
+       !el.closest("#geoEditorTabs") &&
+       !el.closest(".geo-text-pro") &&
+       !el.closest(".geo-audio-pro") &&
+       !el.closest(".geo-effects-pro") &&
+       !el.closest(".geo-export-pro") &&
+       !el.closest(".adjust-panel")
+     ){
+       el.classList.remove("geo-hidden");
+     }
+   });
+ }
+}
+
+tabs.forEach(tab=>{
+ tab.addEventListener("click",()=>{
+   tabs.forEach(x=>x.classList.remove("active"));
+   tab.classList.add("active");
+   section(tab.dataset.tab);
+ });
+});
+
+section("media");
+
+})();
+</script>
+
+<script id="geoTimelineProEngine">
+(function(){
+
+const video=document.getElementById("videoPreview");
+const timeline=document.querySelector(".geo-timeline");
+
+if(!video || !timeline)return;
+if(document.getElementById("geoTimelinePro"))return;
+
+timeline.insertAdjacent
+<div id="geoTimelinePro">
+<div class="geo-time-row">
+<span id="geoCurrentTime">00:00</span>
+<span id="geoDuration">00:00</span>
+</div>
+<input id="geoTimelineSeek" type="range" min="0" max="1000" value="0">
+<div class="geo-marker-row">
+<button class="geo-marker" id="geoMarkStart">✂️ Mark Start</button>
+<button class="geo-marker" id="geoMarkEnd">✂️ Mark End</button>
+<button class="geo-marker" id="geoJumpStart">⏮️ Start</button>
+<button class="geo-marker" id="geoJumpEnd">⏭️ End</button>
+</div>
+</div>
+("beforeend",`
+<div id="geoTimelinePro">
+<div class="geo-time-row">
+<span id="geoCurrentTime">00:00</span>
+<span id="geoDuration">00:00</span>
+</div>
+<input id="geoTimelineSeek" type="range" min="0" max="1000" value="0">
+<div class="geo-marker-row">
+<button class="geo-marker" id="geoMarkStart">✂️ Mark Start</button>
+<button class="geo-marker" id="geoMarkEnd">✂️ Mark End</button>
+<button class="geo-marker" id="geoJumpStart">⏮️ Start</button>
+<button class="geo-marker" id="geoJumpEnd">⏭️ End</button>
+</div>
+</div>
+`);
+
+const seek=document.getElementById("geoTimelineSeek");
+const current=document.getElementById("geoCurrentTime");
+const duration=document.getElementById("geoDuration");
+
+let markStart=null;
+let markEnd=null;
+
+function format(t){
+ if(!Number.isFinite(t))return "00:00";
+ const m=Math.floor(t/60);
+ const sec=Math.floor(t%60);
+ return String(m).padStart(2,"0")+":"+String(sec).padStart(2,"0");
+}
+
+function update(){
+ const d=video.duration||0;
+ const t=video.currentTime||0;
+ current.textContent=format(t);
+ duration.textContent=format(d);
+ seek.value=d?Math.round((t/d)*1000):0;
+}
+
+video.addEventListener("loadedmetadata",update);
+video.addEventListener("timeupdate",update);
+video.addEventListener("durationchange",update);
+
+seek.addEventListener("input",()=>{
+ if(video.duration){
+   video.currentTime=(Number(seek.value)/1000)*video.duration;
+ }
+});
+
+document.getElementById("geoJumpStart").onclick=()=>{
+ video.currentTime=0;
+};
+
+document.getElementById("geoJumpEnd").onclick=()=>{
+ if(video.duration)video.currentTime=Math.max(0,video.duration-.05);
+};
+
+document.getElementById("geoMarkStart").onclick=()=>{
+ markStart=video.currentTime;
+ document.getElementById("geoMarkStart").textContent=
+   "✂️ Start "+format(markStart);
+};
+
+document.getElementById("geoMarkEnd").onclick=()=>{
+ markEnd=video.currentTime;
+ document.getElementById("geoMarkEnd").textContent=
+   "✂️ End "+format(markEnd);
+};
+
+update();
+
+})();
+</script>
+
+<script id="geoKeyframesEngine">
+(function(){
+
+const video=document.getElementById("videoPreview");
+const props=document.querySelector(".geo-properties");
+
+if(!video||!props)return;
+if(document.getElementById("geoKeyframesPro"))return;
+
+props.insertAdjacent
+<div id="geoKeyframesPro">
+<div class="geo-kf-title">🔑 KEYFRAMES PRO</div>
+
+<div class="geo-kf-grid">
+<label>🔍 Zoom
+<input id="geoKfZoom" type="range" min="50" max="300" value="100">
+</label>
+
+<label>↔️ Position X
+<input id="geoKfX" type="range" min="-100" max="100" value="0">
+</label>
+
+<label>↕️ Position Y
+<input id="geoKfY" type="range" min="-100" max="100" value="0">
+</label>
+
+<label>🔄 Rotation
+<input id="geoKfRotation" type="range" min="-180" max="180" value="0">
+</label>
+
+<label>🌫️ Opacity
+<input id="geoKfOpacity" type="range" min="0" max="100" value="100">
+</label>
+</div>
+
+<div class="geo-kf-actions">
+<button id="geoAddKeyframe">🔑 Add</button>
+<button id="geoDeleteKeyframe">🗑️ Delete</button>
+<button id="geoResetKeyframes">↩️ Reset</button>
+</div>
+
+<div id="geoKeyframeList"></div>
+</div>
+("beforeend",`
+<div id="geoKeyframesPro">
+<div class="geo-kf-title">🔑 KEYFRAMES PRO</div>
+
+<div class="geo-kf-grid">
+<label>🔍 Zoom
+<input id="geoKfZoom" type="range" min="50" max="300" value="100">
+</label>
+
+<label>↔️ Position X
+<input id="geoKfX" type="range" min="-100" max="100" value="0">
+</label>
+
+<label>↕️ Position Y
+<input id="geoKfY" type="range" min="-100" max="100" value="0">
+</label>
+
+<label>🔄 Rotation
+<input id="geoKfRotation" type="range" min="-180" max="180" value="0">
+</label>
+
+<label>🌫️ Opacity
+<input id="geoKfOpacity" type="range" min="0" max="100" value="100">
+</label>
+</div>
+
+<div class="geo-kf-actions">
+<button id="geoAddKeyframe">🔑 Add</button>
+<button id="geoDeleteKeyframe">🗑️ Delete</button>
+<button id="geoResetKeyframes">↩️ Reset</button>
+</div>
+
+<div id="geoKeyframeList"></div>
+</div>
+`);
+
+const zoom=document.getElementById("geoKfZoom");
+const posX=document.getElementById("geoKfX");
+const posY=document.getElementById("geoKfY");
+const rotation=document.getElementById("geoKfRotation");
+const opacity=document.getElementById("geoKfOpacity");
+const list=document.getElementById("geoKeyframeList");
+
+let keyframes=[];
+let selected=-1;
+
+function state(){
+ return {
+  time:video.currentTime||0,
+  zoom:Number(zoom.value),
+  x:Number(posX.value),
+  y:Number(posY.value),
+  rotation:Number(rotation.value),
+  opacity:Number(opacity.value)
+ };
+}
+
+function apply(k){
+ if(!k)return;
+
+ zoom.value=k.zoom;
+ posX.value=k.x;
+ posY.value=k.y;
+ rotation.value=k.rotation;
+ opacity.value=k.opacity;
+
+ video.style.transform=
+   "translate("+(k.x/2)+"%,"+(k.y/2)+"%) "+
+   "scale("+(k.zoom/100)+") "+
+   "rotate("+k.rotation+"deg)";
+
+ video.style.opacity=k.opacity/100;
+}
+
+function interpolate(a,b,t){
+ return {
+  time:video.currentTime,
+  zoom:a.zoom+(b.zoom-a.zoom)*t,
+  x:a.x+(b.x-a.x)*t,
+  y:a.y+(b.y-a.y)*t,
+  rotation:a.rotation+(b.rotation-a.rotation)*t,
+  opacity:a.opacity+(b.opacity-a.opacity)*t
+ };
+}
+
+function renderList(){
+
+ list.inner
+<div id="geoKeyframesPro">
+<div class="geo-kf-title">🔑 KEYFRAMES PRO</div>
+
+<div class="geo-kf-grid">
+<label>🔍 Zoom
+<input id="geoKfZoom" type="range" min="50" max="300" value="100">
+</label>
+
+<label>↔️ Position X
+<input id="geoKfX" type="range" min="-100" max="100" value="0">
+</label>
+
+<label>↕️ Position Y
+<input id="geoKfY" type="range" min="-100" max="100" value="0">
+</label>
+
+<label>🔄 Rotation
+<input id="geoKfRotation" type="range" min="-180" max="180" value="0">
+</label>
+
+<label>🌫️ Opacity
+<input id="geoKfOpacity" type="range" min="0" max="100" value="100">
+</label>
+</div>
+
+<div class="geo-kf-actions">
+<button id="geoAddKeyframe">🔑 Add</button>
+<button id="geoDeleteKeyframe">🗑️ Delete</button>
+<button id="geoResetKeyframes">↩️ Reset</button>
+</div>
+
+<div id="geoKeyframeList"></div>
+</div>
+="";
+
+ keyframes.forEach((k,i)=>{
+  const b=document.createElement("button");
+  b.className="geo-kf-chip"+(i===selected?" active":"");
+  b.textContent="🔑 "+i+" • "+k.time.toFixed(2)+"s";
+
+  b.onclick=()=>{
+   selected=i;
+   video.currentTime=k.time;
+   apply(k);
+   renderList();
+  };
+
+  list.appendChild(b);
+ });
+}
+
+function animate(){
+
+ if(keyframes.length===0)return;
+
+ const t=video.currentTime;
+
+ if(t<=keyframes[0].time){
+   apply(keyframes[0]);
+   return;
+ }
+
+ const last=keyframes[keyframes.length-1];
+
+ if(t>=last.time){
+   apply(last);
+   return;
+ }
+
+ let a=keyframes[0];
+ let b=keyframes[1];
+
+ for(let i=0;i<keyframes.length-1;i++){
+   if(t>=keyframes[i].time && t<=keyframes[i+1].time){
+     a=keyframes[i];
+     b=keyframes[i+1];
+     break;
+   }
+ }
+
+ const span=b.time-a.time;
+ const progress=span?((t-a.time)/span):0;
+
+ apply(interpolate(a,b,progress));
+}
+
+document.getElementById("geoAddKeyframe").onclick=()=>{
+
+ const k=state();
+
+ const existing=keyframes.findIndex(
+   x=>Math.abs(x.time-k.time)<0.05
+ );
+
+ if(existing>=0){
+   keyframes[existing]=k;
+   selected=existing;
+ }else{
+   keyframes.push(k);
+   keyframes.sort((a,b)=>a.time-b.time);
+   selected=keyframes.findIndex(x=>x===k);
+ }
+
+ renderList();
+};
+
+document.getElementById("geoDeleteKeyframe").onclick=()=>{
+
+ if(selected<0)return;
+
+ keyframes.splice(selected,1);
+ selected=-1;
+ renderList();
+};
+
+document.getElementById("geoResetKeyframes").onclick=()=>{
+
+ keyframes=[];
+ selected=-1;
+
+ zoom.value=100;
+ posX.value=0;
+ posY.value=0;
+ rotation.value=0;
+ opacity.value=100;
+
+ video.style.transform="";
+ video.style.opacity="1";
+
+ renderList();
+};
+
+video.addEventListener("timeupdate",animate);
+video.addEventListener("seeked",animate);
+
+})();
+</script>
+
+<div id="geoKfTimeline"></div>
+
+<script id="geoKfTimelineEngine">
+(function(){
+
+const video=document.getElementById("videoPreview");
+const timeline=document.getElementById("geoTimelinePro");
+const box=document.getElementById("geoKfTimeline");
+
+if(!video||!timeline||!box)return;
+if(window.geoKfTimelineReady)return;
+window.geoKfTimelineReady=true;
+
+function render(){
+
+ box.innerHTML="";
+
+ const duration=video.duration||0;
+
+ if(!duration)return;
+
+ const frames=window.geoXKeyframes||[];
+
+ frames.forEach((k,i)=>{
+
+   const dot=document.createElement("button");
+
+   dot.className="geo-kf-dot";
+   dot.title="Keyframe "+(i+1)+" • "+k.time.toFixed(2)+"s";
+
+   dot.style.left=((k.time/duration)*100)+"%";
+
+   dot.onclick=(e)=>{
+     e.stopPropagation();
+     video.currentTime=k.time;
+   };
+
+   box.appendChild(dot);
+
+ });
+
+ const head=document.createElement("div");
+ head.className="geo-kf-playhead";
+ head.id="geoKfPlayhead";
+
+ box.appendChild(head);
+}
+
+function playhead(){
+
+ const h=document.getElementById("geoKfPlayhead");
+ if(!h||!video.duration)return;
+
+ h.style.left=((video.currentTime/video.duration)*100)+"%";
+}
+
+video.addEventListener("loadedmetadata",render);
+video.addEventListener("durationchange",render);
+video.addEventListener("timeupdate",playhead);
+
+setInterval(render,500);
+
+})();
+</script>
+
+<script id="geoKeyframeTimelineBridge">
+(function(){
+const timer=setInterval(()=>{
+ if(typeof keyframes!=="undefined"){
+   window.geoXKeyframes=keyframes;
+   clearInterval(timer);
+ }
+},100);
+})();
+</script>
+
+<script id="geoChromaEngine">
+(function(){
+
+const video=document.getElementById("videoPreview");
+const props=document.querySelector(".geo-properties");
+
+if(!video||!props)return;
+if(document.getElementById("geoChromaKeyPro"))return;
+
+props.insertAdjacent
+<div id="geoChromaKeyPro">
+<div class="geo-chroma-title">🟢 GREEN SCREEN / CHROMA KEY</div>
+
+<div class="geo-chroma-row">
+<label>🎨 Key Color</label>
+<input id="geoChromaColor" type="color" value="#00ff00">
+</div>
+
+<div class="geo-chroma-row">
+<label>🎯 Tolerance</label>
+<input id="geoChromaTolerance" type="range" min="0" max="180" value="75">
+</div>
+
+<div class="geo-chroma-row">
+<label>🌫️ Feather</label>
+<input id="geoChromaFeather" type="range" min="0" max="100" value="20">
+</div>
+
+<div class="geo-chroma-row">
+<label>🧹 Spill Reduction</label>
+<input id="geoChromaSpill" type="range" min="0" max="100" value="25">
+</div>
+
+<div class="geo-chroma-buttons">
+<button id="geoChromaToggle">🟢 Enable</button>
+<button id="geoChromaReset">↩️ Reset</button>
+</div>
+
+<div id="geoChromaStatus" class="geo-chroma-status">
+Green Screen disabled
+</div>
+</div>
+("beforeend",`
+<div id="geoChromaKeyPro">
+<div class="geo-chroma-title">🟢 GREEN SCREEN / CHROMA KEY</div>
+
+<div class="geo-chroma-row">
+<label>🎨 Key Color</label>
+<input id="geoChromaColor" type="color" value="#00ff00">
+</div>
+
+<div class="geo-chroma-row">
+<label>🎯 Tolerance</label>
+<input id="geoChromaTolerance" type="range" min="0" max="180" value="75">
+</div>
+
+<div class="geo-chroma-row">
+<label>🌫️ Feather</label>
+<input id="geoChromaFeather" type="range" min="0" max="100" value="20">
+</div>
+
+<div class="geo-chroma-row">
+<label>🧹 Spill Reduction</label>
+<input id="geoChromaSpill" type="range" min="0" max="100" value="25">
+</div>
+
+<div class="geo-chroma-buttons">
+<button id="geoChromaToggle">🟢 Enable</button>
+<button id="geoChromaReset">↩️ Reset</button>
+</div>
+
+<div id="geoChromaStatus" class="geo-chroma-status">
+Green Screen disabled
+</div>
+</div>
+`);
+
+const stage=video.parentElement;
+const color=document.getElementById("geoChromaColor");
+const tolerance=document.getElementById("geoChromaTolerance");
+const feather=document.getElementById("geoChromaFeather");
+const spill=document.getElementById("geoChromaSpill");
+const toggle=document.getElementById("geoChromaToggle");
+const reset=document.getElementById("geoChromaReset");
+const status=document.getElementById("geoChromaStatus");
+
+const canvas=document.createElement("canvas");
+canvas.id="geoChromaCanvas";
+canvas.width=1080;
+canvas.height=1920;
+
+if(stage){
+ stage.style.position="relative";
+ stage.appendChild(canvas);
+}
+
+const ctx=canvas.getContext("2d",{willReadFrequently:true});
+
+let enabled=false;
+let animation=0;
+
+function rgb(hex){
+ hex=hex.replace("#","");
+ return [
+  parseInt(hex.slice(0,2),16),
+  parseInt(hex.slice(2,4),16),
+  parseInt(hex.slice(4,6),16)
+ ];
+}
+
+function draw(){
+
+ if(!enabled)return;
+
+ if(video.readyState>=2 && video.videoWidth){
+
+   const w=video.videoWidth;
+   const h=video.videoHeight;
+
+   if(canvas.width!==w||canvas.height!==h){
+     canvas.width=w;
+     canvas.height=h;
+   }
+
+   ctx.drawImage(video,0,0,w,h);
+
+   const image=ctx.getImageData(0,0,w,h);
+   const data=image.data;
+   const key=rgb(color.value);
+
+   const tol=Number(tolerance.value);
+   const soft=Math.max(1,Number(feather.value)*2);
+   const spillAmount=Number(spill.value)/100;
+
+   for(let i=0;i<data.length;i+=4){
+
+     const r=data[i];
+     const g=data[i+1];
+     const b=data[i+2];
+
+     const dist=Math.sqrt(
+       Math.pow(r-key[0],2)+
+       Math.pow(g-key[1],2)+
+       Math.pow(b-key[2],2)
+     );
+
+     if(dist<tol){
+
+       const alpha=Math.max(
+         0,
+         Math.min(255,((dist-tol+soft)/soft)*255)
+       );
+
+       data[i+3]=alpha;
+
+     }
+
+     if(spillAmount>0 && g>r*1.15 && g>b*1.15){
+
+       const reduction=Math.min(
+         1,
+         spillAmount*(g-Math.max(r,b))/255
+       );
+
+       data[i+1]=Math.max(
+         r,
+         Math.round(g*(1-reduction))
+       );
+     }
+   }
+
+   ctx.putImageData(image,0,0);
+ }
+
+ animation=requestAnimationFrame(draw);
+}
+
+function enable(){
+
+ enabled=true;
+
+ video.style.visibility="hidden";
+ canvas.style.display="block";
+
+ toggle.textContent="🔴 Disable";
+ status.textContent="🟢 Green Screen active";
+
+ cancelAnimationFrame(animation);
+ draw();
+}
+
+function disable(){
+
+ enabled=false;
+
+ cancelAnimationFrame(animation);
+
+ canvas.style.display="none";
+ video.style.visibility="visible";
+
+ toggle.textContent="🟢 Enable";
+ status.textContent="Green Screen disabled";
+}
+
+toggle.onclick=()=>{
+ enabled?disable():enable();
+};
+
+reset.onclick=()=>{
+
+ color.value="#00ff00";
+ tolerance.value=75;
+ feather.value=20;
+ spill.value=25;
+
+ if(enabled){
+   cancelAnimationFrame(animation);
+   draw();
+ }
+
+ status.textContent=enabled
+   ?"🟢 Green Screen active"
+   :"Green Screen disabled";
+};
+
+[color,tolerance,feather,spill].forEach(el=>{
+ el.addEventListener("input",()=>{
+   if(enabled){
+     cancelAnimationFrame(animation);
+     draw();
+   }
+ });
+});
+
+video.addEventListener("play",()=>{
+ if(enabled && !animation)draw();
+});
+
+})();
+</script>
+
+<script id="geoTransformEngine">
+(function(){
+
+const video=document.getElementById("videoPreview");
+const props=document.querySelector(".geo-properties");
+
+if(!video||!props)return;
+if(document.getElementById("geoTransformPro"))return;
+
+props.insertAdjacent
+<div id="geoTransformPro">
+
+<div class="geo-transform-title">🎯 TRANSFORM PRO</div>
+
+<div class="geo-transform-row">
+<label>↔️ X</label>
+<input id="geoTransformX" type="range" min="-100" max="100" value="0">
+<span id="geoTransformXVal" class="geo-transform-value">0</span>
+</div>
+
+<div class="geo-transform-row">
+<label>↕️ Y</label>
+<input id="geoTransformY" type="range" min="-100" max="100" value="0">
+<span id="geoTransformYVal" class="geo-transform-value">0</span>
+</div>
+
+<div class="geo-transform-row">
+<label>🔍 Scale</label>
+<input id="geoTransformScale" type="range" min="25" max="400" value="100">
+<span id="geoTransformScaleVal" class="geo-transform-value">100%</span>
+</div>
+
+<div class="geo-transform-row">
+<label>🔄 Rotation</label>
+<input id="geoTransformRotation" type="range" min="-180" max="180" value="0">
+<span id="geoTransformRotationVal" class="geo-transform-value">0°</span>
+</div>
+
+<div class="geo-transform-buttons">
+<button id="geoFlipH">↔️ Flip H</button>
+<button id="geoFlipV">↕️ Flip V</button>
+<button id="geoFit">⬜ Fit</button>
+<button id="geoFill">🔲 Fill</button>
+<button id="geoCrop">✂️ Crop Mode</button>
+<button id="geoTransformReset">↩️ Reset</button>
+</div>
+
+</div>
+("beforeend",`
+<div id="geoTransformPro">
+
+<div class="geo-transform-title">🎯 TRANSFORM PRO</div>
+
+<div class="geo-transform-row">
+<label>↔️ X</label>
+<input id="geoTransformX" type="range" min="-100" max="100" value="0">
+<span id="geoTransformXVal" class="geo-transform-value">0</span>
+</div>
+
+<div class="geo-transform-row">
+<label>↕️ Y</label>
+<input id="geoTransformY" type="range" min="-100" max="100" value="0">
+<span id="geoTransformYVal" class="geo-transform-value">0</span>
+</div>
+
+<div class="geo-transform-row">
+<label>🔍 Scale</label>
+<input id="geoTransformScale" type="range" min="25" max="400" value="100">
+<span id="geoTransformScaleVal" class="geo-transform-value">100%</span>
+</div>
+
+<div class="geo-transform-row">
+<label>🔄 Rotation</label>
+<input id="geoTransformRotation" type="range" min="-180" max="180" value="0">
+<span id="geoTransformRotationVal" class="geo-transform-value">0°</span>
+</div>
+
+<div class="geo-transform-buttons">
+<button id="geoFlipH">↔️ Flip H</button>
+<button id="geoFlipV">↕️ Flip V</button>
+<button id="geoFit">⬜ Fit</button>
+<button id="geoFill">🔲 Fill</button>
+<button id="geoCrop">✂️ Crop Mode</button>
+<button id="geoTransformReset">↩️ Reset</button>
+</div>
+
+</div>
+`);
+
+const x=document.getElementById("geoTransformX");
+const y=document.getElementById("geoTransformY");
+const scale=document.getElementById("geoTransformScale");
+const rotation=document.getElementById("geoTransformRotation");
+
+const xv=document.getElementById("geoTransformXVal");
+const yv=document.getElementById("geoTransformYVal");
+const sv=document.getElementById("geoTransformScaleVal");
+const rv=document.getElementById("geoTransformRotationVal");
+
+let flipH=1;
+let flipV=1;
+let mode="fit";
+
+function apply(){
+
+ const X=Number(x.value);
+ const Y=Number(y.value);
+ const S=Number(scale.value)/100;
+ const R=Number(rotation.value);
+
+ xv.textContent=X;
+ yv.textContent=Y;
+ sv.textContent=Number(scale.value)+"%";
+ rv.textContent=R+"°";
+
+ video.style.transform=
+   "translate("+X+"%,"+Y+"%) "+
+   "scale("+S*flipH+"," + S*flipV + ") "+
+   "rotate("+R+"deg)";
+
+ if(mode==="fill"){
+   video.style.objectFit="cover";
+ }else{
+   video.style.objectFit="contain";
+ }
+
+}
+
+[x,y,scale,rotation].forEach(el=>{
+ el.addEventListener("input",apply);
+});
+
+document.getElementById("geoFlipH").onclick=()=>{
+ flipH*=-1;
+ apply();
+};
+
+document.getElementById("geoFlipV").onclick=()=>{
+ flipV*=-1;
+ apply();
+};
+
+document.getElementById("geoFit").onclick=()=>{
+ mode="fit";
+ scale.value=100;
+ x.value=0;
+ y.value=0;
+ rotation.value=0;
+ flipH=1;
+ flipV=1;
+ apply();
+};
+
+document.getElementById("geoFill").onclick=()=>{
+ mode="fill";
+ scale.value=100;
+ x.value=0;
+ y.value=0;
+ apply();
+};
+
+document.getElementById("geoCrop").onclick=()=>{
+ mode=mode==="crop"?"fit":"crop";
+ video.style.objectFit=mode==="crop"?"cover":"contain";
+};
+
+document.getElementById("geoTransformReset").onclick=()=>{
+ mode="fit";
+ x.value=0;
+ y.value=0;
+ scale.value=100;
+ rotation.value=0;
+ flipH=1;
+ flipV=1;
+ video.style.transform="";
+ video.style.objectFit="contain";
+ apply();
+};
+
+apply();
+
+})();
+</script>
+
+<script id="geoKfTransformBridge">
+(function(){
+
+const video=document.getElementById("videoPreview");
+
+if(!video)return;
+
+function el(id){
+ return document.getElementById(id);
+}
+
+function read(){
+
+ return {
+  x:Number(el("geoTransformX")?.value||0),
+  y:Number(el("geoTransformY")?.value||0),
+  zoom:Number(el("geoTransformScale")?.value||100),
+  rotation:Number(el("geoTransformRotation")?.value||0),
+  opacity:Number(el("geoKfOpacity")?.value||100)
+ };
+
+}
+
+function write(k){
+
+ if(el("geoTransformX"))el("geoTransformX").value=k.x;
+ if(el("geoTransformY"))el("geoTransformY").value=k.y;
+ if(el("geoTransformScale"))el("geoTransformScale").value=k.zoom;
+ if(el("geoTransformRotation"))el("geoTransformRotation").value=k.rotation;
+ if(el("geoKfOpacity"))el("geoKfOpacity").value=k.opacity;
+
+ ["geoTransformX","geoTransformY",
+  "geoTransformScale","geoTransformRotation",
+  "geoKfOpacity"].forEach(id=>{
+   const x=el(id);
+   if(x)x.dispatchEvent(new Event("input",{bubbles:true}));
+ });
+
+}
+
+window.geoReadTransform=read;
+window.geoWriteTransform=write;
+
+console.log("GeoXShorts: Transform ↔ Keyframes bridge ready");
+
+})();
+</script>
+
+<script id="geoCaptionsEngine">
+(function(){
+
+const props=document.querySelector(".geo-properties");
+const video=document.getElementById("videoPreview");
+if(!props||!video)return;
+if(document.getElementById("geoCaptionsPro"))return;
+
+props.insertAdjacentHTML("beforeend",`
+<div id="geoCaptionsPro">
+<div class="geo-cap-title">📝 CAPTIONS PRO</div>
+
+<div class="geo-cap-field">
+<label>Text</label>
+<textarea id="geoCapText" placeholder="Write your caption..."></textarea>
+</div>
+
+<div class="geo-cap-row">
+<div class="geo-cap-field">
+<label>Font</label>
+<select id="geoCapFont">
+<option>Arial</option>
+<option>Inter</option>
+<option>Impact</option>
+<option>Georgia</option>
+<option>Montserrat</option>
+<option>Courier New</option>
+</select>
+</div>
+
+<div class="geo-cap-field">
+<label>Animation</label>
+<select id="geoCapAnim">
+<option value="none">None</option>
+<option value="pop">Pop</option>
+<option value="fade">Fade</option>
+<option value="slide">Slide</option>
+</select>
+</div>
+</div>
+
+<div class="geo-cap-row">
+<div class="geo-cap-field">
+<label>Text color</label>
+<input id="geoCapColor" type="color" value="#ffffff">
+</div>
+
+<div class="geo-cap-field">
+<label>Background</label>
+<input id="geoCapBg" type="color" value="#000000">
+</div>
+</div>
+
+<div class="geo-cap-row">
+<div class="geo-cap-field">
+<label>Size</label>
+<input id="geoCapSize" class="geo-cap-range" type="range" min="12" max="100" value="42">
+</div>
+
+<div class="geo-cap-field">
+<label>Opacity</label>
+<input id="geoCapOpacity" class="geo-cap-range" type="range" min="0" max="100" value="100">
+</div>
+</div>
+
+<div class="geo-cap-row">
+<div class="geo-cap-field">
+<label>Outline</label>
+<input id="geoCapStroke" class="geo-cap-range" type="range" min="0" max="10" value="3">
+</div>
+
+<div class="geo-cap-field">
+<label>Position Y</label>
+<input id="geoCapY" class="geo-cap-range" type="range" min="5" max="90" value="72">
+</div>
+</div>
+
+<div class="geo-cap-row">
+<div class="geo-cap-field">
+<label>Start (sec)</label>
+<input id="geoCapStart" type="number" min="0" step=".1" value="0">
+</div>
+
+<div class="geo-cap-field">
+<label>End (sec)</label>
+<input id="geoCapEnd" type="number" min="0" step=".1" value="0">
+</div>
+</div>
+
+<div class="geo-cap-check">
+<input id="geoCapBgEnabled" type="checkbox">
+<label for="geoCapBgEnabled">Enable background box</label>
+</div>
+
+<div class="geo-cap-buttons">
+<button id="geoCapApply">＋ Add / Update</button>
+<button id="geoCapClear">🗑️ Remove</button>
+</div>
+</div>
+`);
+
+let overlay=document.createElement("div");
+overlay.className="geo-caption-overlay";
+overlay.id="geoCaptionOverlay";
+const stage=video.parentElement;
+if(stage){
+stage.style.position="relative";
+stage.appendChild(overlay);
+}
+
+const text=document.getElementById("geoCapText");
+const font=document.getElementById("geoCapFont");
+const color=document.getElementById("geoCapColor");
+const bg=document.getElementById("geoCapBg");
+const size=document.getElementById("geoCapSize");
+const opacity=document.getElementById("geoCapOpacity");
+const stroke=document.getElementById("geoCapStroke");
+const posY=document.getElementById("geoCapY");
+const start=document.getElementById("geoCapStart");
+const end=document.getElementById("geoCapEnd");
+const bgEnabled=document.getElementById("geoCapBgEnabled");
+const anim=document.getElementById("geoCapAnim");
+
+function updateStyle(){
+
+overlay.textContent=text.value||"";
+overlay.style.fontFamily=font.value;
+overlay.style.color=color.value;
+overlay.style.fontSize=size.value+"px";
+overlay.style.opacity=Number(opacity.value)/100;
+overlay.style.top=posY.value+"%";
+overlay.style.background=bgEnabled.checked?bg.value:"transparent";
+
+const sw=Number(stroke.value);
+overlay.style.webkitTextStroke=sw+"px rgba(0,0,0,.95)";
+overlay.style.textShadow=
+"0 3px 8px rgba(0,0,0,.9),0 0 "+Math.max(2,sw)+"px rgba(0,0,0,.65)";
+
+overlay.style.borderRadius=bgEnabled.checked?"9px":"0";
+overlay.style.padding=bgEnabled.checked?"6px 12px":"4px 12px";
+}
+
+function updateVisibility(){
+
+const now=video.currentTime||0;
+const a=Number(start.value)||0;
+let b=Number(end.value);
+
+if(!b && video.duration)b=video.duration;
+
+const active=
+text.value.trim() &&
+now>=a &&
+now<=b;
+
+overlay.style.display=active?"block":"none";
+
+if(active){
+overlay.classList.remove("cap-pop","cap-fade","cap-slide");
+const type=anim.value;
+if(type!=="none"){
+void overlay.offsetWidth;
+overlay.classList.add("cap-"+type);
+}
+}
+}
+
+function apply(){
+updateStyle();
+updateVisibility();
+}
+
+[
+text,font,color,bg,size,opacity,stroke,posY,bgEnabled,anim
+].forEach(el=>{
+el.addEventListener("input",apply);
+el.addEventListener("change",apply);
+});
+
+document.getElementById("geoCapApply").onclick=()=>{
+if(!end.value && video.duration){
+end.value=video.duration.toFixed(1);
+}
+apply();
+};
+
+document.getElementById("geoCapClear").onclick=()=>{
+text.value="";
+overlay.textContent="";
+overlay.style.display="none";
+};
+
+video.addEventListener("timeupdate",updateVisibility);
+video.addEventListener("loadedmetadata",()=>{
+if(!end.value)end.value=(video.duration||0).toFixed(1);
+updateVisibility();
+});
+
+apply();
+
+})();
+</script>
+
+<script id="geoCanvasEngine">
+(function(){
+
+const props=document.querySelector(".geo-properties");
+const video=document.getElementById("videoPreview");
+
+if(!props||!video)return;
+if(document.getElementById("geoCanvasPro"))return;
+
+props.insertAdjacent
+<div id="geoCanvasPro">
+
+<div class="geo-canvas-title">📐 CANVAS & RESIZE PRO</div>
+
+<div class="geo-canvas-presets">
+<button data-ratio="9:16">📱 9:16</button>
+<button data-ratio="16:9">🖥️ 16:9</button>
+<button data-ratio="1:1">⬜ 1:1</button>
+</div>
+
+<div class="geo-canvas-actions">
+<button id="geoCanvasFit">⬜ Fit</button>
+<button id="geoCanvasFill">🔲 Fill</button>
+<button id="geoCanvasBlur">🌫️ Blur BG</button>
+<button id="geoCanvasReset">↩️ Reset</button>
+</div>
+
+<div class="geo-canvas-row">
+<label>🔍 Canvas Zoom</label>
+<input id="geoCanvasZoom" type="range" min="50" max="200" value="100">
+</div>
+
+<div id="geoCanvasStatus" class="geo-canvas-status">
+Canvas: 9:16 • Shorts
+</div>
+
+</div>
+("beforeend",`
+<div id="geoCanvasPro">
+
+<div class="geo-canvas-title">📐 CANVAS & RESIZE PRO</div>
+
+<div class="geo-canvas-presets">
+<button data-ratio="9:16">📱 9:16</button>
+<button data-ratio="16:9">🖥️ 16:9</button>
+<button data-ratio="1:1">⬜ 1:1</button>
+</div>
+
+<div class="geo-canvas-actions">
+<button id="geoCanvasFit">⬜ Fit</button>
+<button id="geoCanvasFill">🔲 Fill</button>
+<button id="geoCanvasBlur">🌫️ Blur BG</button>
+<button id="geoCanvasReset">↩️ Reset</button>
+</div>
+
+<div class="geo-canvas-row">
+<label>🔍 Canvas Zoom</label>
+<input id="geoCanvasZoom" type="range" min="50" max="200" value="100">
+</div>
+
+<div id="geoCanvasStatus" class="geo-canvas-status">
+Canvas: 9:16 • Shorts
+</div>
+
+</div>
+`);
+
+const stage=video.parentElement;
+const zoom=document.getElementById("geoCanvasZoom");
+const status=document.getElementById("geoCanvasStatus");
+const buttons=document.querySelectorAll("#geoCanvasPro [data-ratio]");
+
+let ratio="9:16";
+let fitMode="contain";
+let blur=false;
+
+function setRatio(r){
+
+ratio=r;
+
+buttons.forEach(b=>{
+ b.classList.toggle("active",b.dataset.ratio===r);
+});
+
+if(stage){
+
+ if(r==="9:16")stage.style.aspectRatio="9 / 16";
+ if(r==="16:9")stage.style.aspectRatio="16 / 9";
+ if(r==="1:1")stage.style.aspectRatio="1 / 1";
+
+ stage.style.overflow="hidden";
+}
+
+status.textContent=
+"Canvas: "+r+
+(r==="9:16"?" • Shorts":
+r==="16:9"?" • YouTube":" • Square");
+
+apply();
+}
+
+function apply(){
+
+video.style.objectFit=fitMode;
+video.style.transform=
+"scale("+(Number(zoom.value)/100)+")";
+
+if(blur){
+
+ video.style.background="transparent";
+
+ if(stage){
+   stage.style.backgroundImage=
+     "linear-gradient(rgba(0,0,0,.25),rgba(0,0,0,.25)),"+
+     "url('')";
+ }
+}else{
+ video.style.background="";
+}
+
+}
+
+buttons.forEach(b=>{
+ b.addEventListener("click",()=>setRatio(b.dataset.ratio));
+});
+
+document.getElementById("geoCanvasFit").onclick=()=>{
+ fitMode="contain";
+ zoom.value=100;
+ apply();
+};
+
+document.getElementById("geoCanvasFill").onclick=()=>{
+ fitMode="cover";
+ zoom.value=100;
+ apply();
+};
+
+document.getElementById("geoCanvasBlur").onclick=()=>{
+ blur=!blur;
+ document.getElementById("geoCanvasBlur").textContent=
+ blur?"🌫️ Blur BG ON":"🌫️ Blur BG";
+ apply();
+};
+
+document.getElementById("geoCanvasReset").onclick=()=>{
+ ratio="9:16";
+ fitMode="contain";
+ blur=false;
+ zoom.value=100;
+ document.getElementById("geoCanvasBlur").textContent="🌫️ Blur BG";
+ setRatio("9:16");
+};
+
+zoom.addEventListener("input",apply);
+
+setRatio("9:16");
+
+})();
+</script>
+
+<script id="geoAudioTracksEngine">
+(function(){
+
+const props=document.querySelector(".geo-properties");
+const video=document.getElementById("videoPreview");
+
+if(!props||!video)return;
+if(document.getElementById("geoAudioTracksPro"))return;
+
+props.insertAdjacent
+<div id="geoAudioTracksPro">
+
+<div class="geo-audio-title">🎵 AUDIO TRACKS PRO</div>
+
+<div class="geo-audio-buttons">
+<button id="geoAddAudio">＋ Add Audio</button>
+<button id="geoRecordVoice">🎙️ Voice-over</button>
+</div>
+
+<input id="geoAudioFile" type="file" accept="audio/*" hidden>
+
+<div id="geoAudioTracksList"></div>
+
+<div id="geoAudioStatus" class="geo-audio-status">
+No audio tracks
+</div>
+
+</div>
+("beforeend",`
+<div id="geoAudioTracksPro">
+
+<div class="geo-audio-title">🎵 AUDIO TRACKS PRO</div>
+
+<div class="geo-audio-buttons">
+<button id="geoAddAudio">＋ Add Audio</button>
+<button id="geoRecordVoice">🎙️ Voice-over</button>
+</div>
+
+<input id="geoAudioFile" type="file" accept="audio/*" hidden>
+
+<div id="geoAudioTracksList"></div>
+
+<div id="geoAudioStatus" class="geo-audio-status">
+No audio tracks
+</div>
+
+</div>
+`);
+
+const fileInput=document.getElementById("geoAudioFile");
+const list=document.getElementById("geoAudioTracksList");
+const status=document.getElementById("geoAudioStatus");
+
+const tracks=[];
+let recorder=null;
+let recordingStream=null;
+let recordingChunks=[];
+
+function format(t){
+ if(!Number.isFinite(t))return "00:00";
+ const m=Math.floor(t/60);
+ const sec=Math.floor(t%60);
+ return String(m).padStart(2,"0")+":"+String(sec).padStart(2,"0");
+}
+
+function createTrack(name,url){
+
+ const audio=new Audio(url);
+ audio.preload="auto";
+
+ const track={
+  id:Date.now()+Math.random(),
+  name,
+  url,
+  audio,
+  start:0,
+  volume:1,
+  muted:false,
+  loop:false,
+  fadeIn:0,
+  fadeOut:0
+ };
+
+ tracks.push(track);
+render();
+return track;
+}
+
+function render(){
+
+ list.inner
+<div id="geoAudioTracksPro">
+
+<div class="geo-audio-title">🎵 AUDIO TRACKS PRO</div>
+
+<div class="geo-audio-buttons">
+<button id="geoAddAudio">＋ Add Audio</button>
+<button id="geoRecordVoice">🎙️ Voice-over</button>
+</div>
+
+<input id="geoAudioFile" type="file" accept="audio/*" hidden>
+
+<div id="geoAudioTracksList"></div>
+
+<div id="geoAudioStatus" class="geo-audio-status">
+No audio tracks
+</div>
+
+</div>
+="";
+
+ tracks.forEach((track,index)=>{
+
+  const box=document.createElement("div");
+  box.className="geo-audio-track";
+
+  box.inner
+<div id="geoAudioTracksPro">
+
+<div class="geo-audio-title">🎵 AUDIO TRACKS PRO</div>
+
+<div class="geo-audio-buttons">
+<button id="geoAddAudio">＋ Add Audio</button>
+<button id="geoRecordVoice">🎙️ Voice-over</button>
+</div>
+
+<input id="geoAudioFile" type="file" accept="audio/*" hidden>
+
+<div id="geoAudioTracksList"></div>
+
+<div id="geoAudioStatus" class="geo-audio-status">
+No audio tracks
+</div>
+
+</div>
+=`
+   <div class="geo-audio-track-head">
+    <span>🎵 ${track.name}</span>
+    <button data-remove="${index}">🗑️</button>
+   </div>
+
+   <label style="font-size:10px;color:#888">
+    Volume
+    <input data-volume="${index}" type="range"
+      min="0" max="100" value="${track.volume*100}">
+   </label>
+
+   <label style="font-size:10px;color:#888">
+    Start
+    <input data-start="${index}" type="range"
+      min="0" max="100" value="${Math.min(100,track.start)}">
+   </label>
+
+   <div style="display:flex;gap:5px;margin-top:7px">
+    <button data-mute="${index}">
+      ${track.muted?"🔇 Muted":"🔊 Mute"}
+    </button>
+    <button data-loop="${index}">
+      ${track.loop?"🔁 Loop ON":"🔁 Loop"}
+    </button>
+   </div>
+  `;
+
+  list.appendChild(box);
+ });
+
+ status.textContent=
+ tracks.length+
+ (tracks.length===1?" audio track":" audio tracks");
+}
+
+document.getElementById("geoAddAudio").onclick=()=>{
+ fileInput.click();
+};
+
+fileInput.onchange=()=>{
+
+ const file=fileInput.files?.[0];
+ if(!file)return;
+
+ const url=URL.createObjectURL(file);
+ createTrack(file.name,url);
+
+ fileInput.value="";
+};
+
+list.addEventListener("input",e=>{
+
+ const i=e.target.dataset.volume;
+
+ if(i!==undefined){
+  tracks[i].volume=Number(e.target.value)/100;
+  tracks[i].audio.volume=tracks[i].muted?0:tracks[i].volume;
+ }
+
+ const st=e.target.dataset.start;
+
+ if(st!==undefined){
+  tracks[st].start=Number(e.target.value);
+ }
+});
+
+list.addEventListener("click",e=>{
+
+ const remove=e.target.dataset.remove;
+
+ if(remove!==undefined){
+  const t=tracks[Number(remove)];
+  t.audio.pause();
+  URL.revokeObjectURL(t.url);
+  tracks.splice(Number(remove),1);
+  render();
+  return;
+ }
+
+ const mute=e.target.dataset.mute;
+
+ if(mute!==undefined){
+  const t=tracks[Number(mute)];
+  t.muted=!t.muted;
+  t.audio.muted=t.muted;
+  render();
+  return;
+ }
+
+ const loop=e.target.dataset.loop;
+
+ if(loop!==undefined){
+  const t=tracks[Number(loop)];
+  t.loop=!t.loop;
+  t.audio.loop=t.loop;
+  render();
+ }
+});
+
+document.getElementById("geoRecordVoice").onclick=async()=>{
+
+ const button=document.getElementById("geoRecordVoice");
+
+ if(recorder && recorder.state==="recording"){
+  recorder.stop();
+  button.textContent="🎙️ Voice-over";
+  return;
+ }
+
+ if(!navigator.mediaDevices?.getUserMedia){
+  status.textContent="Microphone unavailable in this browser";
+  return;
+ }
+
+ try{
+
+  recordingStream=
+   await navigator.mediaDevices.getUserMedia({audio:true});
+
+  recordingChunks=[];
+
+  recorder=new MediaRecorder(recordingStream);
+
+  recorder.ondataavailable=e=>{
+   if(e.data.size)recordingChunks.push(e.data);
+  };
+
+  recorder.onstop=()=>{
+
+   const blob=new Blob(recordingChunks,{type:"audio/webm"});
+   const url=URL.createObjectURL(blob);
+
+   createTrack("Voice-over",url);
+
+   recordingStream.getTracks().forEach(t=>t.stop());
+   recordingStream=null;
+  };
+
+  recorder.start();
+  button.textContent="⏹️ Stop Recording";
+  status.textContent="🎙️ Recording voice-over...";
+
+ }catch(err){
+
+  status.textContent="Microphone permission denied";
+ }
+};
+
+video.addEventListener("timeupdate",()=>{
+
+ const now=video.currentTime;
+
+ tracks.forEach(t=>{
+
+  const shouldPlay=
+   now>=t.start &&
+   now<=t.start+(t.audio.duration||Infinity);
+
+  if(shouldPlay && video.playing){
+   if(t.audio.paused){
+    try{t.audio.currentTime=0}catch(e){}
+    t.audio.play().catch(()=>{});
+   }
+  }else if(!shouldPlay && !t.audio.paused){
+   t.audio.pause();
+  }
+
+  t.audio.volume=t.muted?0:t.volume;
+ });
+});
+
+video.addEventListener("pause",()=>{
+ tracks.forEach(t=>t.audio.pause());
+});
+
+video.addEventListener("ended",()=>{
+ tracks.forEach(t=>t.audio.pause());
+});
+
+render();
+
 })();
 </script>
 </body>
