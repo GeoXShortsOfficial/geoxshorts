@@ -1,5 +1,1157 @@
-<!doctype html><html lang="ro"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GeoX Shorts</title><style>
-*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 50% 0,#32134f,#120a1c 55%);color:#fff;font-family:Inter,system-ui,sans-serif}header{height:72px;border-bottom:1px solid #3b2948;display:flex;align-items:center;justify-content:space-between;padding:0 5%;position:sticky;top:0;background:#160d21eF;backdrop-filter:blur(14px);z-index:5}.logo{font-size:23px;font-weight:900;letter-spacing:-1px}.gx{background:linear-gradient(90deg,#9b4dff,#ff4fa3);background-size:200%;-webkit-background-clip:text;color:transparent;animation:g 3s linear infinite}.cam{display:inline-block;margin-left:8px;animation:p 1.5s infinite}.about{background:#251733;border:1px solid #49345a;color:#fff;padding:10px 15px;border-radius:12px;cursor:pointer}main{max-width:900px;margin:auto;padding:45px 20px}.hero{text-align:center}.hero h1{font-size:clamp(34px,7vw,62px);margin:0;font-weight:900}.hero p{color:#bcaec7;margin:12px auto 35px}.panel{background:#1b1027;border:1px solid #402c50;border-radius:22px;padding:25px;box-shadow:0 18px 60px #0005}.panel h2{text-align:center;margin:0 0 20px}.types{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.type{min-height:145px;background:#241633;border:1px solid #49335b;border-radius:18px;color:#fff;cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font-size:16px;font-weight:800;transition:.2s}.type:hover{transform:translateY(-4px);border-color:#b55cff}.ico{font-size:38px}.projects{margin-top:38px}.project{display:flex;align-items:center;gap:14px;background:#1b1027;border:1px solid #3d294b;border-radius:16px;padding:15px;margin-top:10px}.thumb{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,#8b42ff,#ff4f9c);display:grid;place-items:center}.info{flex:1}.info b{display:block}.info small{color:#a99aad}.new{border:0;background:linear-gradient(90deg,#9148ff,#f34d9b);color:#fff;border-radius:12px;padding:11px 16px;font-weight:800;cursor:pointer}.modal{position:fixed;inset:0;background:#000b;display:none;align-items:center;justify-content:center;padding:18px;z-index:20}.box{width:min(560px,100%);background:#1b1027;border:1px solid #513563;border-radius:22px;padding:24px}.box h2{margin-top:0}.close{float:right;background:none;border:0;color:#fff;font-size:25px;cursor:pointer}.drop{border:2px dashed #5d4270;border-radius:16px;padding:25px;text-align:center;color:#bcaec7;margin:15px 0}.save{width:100%;padding:13px;border:0;border-radius:13px;background:linear-gradient(90deg,#9148ff,#f34d9b);color:#fff;font-weight:900;cursor:pointer}.files{color:#d9cde0;font-size:13px}.hide{display:none}@keyframes g{to{background-position:200%}}@keyframes p{50%{transform:scale(1.18) rotate(5deg);filter:drop-shadow(0 0 8px #ff64ba)}}@media(max-width:600px){header{padding:0 15px}.about{padding:8px 10px}.types{grid-template-columns:1fr}.type{min-height:105px}.panel{padding:18px}main{padding:30px 14px}}
-</style></head><body><header><div class="logo"><span class="gx">GeoX</span> <span>Shorts</span><span class="cam">🎬</span></div><button class="about">About Me</button></header><main><section class="hero"><h1>Creează un <span class="gx">proiect nou</span></h1><p>Editează videoclipuri și fotografii direct din telefon sau PC.</p></section><section class="panel"><h2>Creează un proiect nou</h2><div class="types"><button class="type" onclick="openM('video')"><span class="ico">🎥</span>VIDEO</button><button class="type" onclick="openM('photo')"><span class="ico">🖼️</span>PHOTO</button><button class="type" onclick="openM('collage')"><span class="ico">▦</span>COLAJ</button></div></section><section class="projects"><div style="display:flex;justify-content:space-between;align-items:center"><h2>Proiectele mele</h2><button class="new" onclick="openM('video')">＋ Nou</button></div><div id="list"></div></section></main><div id="modal" class="modal"><div class="box"><button class="close" onclick="closeM()">×</button><h2 id="mt">Proiect nou</h2><input id="name" placeholder="Numele proiectului" style="width:100%;padding:13px;border-radius:12px;border:1px solid #49335b;background:#241633;color:white"><div class="drop"><button class="new" onclick="pick()">Selectează fișiere</button><input id="files" class="hide" type="file" multiple><p id="desc">Poți selecta mai multe videoclipuri.</p><div id="chosen" class="files"></div></div><button class="save" onclick="save()">Salvează proiectul</button></div></div><script>
-let kind="video",chosen=[];const modal=document.getElementById("modal"),files=document.getElementById("files");function openM(k){kind=k;chosen=[];document.getElementById("name").value="";document.getElementById("chosen").textContent="";document.getElementById("mt").textContent=k==="video"?"Proiect video":k==="photo"?"Proiect foto":"Proiect colaj";document.getElementById("desc").textContent=k==="video"?"Selectează mai multe videoclipuri.":k==="photo"?"Selectează mai multe poze.":"Selectează videoclipuri și poze.";files.accept=k==="video"?"video/*":k==="photo"?"image/*":"video/*,image/*";modal.style.display="flex"}function closeM(){modal.style.display="none"}function pick(){files.click()}files.onchange=()=>{chosen=[...files.files];document.getElementById("chosen").textContent=chosen.length+" fișier(e) selectate"}function save(){if(!chosen.length){alert("Selectează cel puțin un fișier.");return}let a=JSON.parse(localStorage.getItem("gxprojects")||"[]"),name=document.getElementById("name").value.trim()||"Proiect "+(a.length+1);a.push({name,kind,count:chosen.length,date:new Date().toLocaleDateString("ro-RO")});localStorage.setItem("gxprojects",JSON.stringify(a));closeM();render()}function render(){let a=JSON.parse(localStorage.getItem("gxprojects")||"[]");document.getElementById("list").innerHTML=a.length?a.map((x,i)=>`<div class="project"><div class="thumb">${x.kind==="video"?"🎥":x.kind==="photo"?"🖼️":"▦"}</div><div class="info"><b>${x.name}</b><small>${x.kind} · ${x.count} fișier(e) · ${x.date}</small></div></div>`).join(""):'<div class="panel" style="text-align:center;color:#a99aad">Nu ai încă proiecte. Creează primul proiect.</div>'}render();
-</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GeoXShorts</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#07070b;
+  color:#fff;
+}
+nav{
+  padding:20px;
+  border-bottom:1px solid #22222b;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.logo{
+  font-size:24px;
+  font-weight:800;
+}
+.logo .geo{color:#a855f7}.logo .xshorts{color:#fff}.logo-emoji{margin-left:5px;font-size:20px}
+.badge{
+  color:#c084fc;
+  font-size:13px;
+}
+.hero{
+  max-width:850px;
+  margin:auto;
+  padding:70px 20px;
+  text-align:center;
+}
+h1{
+  font-size:clamp(42px,9vw,76px);
+  margin:20px 0 12px;
+}
+.gradient{
+  background:linear-gradient(90deg,#a855f7,#ec4899);
+  -webkit-background-clip:text;
+  color:transparent;
+}
+.description{
+  color:#999;
+  font-size:18px;
+  line-height:1.6;
+}
+.box{
+  margin:40px auto;
+  padding:10px;
+  max-width:700px;
+  background:#111118;
+  border:1px solid #292936;
+  border-radius:22px;
+  display:flex;
+  gap:10px;
+}
+input{
+  flex:1;
+  min-width:0;
+  padding:17px;
+  border-radius:15px;
+  border:1px solid #30303b;
+  background:#08080c;
+  color:#fff;
+  font-size:16px;
+}
+button{
+  padding:0 22px;
+  border:0;
+  border-radius:15px;
+  background:linear-gradient(90deg,#9333ea,#db2777);
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+.status{
+  color:#aaa;
+  margin-top:20px;
+}
+.features{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  flex-wrap:wrap;
+  margin-top:30px;
+}
+.feature{
+  background:#111118;
+  border:1px solid #25252d;
+  padding:12px 16px;
+  border-radius:14px;
+  color:#bbb;
+}
+@media(max-width:600px){
+  .box{flex-direction:column}
+  button{height:52px}
+}
+
+.editor{
+  max-width:700px;
+  margin:30px auto;
+  padding:22px;
+  background:#111118;
+  border:1px solid #292936;
+  border-radius:22px;
+}
+
+.editor-title{
+  font-size:18px;
+  font-weight:800;
+  margin-bottom:18px;
+}
+
+.upload-btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:100%;
+  min-height:52px;
+  border-radius:15px;
+  background:linear-gradient(90deg,#9333ea,#db2777);
+  font-weight:bold;
+  cursor:pointer;
+  transition:.2s;
+}
+
+.upload-btn:hover{
+  transform:translateY(-1px);
+  opacity:.95;
+}
+
+.preview-wrap{
+  width:min(100%,320px);
+  aspect-ratio:9/16;
+  margin:20px auto 12px;
+  background:#08080c;
+  border:1px solid #30303b;
+  border-radius:18px;
+  overflow:hidden;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+#videoPreview{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  display:none;
+  background:#000;
+}
+
+.empty-preview{
+  text-align:center;
+  color:#888;
+  padding:25px;
+  line-height:1.5;
+}
+
+.empty-icon{
+  font-size:42px;
+  margin-bottom:10px;
+}
+
+.empty-preview small{
+  display:block;
+  margin-top:8px;
+  color:#666;
+}
+
+.video-info{
+  text-align:center;
+  color:#aaa;
+  font-size:14px;
+  min-height:20px;
+  word-break:break-word;
+}
+
+.video-actions{
+  display:flex;
+  gap:10px;
+  margin-top:14px;
+}
+
+.secondary-btn{
+  flex:1;
+  min-height:48px;
+  padding:0 16px;
+  border:1px solid #30303b;
+  border-radius:14px;
+  background:#181820;
+  color:#fff;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.secondary-btn:hover{
+  background:#22222c;
+}
+
+.danger-btn{
+  color:#fda4af;
+}
+.editor{max-width:760px;margin:35px auto;padding:22px;background:#111118;border:1px solid #292936;border-radius:24px;text-align:left}.editor-title{font-size:20px;font-weight:800;margin-bottom:18px}.upload-btn{display:flex;align-items:center;justify-content:center;height:54px;border-radius:15px;background:linear-gradient(90deg,#9333ea,#db2777);font-weight:bold;cursor:pointer}.preview-wrap{position:relative;width:min(100%,330px);aspect-ratio:9/16;margin:22px auto;background:#000;border-radius:20px;overflow:hidden}.preview-wrap video{width:100%;height:100%;object-fit:contain}.caption{position:absolute;left:5%;right:5%;bottom:12%;text-align:center;font-size:26px;font-weight:900;text-shadow:0 2px 5px #000}.control{background:#0b0b10;border:1px solid #292936;border-radius:15px;padding:14px;margin-top:12px}.control input{width:100%}.export-btn{width:100%;height:52px;margin-top:14px}</style>
+<style>
+.editor{max-width:850px;margin:40px auto;padding:22px;background:#101017;border:1px solid #292936;border-radius:24px;text-align:left}
+.editor-title{font-size:22px;font-weight:800;margin-bottom:18px}
+.upload-btn,.action-btn{display:flex;align-items:center;justify-content:center;min-height:52px;padding:0 18px;border-radius:15px;background:linear-gradient(90deg,#9333ea,#db2777);font-weight:800;cursor:pointer;border:0;color:#fff}
+.preview-wrap{position:relative;width:min(100%,360px);aspect-ratio:9/16;margin:22px auto;background:#000;border-radius:20px;overflow:hidden;border:1px solid #292936}
+.preview-wrap video{width:100%;height:100%;object-fit:contain}
+.caption{position:absolute;left:5%;right:5%;bottom:12%;text-align:center;font-weight:900;text-shadow:0 3px 8px #000;pointer-events:none;white-space:pre-wrap;word-break:break-word}
+.controls{display:grid;grid-template-columns:230px minmax(300px,1fr) 250px;gap:12px}
+.control{background:#0b0b10;border:1px solid #292936;border-radius:15px;padding:14px}
+.control.full{grid-column:1/-1}
+.control label{display:block;color:#aaa;font-size:13px;margin-bottom:8px}
+.control input,.control select{width:100%}
+.control input[type=text],.control select{padding:12px;border-radius:10px;border:1px solid #30303b;background:#08080c;color:#fff}
+.editor-actions{display:grid;grid-template-columns:230px minmax(300px,1fr) 250px;gap:12px;margin-top:14px}
+.editor-status{margin-top:18px;color:#aaa;min-height:24px}
+@media(max-width:600px){.controls,.editor-actions{grid-template-columns:1fr}.control.full{grid-column:auto}}
+</style>
+<style id="adjustStyles">
+.adjust-panel{
+  margin:18px auto;
+  max-width:760px;
+  padding:18px;
+  background:linear-gradient(145deg,#11111a,#0c0c12);
+  border:1px solid #30204a;
+  border-radius:20px;
+  box-shadow:0 12px 40px rgba(91,33,182,.16);
+}
+.adjust-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:16px;
+}
+.adjust-header strong{
+  font-size:18px;
+  color:#d8b4fe;
+}
+.adjust-header button{
+  height:34px;
+  padding:0 14px;
+  border-radius:10px;
+  background:#1b1725;
+  border:1px solid #3b3150;
+  color:#ddd;
+}
+.adjust-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+.adjust-grid label{
+  display:flex;
+  flex-direction:column;
+  gap:7px;
+  color:#cfcbd8;
+  font-size:13px;
+}
+.adjust-grid output{
+  float:right;
+  color:#c084fc;
+}
+.adjust-grid input{
+  width:100%;
+  accent-color:#a855f7;
+}
+@media(max-width:650px){
+  .adjust-grid{grid-template-columns:1fr}
+}
+</style>
+
+
+<style id="geoProLayout">
+.geo-pro-workspace{
+  width:min(1500px,96vw);
+  margin:24px auto;
+  display:grid;
+  grid-template-columns:220px minmax(360px,1fr) 270px;
+  grid-template-rows:minmax(600px,1fr) 190px;
+  gap:12px;
+  background:#08080d;
+}
+.geo-sidebar,.geo-properties,.geo-timeline{
+  background:linear-gradient(145deg,#12111a,#0d0c13);
+  border:1px solid #302044;
+  border-radius:18px;
+}
+.geo-sidebar,.geo-properties{
+  padding:14px;
+  overflow:auto;
+}
+.geo-stage{
+  min-width:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#08080d;
+  border:1px solid #2b203b;
+  border-radius:18px;
+  position:relative;
+  overflow:hidden;
+}
+.geo-tool{
+  width:100%;
+  padding:12px;
+  margin-bottom:8px;
+  border:1px solid #292333;
+  border-radius:12px;
+  background:#111018;
+  color:#ddd;
+  text-align:left;
+  cursor:pointer;
+}
+.geo-tool:hover,.geo-tool.active{
+  border-color:#a855f7;
+  background:#1a1325;
+  color:#fff;
+}
+.geo-panel-title{
+  color:#d8b4fe;
+  font-weight:800;
+  font-size:14px;
+  margin:4px 0 14px;
+}
+.geo-timeline{
+  grid-column:1/4;
+  padding:14px;
+  overflow:hidden;
+}
+.geo-track{
+  height:34px;
+  margin-top:9px;
+  border-radius:8px;
+  background:#17131e;
+  border:1px solid #292333;
+  position:relative;
+}
+.geo-clip{
+  position:absolute;
+  left:2%;
+  top:4px;
+  height:24px;
+  width:38%;
+  border-radius:6px;
+  background:linear-gradient(90deg,#7e22ce,#a855f7);
+}
+.geo-playhead{
+  position:absolute;
+  left:18%;
+  top:0;
+  width:2px;
+  height:100%;
+  background:#fff;
+  box-shadow:0 0 10px #c084fc;
+}
+.geo-time{
+  display:flex;
+  justify-content:space-between;
+  color:#777;
+  font-size:11px;
+}
+.geo-stage-label{
+  position:absolute;
+  top:12px;
+  left:14px;
+  color:#777;
+  font-size:12px;
+}
+@media(max-width:900px){
+  .geo-pro-workspace{
+    grid-template-columns:170px minmax(280px,1fr);
+    grid-template-rows:minmax(520px,1fr) auto 180px;
+  }
+  .geo-properties{grid-column:1/3}
+  .geo-timeline{grid-column:1/3}
+}
+@media(max-width:600px){
+  .geo-pro-workspace{
+    width:96vw;
+    grid-template-columns:1fr;
+    grid-template-rows:auto minmax(500px,1fr) auto 180px;
+  }
+  .geo-sidebar,.geo-properties,.geo-timeline{grid-column:1}
+}
+</style>
+
+
+<style id="geoTextPro2">
+.geo-text-pro{margin-top:14px;padding:14px;background:#111018;border:1px solid #34214d;border-radius:16px}
+.geo-text-pro input,.geo-text-pro select{width:100%;height:40px;margin:5px 0;padding:8px;border-radius:9px;border:1px solid #30283a;background:#08080c;color:#fff}
+.geo-text-pro input[type=color]{padding:3px}
+.geo-text-pro input[type=range]{accent-color:#a855f7}
+.geo-text-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}
+.geo-text-actions button{height:38px;border-radius:9px;background:#1a1422;border:1px solid #382648;color:#ddd}
+.geo-text-actions button:hover{border-color:#a855f7}
+.geo-overlay{position:absolute;z-index:80;left:50%;top:50%;transform:translate(-50%,-50%);padding:4px 10px;font-weight:800;white-space:nowrap;text-align:center;text-shadow:0 3px 8px #000;cursor:move;user-select:none}
+</style>
+
+<style id="geoAudioStyles">
+.geo-audio-pro{margin-top:14px;padding:14px;background:#111018;border:1px solid #34214d;border-radius:16px}
+.geo-audio-pro input[type=range]{width:100%;accent-color:#a855f7}
+.geo-audio-row{display:flex;gap:7px;margin-top:8px}
+.geo-audio-row button{flex:1;height:38px;border-radius:9px;background:#1a1422;border:1px solid #382648;color:#ddd}
+.geo-audio-name{font-size:12px;color:#aaa;margin-top:8px;overflow:hidden;text-overflow:ellipsis}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo"><span class="geo">Geo</span><span class="xshorts">XShorts</span><span class="logo-emoji">🎬</span></div>
+  <div class="badge">AI VIDEO CLIPS</div>
+</nav>
+
+<main class="hero">
+
+  <div class="badge">✦ TURN LONG VIDEOS INTO SHORTS</div>
+
+  <h1>
+    Your video.<br>
+    <span class="gradient">5 Shorts.</span>
+  </h1>
+
+  <p class="description">
+    Transform a long video into 5 vertical Shorts,
+    ready to preview and download.
+  </p>
+
+  <div class="box">
+    <input id="url" type="url" placeholder="Paste your video URL...">
+    <button id="generateBtn" onclick="generateShorts()">
+      Generate Shorts
+    </button>
+  </div>
+
+  
+<section class="geo-pro-workspace" id="geoProWorkspace">
+
+  <aside class="geo-sidebar">
+    <div class="geo-panel-title">TOOLS</div>
+    <button class="geo-tool active">🎬 Media</button>
+    <button class="geo-tool">📝 Text</button>
+    <button class="geo-tool">🎵 Audio</button>
+    <button class="geo-tool">✨ Effects</button>
+    <button class="geo-tool">🎨 Filters</button>
+    <button class="geo-tool">🎚️ Adjust</button>
+    <button class="geo-tool">🏷️ Captions</button>
+    <button class="geo-tool">🖼️ Stickers</button>
+    <button class="geo-tool">↗️ Transitions</button>
+  </aside>
+
+  <main class="geo-stage">
+    <span class="geo-stage-label">PREVIEW • 9:16</span>
+  </main>
+
+  <aside class="geo-properties">
+    <div class="geo-panel-title">PROPERTIES</div>
+    <div class="control">
+      <strong>Selected element</strong>
+      <p style="color:#777;font-size:12px">Select a clip, text or audio item to edit its properties.</p>
+    </div>
+    <div class="control">
+      <strong>Transform</strong>
+      <p style="color:#777;font-size:12px">Position • Scale • Rotation • Opacity</p>
+    </div>
+    <div class="control">
+      <strong>Timing</strong>
+      <p style="color:#777;font-size:12px">Start • Duration • Speed</p>
+    </div>
+  </aside>
+
+  <section class="geo-timeline">
+    <div class="geo-panel-title">TIMELINE</div>
+    <div class="geo-time"><span>00:00</span><span>00:30</span><span>01:00</span></div>
+    <div class="geo-track">
+      <div class="geo-clip"></div>
+      <div class="geo-playhead"></div>
+    </div>
+    <div class="geo-track">
+      <div class="geo-clip" style="left:12%;width:25%;background:linear-gradient(90deg,#db2777,#ec4899)"></div>
+    </div>
+    <div class="geo-track">
+      <div class="geo-clip" style="left:4%;width:45%;background:linear-gradient(90deg,#2563eb,#06b6d4)"></div>
+    </div>
+  </section>
+
+</section>
+
+
+<div class="editor">
+    <div class="editor-title">🎬 Video Preview</div>
+
+    <label class="upload-btn" for="videoInput">
+      📤 Upload Video
+    </label>
+    <input id="videoInput" type="file" accept="video/*" hidden>
+
+    <div id="previewWrap" class="preview-wrap">
+      <div class="empty-preview">
+        <div class="empty-icon">🎬</div>
+        <div>Upload a video to preview it</div>
+        <small>Vertical 9:16 preview</small>
+      </div>
+
+      <video id="videoPreview" controls playsinline></video>
+    </div>
+
+    <div id="videoInfo" class="video-info"></div>
+
+    <div class="video-actions">
+      <button id="playBtn" class="secondary-btn" type="button">▶️ Play</button>
+      <button id="removeBtn" class="secondary-btn danger-btn" type="button">🗑️ Remove</button>
+    </div>
+  </div>
+
+  <div id="status" class="status">
+    🎬 Ready when you are.
+  </div>
+
+  <div class="features">
+    <div class="feature">🎯 5 Best Moments</div>
+    <div class="feature">📱 1080×1920</div>
+    <div class="feature">⏱️ 20–60s</div>
+    <div class="feature">⬇️ Download</div>
+  </div>
+
+<section class="editor">
+<div class="editor-title">🎬 GeoXShorts Editor</div>
+<label class="upload-btn" for="videoInput">📤 Upload Video</label>
+<input id="videoInput" type="file" accept="video/*" hidden>
+<div class="preview-wrap"><video id="videoPreview" controls playsinline></video><div id="captionText" class="caption"></div></div>
+<div class="controls">
+<div class="control full"><label>✂️ Start</label><input id="startTime" type="range" min="0" max="0" step=".01" value="0"><span id="startLabel">0.00s</span></div>
+<div class="control full"><label>✂️ End</label><input id="endTime" type="range" min="0" max="0" step=".01" value="0"><span id="endLabel">0.00s</span></div>
+<div class="control full"><label>📝 Caption</label><input id="captionInput" type="text" placeholder="Write your caption..."></div>
+<div class="control"><label>🔤 Text size</label><input id="captionSize" type="range" min="16" max="64" value="30"></div>
+<div class="control"><label>🎨 Text color</label><input id="captionColor" type="color" value="#ffffff"></div>
+<div class="control"><label>📍 Position</label><select id="captionPosition"><option value="top">Top</option><option value="center">Center</option><option value="bottom" selected>Bottom</option></select></div>
+<div class="control"><label>🔊 Volume</label><input id="volume" type="range" min="0" max="1" step=".01" value="1"></div>
+<div class="control full"><label>🎵 Background music</label><input id="musicInput" type="file" accept="audio/*"></div>
+</div>
+<div class="editor-actions">
+<button id="muteBtn" class="action-btn">🔇 Mute</button>
+<button id="downloadBtn" class="action-btn">⬇️ Download</button>
+<button id="exportBtn" class="action-btn">🎬 Export Short 1080×1920</button>
+</div>
+<div id="editorStatus" class="editor-status">🎬 Upload a video to begin.</div>
+</section></main>
+
+<script>
+let selectedVideoURL = null;
+
+const videoInput = document.getElementById("videoInput");
+const videoPreview = document.getElementById("videoPreview");
+const previewWrap = document.getElementById("previewWrap");
+const videoInfo = document.getElementById("videoInfo");
+const playBtn = document.getElementById("playBtn");
+const removeBtn = document.getElementById("removeBtn");
+
+videoInput.addEventListener("change", function(){
+  const file = this.files[0];
+
+  if(!file) return;
+
+  if(selectedVideoURL){
+    URL.revokeObjectURL(selectedVideoURL);
+  }
+
+  selectedVideoURL = URL.createObjectURL(file);
+
+  videoPreview.src = selectedVideoURL;
+  videoPreview.style.display = "block";
+
+  const empty = previewWrap.querySelector(".empty-preview");
+  if(empty) empty.style.display = "none";
+
+  videoInfo.textContent =
+    file.name + " • " + (file.size / 1024 / 1024).toFixed(1) + " MB";
+
+  videoPreview.load();
+});
+
+playBtn.addEventListener("click", function(){
+  if(!videoPreview.src) return;
+
+  if(videoPreview.paused){
+    videoPreview.play();
+    playBtn.textContent = "⏸️ Pause";
+  }else{
+    videoPreview.pause();
+    playBtn.textContent = "▶️ Play";
+  }
+});
+
+videoPreview.addEventListener("play", function(){
+  playBtn.textContent = "⏸️ Pause";
+});
+
+videoPreview.addEventListener("pause", function(){
+  playBtn.textContent = "▶️ Play";
+});
+
+removeBtn.addEventListener("click", function(){
+  if(selectedVideoURL){
+    URL.revokeObjectURL(selectedVideoURL);
+    selectedVideoURL = null;
+  }
+
+  videoPreview.pause();
+  videoPreview.removeAttribute("src");
+  videoPreview.load();
+  videoPreview.style.display = "none";
+
+  const empty = previewWrap.querySelector(".empty-preview");
+  if(empty) empty.style.display = "block";
+
+  videoInfo.textContent = "";
+  videoInput.value = "";
+  playBtn.textContent = "▶️ Play";
+});
+
+async function generateShorts(){
+
+  const url=document.getElementById("url").value.trim();
+  const button=document.getElementById("generateBtn");
+  const status=document.getElementById("status");
+
+  if(!url){
+    status.textContent="⚠️ Paste a video URL first.";
+    return;
+  }
+
+  button.disabled=true;
+  status.textContent="📥 Downloading video...";
+
+  try{
+
+    const download=await fetch("http://192.168.0.80:8080/api/download",{
+      method:"POST",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify({url})
+    });
+
+    const data=await download.json();
+
+    if(!data.success){
+      throw new Error(data.error || "Download failed.");
+    }
+
+    status.textContent="🧠 Finding the best moments...";
+
+    const response=await fetch("/api/generate",{
+      method:"POST"
+    });
+
+    const result=await response.json();
+
+    if(!result.success){
+      throw new Error(result.error || "Generation failed.");
+    }
+
+    status.textContent="✂️ Generating your 5 Shorts...";
+
+  }catch(error){
+
+    status.innerHTML=
+      "❌ "+error.message;
+
+  }finally{
+
+    button.disabled=false;
+
+  }
+}
+</script>
+
+<script>
+const vi=document.getElementById("videoInput"),v=document.getElementById("videoPreview"),tl=document.getElementById("timeline"),ci=document.getElementById("captionInput"),ct=document.getElementById("captionText"),vol=document.getElementById("volume"),es=document.getElementById("editorStatus");
+vi.onchange=()=>{const f=vi.files[0];if(!f)return;v.src=URL.createObjectURL(f);es.textContent="✅ Video loaded.";};
+v.onloadedmetadata=()=>tl.max=v.duration;
+v.ontimeupdate=()=>tl.value=v.currentTime;
+tl.oninput=()=>v.currentTime=tl.value;
+ci.oninput=()=>ct.textContent=ci.value;
+vol.oninput=()=>v.volume=vol.value;
+document.getElementById("exportBtn").onclick=()=>es.textContent=v.src?"ℹ️ Export renderer ready for server connection.":"⚠️ Upload a video first.";
+</script><script>
+(function(){
+const $=id=>document.getElementById(id),v=$("videoPreview");
+let videoFile=null,url=null;
+$("videoInput").onchange=function(){videoFile=this.files[0];if(!videoFile)return;if(url)URL.revokeObjectURL(url);url=URL.createObjectURL(videoFile);v.src=url;v.load();$("editorStatus").textContent="✅ Video loaded.";};
+v.onloadedmetadata=function(){let d=v.duration||0;$("startTime").max=d;$("endTime").max=d;$("endTime").value=d;$("endLabel").textContent=d.toFixed(2)+"s";};
+$("startTime").oninput=function(){if(+this.value>=+$("endTime").value)this.value=Math.max(0,+$("endTime").value-.01);$("startLabel").textContent=(+this.value).toFixed(2)+"s";};
+$("endTime").oninput=function(){if(+this.value<=+$("startTime").value)this.value=Math.min(v.duration,+$("startTime").value+.01);$("endLabel").textContent=(+this.value).toFixed(2)+"s";};
+v.ontimeupdate=function(){if(+$("endTime").value&&v.currentTime>=+$("endTime").value){v.pause();v.currentTime=+$("startTime").value;}};
+$("captionInput").oninput=function(){$("captionText").textContent=this.value;};
+$("captionSize").oninput=function(){$("captionText").style.fontSize=this.value+"px";};
+$("captionColor").oninput=function(){$("captionText").style.color=this.value;};
+$("captionPosition").onchange=function(){let c=$("captionText");c.style.top=this.value==="top"?"10%":this.value==="center"?"42%":"auto";c.style.bottom=this.value==="bottom"?"12%":"auto";};
+$("volume").oninput=function(){v.volume=+this.value;};
+$("muteBtn").onclick=function(){v.muted=!v.muted;this.textContent=v.muted?"🔊 Unmute":"🔇 Mute";};
+$("downloadBtn").onclick=function(){if(!videoFile){$("editorStatus").textContent="⚠️ Upload a video first.";return;}let a=document.createElement("a");a.href=url;a.download=videoFile.name;a.click();};
+$("exportBtn").onclick=function(){$("editorStatus").textContent=videoFile?"🚀 Export pipeline ready — backend connection is the next step.":"⚠️ Upload a video first.";};
+})();
+</script>
+<section id="aboutGeoXShorts" style="max-width:1180px;margin:30px auto 60px;padding:30px;background:#0d0d13;border:1px solid #292936;border-radius:24px;text-align:left"><h2 style="margin-top:0">About GeoXShorts 🎬</h2><p style="color:#aaa;line-height:1.7">GeoXShorts este un proiect independent creat de <strong style="white-space:nowrap">Geo FF</strong>, dedicat creării rapide de videoclipuri verticale și Shorts.</p><p style="color:#aaa;line-height:1.7">Proiectul este dezvoltat cu ajutorul instrumentelor AI, iar direcția, conceptul și deciziile finale aparțin creatorului.</p><div style="margin:20px 0;padding:16px;border-radius:15px;background:#0b1610;border:1px solid #1c4b2a;color:#9ae6b4;line-height:1.6">🛡️ <strong>Trust & Transparency</strong><br>GeoXShorts este un proiect independent și identificabil. Nu solicităm parole de social media, parole GitHub sau date bancare pentru utilizarea de bază a editorului.</div><h3>Creator & Social Media</h3><div style="display:flex;flex-wrap:wrap;gap:10px"><a class="feature" href="https://youtube.com/@geo_ff" target="_blank">▶ YouTube</a><a class="feature" href="https://www.tiktok.com/@geo_ff.hs" target="_blank">♪ TikTok</a><a class="feature" href="https://www.instagram.com/geo_ff.hs" target="_blank">◎ Instagram</a><a class="feature" href="https://github.com/GeoXShortsOfficial/geoxshorts" target="_blank">⌘ GitHub</a><a class="feature" href="https://discord.gg/cTwvS6xfY" target="_blank">💬 Discord Server</a></div><p style="color:#888;margin-top:18px">Discord: <strong style="color:#ddd">geoff2003</strong></p><div style="margin-top:20px;padding:14px;background:#111118;border:1px solid #292936;border-radius:14px;color:#aaa">📧 <strong style="color:#fff">Support</strong><br>Official support email will be published here before the public launch.</div></section>
+<div id="adjustPanel" class="adjust-panel">
+  <div class="adjust-header">
+    <strong>🎨 Adjust</strong>
+    <button type="button" id="resetAdjust">Reset</button>
+  </div>
+
+  <div class="adjust-grid">
+    <label>☀️ Brightness <output id="brightnessVal">0</output>
+      <input id="brightness" type="range" min="-100" max="100" value="0">
+    </label>
+
+    <label>◐ Contrast <output id="contrastVal">0</output>
+      <input id="contrast" type="range" min="-100" max="100" value="0">
+    </label>
+
+    <label>🎨 Saturation <output id="saturationVal">0</output>
+      <input id="saturation" type="range" min="-100" max="100" value="0">
+    </label>
+
+    <label>🌡️ Temperature <output id="temperatureVal">0</output>
+      <input id="temperature" type="range" min="-100" max="100" value="0">
+    </label>
+
+    <label>🟢 Tint <output id="tintVal">0</output>
+      <input id="tint" type="range" min="-100" max="100" value="0">
+    </label>
+
+    <label>✨ Clarity <output id="clarityVal">0</output>
+      <input id="clarity" type="range" min="-100" max="100" value="0">
+    </label>
+
+    <label>🌑 Highlights <output id="highlightsVal">0</output>
+      <input id="highlights" type="range" min="-100" max="100" value="0">
+    </label>
+
+    <label>🌒 Shadows <output id="shadowsVal">0</output>
+      <input id="shadows" type="range" min="-100" max="100" value="0">
+    </label>
+
+    <label>⚪ Whites <output id="whitesVal">0</output>
+      <input id="whites" type="range" min="-100" max="100" value="0">
+    </label>
+
+    <label>⚫ Blacks <output id="blacksVal">0</output>
+      <input id="blacks" type="range" min="-100" max="100" value="0">
+    </label>
+
+    <label>🎞️ Exposure <output id="exposureVal">0</output>
+      <input id="exposure" type="range" min="-100" max="100" value="0">
+    </label>
+
+    <label>🌫️ Fade <output id="fadeVal">0</output>
+      <input id="fade" type="range" min="0" max="100" value="0">
+    </label>
+
+    <label>🎚️ Vignette <output id="vignetteVal">0</output>
+      <input id="vignette" type="range" min="0" max="100" value="0">
+    </label>
+
+    <label>🖌️ Grain <output id="grainVal">0</output>
+      <input id="grain" type="range" min="0" max="100" value="0">
+    </label>
+  </div>
+</div>
+
+
+<script id="adjustScript">
+(function(){
+  const ids=[
+    "brightness","contrast","saturation","temperature","tint",
+    "clarity","highlights","shadows","whites","blacks",
+    "exposure","fade","vignette","grain"
+  ];
+
+  const values={};
+  ids.forEach(id=>{
+    const el=document.getElementById(id);
+    const out=document.getElementById(id+"Val");
+    if(!el) return;
+
+    values[id]=0;
+
+    el.addEventListener("input",()=>{
+      values[id]=Number(el.value);
+      out.textContent=el.value;
+      applyAdjustments();
+    });
+  });
+
+  function applyAdjustments(){
+    const v=document.getElementById("videoPreview");
+    if(!v) return;
+
+    const brightness=100+values.brightness;
+    const contrast=100+values.contrast;
+    const saturation=100+values.saturation;
+    const exposure=values.exposure/100;
+
+    v.style.filter=
+      `brightness(${brightness}%) `+
+      `contrast(${contrast}%) `+
+      `saturate(${saturation}%) `+
+      `sepia(${Math.max(0,values.temperature)/180}) `+
+      `hue-rotate(${values.tint}deg) `+
+      `brightness(${1+exposure})`;
+
+    v.dataset.adjustments=JSON.stringify(values);
+  }
+
+  document.getElementById("resetAdjust").onclick=()=>{
+    ids.forEach(id=>{
+      const el=document.getElementById(id);
+      const out=document.getElementById(id+"Val");
+      if(el){
+        el.value=0;
+        values[id]=0;
+        out.textContent="0";
+      }
+    });
+    applyAdjustments();
+  };
+})();
+</script>
+
+
+<script id="geoToolScript">
+(function(){
+  const tools=document.querySelectorAll(".geo-tool");
+  const props=document.querySelector(".geo-properties");
+  if(!tools.length || !props) return;
+
+  const panels={
+    "Media":`
+      <div class="geo-panel-title">MEDIA</div>
+      <button class="geo-tool">📤 Upload Video</button>
+      <button class="geo-tool">🖼️ Add Image</button>
+      <p style="color:#777;font-size:12px">Importă materiale pentru proiect.</p>`,
+
+    "Text":`
+      <div class="geo-panel-title">TEXT</div>
+      <button class="geo-tool">＋ Add Text</button>
+      <button class="geo-tool">🔤 Captions</button>
+      <div class="control"><strong>Font</strong><p style="color:#777;font-size:12px">Inter • Bold • 48px</p></div>`,
+
+    "Audio":`
+      <div class="geo-panel-title">AUDIO</div>
+      <button class="geo-tool">🎵 Add Music</button>
+      <button class="geo-tool">🎙️ Voiceover</button>
+      <div class="control"><strong>Volume</strong><input type="range" min="0" max="100" value="100" style="width:100%"></div>`,
+
+    "Effects":`
+      <div class="geo-panel-title">EFFECTS</div>
+      <button class="geo-tool">✨ Blur</button>
+      <button class="geo-tool">💫 Glow</button>
+      <button class="geo-tool">⚡ Motion</button>`,
+
+    "Filters":`
+      <div class="geo-panel-title">FILTERS</div>
+      <button class="geo-tool">Original</button>
+      <button class="geo-tool">Cinematic</button>
+      <button class="geo-tool">Vivid</button>
+      <button class="geo-tool">B&W</button>`,
+
+    "Adjust":`
+      <div class="geo-panel-title">ADJUST</div>
+      <p style="color:#999;font-size:12px">Folosește panoul Adjust pentru reglaje profesionale.</p>`,
+
+    "Captions":`
+      <div class="geo-panel-title">CAPTIONS</div>
+      <button class="geo-tool">✨ Auto Captions</button>
+      <button class="geo-tool">＋ Add Caption</button>
+      <div class="control"><strong>Style</strong><p style="color:#777;font-size:12px">Bold • Center • Animated</p></div>`,
+
+    "Stickers":`
+      <div class="geo-panel-title">STICKERS</div>
+      <button class="geo-tool">🔥 Trending</button>
+      <button class="geo-tool">😂 Emoji</button>
+      <button class="geo-tool">⭐ Shapes</button>`,
+
+    "Transitions":`
+      <div class="geo-panel-title">TRANSITIONS</div>
+      <button class="geo-tool">✨ Fade</button>
+      <button class="geo-tool">⚡ Flash</button>
+      <button class="geo-tool">🔄 Zoom</button>`
+  };
+
+  tools.forEach(tool=>{
+    tool.addEventListener("click",()=>{
+      tools.forEach(t=>t.classList.remove("active"));
+      tool.classList.add("active");
+
+      const name=tool.textContent.trim().replace(/^[^\w]+/,"");
+      if(panels[name]){
+        props.innerHTML=panels[name];
+      }
+    });
+  });
+})();
+</script>
+
+
+<script id="geoVideoEngine">
+(function(){
+
+  const input=document.getElementById("videoInput");
+  const video=document.getElementById("videoPreview");
+  const stage=document.querySelector(".geo-stage");
+  const timeline=document.querySelector(".geo-timeline");
+
+  if(!input || !video || !stage || !timeline){
+    console.log("GeoXShorts: editor elements not ready");
+    return;
+  }
+
+  /* Move the existing video into the professional preview */
+  stage.appendChild(video);
+
+  video.style.display="block";
+  video.style.width="min(100%,360px)";
+  video.style.height="min(88%,640px)";
+  video.style.objectFit="contain";
+  video.style.background="#000";
+  video.style.borderRadius="14px";
+
+  /* Timeline controls */
+  let playhead=document.querySelector(".geo-playhead");
+  let clip=document.querySelector(".geo-clip");
+
+  function updateTimeline(){
+
+    if(!video.duration || !isFinite(video.duration)) return;
+
+    const percent=(video.currentTime/video.duration)*100;
+
+    if(playhead){
+      playhead.style.left=percent+"%";
+    }
+
+    if(clip){
+      clip.style.left="0%";
+      clip.style.width=Math.max(percent,1)+"%";
+    }
+
+    const timeLabel=document.querySelector(".geo-time span:first-child");
+
+    if(timeLabel){
+      timeLabel.textContent=formatTime(video.currentTime);
+    }
+
+  }
+
+  function formatTime(seconds){
+    if(!isFinite(seconds)) return "00:00";
+    const m=Math.floor(seconds/60);
+    const sec=Math.floor(seconds%60);
+    return String(m).padStart(2,"0")+":"+String(sec).padStart(2,"0");
+  }
+
+  video.addEventListener("loadedmetadata",()=>{
+    const labels=document.querySelectorAll(".geo-time span");
+
+    if(labels.length){
+      labels[labels.length-1].textContent=formatTime(video.duration);
+    }
+
+    updateTimeline();
+  });
+
+  video.addEventListener("timeupdate",updateTimeline);
+
+  /* Click timeline to seek */
+  const track=document.querySelector(".geo-track");
+
+  if(track){
+    track.addEventListener("click",(event)=>{
+
+      if(!video.duration || !isFinite(video.duration)) return;
+
+      const rect=track.getBoundingClientRect();
+      const percent=Math.min(
+        1,
+        Math.max(0,(event.clientX-rect.left)/rect.width)
+      );
+
+      video.currentTime=video.duration*percent;
+
+    });
+  }
+
+  /* Upload */
+  input.addEventListener("change",()=>{
+
+    const file=input.files && input.files[0];
+
+    if(!file) return;
+
+    if(!file.type.startsWith("video/")){
+      alert("Please select a video file.");
+      return;
+    }
+
+    if(window.geoVideoURL){
+      URL.revokeObjectURL(window.geoVideoURL);
+    }
+
+    window.geoVideoURL=URL.createObjectURL(file);
+
+    video.src=window.geoVideoURL;
+    video.load();
+
+    video.play().catch(()=>{});
+
+    const status=document.getElementById("editorStatus");
+
+    if(status){
+      status.textContent="🎬 "+file.name;
+    }
+
+  });
+
+})();
+</script>
+
+
+<script>
+(function(){
+const stage=document.querySelector(".geo-stage");
+const props=document.querySelector(".geo-properties");
+if(!stage||!props)return;
+const box=document.createElement("div");
+box.innerHTML=`${String.raw``}`;
+const old=document.getElementById("geoTextPro2");
+if(old)old.remove();
+props.insertAdjacentHTML("beforeend",`
+<div id="geoTextPro2" class="geo-text-pro">
+<div class="geo-panel-title">📝 TEXT PRO</div>
+<input id="geoTxt" placeholder="Scrie textul...">
+<select id="geoFont"><option>Arial</option><option>Inter</option><option>Impact</option><option>Georgia</option><option>Courier New</option></select>
+<label>🎨 Culoare <input id="geoColor" type="color" value="#ffffff"></label>
+<label>📏 Mărime <input id="geoSize" type="range" min="12" max="120" value="42"></label>
+<label>🌫️ Opacitate <input id="geoOpacity" type="range" min="0" max="100" value="100"></label>
+<div class="geo-text-actions">
+<button id="geoBold">B Bold</button>
+<button id="geoItalic">I Italic</button>
+<button id="geoLeft">↤ Stânga</button>
+<button id="geoCenter">↔ Centru</button>
+<button id="geoRight">↦ Dreapta</button>
+<button id="geoRotate">⟳ Rotire</button>
+<button id="geoAdd">＋ Adaugă</button>
+<button id="geoDelete">🗑️ Șterge</button>
+</div>
+</div>
+`);
+const txt=document.getElementById("geoTxt"),font=document.getElementById("geoFont"),color=document.getElementById("geoColor"),size=document.getElementById("geoSize"),opacity=document.getElementById("geoOpacity");
+let item=null,rot=0,bold=true,italic=false,align="center";
+function update(){
+ if(!item)return;
+ item.textContent=txt.value||"Text";
+ item.style.fontFamily=font.value;
+ item.style.color=color.value;
+ item.style.fontSize=size.value+"px";
+ item.style.opacity=opacity.value/100;
+ item.style.fontWeight=bold?"900":"400";
+ item.style.fontStyle=italic?"italic":"normal";
+ item.style.textAlign=align;
+ item.style.transform=`translate(-50%,-50%) rotate(${rot}deg)`;
+}
+document.getElementById("geoAdd").onclick=()=>{
+ if(item)item.remove();
+ item=document.createElement("div");
+ item.className="geo-overlay";
+ item.textContent=txt.value||"Text";
+ stage.appendChild(item);
+ update();
+};
+[txt,font,color,size,opacity].forEach(x=>x.addEventListener("input",update));
+document.getElementById("geoBold").onclick=()=>{bold=!bold;update()};
+document.getElementById("geoItalic").onclick=()=>{italic=!italic;update()};
+document.getElementById("geoLeft").onclick=()=>{align="left";update()};
+document.getElementById("geoCenter").onclick=()=>{align="center";update()};
+document.getElementById("geoRight").onclick=()=>{align="right";update()};
+document.getElementById("geoRotate").onclick=()=>{rot=(rot+15)%360;update()};
+document.getElementById("geoDelete").onclick=()=>{if(item){item.remove();item=null}};
+})();
+</script>
+
+<script id="geoAudioEngine">
+(function(){
+const props=document.querySelector(".geo-properties");
+if(!props)return;
+if(document.getElementById("geoAudioPro"))return;
+props.insertAdjacentHTML("beforeend",`
+<div id="geoAudioPro" class="geo-audio-pro">
+<div class="geo-panel-title">🎵 AUDIO PRO</div>
+<input id="geoAudioFile" type="file" accept="audio/*">
+<div id="geoAudioName" class="geo-audio-name">Niciun fișier audio</div>
+<div class="geo-audio-row">
+<button id="geoAudioPlay">▶️ Play</button>
+<button id="geoAudioMute">🔊 Mute</button>
+<button id="geoAudioRemove">🗑️</button>
+</div>
+<label>🔊 Volume <input id="geoAudioVolume" type="range" min="0" max="100" value="100"></label>
+<label>↗️ Fade In <input id="geoFadeIn" type="range" min="0" max="10" value="0"></label>
+<label>↘️ Fade Out <input id="geoFadeOut" type="range" min="0" max="10" value="0"></label>
+</div>
+`);
+const file=document.getElementById("geoAudioFile");
+const audio=document.createElement("audio");
+audio.preload="auto";
+let url=null;
+const name=document.getElementById("geoAudioName");
+const vol=document.getElementById("geoAudioVolume");
+const play=document.getElementById("geoAudioPlay");
+const mute=document.getElementById("geoAudioMute");
+file.onchange=()=>{
+ const f=file.files&&file.files[0];
+ if(!f)return;
+ if(url)URL.revokeObjectURL(url);
+ url=URL.createObjectURL(f);
+ audio.src=url;
+ name.textContent=f.name;
+ audio.load();
+};
+play.onclick=()=>{
+ if(!audio.src)return;
+ if(audio.paused){audio.play();play.textContent="⏸️ Pause"}
+ else{audio.pause();play.textContent="▶️ Play"}
+};
+vol.oninput=()=>audio.volume=Number(vol.value)/100;
+mute.onclick=()=>{
+ audio.muted=!audio.muted;
+ mute.textContent=audio.muted?"🔇 Unmute":"🔊 Mute";
+};
+document.getElementById("geoAudioRemove").onclick=()=>{
+ audio.pause();
+ audio.removeAttribute("src");
+ if(url)URL.revokeObjectURL(url);
+ url=null;
+ name.textContent="Niciun fișier audio";
+};
+})();
+</script>
+</body>
+</html>
