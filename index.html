@@ -3793,54 +3793,7 @@ Ajustări gratuite • fără AI
 
 </div>
 ("beforeend", `
-<div id="geoEnhanceFree">
 
-<div class="geo-enhance-title">
-✨ QUICK ENHANCE • FREE
-</div>
-
-<div class="geo-enhance-grid">
-<button id="geoQuickEnhance">✨ Quick Enhance</button>
-<button id="geoResetEnhance">↩️ Reset</button>
-</div>
-
-<div class="geo-enhance-control">
-<label>
-<span>🔎 Claritate</span>
-<span id="geoClarityValue">0</span>
-</label>
-<input id="geoClarity" type="range" min="0" max="100" value="0">
-</div>
-
-<div class="geo-enhance-control">
-<label>
-<span>🧩 Structură</span>
-<span id="geoStructureValue">0</span>
-</label>
-<input id="geoStructure" type="range" min="0" max="100" value="0">
-</div>
-
-<div class="geo-enhance-control">
-<label>
-<span>☀️ Contrast</span>
-<span id="geoContrastValue">0</span>
-</label>
-<input id="geoContrast" type="range" min="-50" max="50" value="0">
-</div>
-
-<div class="geo-enhance-control">
-<label>
-<span>🎨 Saturație</span>
-<span id="geoSaturationValue">0</span>
-</label>
-<input id="geoSaturation" type="range" min="-50" max="50" value="0">
-</div>
-
-<div id="geoEnhanceStatus" class="geo-enhance-status">
-Ajustări gratuite • fără AI
-</div>
-
-</div>
 `);
 
 const clarity = document.getElementById("geoClarity");
@@ -3980,41 +3933,7 @@ Apasă „Verifică” înainte de export.
 
 </div>
 ("beforeend",`
-<div id="geoSmartExportFree">
 
-<div class="geo-export-title">
-📤 SMART EXPORT • FREE
-</div>
-
-<div class="geo-export-grid">
-<select id="geoExportResolution">
-<option value="1080">1080p</option>
-<option value="720">720p</option>
-</select>
-
-<select id="geoExportFPS">
-<option value="30">30 FPS</option>
-<option value="60">60 FPS</option>
-</select>
-
-<button id="geoCheckExport">
-🔍 Verifică
-</button>
-
-<button id="geoStartExport">
-📤 Export
-</button>
-</div>
-
-<div id="geoExportCheck" class="geo-export-check">
-Apasă „Verifică” înainte de export.
-</div>
-
-<div id="geoSmartExportStatus" class="geo-export-status">
-1080p • 30/60 FPS • FREE
-</div>
-
-</div>
 `);
 
 const resolution=document.getElementById("geoExportResolution");
@@ -4032,41 +3951,7 @@ function runCheck(){
 
  if(video.videoWidth && video.videoHeight){
    check.inner
-<div id="geoSmartExportFree">
 
-<div class="geo-export-title">
-📤 SMART EXPORT • FREE
-</div>
-
-<div class="geo-export-grid">
-<select id="geoExportResolution">
-<option value="1080">1080p</option>
-<option value="720">720p</option>
-</select>
-
-<select id="geoExportFPS">
-<option value="30">30 FPS</option>
-<option value="60">60 FPS</option>
-</select>
-
-<button id="geoCheckExport">
-🔍 Verifică
-</button>
-
-<button id="geoStartExport">
-📤 Export
-</button>
-</div>
-
-<div id="geoExportCheck" class="geo-export-check">
-Apasă „Verifică” înainte de export.
-</div>
-
-<div id="geoSmartExportStatus" class="geo-export-status">
-1080p • 30/60 FPS • FREE
-</div>
-
-</div>
 =
     "✅ Video detectat: "+
     video.videoWidth+"×"+video.videoHeight+
@@ -4075,41 +3960,7 @@ Apasă „Verifică” înainte de export.
       video.duration.toFixed(1)+" secunde":"necunoscută");
  }else{
    check.inner
-<div id="geoSmartExportFree">
 
-<div class="geo-export-title">
-📤 SMART EXPORT • FREE
-</div>
-
-<div class="geo-export-grid">
-<select id="geoExportResolution">
-<option value="1080">1080p</option>
-<option value="720">720p</option>
-</select>
-
-<select id="geoExportFPS">
-<option value="30">30 FPS</option>
-<option value="60">60 FPS</option>
-</select>
-
-<button id="geoCheckExport">
-🔍 Verifică
-</button>
-
-<button id="geoStartExport">
-📤 Export
-</button>
-</div>
-
-<div id="geoExportCheck" class="geo-export-check">
-Apasă „Verifică” înainte de export.
-</div>
-
-<div id="geoSmartExportStatus" class="geo-export-status">
-1080p • 30/60 FPS • FREE
-</div>
-
-</div>
 =
     issues.length?
       issues.join("<br>"):
@@ -4131,41 +3982,7 @@ document.getElementById("geoStartExport")
 
  if(!video.src){
    check.inner
-<div id="geoSmartExportFree">
 
-<div class="geo-export-title">
-📤 SMART EXPORT • FREE
-</div>
-
-<div class="geo-export-grid">
-<select id="geoExportResolution">
-<option value="1080">1080p</option>
-<option value="720">720p</option>
-</select>
-
-<select id="geoExportFPS">
-<option value="30">30 FPS</option>
-<option value="60">60 FPS</option>
-</select>
-
-<button id="geoCheckExport">
-🔍 Verifică
-</button>
-
-<button id="geoStartExport">
-📤 Export
-</button>
-</div>
-
-<div id="geoExportCheck" class="geo-export-check">
-Apasă „Verifică” înainte de export.
-</div>
-
-<div id="geoSmartExportStatus" class="geo-export-status">
-1080p • 30/60 FPS • FREE
-</div>
-
-</div>
 ="⚠️ Încarcă un videoclip înainte de export.";
    return;
  }
@@ -4180,41 +3997,7 @@ Apasă „Verifică” înainte de export.
  */
 
  check.inner
-<div id="geoSmartExportFree">
 
-<div class="geo-export-title">
-📤 SMART EXPORT • FREE
-</div>
-
-<div class="geo-export-grid">
-<select id="geoExportResolution">
-<option value="1080">1080p</option>
-<option value="720">720p</option>
-</select>
-
-<select id="geoExportFPS">
-<option value="30">30 FPS</option>
-<option value="60">60 FPS</option>
-</select>
-
-<button id="geoCheckExport">
-🔍 Verifică
-</button>
-
-<button id="geoStartExport">
-📤 Export
-</button>
-</div>
-
-<div id="geoExportCheck" class="geo-export-check">
-Apasă „Verifică” înainte de export.
-</div>
-
-<div id="geoSmartExportStatus" class="geo-export-status">
-1080p • 30/60 FPS • FREE
-</div>
-
-</div>
 =
   "🚀 Export pregătit<br>"+
   "Rezoluție: "+res+"p<br>"+
