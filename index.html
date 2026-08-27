@@ -2455,7 +2455,28 @@ body{background:radial-gradient(900px 520px at 50% -15%,#35134f 0,transparent 68
 .gx-footer{text-align:center;margin-top:45px;padding:25px 10px;color:#8f849c;font-size:12px}
 .gx-footer .gxbrand{font-size:13px}
 @media(max-width:600px){.gx-projects{grid-template-columns:1fr}.gx-project{min-height:105px}}
-</style></head>
+</style>
+<style id="geox-professional-brand">
+.geo-brand{display:inline-flex!important;align-items:center!important;gap:7px!important;white-space:nowrap!important;font-weight:900!important;letter-spacing:-.04em!important}
+.geo-brand-main{background:linear-gradient(90deg,#8b5cf6 0%,#c026d3 48%,#ec4899 100%);-webkit-background-clip:text;background-clip:text;color:transparent!important;background-size:180% 100%;animation:geoBrand 4s ease-in-out infinite}
+.geo-brand-shorts{color:#fff!important}
+.geo-brand-icon{display:inline-flex;align-items:center;justify-content:center;color:#fff!important;animation:geoCam 1.8s ease-in-out infinite;filter:drop-shadow(0 0 7px rgba(236,72,153,.55))}
+.geo-brand-icon svg{width:1em;height:1em}
+@keyframes geoBrand{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+@keyframes geoCam{0%,100%{transform:scale(1);opacity:.82}50%{transform:scale(1.13);opacity:1;filter:drop-shadow(0 0 12px rgba(192,38,211,.9))}}
+@media(max-width:700px){
+  body{overflow-x:hidden!important}
+  header,nav,main,section,.container,.content,.panel{box-sizing:border-box!important;max-width:100%!important}
+  header{justify-content:center!important;text-align:center!important}
+  main,section{margin-left:auto!important;margin-right:auto!important}
+  .geo-brand{font-size:clamp(20px,6vw,30px)!important}
+  button{min-height:42px}
+}
+@media(min-width:701px){
+  .geo-brand{font-size:clamp(22px,2vw,32px)!important}
+}
+</style>
+</head>
 
 <body>
 
@@ -6672,7 +6693,16 @@ function brand(){document.querySelectorAll('header,footer').forEach(e=>{if(/GeoX
 function choices(){let h=[...document.querySelectorAll('h1,h2,h3')].find(e=>/Creează un proiect nou/i.test(e.textContent));if(h&&!document.querySelector('.gxchoices')){let d=document.createElement('div');d.className='gxchoices';d.innerHTML='<button>🎬<br>VIDEO</button><button>🖼️<br>PHOTO</button><button>▦<br>COLAJE</button>';h.parentElement.appendChild(d);d.children[0].onclick=()=>media('video');d.children[1].onclick=()=>media('photo');d.children[2].onclick=()=>media('all')}}
 function tools(){document.querySelectorAll('button,[role=button]').forEach(b=>{if(b.dataset.gx)return;let t=(b.textContent||'').trim(),n=names.find(x=>t.toLowerCase().includes(x.toLowerCase()));if(!n)return;b.dataset.gx=1;b.addEventListener('click',e=>{if(n==='Media'){e.preventDefault();media('all');return}if(n==='Export'){alert('GeoXShorts: export pregătit');return}let p=document.querySelector('.gxpanel')||document.body.appendChild(Object.assign(document.createElement('div'),{className:'gxpanel'}));p.innerHTML='<h3>'+n+'</h3><button onclick="this.parentElement.remove()">Închide</button><p>Instrumentul '+n+' este activ pentru materialul selectat.</p>'})})}
 function run(){brand();choices();tools()}new MutationObserver(run).observe(document.body,{childList:true,subtree:true});run()
-})();</script></body>
+})();</script>
+<script id="geox-brand-runtime">
+(()=>{const icon='<span class="geo-brand-icon" aria-hidden="true">🎥</span>';
+const make=()=>{document.querySelectorAll('[data-geox-brand]').forEach(e=>e.innerHTML='<span class="geo-brand-main">GeoX</span><span class="geo-brand-shorts">Shorts</span> '+icon);
+const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);const a=[];while(w.nextNode())a.push(w.currentNode);
+a.forEach(n=>{if(/GeoX\s*Shorts|GeoXShorts|JXShorts|JXShortsPages/i.test(n.nodeValue)){const e=document.createElement('span');e.className='geo-brand';e.setAttribute('data-geox-brand','1');e.innerHTML='<span class="geo-brand-main">GeoX</span><span class="geo-brand-shorts">Shorts</span> '+icon;n.parentNode.replaceChild(e,n)}})};
+if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',make);else make();
+new MutationObserver(make).observe(document.body,{childList:true,subtree:true})})();
+</script>
+</body>
 </html>
 
 <style id="geoFreeUiCleanup">
