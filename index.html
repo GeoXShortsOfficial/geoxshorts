@@ -6511,7 +6511,33 @@ else init();
 setTimeout(init,1000);
 })();
 </script>
-</body>
+<style id="geoxHomeUI">
+html,body{margin:0!important;background:#090510!important;color:#fff!important;font-family:Arial,sans-serif}
+#gxHome{position:fixed;inset:0;z-index:99999;overflow:auto;background:radial-gradient(900px 450px at 50% -8%,rgba(124,58,237,.3),transparent 70%),#090510}
+#gxHome header{height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;border-bottom:1px solid #30203e;background:rgba(12,6,18,.86);backdrop-filter:blur(16px)}
+#gxLogo{font-size:22px;font-weight:900;letter-spacing:-.04em;background:linear-gradient(90deg,#7c3aed,#a855f7,#ec4899,#7c3aed);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gxg 4s linear infinite}
+#gxMenu{width:42px;height:42px;border:1px solid #5b2a86;border-radius:12px;background:linear-gradient(135deg,#6d28d9,#a855f7);color:#fff;font-size:22px}
+.gxWrap{max-width:900px;margin:auto;padding:58px 20px 80px;text-align:center}
+.gxTitle{font-size:clamp(42px,9vw,78px);line-height:1.02;margin:0;font-weight:900;letter-spacing:-.05em}
+.gxGrad{background:linear-gradient(90deg,#7c3aed,#a855f7,#ec4899,#7c3aed);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gxg 4s linear infinite}
+.gxDesc{max-width:650px;margin:18px auto 0;color:#a99db4;font-size:17px;line-height:1.65}
+.gxFeatures{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin:18px auto 34px}
+.gxFeature{padding:9px 13px;border:1px solid #33233f;background:#140d1c;border-radius:999px;color:#d9cede;font-size:13px}
+.gxCard{max-width:760px;margin:0 auto 34px;padding:20px;border:1px solid #392248;border-radius:22px;background:linear-gradient(145deg,rgba(25,15,34,.96),rgba(14,9,20,.96));box-shadow:0 20px 55px rgba(0,0,0,.25)}
+.gxCard h2{margin:0 0 15px;font-size:21px}
+.gxTypes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.gxType{border:1px solid #3a2944;border-radius:17px;padding:24px 12px;background:#17101f;color:#fff;font-weight:800;cursor:pointer;transition:.2s}
+.gxType:hover{transform:translateY(-4px);border-color:#a855f7;box-shadow:0 12px 30px rgba(168,85,247,.2)}
+.gxIcon{font-size:30px;display:block;margin-bottom:9px}
+#gxProjects{text-align:left}
+.gxProject{display:flex;align-items:center;gap:12px;padding:13px;border:1px solid #30203b;border-radius:14px;background:#120c18;margin-top:9px}
+.gxPIcon{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,#6d28d9,#ec4899)}
+#gxAbout{display:none;position:fixed;inset:0;z-index:100000;background:rgba(3,1,7,.78);align-items:center;justify-content:center;padding:20px}
+.gxAboutBox{max-width:430px;width:100%;padding:24px;border:1px solid #4b2860;border-radius:20px;background:#120b19;text-align:left}
+.gxClose{width:100%;margin-top:18px;padding:12px;border:0;border-radius:12px;background:linear-gradient(90deg,#7c3aed,#ec4899);color:#fff;font-weight:800}
+@keyframes gxg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
+@media(max-width:650px){.gxTypes{grid-template-columns:1fr}.gxWrap{padding-top:42px}.gxTitle{font-size:48px}}
+</style><div id="gxHome"><header><div id="gxLogo">GeoXShorts</div><button id="gxMenu">⋮</button></header><div class="gxWrap"><h1 class="gxTitle">Editează <span class="gxGrad">Shorts</span><br>direct din telefon</h1><p class="gxDesc">Creează și editează videoclipuri rapid, direct din browser.</p><div class="gxFeatures"><span class="gxFeature">Timeline</span><span class="gxFeature">Text</span><span class="gxFeature">Effects</span><span class="gxFeature">Audio</span><span class="gxFeature">Keyframes</span><span class="gxFeature">Export 1080p</span><span class="gxFeature">Fără instalare</span></div><div class="gxCard"><h2>Creează un proiect nou</h2><div class="gxTypes"><button class="gxType" data-open="video"><span class="gxIcon">🎬</span>Video</button><button class="gxType" data-open="photo"><span class="gxIcon">🖼️</span>Photo</button><button class="gxType" data-open="collage"><span class="gxIcon">▦</span>Collage</button></div></div><div class="gxCard" id="gxProjects"><h2>Proiectele mele</h2><div class="gxProject"><div class="gxPIcon">🎬</div><div><strong>GeoXShorts Editor</strong><br><small style="color:#998ba5">Video · 9:16 · Editor</small></div></div></div></div></div><div id="gxAbout"><div class="gxAboutBox"><h2 style="margin-top:0">About Me</h2><h3 style="color:#c084fc;margin-bottom:6px">Geoffrey Fire</h3><p style="color:#afa2b9;line-height:1.6">Creatorul GeoXShorts — un editor video creat pentru Shorts, Reels și TikTok.</p><p style="color:#afa2b9">📧 contact@geoxshorts.app</p><button class="gxClose" id="gxClose">Închide</button></div></div><script>(function(){const h=document.getElementById("gxHome"),a=document.getElementById("gxAbout"),m=document.getElementById("gxMenu"),c=document.getElementById("gxClose");m.onclick=()=>a.style.display="flex";c.onclick=()=>a.style.display="none";document.querySelectorAll(".gxType").forEach(b=>b.onclick=()=>{h.style.display="none";window.scrollTo(0,0)});})();</script></body>
 </html>
 
 <style id="geoFreeUiCleanup">
