@@ -802,7 +802,181 @@ gxTipsData.push(
 ["32 • CONTINUA","Daca ai ajuns aici, nu mai cauta perfectiunea inainte sa publici. Creeaza, publica, analizeaza, invata si imbunatateste urmatorul videoclip."]
 );
 </script>
-</body></html>
+<style id="gx-creator-tips-master">
+#gxCreatorTipsMaster{
+position:fixed;
+inset:0;
+z-index:99999;
+display:none;
+overflow-y:auto;
+background:
+radial-gradient(circle at 50% 0%,#35105c 0%,#100817 42%,#07050a 100%);
+padding:18px;
+font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif
+}
+#gxCreatorTipsMaster.gx-open{display:block}
+.gx-ct-wrap{max-width:1050px;margin:auto}
+.gx-ct-head{
+position:sticky;
+top:0;
+z-index:2;
+display:flex;
+align-items:center;
+justify-content:space-between;
+gap:12px;
+padding:14px 0 18px;
+background:linear-gradient(#100817ee,#100817cc,transparent)
+}
+.gx-ct-title{
+font-size:clamp(24px,5vw,38px);
+font-weight:950;
+margin:0;
+color:#fff;
+text-shadow:0 0 10px #fff,0 0 25px #b65cff,0 0 45px #8b35ff
+}
+.gx-ct-sub{
+margin:5px 0 0;
+color:#ddd;
+font-size:14px
+}
+.gx-ct-close{
+border:1px solid #b56cff;
+background:#21112f;
+color:#fff;
+border-radius:13px;
+padding:11px 16px;
+font-weight:900;
+cursor:pointer;
+box-shadow:0 0 18px #9b5cff66
+}
+.gx-ct-close:hover{
+box-shadow:0 0 28px #c084fcaa;
+transform:translateY(-1px)
+}
+.gx-ct-grid{
+display:grid;
+grid-template-columns:repeat(2,minmax(0,1fr));
+gap:14px;
+padding-bottom:35px
+}
+.gx-pro-tip{
+position:relative;
+overflow:hidden;
+padding:19px;
+border:1px solid #62338a;
+border-radius:20px;
+background:linear-gradient(145deg,#241432,#120b1c);
+box-shadow:0 10px 35px #0008,0 0 16px #8b5cf622;
+transition:.22s
+}
+.gx-pro-tip:before{
+content:"";
+position:absolute;
+top:0;
+left:-100%;
+width:70%;
+height:2px;
+background:linear-gradient(90deg,transparent,#fff,#c084fc,transparent);
+animation:gxTipShine 4s linear infinite
+}
+.gx-pro-tip:hover{
+transform:translateY(-3px);
+border-color:#c084fc;
+box-shadow:0 12px 38px #0009,0 0 28px #a855f744
+}
+.gx-pro-tip-num{
+font-size:12px;
+font-weight:950;
+color:#d8b4fe;
+text-shadow:0 0 10px #c084fc;
+letter-spacing:.5px
+}
+.gx-pro-tip h3{
+margin:5px 0 9px;
+font-size:18px;
+font-weight:950;
+color:#fff;
+text-shadow:0 0 9px #ffffff55
+}
+.gx-pro-tip p{
+margin:0;
+line-height:1.58;
+font-size:14px;
+color:#eee
+}
+@keyframes gxTipShine{
+0%{left:-100%}
+55%,100%{left:140%}
+}
+@media(max-width:700px){
+#gxCreatorTipsMaster{padding:11px}
+.gx-ct-grid{grid-template-columns:1fr;gap:11px}
+.gx-pro-tip{padding:16px}
+.gx-ct-head{align-items:flex-start}
+}
+</style>
+
+<div id="gxCreatorTipsMaster" aria-hidden="true">
+<div class="gx-ct-wrap">
+<div class="gx-ct-head">
+<div>
+<h2 class="gx-ct-title">💡 Creator Tips</h2>
+<p class="gx-ct-sub">Strategii practice pentru crestere, continut si dezvoltare in online.</p>
+</div>
+<button class="gx-ct-close" type="button" onclick="gxCloseCreatorTips()">✕ Inchide</button>
+</div>
+<div class="gx-ct-grid"><article class="gx-pro-tip"><div class="gx-pro-tip-num">01</div><h3>Nisa</h3><p>Alege un domeniu clar si construieste-ti identitatea in jurul lui.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">02</div><h3>Consecventa</h3><p>Daca alegi masini, gaming sau alt domeniu, ramai concentrat pe acea directie.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">03</div><h3>Exemplul Free Fire</h3><p>Am inceput cu Free Fire si am construit continutul in jurul acelui joc.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">04</div><h3>Rabdarea</h3><p>Rezultatele mici de la inceput nu inseamna ca proiectul nu poate creste.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">05</div><h3>Publicul</h3><p>Construieste pentru oamenii care te urmaresc, nu pentru algoritm in mod mecanic.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">06</div><h3>Hook-ul</h3><p>Primele 2-3 secunde trebuie sa ofere un motiv real pentru a continua.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">07</div><h3>Curiozitatea</h3><p>Deschide clipul cu o intrebare, o surpriza sau o informatie interesanta.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">08</div><h3>Fara introduceri inutile</h3><p>Evita sa consumi primele secunde cu formule lungi de salut.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">09</div><h3>Promisiunea</h3><p>Spune clar ce informatie sau valoare va primi privitorul.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">10</div><h3>Hook-uri diferite</h3><p>Testeaza mai multe inceputuri pentru aceeasi categorie de continut.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">11</div><h3>Creator Search Insights</h3><p>Cauta subiectele pe care oamenii le cauta deja.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">12</div><h3>Content Gap</h3><p>Identifica subiecte cautate pentru care exista putin continut bun.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">13</div><h3>Cerere mare</h3><p>Cauta subiecte unde exista interes real din partea publicului.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">14</div><h3>Concurenta</h3><p>Studiaza concurenta pentru a gasi un unghi diferit.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">15</div><h3>Nu copia</h3><p>Inspira-te din concepte, dar construieste propria executie.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">16</div><h3>Frecventa</h3><p>Posteaza suficient de des pentru a putea testa ce functioneaza.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">17</div><h3>Calitatea</h3><p>Mai multe videoclipuri nu inseamna automat rezultate mai bune.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">18</div><h3>Evita spamul</h3><p>Nu publica in exces continut fara valoare doar pentru volum.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">19</div><h3>Repeta succesul</h3><p>Daca o tema functioneaza, dezvolta alte idei din aceeasi categorie.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">20</div><h3>Nu copia 1:1</h3><p>Schimba povestea, unghiul, hook-ul si montajul.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">21</div><h3>Serii</h3><p>Transforma o idee buna intr-o serie cu episoade diferite.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">22</div><h3>Comentariile</h3><p>Foloseste intrebarile publicului ca inspiratie pentru clipuri noi.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">23</div><h3>Raspunsuri video</h3><p>O intrebare buna poate deveni direct urmatorul videoclip.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">24</div><h3>Elimina pauzele</h3><p>Taie momentele moarte din montaj.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">25</div><h3>Ritm</h3><p>Pastreaza informatia in miscare, fara segmente inutile.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">26</div><h3>Schimbarea cadrelor</h3><p>Variaza imaginile aproximativ la 1-2 secunde cand materialul permite.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">27</div><h3>B-roll</h3><p>Foloseste cadre suplimentare pentru a sustine ceea ce spui.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">28</div><h3>Zoom</h3><p>Foloseste zoom-ul pentru accent, nu permanent.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">29</div><h3>Efecte</h3><p>Foloseste efecte pentru dinamism, dar pastreaza mesajul clar.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">30</div><h3>Subtitrari</h3><p>Adauga subtitrari pentru persoanele care urmaresc fara sunet.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">31</div><h3>Contextul publicului</h3><p>Unii oameni urmaresc TikTok in autobuz, tren, magazin sau alte locuri.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">32</div><h3>Vocea</h3><p>Asigura-te ca vocea este clara si usor de inteles.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">33</div><h3>Muzica</h3><p>Alege muzica potrivita pentru atmosfera si subiect.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">34</div><h3>Sunete in trend</h3><p>Urmareste sunetele populare si foloseste-le cand se potrivesc continutului.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">35</div><h3>Drepturi de autor</h3><p>Respecta regulile platformei si drepturile asupra materialelor.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">36</div><h3>1080p</h3><p>Foloseste o calitate clara, potrivita pentru platforma.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">37</div><h3>60 FPS</h3><p>Pentru continut dinamic, 60 FPS poate oferi o miscare mai fluida.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">38</div><h3>Nu exagera cu 4K</h3><p>O rezolutie mai mare nu garanteaza un videoclip mai bun.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">39</div><h3>Colorizare</h3><p>Ajusteaza luminozitatea, contrastul, saturatia si claritatea cu masura.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">40</div><h3>Stil vizual</h3><p>Construieste un aspect recognoscibil pentru continutul tau.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">41</div><h3>SEO</h3><p>Foloseste natural termenii pe care publicul ii cauta.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">42</div><h3>Titlul</h3><p>Titlul trebuie sa fie clar, relevant si interesant.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">43</div><h3>Descrierea</h3><p>Foloseste descrierea pentru context si cuvinte relevante.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">44</div><h3>Hashtaguri</h3><p>Alege hashtaguri direct legate de subiect.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">45</div><h3>Nu forta SEO</h3><p>Nu repeta artificial aceleasi cuvinte.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">46</div><h3>Thumbnail</h3><p>Creeaza o imagine clara si atractiva acolo unde platforma o foloseste.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">47</div><h3>Format TikTok</h3><p>Pentru continut vertical foloseste formatul 9:16.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">48</div><h3>AI</h3><p>Foloseste instrumente AI pentru idei vizuale si concepte creative.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">49</div><h3>Identitate proprie</h3><p>Nu transforma profilul intr-o copie a altui creator.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">50</div><h3>Poza de profil</h3><p>Poza de profil este oglinda vizuala a profilului tau.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">51</div><h3>Personaj recognoscibil</h3><p>In gaming, un personaj sau o tinuta poate deveni parte din brand.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">52</div><h3>Branding</h3><p>Foloseste elemente vizuale constante pentru recunoastere.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">53</div><h3>Recunoastere</h3><p>Construieste elemente pe care publicul sa le asocieze cu tine.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">54</div><h3>Analytics</h3><p>Analizeaza vizualizarile, retentia si interactiunile.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">55</div><h3>Abandonul</h3><p>Daca oamenii pleaca rapid, verifica primele secunde.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">56</div><h3>Retentia</h3><p>Observa unde raman oamenii si unde abandoneaza.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">57</div><h3>Compara</h3><p>Compara videoclipurile bune cu cele slabe si cauta diferentele.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">58</div><h3>Invata din esecuri</h3><p>Un clip slab poate oferi informatii utile pentru urmatorul.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">59</div><h3>Nu renunta</h3><p>Cresterea poate avea perioade bune si perioade slabe.</p></article></div>
+</div>
+</div>
+
+<script id="gx-creator-tips-master-js">
+(function(){
+const panel=document.getElementById("gxCreatorTipsMaster");
+
+window.gxOpenCreatorTips=function(){
+if(!panel)return;
+panel.classList.add("gx-open");
+panel.setAttribute("aria-hidden","false");
+document.body.style.overflow="hidden";
+};
+
+window.gxCloseCreatorTips=function(){
+if(!panel)return;
+panel.classList.remove("gx-open");
+panel.setAttribute("aria-hidden","true");
+document.body.style.overflow="";
+};
+
+window.gxTipsOpen=window.gxOpenCreatorTips;
+
+document.addEventListener("keydown",function(e){
+if(e.key==="Escape")window.gxCloseCreatorTips();
+});
+
+document.addEventListener("DOMContentLoaded",function(){
+document.querySelectorAll(".gx-tip-card").forEach(function(el){
+if(!el.closest("#gxCreatorTipsMaster"))el.remove();
+});
+});
+})();
+</script>
+<style id="gx60style">
+#gx60{display:none;position:fixed;inset:0;z-index:99999;background:rgba(5,5,10,.94);overflow:auto;padding:18px}
+.gx60box{max-width:900px;margin:20px auto;background:#15151d;border:1px solid #7040d0;border-radius:20px;padding:20px;color:#fff}
+.gx60head{display:flex;justify-content:space-between;align-items:center}
+.gx60close{border:0;border-radius:10px;padding:8px 14px;font-size:20px}
+.gx60grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px}
+.gx60-card{background:#20202b;border:1px solid #343447;border-radius:14px;padding:14px}
+.gx60-card b{color:#b889ff;font-size:12px}
+.gx60-card h3{margin:6px 0;font-size:15px}
+.gx60-card p{margin:0;color:#bbb;line-height:1.5;font-size:13px}
+</style>
+<div id="gx60"><div class="gx60box"><div class="gx60head"><h2>💡 Creator Tips — 60 idei</h2><button class="gx60close" onclick="gx60Close()">×</button></div><p>60 de idei practice pentru creatori.</p><div class="gx60grid"><article class="gx60-card"><b>01</b><h3>Hook puternic</h3><p>Primele secunde trebuie sa capteze atentia.</p></article><article class="gx60-card"><b>02</b><h3>Intră direct în subiect</h3><p>Elimina introducerile inutile.</p></article><article class="gx60-card"><b>03</b><h3>Cunoaste publicul</h3><p>Creeaza pentru interesele audientei.</p></article><article class="gx60-card"><b>04</b><h3>Analizeaza concurenta</h3><p>Observa ce formate functioneaza.</p></article><article class="gx60-card"><b>05</b><h3>Foloseste intrebari</h3><p>Intrebarile creeaza curiozitate.</p></article><article class="gx60-card"><b>06</b><h3>Spune clar promisiunea</h3><p>Arata ce va primi spectatorul.</p></article><article class="gx60-card"><b>07</b><h3>Testeaza hook-uri</h3><p>Incearca inceputuri diferite.</p></article><article class="gx60-card"><b>08</b><h3>Pastreaza ritmul</h3><p>Evita pauzele inutile.</p></article><article class="gx60-card"><b>09</b><h3>Taie momentele slabe</h3><p>Fa videoclipul mai dinamic.</p></article><article class="gx60-card"><b>10</b><h3>Foloseste subtitrari</h3><p>Ajuta spectatorul sa urmareasca mesajul.</p></article><article class="gx60-card"><b>11</b><h3>Audio clar</h3><p>Sunetul bun creste calitatea perceputa.</p></article><article class="gx60-card"><b>12</b><h3>Muzica potrivita</h3><p>Nu lasa muzica sa acopere vocea.</p></article><article class="gx60-card"><b>13</b><h3>Thumbnail simplu</h3><p>Foloseste un mesaj vizual clar.</p></article><article class="gx60-card"><b>14</b><h3>Text scurt</h3><p>Evita frazele lungi pe thumbnail.</p></article><article class="gx60-card"><b>15</b><h3>Contrast bun</h3><p>Fa elementele importante usor de observat.</p></article><article class="gx60-card"><b>16</b><h3>Branding constant</h3><p>Pastreaza un stil recognoscibil.</p></article><article class="gx60-card"><b>17</b><h3>Titlu clar</h3><p>Spune rapid despre ce este videoclipul.</p></article><article class="gx60-card"><b>18</b><h3>Foloseste SEO</h3><p>Include termeni relevanti pentru subiect.</p></article><article class="gx60-card"><b>19</b><h3>Cauta subiecte</h3><p>Urmareste ce cauta publicul.</p></article><article class="gx60-card"><b>20</b><h3>Raspunde comentariilor</h3><p>Comentariile pot deveni idei.</p></article><article class="gx60-card"><b>21</b><h3>Analizeaza retentia</h3><p>Vezi unde pleaca spectatorii.</p></article><article class="gx60-card"><b>22</b><h3>Verifica CTR</h3><p>Thumbnail-ul si titlul conteaza.</p></article><article class="gx60-card"><b>23</b><h3>Compara clipurile</h3><p>Studiaza diferentele dintre rezultate.</p></article><article class="gx60-card"><b>24</b><h3>Testeaza durata</h3><p>Nu orice idee are nevoie de mult timp.</p></article><article class="gx60-card"><b>25</b><h3>Repeta ce functioneaza</h3><p>Creeaza variante ale ideilor bune.</p></article><article class="gx60-card"><b>26</b><h3>Creeaza serii</h3><p>Fa publicul curios pentru urmatoarea parte.</p></article><article class="gx60-card"><b>27</b><h3>Foloseste povesti</h3><p>Da continutului un inceput si un final.</p></article><article class="gx60-card"><b>28</b><h3>Arata rezultatul</h3><p>Rezultatul poate fi un hook excelent.</p></article><article class="gx60-card"><b>29</b><h3>Foloseste B-roll</h3><p>Imaginile suplimentare mentin atentia.</p></article><article class="gx60-card"><b>30</b><h3>Schimba vizualul</h3><p>Evita un cadru identic prea mult timp.</p></article><article class="gx60-card"><b>31</b><h3>Fii original</h3><p>Inspira-te dar nu copia.</p></article><article class="gx60-card"><b>32</b><h3>Foloseste feedback</h3><p>Imbunatateste clipurile dupa reactii.</p></article><article class="gx60-card"><b>33</b><h3>Planifica ideile</h3><p>Tine o lista de subiecte.</p></article><article class="gx60-card"><b>34</b><h3>Filmeaza in avans</h3><p>Pregateste materiale pentru zile aglomerate.</p></article><article class="gx60-card"><b>35</b><h3>Posteaza constant</h3><p>Alege un ritm pe care il poti sustine.</p></article><article class="gx60-card"><b>36</b><h3>Nu astepta perfectiunea</h3><p>Publica si invata din rezultate.</p></article><article class="gx60-card"><b>37</b><h3>Experimenteaza</h3><p>Testeaza formate si abordari noi.</p></article><article class="gx60-card"><b>38</b><h3>Transforma ideile vechi</h3><p>Foloseste un unghi nou.</p></article><article class="gx60-card"><b>39</b><h3>Urmareste trendurile</h3><p>Alege trenduri potrivite nisei.</p></article><article class="gx60-card"><b>40</b><h3>Construieste comunitatea</h3><p>Raspunde si asculta audienta.</p></article><article class="gx60-card"><b>41</b><h3>Creeaza valoare</h3><p>Fa fiecare clip util sau interesant.</p></article><article class="gx60-card"><b>42</b><h3>Foloseste payoff</h3><p>Livreaza ceea ce ai promis.</p></article><article class="gx60-card"><b>43</b><h3>Momente memorabile</h3><p>Adauga ceva usor de tinut minte.</p></article><article class="gx60-card"><b>44</b><h3>Optimizeaza descrierea</h3><p>Pastreaza informatia relevanta.</p></article><article class="gx60-card"><b>45</b><h3>Hashtaguri relevante</h3><p>Evita hashtagurile fara legatura.</p></article><article class="gx60-card"><b>46</b><h3>Invata editarea</h3><p>Imbunatateste cate un lucru la fiecare clip.</p></article><article class="gx60-card"><b>47</b><h3>Pastreaza calitatea</h3><p>Exporta in setari potrivite platformei.</p></article><article class="gx60-card"><b>48</b><h3>Formate repetabile</h3><p>Creeaza mai rapid continut.</p></article><article class="gx60-card"><b>49</b><h3>Analizeaza audienta</h3><p>Intelege cine urmareste continutul.</p></article><article class="gx60-card"><b>50</b><h3>Testeaza orele</h3><p>Compara performanta la ore diferite.</p></article><article class="gx60-card"><b>51</b><h3>Foloseste CTA-uri</h3><p>Spune natural ce poate face spectatorul.</p></article><article class="gx60-card"><b>52</b><h3>Incurajeaza discutia</h3><p>Pune intrebari relevante.</p></article><article class="gx60-card"><b>53</b><h3>Nu sterge rapid</h3><p>Unele clipuri pot creste mai tarziu.</p></article><article class="gx60-card"><b>54</b><h3>Studiaza statisticile</h3><p>Datele te ajuta sa iei decizii.</p></article><article class="gx60-card"><b>55</b><h3>Construieste un brand</h3><p>Fa stilul GeoXShorts recognoscibil.</p></article><article class="gx60-card"><b>56</b><h3>Gandeste pe termen lung</h3><p>Cresterea se construieste in timp.</p></article><article class="gx60-card"><b>57</b><h3>Invata din fiecare postare</h3><p>Fiecare clip iti ofera date.</p></article><article class="gx60-card"><b>58</b><h3>Creeaza pentru oameni</h3><p>Valoarea pentru spectator conteaza.</p></article><article class="gx60-card"><b>59</b><h3>Continua sa inveti</h3><p>Invata din rezultate si feedback.</p></article><article class="gx60-card"><b>60</b><h3>Nu renunta</h3><p>Testeaza, invata si evolueaza.</p></article></div></div></div>
+<script>
+window.gxTipsOpen=function(){document.getElementById("gx60").style.display="block";document.body.style.overflow="hidden"};
+window.gx60Close=function(){document.getElementById("gx60").style.display="none";document.body.style.overflow=""};
+document.getElementById("gx60").onclick=function(e){if(e.target===this)gx60Close()};
+</script></body></html>
 <style id="gx-unified-brand">
 .gx,.gx-grad{letter-spacing:-.5px}
 .shorts,.gx-shorts{margin-left:0!important;padding-left:0!important;letter-spacing:-.5px}
