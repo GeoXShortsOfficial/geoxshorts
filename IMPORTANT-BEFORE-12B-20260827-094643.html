@@ -222,26 +222,4 @@ $("files").onchange=e=>{
 
 })();
 </script>
-<style id="gx12b">.gxpanel{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.gxpanel button{padding:8px 11px;font-size:12px}.gxinput{width:100%;padding:9px;border-radius:9px;border:1px solid #49305a;background:#21132e;color:#fff;margin-top:6px}</style>
-<script id="gx12bengine">
-(()=>{let hist=[],redo=[],active=-1;
-const snap=()=>files.map(f=>({name:f.name,type:f.type,size:f.size}));
-function remember(){hist.push(snap());if(hist.length>30)hist.shift();redo=[]}
-function selected(){return active>=0?files[active]:files[0]}
-function redraw(){sel=active;openEditor();autosave()}
-window.undo=()=>{if(!hist.length)return;redo.push(snap());let x=hist.pop();files.length=0;x.forEach(()=>{});status(" • Undo pregătit");redraw()}
-window.redo=()=>{if(!redo.length)return;hist.push(snap());redo.pop();status(" • Redo pregătit")}
-window.gxDelete=()=>{if(active<0)return;remember();files.splice(active,1);active=-1;redraw()}
-window.gxDuplicate=()=>{let f=selected();if(!f)return;remember();files.splice(active+1,0,f);redraw()}
-window.gxSpeed=()=>{let f=selected();if(!f||!f.type.startsWith("video/"))return alert("Selectează un video.");let v=document.querySelector("#preview video");if(v){let n=prompt("Viteză (0.25–4):",v.playbackRate);n=Math.max(.25,Math.min(4,+n||1));v.playbackRate=n;status(" • Speed "+n+"x")}}
-window.gxVolume=()=>{let v=document.querySelector("#preview video");if(!v)return;let n=prompt("Volum 0–100:",Math.round(v.volume*100));v.volume=Math.max(0,Math.min(100,+n||0))/100;status(" • Volum "+Math.round(v.volume*100)+"%")}
-window.gxRotate=()=>{let e=$("preview").querySelector("video,img");if(!e)return;e.style.transform=`rotate(${(+(e.dataset.rot||0)+90)%360}deg)`;e.dataset.rot=(+(e.dataset.rot||0)+90)%360}
-window.gxOpacity=()=>{let e=$("preview").querySelector("video,img");if(!e)return;let n=prompt("Opacitate 0–100:",100);e.style.opacity=Math.max(0,Math.min(100,+n||100))/100}
-window.gxText=()=>{let e=$("preview");let t=prompt("Text:");if(!t)return;let x=document.createElement("div");x.textContent=t;x.style="position:absolute;z-index:5;font-size:28px;font-weight:900;text-shadow:0 2px 8px #000;";e.style.position="relative";e.appendChild(x)}
-window.gxFilter=()=>{let e=$("preview").querySelector("video,img");if(!e)return;let f=prompt("Filtru: none / grayscale / sepia / contrast / saturate:","contrast");e.style.filter=f==="grayscale"?"grayscale(1)":f==="sepia"?"sepia(1)":f==="saturate"?"saturate(1.8)":f==="contrast"?"contrast(1.25)":"none"}
-window.gxTrim=()=>alert("Trim: interfața este pregătită; motorul de randare va aplica intervalul la export.")
-window.gxSplit=()=>alert("Split: punctul de tăiere este pregătit pentru motorul de export.")
-const old=window.openEditor;window.openEditor=()=>{old();active=sel;let t=$("tools"),p=document.createElement("div");p.className="gxpanel";p.innerHTML=`<button class=tool onclick="undo()">↶ Undo</button><button class=tool onclick="redo()">↷ Redo</button><button class=tool onclick="gxDelete()">🗑 Delete</button><button class=tool onclick="gxDuplicate()">⧉ Duplicate</button><button class=tool onclick="gxTrim()">✂ Trim</button><button class=tool onclick="gxSplit()">🔪 Split</button><button class=tool onclick="gxSpeed()">⚡ Speed</button><button class=tool onclick="gxVolume()">🔊 Volume</button><button class=tool onclick="gxRotate()">↻ Rotate</button><button class=tool onclick="gxOpacity()">◐ Opacity</button><button class=tool onclick="gxText()">T Text</button><button class=tool onclick="gxFilter()">◉ Filter</button>`;t.prepend(p)}
-document.addEventListener("click",e=>{let x=e.target.closest(".thumb");if(x){active=[...document.querySelectorAll(".thumb")].indexOf(x)}})
-})();
-</script></body></html>
+</body></html>
