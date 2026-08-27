@@ -2443,7 +2443,54 @@ html,body{background:var(--gxbg)!important;color:#fff!important}
 .gux-shorts{margin:0!important;padding:0!important;color:#fff!important}
 .gux-cam{margin-left:9px!important;padding:0!important;font-style:normal!important;display:inline-block!important;animation:guxCameraPulse 1.65s ease-in-out infinite!important;filter:drop-shadow(0 0 7px rgba(255,92,190,.7))!important}
 @keyframes guxCameraPulse{0%,100%{transform:scale(1);opacity:.72}50%{transform:scale(1.16);opacity:1}}
-</style></head>
+</style>
+<style id="GeoXShorts-Logo-Final">
+/* LOGO OFICIAL GeoXShorts */
+.gux-logo{
+display:inline-flex!important;
+align-items:center!important;
+justify-content:flex-start!important;
+gap:0!important;
+white-space:nowrap!important;
+font-weight:900!important;
+line-height:1!important;
+letter-spacing:-.5px!important;
+margin:0!important;
+padding:0!important
+}
+.gux-geo,.gux-x{
+background:linear-gradient(115deg,#8b5cf6 0%,#b84cff 45%,#ff4fa3 100%)!important;
+-webkit-background-clip:text!important;
+background-clip:text!important;
+-webkit-text-fill-color:transparent!important;
+color:transparent!important;
+text-shadow:0 0 16px rgba(190,80,255,.35)!important
+}
+.gux-shorts{
+color:#fff!important;
+margin:0!important;
+padding:0!important
+}
+.gux-cam{
+display:inline-block!important;
+margin-left:9px!important;
+padding:0!important;
+animation:GeoXCamPulse 1.5s ease-in-out infinite!important;
+filter:drop-shadow(0 0 8px rgba(255,80,190,.8))!important
+}
+@keyframes GeoXCamPulse{
+0%,100%{transform:scale(1);opacity:.7}
+50%{transform:scale(1.18);opacity:1}
+}
+
+/* Nu permite apariția unui al doilea logo în dreapta */
+.logo-right,.right-logo,.header-logo-right,
+.logo-secondary,.secondary-logo,
+[data-logo-position="right"]{
+display:none!important
+}
+</style>
+</head>
 
 <body>
 
