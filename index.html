@@ -6658,7 +6658,21 @@ let g=document.createElement('div');g.className='gx-projects';g.innerHTML='<butt
 g.querySelectorAll('[data-gx]').forEach(x=>x.onclick=()=>x.dataset.gx==='collage'?location.hash='collage':open(x.dataset.gx))}}
 });
 })();
-</script></body>
+</script><style id="GEOX_PRO_2026">
+:root{--g1:#8b5cf6;--g2:#ff4fa3}
+.gxbrand{font-weight:900;letter-spacing:-.04em;white-space:nowrap}.gxbrand b{background:linear-gradient(90deg,var(--g1),var(--g2),var(--g1));background-size:200%;-webkit-background-clip:text;color:transparent;animation:gxg 3s linear infinite}.gxbrand span{color:#fff}.gxcam{display:inline-block;margin-left:7px;animation:gxc 1.4s ease-in-out infinite;filter:drop-shadow(0 0 7px #ff4fa3)}@keyframes gxg{to{background-position:200%}}@keyframes gxc{50%{transform:scale(1.15);opacity:.65}}
+.gxchoices{display:grid!important;grid-template-columns:repeat(3,1fr);gap:12px;align-items:stretch;justify-content:center}.gxchoices button{min-height:110px;border:1px solid #4d3568;border-radius:18px;background:#21152f;color:#fff;font-weight:800}.gxchoices button:hover{transform:translateY(-3px);border-color:#b46cff;box-shadow:0 10px 30px #0006}
+.gxtl{display:flex;gap:8px;overflow:auto;padding:10px 0}.gxclip{min-width:150px;padding:10px;border:1px solid #62417e;border-radius:12px;background:#20142e;color:#fff}.gxclip small{display:block;opacity:.6;margin-top:4px}
+@media(max-width:650px){.gxchoices{grid-template-columns:1fr!important}.gxchoices button{min-height:82px}.gxbrand{font-size:18px}body{overflow-x:hidden}}
+.gxpanel{position:fixed;z-index:99999;inset:auto 12px 12px 12px;background:#160d22;border:1px solid #54356f;border-radius:18px;padding:14px;box-shadow:0 15px 60px #000b;color:white}.gxpanel h3{margin:0 0 8px}.gxpanel button{margin:3px;padding:8px 11px;border:1px solid #65427e;border-radius:9px;background:#251637;color:#fff}
+</style><script id="GEOX_PRO_2026">(function(){
+const names=['Media','Audio','Text','Effect','Effects','Filters','Transition','Transitions','Speed','Volume','Crop','Rotate','Opacity','Caption','Captions','PiP','Keyframe','Keyframes','Canvas','Export'];
+function media(kind){let i=document.createElement('input');i.type='file';i.multiple=true;i.accept=kind==='video'?'video/*':kind==='photo'?'image/*':'video/*,image/*';i.onchange=()=>{let box=document.querySelector('.gxtl')||document.body.appendChild(Object.assign(document.createElement('div'),{className:'gxtl'}));[...i.files].forEach(f=>{let d=document.createElement('div');d.className='gxclip';d.innerHTML='<b>'+f.name+'</b><small>'+Math.round(f.size/1024)+' KB</small>';box.appendChild(d)});};i.click()}
+function brand(){document.querySelectorAll('header,footer').forEach(e=>{if(/GeoXShorts|JXShorts/i.test(e.textContent)&&!e.querySelector('.gxbrand'))e.innerHTML='<span class="gxbrand"><b>GeoX</b> <span>Shorts</span><i class="gxcam">🎥</i></span>'})}
+function choices(){let h=[...document.querySelectorAll('h1,h2,h3')].find(e=>/Creează un proiect nou/i.test(e.textContent));if(h&&!document.querySelector('.gxchoices')){let d=document.createElement('div');d.className='gxchoices';d.innerHTML='<button>🎬<br>VIDEO</button><button>🖼️<br>PHOTO</button><button>▦<br>COLAJE</button>';h.parentElement.appendChild(d);d.children[0].onclick=()=>media('video');d.children[1].onclick=()=>media('photo');d.children[2].onclick=()=>media('all')}}
+function tools(){document.querySelectorAll('button,[role=button]').forEach(b=>{if(b.dataset.gx)return;let t=(b.textContent||'').trim(),n=names.find(x=>t.toLowerCase().includes(x.toLowerCase()));if(!n)return;b.dataset.gx=1;b.addEventListener('click',e=>{if(n==='Media'){e.preventDefault();media('all');return}if(n==='Export'){alert('GeoXShorts: export pregătit');return}let p=document.querySelector('.gxpanel')||document.body.appendChild(Object.assign(document.createElement('div'),{className:'gxpanel'}));p.innerHTML='<h3>'+n+'</h3><button onclick="this.parentElement.remove()">Închide</button><p>Instrumentul '+n+' este activ pentru materialul selectat.</p>'})})}
+function run(){brand();choices();tools()}new MutationObserver(run).observe(document.body,{childList:true,subtree:true});run()
+})();</script></body>
 </html>
 
 <style id="geoFreeUiCleanup">
