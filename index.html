@@ -5,7 +5,7 @@
      crossorigin="anonymous"></script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GeoXShorts</title>
+<title><span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span></title>
 
 <style>
 *{box-sizing:border-box}
@@ -764,7 +764,7 @@ font-size:11px;color:#999
 
 <style id="geoCapCutLayout">
 /* ============================================================
-   GEOXSHORTS — CAPCUT-STYLE HORIZONTAL EDITOR
+   <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> — CAPCUT-STYLE HORIZONTAL EDITOR
    Safe layout override — nu șterge funcționalitatea existentă
    ============================================================ */
 
@@ -903,7 +903,7 @@ font-size:11px;color:#999
 
 <style id="geoCapCutFinalLayout">
 /* =========================================================
-   GeoXShorts — Final CapCut-style editor layout
+   <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> — Final CapCut-style editor layout
    ========================================================= */
 
 #geoProWorkspace{
@@ -1053,7 +1053,7 @@ font-size:11px;color:#999
 
 
 <style id="geoCompactCapCutUI">
-/* GEOXSHORTS — COMPACT CAPCUT UI
+/* <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> — COMPACT CAPCUT UI
    UI ONLY — nu modifică editorul/JS-ul existent
 */
 #geoProWorkspace{
@@ -1232,7 +1232,7 @@ font-size:11px;color:#999
 <style id="geoUIRebuildV1">
 
 /* =========================================================
-   GeoXShorts🎬 — UI REBUILD V1
+   <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span>🎬 — UI REBUILD V1
    UI ONLY — nu modifică engine-urile existente
    ========================================================= */
 
@@ -2042,7 +2042,7 @@ main.hero > .box{
 
 
 <style id="geoUnifiedInfoHide">
-#aboutGeoXShorts,
+#about<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span>,
 #geoAboutPanel,
 #geoInfoPanels{
   display:none!important;
@@ -2366,7 +2366,7 @@ align-items:flex-start!important;
 #geoRealExport:disabled{opacity:.55!important}
 #geoExportRepairStatus{display:block!important;margin-top:7px!important;text-align:center!important;color:#aaa!important;font-size:11px!important}
 </style>
-<style id="geoxshorts-dark-background">
+<style id="<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span>-dark-background">
 html, body {
     background-color: #160A2B !important;
     background-image: none !important;
@@ -2414,7 +2414,7 @@ button:hover{transform:translateY(-1px)}
 #geoProWorkspace .geo-stage{min-height:300px!important}
 }
 </style>
-<style id="geoxshorts-premium-ui">
+<style id="<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span>-premium-ui">
 html,body{background:#160A2B!important;background-image:radial-gradient(900px 500px at 50% -10%,rgba(124,58,237,.28),transparent 70%)!important}
 body>nav .logo{display:flex!important;align-items:center!important;white-space:nowrap!important}
 body>nav .logo .geo{background:linear-gradient(90deg,#7c3aed,#9333ea,#ec4899,#9333ea,#7c3aed)!important;background-size:300% 100%!important;-webkit-background-clip:text!important;background-clip:text!important;-webkit-text-fill-color:transparent!important;color:transparent!important;font-weight:900!important;animation:gxLogo 4s ease-in-out infinite!important;filter:drop-shadow(0 0 10px rgba(168,85,247,.28))}
@@ -2425,6 +2425,19 @@ body>nav .logo-emoji{margin-left:8px!important;display:inline-block!important;an
 #videoInput{display:none}
 .gx-multi-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
 .gx-multi-item{padding:7px 10px;border:1px solid #3b2550;border-radius:9px;background:#211331;color:#eee;font-size:12px}
+</style><style id="geox-professional">
+:root{--gx1:#8b5cf6;--gx2:#ec4899;--gxbg:#10091d}
+body{background:radial-gradient(900px 500px at 50% -10%,#32134f 0%,transparent 65%),var(--gxbg)!important}
+.geox-brand{font-weight:900;letter-spacing:-.04em;display:inline-flex;align-items:center;gap:7px}
+.geox-brand .gx{background:linear-gradient(90deg,var(--gx1),var(--gx2),var(--gx1));background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gxflow 4s linear infinite}
+.geox-brand .shorts{color:#fff}
+.geox-brand .cam{display:inline-block;animation:gxblink 1.8s ease-in-out infinite}
+@keyframes gxflow{to{background-position:220% 0}}
+@keyframes gxblink{0%,100%{transform:scale(1);filter:drop-shadow(0 0 0 transparent)}50%{transform:scale(1.13);filter:drop-shadow(0 0 10px #ec4899)}}
+.gx-glow{box-shadow:0 0 0 1px #8b5cf633,0 12px 45px #0008}
+.gx-media-input{display:none!important}
+.gx-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:99999;background:#20132d;color:#fff;border:1px solid #8b5cf677;border-radius:14px;padding:11px 16px;font:600 13px system-ui;box-shadow:0 10px 35px #0009}
+.gx-pulse{animation:gxblink 1.8s ease-in-out infinite}
 </style></head>
 
 <body>
@@ -2664,7 +2677,7 @@ $("volume").oninput=function(){v.volume=+this.value;};
 $("muteBtn").onclick=function(){v.muted=!v.muted;this.textContent=v.muted?"🔊 Unmute":"🔇 Mute";};
 })();
 </script>
-<section id="aboutGeoXShorts" style="max-width:1180px;margin:30px auto 60px;padding:30px;background:#0d0d13;border:1px solid #292936;border-radius:24px;text-align:left"><h2 style="margin-top:0">About GeoXShorts 🎬</h2><p style="color:#aaa;line-height:1.7">GeoXShorts este un proiect independent creat de <strong style="white-space:nowrap">Geo FF</strong>, dedicat creării rapide de videoclipuri verticale și Shorts.</p><p style="color:#aaa;line-height:1.7">Proiectul este dezvoltat cu ajutorul instrumentelor AI, iar direcția, conceptul și deciziile finale aparțin creatorului.</p><div style="margin:20px 0;padding:16px;border-radius:15px;background:#0b1610;border:1px solid #1c4b2a;color:#9ae6b4;line-height:1.6">🛡️ <strong>Trust & Transparency</strong><br>GeoXShorts este un proiect independent și identificabil. Nu solicităm parole de social media, parole GitHub sau date bancare pentru utilizarea de bază a editorului.</div><h3>Creator & Social Media</h3><div style="display:flex;flex-wrap:wrap;gap:10px"><a class="feature" href="https://youtube.com/@geo_ff" target="_blank">▶ YouTube</a><a class="feature" href="https://www.tiktok.com/@geo_ff.hs" target="_blank">♪ TikTok</a><a class="feature" href="https://www.instagram.com/geo_ff.hs" target="_blank">◎ Instagram</a><a class="feature" href="https://github.com/GeoXShortsOfficial/geoxshorts" target="_blank">⌘ GitHub</a><a class="feature" href="https://discord.gg/cTwvS6xfY" target="_blank">💬 Discord Server</a></div><p style="color:#888;margin-top:18px">Discord: <strong style="color:#ddd">geoff2003</strong></p><div style="margin-top:20px;padding:14px;background:#111118;border:1px solid #292936;border-radius:14px;color:#aaa">📧 <strong style="color:#fff">Support</strong><br>Official support email will be published here before the public launch.</div></section>
+<section id="about<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span>" style="max-width:1180px;margin:30px auto 60px;padding:30px;background:#0d0d13;border:1px solid #292936;border-radius:24px;text-align:left"><h2 style="margin-top:0">About <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> 🎬</h2><p style="color:#aaa;line-height:1.7"><span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> este un proiect independent creat de <strong style="white-space:nowrap">Geo FF</strong>, dedicat creării rapide de videoclipuri verticale și Shorts.</p><p style="color:#aaa;line-height:1.7">Proiectul este dezvoltat cu ajutorul instrumentelor AI, iar direcția, conceptul și deciziile finale aparțin creatorului.</p><div style="margin:20px 0;padding:16px;border-radius:15px;background:#0b1610;border:1px solid #1c4b2a;color:#9ae6b4;line-height:1.6">🛡️ <strong>Trust & Transparency</strong><br><span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> este un proiect independent și identificabil. Nu solicităm parole de social media, parole GitHub sau date bancare pentru utilizarea de bază a editorului.</div><h3>Creator & Social Media</h3><div style="display:flex;flex-wrap:wrap;gap:10px"><a class="feature" href="https://youtube.com/@geo_ff" target="_blank">▶ YouTube</a><a class="feature" href="https://www.tiktok.com/@geo_ff.hs" target="_blank">♪ TikTok</a><a class="feature" href="https://www.instagram.com/geo_ff.hs" target="_blank">◎ Instagram</a><a class="feature" href="https://github.com/<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span>Official/<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span>" target="_blank">⌘ GitHub</a><a class="feature" href="https://discord.gg/cTwvS6xfY" target="_blank">💬 Discord Server</a></div><p style="color:#888;margin-top:18px">Discord: <strong style="color:#ddd">geoff2003</strong></p><div style="margin-top:20px;padding:14px;background:#111118;border:1px solid #292936;border-radius:14px;color:#aaa">📧 <strong style="color:#fff">Support</strong><br>Official support email will be published here before the public launch.</div></section>
 
 
 <script id="adjustScript">
@@ -2807,7 +2820,7 @@ $("muteBtn").onclick=function(){v.muted=!v.muted;this.textContent=v.muted?"🔊 
   const timeline=document.querySelector(".geo-timeline");
 
   if(!input || !video || !stage || !timeline){
-    console.log("GeoXShorts: editor elements not ready");
+    console.log("<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span>: editor elements not ready");
     return;
   }
 
@@ -3214,7 +3227,7 @@ btn.onclick=async function(){
 
      a.href=url;
      a.download=
-       "GeoXShorts-"+resolution+"p-"+fps+"fps.webm";
+       "<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span>-"+resolution+"p-"+fps+"fps.webm";
 
      document.body.appendChild(a);
      a.click();
@@ -3227,7 +3240,7 @@ btn.onclick=async function(){
      /*
       * Watermark:
       * primele 10 exporturi = fără watermark
-      * exportul 11+ = GeoXShorts
+      * exportul 11+ = <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span>
       */
      const exportCount=
        Number(localStorage.getItem("geoExportCount")||"0")+1;
@@ -3432,7 +3445,7 @@ btn.onclick=async function(){
 (function(){
   const video = document.getElementById("videoPreview");
   if (!video) {
-    console.log("GeoXShorts: preview not found");
+    console.log("<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span>: preview not found");
     return;
   }
 
@@ -3553,8 +3566,8 @@ btn.onclick=async function(){
     });
   }
 
-  console.log("GeoXShorts Integration Engine ready");
-  setStatus("💜 GeoXShorts Editor ready");
+  console.log("<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> Integration Engine ready");
+  setStatus("💜 <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> Editor ready");
 })();
 </script>
 
@@ -4388,7 +4401,7 @@ function write(k){
 window.geoReadTransform=read;
 window.geoWriteTransform=write;
 
-console.log("GeoXShorts: Transform ↔ Keyframes bridge ready");
+console.log("<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span>: Transform ↔ Keyframes bridge ready");
 
 })();
 </script>
@@ -4844,7 +4857,7 @@ document.getElementById("geoStartExport")
   document.head.appendChild(style);
 
   props.insertAdjacentHTML("afterbegin", `
-    <div id="geoEditorTabs" role="tablist" aria-label="GeoXShorts Editor">
+    <div id="geoEditorTabs" role="tablist" aria-label="<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> Editor">
       <button class="geo-tab active" type="button" data-tab="media">🎬 Media</button>
       <button class="geo-tab" type="button" data-tab="text">📝 Text</button>
       <button class="geo-tab" type="button" data-tab="audio">🎵 Audio</button>
@@ -4960,7 +4973,7 @@ document.getElementById("geoStartExport")
 
   activate("media");
 
-  console.log("GeoXShorts Editor Tabs: Media/Text/Audio/Effects/Export separated.");
+  console.log("<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> Editor Tabs: Media/Text/Audio/Effects/Export separated.");
 })();
 </script>
 
@@ -5036,7 +5049,7 @@ if(reset){
 
 update();
 
-console.log("GeoX Shorts Adjust ready");
+console.log("<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> Adjust ready");
 
 })();
 </script>
@@ -5048,10 +5061,10 @@ console.log("GeoX Shorts Adjust ready");
   <div class="geo-about-card">
     <button id="geoAboutClose" class="geo-about-close" type="button">✕</button>
 
-    <h2>About GeoXShorts 🎬</h2>
+    <h2>About <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> 🎬</h2>
 
     <p>
-      <strong>GeoXShorts</strong> este un proiect independent creat de
+      <strong><span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span></strong> este un proiect independent creat de
       <strong>Geo FF</strong>, dedicat creării rapide de videoclipuri
       verticale și Shorts.
     </p>
@@ -5064,7 +5077,7 @@ console.log("GeoX Shorts Adjust ready");
     <div class="geo-about-box">
       <h3>🛡️ Trust & Transparency</h3>
       <p>
-        GeoXShorts este un proiect independent și identificabil.
+        <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> este un proiect independent și identificabil.
         Nu solicităm parole de social media, parole GitHub sau date
         bancare pentru utilizarea de bază a editorului.
       </p>
@@ -5076,7 +5089,7 @@ console.log("GeoX Shorts Adjust ready");
       <a href="https://youtube.com/@geo_ff" target="_blank" rel="noopener">▶️ YouTube</a>
       <a href="https://www.tiktok.com/@geo_ff.hs" target="_blank" rel="noopener">🎵 TikTok</a>
       <a href="https://www.instagram.com/geo_ff.hs" target="_blank" rel="noopener">📸 Instagram</a>
-      <a href="https://github.com/GeoXShortsOfficial/geoxshorts" target="_blank" rel="noopener">💻 GitHub</a>
+      <a href="https://github.com/<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span>Official/<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span>" target="_blank" rel="noopener">💻 GitHub</a>
       <a href="https://discord.gg/cTwvS6xfY" target="_blank" rel="noopener">💬 Discord Server</a>
     </div>
 
@@ -5092,7 +5105,7 @@ console.log("GeoX Shorts Adjust ready");
     </div>
 
     <div class="geo-about-community">
-      <strong>👥 GeoXShorts Community</strong>
+      <strong>👥 <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> Community</strong>
       <span id="geoUserMilestone">100+ users</span>
     </div>
   </div>
@@ -5157,7 +5170,7 @@ document.addEventListener("keydown",e=>{
       <h2>⚙️ Cum funcționează</h2>
 
       <p>
-        GeoXShorts este creat pentru a transforma rapid videoclipuri
+        <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> este creat pentru a transforma rapid videoclipuri
         lungi în conținut vertical potrivit pentru Shorts, TikTok și Reels.
       </p>
 
@@ -5199,7 +5212,7 @@ document.addEventListener("keydown",e=>{
       </div>
 
       <p class="geo-info-note">
-        🚧 GeoXShorts este în continuă dezvoltare, iar funcțiile
+        🚧 <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> este în continuă dezvoltare, iar funcțiile
         editorului sunt îmbunătățite constant.
       </p>
 
@@ -5213,7 +5226,7 @@ document.addEventListener("keydown",e=>{
 
       <button class="geo-info-close" data-close-info type="button">✕</button>
 
-      <h2>✨ Funcții GeoXShorts</h2>
+      <h2>✨ Funcții <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span></h2>
 
       <div class="geo-feature-grid">
 
@@ -5271,7 +5284,7 @@ document.addEventListener("keydown",e=>{
 
       <p class="geo-info-note">
         🚀 Mai multe funcții sunt în dezvoltare și vor fi adăugate
-        pe măsură ce GeoXShorts evoluează.
+        pe măsură ce <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> evoluează.
       </p>
 
     </div>
@@ -5352,10 +5365,10 @@ document.addEventListener("keydown",e=>{
     <button id="geoUnifiedClose" type="button" class="geo-ui-close">✕</button>
 
     <section data-info-panel="about">
-      <h2>ℹ️ About GeoXShorts</h2>
+      <h2>ℹ️ About <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span></h2>
 
       <p>
-        <strong>GeoXShorts</strong> este un proiect independent creat de
+        <strong><span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span></strong> este un proiect independent creat de
         <strong>Geo FF</strong>, dedicat creării rapide de videoclipuri
         verticale și Shorts.
       </p>
@@ -5368,7 +5381,7 @@ document.addEventListener("keydown",e=>{
       <div class="geo-ui-box">
         <h3>🛡️ Trust & Transparency</h3>
         <p>
-          GeoXShorts este un proiect independent și identificabil.
+          <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> este un proiect independent și identificabil.
           Nu solicităm parole de social media, parole GitHub sau date bancare
           pentru utilizarea de bază a editorului.
         </p>
@@ -5380,7 +5393,7 @@ document.addEventListener("keydown",e=>{
         <a href="https://youtube.com/@geo_ff" target="_blank" rel="noopener">▶️ YouTube</a>
         <a href="https://www.tiktok.com/@geo_ff.hs" target="_blank" rel="noopener">🎵 TikTok</a>
         <a href="https://www.instagram.com/geo_ff.hs" target="_blank" rel="noopener">📸 Instagram</a>
-        <a href="https://github.com/GeoXShortsOfficial/geoxshorts" target="_blank" rel="noopener">💻 GitHub</a>
+        <a href="https://github.com/<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span>Official/<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span>" target="_blank" rel="noopener">💻 GitHub</a>
         <a href="https://discord.gg/cTwvS6xfY" target="_blank" rel="noopener">💬 Discord Server</a>
       </div>
 
@@ -5394,7 +5407,7 @@ document.addEventListener("keydown",e=>{
       </div>
 
       <div class="geo-ui-community">
-        👥 <strong>GeoXShorts Community</strong>
+        👥 <strong><span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> Community</strong>
         <span>600+ Discord members</span>
       </div>
     </section>
@@ -5454,7 +5467,7 @@ document.addEventListener("keydown",e=>{
       </div>
 
       <p class="geo-ui-note">
-        🚧 GeoXShorts este în continuă dezvoltare.
+        🚧 <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> este în continuă dezvoltare.
       </p>
     </section>
 
@@ -5462,7 +5475,7 @@ document.addEventListener("keydown",e=>{
       <h2>❓ FAQ</h2>
 
       <details>
-        <summary>GeoXShorts este gratuit?</summary>
+        <summary><span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> este gratuit?</summary>
         <p>
           Editorul este în dezvoltare, iar funcțiile disponibile pot fi
           extinse în timp. Funcțiile publice sunt prezentate direct în site.
@@ -5480,7 +5493,7 @@ document.addEventListener("keydown",e=>{
       <details>
         <summary>Ce tip de conținut pot crea?</summary>
         <p>
-          GeoXShorts este orientat spre videoclipuri verticale și conținut
+          <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> este orientat spre videoclipuri verticale și conținut
           de tip Shorts, TikTok și Reels.
         </p>
       </details>
@@ -5488,7 +5501,7 @@ document.addEventListener("keydown",e=>{
       <details>
         <summary>Site-ul este terminat?</summary>
         <p>
-          Nu. GeoXShorts este în continuă dezvoltare și primește constant
+          Nu. <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> este în continuă dezvoltare și primește constant
           funcții și îmbunătățiri.
         </p>
       </details>
@@ -5522,7 +5535,7 @@ document.addEventListener("keydown",e=>{
       <h2>🔒 Privacy Policy</h2>
 
       <p>
-        GeoXShorts respectă confidențialitatea utilizatorilor și este
+        <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> respectă confidențialitatea utilizatorilor și este
         dezvoltat pentru a limita datele personale solicitate.
       </p>
 
@@ -5549,14 +5562,14 @@ document.addEventListener("keydown",e=>{
       <h2>📜 Terms of Service</h2>
 
       <p>
-        Prin utilizarea GeoXShorts, utilizatorul este responsabil pentru
+        Prin utilizarea <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span>, utilizatorul este responsabil pentru
         materialele încărcate și pentru modul în care sunt folosite
         rezultatele exportate.
       </p>
 
       <h3>Utilizare responsabilă</h3>
       <p>
-        Nu utiliza GeoXShorts pentru activități ilegale, pentru încălcarea
+        Nu utiliza <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> pentru activități ilegale, pentru încălcarea
         drepturilor altor persoane sau pentru încărcarea de materiale pe
         care nu ai dreptul să le folosești.
       </p>
@@ -5564,7 +5577,7 @@ document.addEventListener("keydown",e=>{
       <h3>Dezvoltare continuă</h3>
       <p>
         Funcțiile, interfața și disponibilitatea serviciului se pot schimba
-        pe măsură ce GeoXShorts este dezvoltat.
+        pe măsură ce <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> este dezvoltat.
       </p>
 
       <p class="geo-ui-note">
@@ -5803,7 +5816,7 @@ if(oldProperties){
 
 }
 
-console.log("GeoXShorts UI Cleanup ready");
+console.log("<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> UI Cleanup ready");
 
 })();
 </script>
@@ -5974,7 +5987,7 @@ tabs.forEach(tab=>{
   const panel=document.getElementById("geoCanvasPro");
 
   if(!video || !wrap || !panel){
-    console.warn("GeoXShorts Canvas Resize: elemente lipsă");
+    console.warn("<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> Canvas Resize: elemente lipsă");
     return;
   }
 
@@ -6126,7 +6139,7 @@ tabs.forEach(tab=>{
 
   reset();
 
-  console.log("✅ GeoXShorts Canvas Resize PRO engine activ");
+  console.log("✅ <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> Canvas Resize PRO engine activ");
 })();
 </script>
 
@@ -6367,7 +6380,7 @@ tabs.forEach(tab=>{
 
     if(install()){
       console.log(
-        "✅ GeoXShorts Back Navigation PRO activ"
+        "✅ <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> Back Navigation PRO activ"
       );
       return;
     }
@@ -6474,7 +6487,7 @@ if(audioCtx.state==="suspended")await audioCtx.resume();
     const blob=new Blob(chunks,{type:mime});
     const a=document.createElement("a");
     a.href=URL.createObjectURL(blob);
-    a.download=`GeoXShorts-${res}p-${fps}fps.webm`;
+    a.download=`<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span>-${res}p-${fps}fps.webm`;
     a.click();
     setTimeout(()=>URL.revokeObjectURL(a.href),3000);
     video.pause();video.currentTime=oldTime;video.muted=wasMuted;
@@ -6500,7 +6513,7 @@ if(audioCtx.state==="suspended")await audioCtx.resume();
    q("gxp").textContent=`Exporting ${Math.min(99,Math.round(video.currentTime/video.duration*100))}% • ${res}p • ${fps} FPS`;requestAnimationFrame(draw);
 
   }catch(err){
-   console.error("GeoXShorts export:",err);
+   console.error("<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> export:",err);
    q("gxp").textContent="❌ Export failed: "+err.message;
    video.muted=wasMuted;
    btn.disabled=false;
@@ -6539,7 +6552,7 @@ html,body{margin:0!important;background:#090510!important;color:#fff!important;f
 .gxClose{width:100%;margin-top:18px;padding:12px;border:0;border-radius:12px;background:linear-gradient(90deg,#7c3aed,#ec4899);color:#fff;font-weight:800}
 @keyframes gxg{0%{background-position:0% 50%}50%{background-position:100% 50%}100%{background-position:0% 50%}}
 @media(max-width:650px){.gxTypes{grid-template-columns:1fr}.gxWrap{padding-top:42px}.gxTitle{font-size:48px}}
-</style><div id="gxHome"><header><div id="gxLogo">GeoXShorts</div><button id="gxMenu">⋮</button></header><div class="gxWrap"><h1 class="gxTitle">Editează <span class="gxGrad">Shorts</span><br>direct din telefon</h1><p class="gxDesc">Creează și editează videoclipuri rapid, direct din browser.</p><div class="gxFeatures"><span class="gxFeature">Timeline</span><span class="gxFeature">Text</span><span class="gxFeature">Effects</span><span class="gxFeature">Audio</span><span class="gxFeature">Keyframes</span><span class="gxFeature">Export 1080p</span><span class="gxFeature">Fără instalare</span></div><div class="gxCard"><h2>Creează un proiect nou</h2><div class="gxTypes"><button class="gxType" data-open="video"><span class="gxIcon">🎬</span>Video</button><button class="gxType" data-open="photo"><span class="gxIcon">🖼️</span>Photo</button><button class="gxType" data-open="collage"><span class="gxIcon">▦</span>Collage</button></div></div><div class="gxCard" id="gxProjects"><h2>Proiectele mele</h2><div class="gxProject"><div class="gxPIcon">🎬</div><div><strong>GeoXShorts Editor</strong><br><small style="color:#998ba5">Video · 9:16 · Editor</small></div></div></div></div></div><div id="gxAbout"><div class="gxAboutBox"><h2 style="margin-top:0">About Me</h2><h3 style="color:#c084fc;margin-bottom:6px">Geoffrey Fire</h3><p style="color:#afa2b9;line-height:1.6">Creatorul GeoXShorts — un editor video creat pentru Shorts, Reels și TikTok.</p><p style="color:#afa2b9">📧 contact@geoxshorts.app</p><button class="gxClose" id="gxClose">Închide</button></div></div><script>(function(){const h=document.getElementById("gxHome"),a=document.getElementById("gxAbout"),m=document.getElementById("gxMenu"),c=document.getElementById("gxClose");m.onclick=()=>a.style.display="flex";c.onclick=()=>a.style.display="none";document.querySelectorAll(".gxType").forEach(b=>b.onclick=()=>{h.style.display="none";window.scrollTo(0,0)});})();</script><input id="geoMultiImages" type="file" accept="image/*" multiple hidden>
+</style><div id="gxHome"><header><div id="gxLogo"><span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span></div><button id="gxMenu">⋮</button></header><div class="gxWrap"><h1 class="gxTitle">Editează <span class="gxGrad">Shorts</span><br>direct din telefon</h1><p class="gxDesc">Creează și editează videoclipuri rapid, direct din browser.</p><div class="gxFeatures"><span class="gxFeature">Timeline</span><span class="gxFeature">Text</span><span class="gxFeature">Effects</span><span class="gxFeature">Audio</span><span class="gxFeature">Keyframes</span><span class="gxFeature">Export 1080p</span><span class="gxFeature">Fără instalare</span></div><div class="gxCard"><h2>Creează un proiect nou</h2><div class="gxTypes"><button class="gxType" data-open="video"><span class="gxIcon">🎬</span>Video</button><button class="gxType" data-open="photo"><span class="gxIcon">🖼️</span>Photo</button><button class="gxType" data-open="collage"><span class="gxIcon">▦</span>Collage</button></div></div><div class="gxCard" id="gxProjects"><h2>Proiectele mele</h2><div class="gxProject"><div class="gxPIcon">🎬</div><div><strong><span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> Editor</strong><br><small style="color:#998ba5">Video · 9:16 · Editor</small></div></div></div></div></div><div id="gxAbout"><div class="gxAboutBox"><h2 style="margin-top:0">About Me</h2><h3 style="color:#c084fc;margin-bottom:6px">Geoffrey Fire</h3><p style="color:#afa2b9;line-height:1.6">Creatorul <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> — un editor video creat pentru Shorts, Reels și TikTok.</p><p style="color:#afa2b9">📧 contact@<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span>.app</p><button class="gxClose" id="gxClose">Închide</button></div></div><script>(function(){const h=document.getElementById("gxHome"),a=document.getElementById("gxAbout"),m=document.getElementById("gxMenu"),c=document.getElementById("gxClose");m.onclick=()=>a.style.display="flex";c.onclick=()=>a.style.display="none";document.querySelectorAll(".gxType").forEach(b=>b.onclick=()=>{h.style.display="none";window.scrollTo(0,0)});})();</script><input id="geoMultiImages" type="file" accept="image/*" multiple hidden>
 <label class="upload-btn" for="geoMultiImages">🖼️ Selectează imagini</label>
 <script>
 document.getElementById("geoMultiImages")?.addEventListener("change",e=>{
@@ -6576,7 +6589,7 @@ html,body{background:radial-gradient(900px 500px at 50% -15%,#39205b,transparent
 const W=document.getElementById("geoProWorkspace");if(!W)return;
 const tools=["Media","Audio","Text","Effects","Filters","Transitions","Speed","Volume","Crop","Rotate","Opacity","Captions","PiP","Keyframes","Canvas","Export"];
 const bar=document.createElement("div");bar.className="gxPro";
-bar.innerHTML=`<aside class="gxTools">${tools.map(x=>`<button data-t="${x}">${x}</button>`).join("")}</aside><main class="gxMain"><header class="gxTop"><b>GeoXShorts Pro</b><span style="flex:1"></span><button data-a="undo">↶</button><button data-a="redo">↷</button><button data-a="import">＋ Media</button><button class="primary" data-a="export">Export 1080p</button></header><section class="gxCanvas"><div class="gxFrame" id="gxFrame"><span>🎬<br>Drop media here</span></div></section><section class="gxBottom"><div id="gxTracks"><div class="gxTrack" data-track="Video"></div><div class="gxTrack" data-track="Audio"></div><div class="gxTrack" data-track="Text"></div></div></section></main>`;
+bar.innerHTML=`<aside class="gxTools">${tools.map(x=>`<button data-t="${x}">${x}</button>`).join("")}</aside><main class="gxMain"><header class="gxTop"><b><span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> Pro</b><span style="flex:1"></span><button data-a="undo">↶</button><button data-a="redo">↷</button><button data-a="import">＋ Media</button><button class="primary" data-a="export">Export 1080p</button></header><section class="gxCanvas"><div class="gxFrame" id="gxFrame"><span>🎬<br>Drop media here</span></div></section><section class="gxBottom"><div id="gxTracks"><div class="gxTrack" data-track="Video"></div><div class="gxTrack" data-track="Audio"></div><div class="gxTrack" data-track="Text"></div></div></section></main>`;
 W.replaceChildren(bar);
 const input=document.createElement("input");input.type="file";input.multiple=true;input.accept="video/*,image/*,audio/*";input.hidden=true;document.body.appendChild(input);
 let history=[],future=[];
@@ -6586,11 +6599,30 @@ bar.onclick=e=>{let b=e.target.closest("button");if(!b)return;if(b.dataset.a==="
 input.onchange=()=>media(input.files);
 document.addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&e.key==="z"){e.preventDefault();bar.querySelector('[data-a="undo"]')?.click()}});
 })();
+</script><input id="gxMultiVideo" class="gx-media-input" type="file" accept="video/*" multiple>
+<input id="gxMultiPhoto" class="gx-media-input" type="file" accept="image/*" multiple>
+<div id="gxToast" class="gx-toast" hidden></div>
+<script id="geox-professional-js">
+(()=>{const $=q=>document.querySelector(q),toast=m=>{let x=$("#gxToast");x.textContent=m;x.hidden=false;clearTimeout(window.__gx);window.__gx=setTimeout(()=>x.hidden=true,2200)};
+const V=$("#gxMultiVideo"),P=$("#gxMultiPhoto");
+function dispatch(files,type){const dt=new DataTransfer();[...files].forEach(f=>dt.items.add(f));
+let candidates=[...document.querySelectorAll('input[type=file]')].filter(x=>x!==V&&x!==P);
+let target=candidates.find(x=>type==="video"?/video/i.test(x.accept):/image|photo/i.test(x.accept));
+if(target){try{target.multiple=true;target.files=dt.files;target.dispatchEvent(new Event("change",{bubbles:true}));toast(files.length+" "+(type==="video"?"videoclipuri":"imagini")+" adăugate")}catch(e){toast("Materialele au fost selectate")}}
+else toast("Selectate "+files.length+" fișiere — editorul nu are încă un import compatibil")}
+V.onchange=e=>dispatch(e.target.files,"video");P.onchange=e=>dispatch(e.target.files,"photo");
+window.GeoXMultiUpload={videos:()=>V.click(),photos:()=>P.click()};
+document.addEventListener("click",e=>{let b=e.target.closest("button,[role=button]");if(!b)return;
+let t=(b.textContent||"").trim().toLowerCase();
+if(t==="add video"||t.includes("încarcă video")||t==="video"){e.preventDefault();V.click()}
+if(t==="add photo"||t.includes("încarcă poze")||t==="photo"||t==="foto"){e.preventDefault();P.click()}});
+document.querySelectorAll("header").forEach(h=>{if(!h.querySelector(".geox-brand")){let el=document.createElement("div");el.className="geox-brand gx-glow";el.innerHTML=brand;h.prepend(el)}});
+})();
 </script></body>
 </html>
 
 <style id="geoFreeUiCleanup">
-/* GeoXShorts — free editor cleanup */
+/* <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> — free editor cleanup */
 #url,
 #generateBtn,
 .geo-text-pro,
@@ -6617,7 +6649,7 @@ document.addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&e.key==="z"){
 </style>
 
 <style id="geoContextualCapCutUI">
-/* GeoXShorts — contextual horizontal editor UI */
+/* <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> — contextual horizontal editor UI */
 #geoProWorkspace{
   display:grid!important;
   grid-template-columns:minmax(0,1fr)!important;
@@ -6821,7 +6853,7 @@ document.addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&e.key==="z"){
 </script>
 
 <style id="geoHideOldAbout">
-#aboutGeoXShorts{
+#about<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span>{
   display:none!important;
 }
 </style>
@@ -6830,7 +6862,7 @@ document.addEventListener("keydown",e=>{if((e.ctrlKey||e.metaKey)&&e.key==="z"){
 <style id="geoFinalEditorCleanup">
 /* Ascunde complet elementele demo/vechi */
 .editor-title,
-#aboutGeoXShorts,
+#about<span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span>,
 #adjustPanel,
 #geoCaptionsPro,
 .geo-pro-panel,
@@ -7015,7 +7047,7 @@ main.hero,
 </style>
 
 <style id="geoRegalPurpleHeader">
-/* GeoXShorts — regal purple header/theme */
+/* <span class="geox-brand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></span> — regal purple header/theme */
 html, body {
   background: #160b2b !important;
 }
