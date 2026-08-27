@@ -21,10 +21,10 @@ let mode='video',media=[],cur=null;const $=id=>document.getElementById(id),tools
 </style>
 <div id="gxAbout" class="gx-about" aria-hidden="true"><div class="gx-card">
 <button class="gx-x" id="gxClose" aria-label="Close">×</button>
-<div class="gx-brand"><span class="gx-grad">GeoX</span><span class="gx-shorts">Shorts</span><span class="gx-rec">🎥</span></div>
+<div class="gx-brand"><span class="gx-grad">GeoX</span><span class="gx-shorts"> Shorts</span><span class="gx-rec">🎥</span></div>
 <div class="gx-role">Creator și editor video</div>
 <section class="gx-sec"><h3>Bio</h3>
-Salut, sunt Geo FF, pasionat de crearea de conținut video scurt pentru YouTube, TikTok și Instagram. Am construit <span class="gx-grad">GeoX</span><span class="gx-shorts">Shorts</span> pentru a oferi creatorilor un editor rapid, accesibil direct din browser, fără instalare complicată.<br><br>
+Salut, sunt Geo FF, pasionat de crearea de conținut video scurt pentru YouTube, TikTok și Instagram. Am construit <span class="gx-grad">GeoX</span><span class="gx-shorts"> Shorts</span> pentru a oferi creatorilor un editor rapid, accesibil direct din browser, fără instalare complicată.<br><br>
 Scopul meu este să transform orice idee într-un clip captivant, cu timeline intuitiv, text, efecte, audio, video și export la calitate maximă.</section>
 <section class="gx-sec"><h3>Link-uri sociale</h3>
 <a class="gx-social" href="#" target="_blank" rel="noopener"><b class="gx-icon">▶</b><span><b>YouTube</b><br>Abonează-te pentru noutăți și tutoriale</span></a>
@@ -35,7 +35,7 @@ Scopul meu este să transform orice idee într-un clip captivant, cu timeline in
 <div class="gx-warn">⚠️ Atenție: link-ul serverului de Discord poate expira. Dacă nu mai funcționează, contactează-mă pe Instagram sau TikTok pentru un invite nou!</div>
 </section>
 <section class="gx-sec"><h3>Despre GeoXShorts</h3>
-<span class="gx-grad">GeoX</span><span class="gx-shorts">Shorts</span> 🎬 este un editor video web creat pentru creatorii de conținut scurt. Oferă timeline, canvas, audio, text, efecte, keyframes, tranziții și export la calitate maximă — direct din browser, fără instalare.<br><br>
+<span class="gx-grad">GeoX</span><span class="gx-shorts"> Shorts</span> 🎬 este un editor video web creat pentru creatorii de conținut scurt. Oferă timeline, canvas, audio, text, efecte, keyframes, tranziții și export la calitate maximă — direct din browser, fără instalare.<br><br>
 ✨ Creat pentru creatori. ⚡ Rapid. 🎥 Simplu. 🚀
 </section>
 <div class="gx-foot">GeoXShorts — creat de Geo FF</div>
@@ -293,7 +293,7 @@ let homeOld=window.home;window.home=()=>{homeOld();render()}
 })();
 </script>
 <script id="gxbranding">
-(()=>{document.querySelectorAll("footer").forEach(f=>f.innerHTML='Creat de <b><span class="gx">GeoX</span> FF 🎬</b>');let h=document.querySelector(".logo");if(h)h.innerHTML='<span class="gx">GeoX</span><span>Shorts</span><span class="cam">🎬</span>'})();
+(()=>{document.querySelectorAll("footer").forEach(f=>f.innerHTML='Creat de <b><span class="gx">GeoX</span> FF 🎬</b>');let h=document.querySelector(".logo");if(h)h.innerHTML='<span class="gx">GeoX</span><span> Shorts</span><span class="cam">🎬</span>'})();
 </script><style id="gx10e">.gx10e{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.gx10e button{padding:9px 12px}</style><script id="gx10engine">(()=>{const E=()=>document.querySelector("#preview video,#preview img");function ui(){let t=document.querySelector("#tools");if(!t||t.dataset.e)return;t.dataset.e=1;let d=document.createElement("div");d.className="gx10e";d.innerHTML=`<button class=tool onclick="gxE1()">☀ Luminozitate</button><button class=tool onclick="gxE2()">◐ Contrast</button><button class=tool onclick="gxE3()">🎨 Saturație</button><button class=tool onclick="gxE4()">↔ Oglindă H</button><button class=tool onclick="gxE5()">↕ Oglindă V</button><button class=tool onclick="gxE6()">↻ Reset</button><button class=tool onclick="gxE7()">🔇 Mute</button><button class=tool onclick="gxE8()">🔁 Loop</button><button class=tool onclick="gxE9()">⛶ Fullscreen</button><button class=tool onclick="gxE10()">⇩ Descarcă</button>`;t.append(d)}function f(v){let e=E();if(e)e.style.filter=v}window.gxE1=()=>f("brightness("+(+prompt("Luminozitate %","100")||100)/100+")");window.gxE2=()=>f("contrast("+(+prompt("Contrast %","100")||100)/100+")");window.gxE3=()=>f("saturate("+(+prompt("Saturație %","100")||100)/100+")");window.gxE4=()=>{let e=E();if(e)e.style.transform="scaleX(-1)"};window.gxE5=()=>{let e=E();if(e)e.style.transform="scaleY(-1)"};window.gxE6=()=>{let e=E();if(e)e.style="";};window.gxE7=()=>{let v=document.querySelector("#preview video");if(v)v.muted=!v.muted};window.gxE8=()=>{let v=document.querySelector("#preview video");if(v)v.loop=!v.loop};window.gxE9=()=>{let e=document.querySelector("#preview");if(e?.requestFullscreen)e.requestFullscreen()};window.gxE10=()=>{let f=window.media?.[window.sel];if(!f)return;let a=document.createElement("a");a.href=URL.createObjectURL(f);a.download=f.name;a.click()};new MutationObserver(ui).observe(document.body,{childList:true,subtree:true});ui()})();</script><style id="gx32">#gxbar{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}#gxbar button{border:1px solid #49305a;background:#251536;color:#fff;border-radius:10px;padding:9px 12px;font-weight:700}#gxprog{width:100%;margin-top:8px}#gxthumb{margin-top:10px;width:100%;border-radius:12px} .thumb.gxsel{outline:3px solid #c06cff}</style>
 <script id="gx32engine">(()=>{const $=id=>document.getElementById(id);let hist=[],future=[],busy=false;
 function snap(){return JSON.stringify(files.map(f=>({name:f.name,type:f.type,size:f.size})))}
