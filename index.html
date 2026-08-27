@@ -2414,14 +2414,35 @@ button:hover{transform:translateY(-1px)}
 #geoProWorkspace .geo-stage{min-height:300px!important}
 }
 </style>
+
+<style id="GeoXProUI">
+:root{--gx1:#9b5cff;--gx2:#ff4fa3;--gxbg:#12071f}
+html,body{background:var(--gxbg)!important;color:#fff!important}
+.gx-brand{display:inline-flex;align-items:center;gap:9px;font-weight:900;letter-spacing:-.7px;text-decoration:none;white-space:nowrap}
+.gx-brand .gx-name{background:linear-gradient(110deg,var(--gx1),var(--gx2));-webkit-background-clip:text;background-clip:text;color:transparent;text-shadow:0 0 22px #9b5cff55}
+.gx-brand .gx-shorts{color:#fff}
+.gx-cam{display:inline-flex;animation:gxPulse 1.7s ease-in-out infinite;filter:drop-shadow(0 0 7px #ff4fa3)}
+@keyframes gxPulse{0%,100%{opacity:.65;transform:scale(1)}50%{opacity:1;transform:scale(1.12);filter:drop-shadow(0 0 14px #ff4fa3)}}
+.gx-home{width:min(1100px,calc(100% - 28px));margin:18px auto 55px}
+.gx-project{border:1px solid #6f3bbd88;border-radius:24px;background:linear-gradient(145deg,#211033,#12091d);box-shadow:0 20px 70px #0008;padding:28px}
+.gx-project h1{text-align:center;margin:0 0 7px;font-size:clamp(25px,4vw,40px)}
+.gx-sub{text-align:center;color:#a99bb8;margin-bottom:25px}
+.gx-types{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.gx-type{min-height:145px;border:1px solid #7040a055;border-radius:18px;background:#170c24;color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;cursor:pointer;transition:.2s}
+.gx-type:hover{transform:translateY(-3px);border-color:#b565ff;box-shadow:0 12px 30px #8c3dff33}
+.gx-type .ico{font-size:34px;color:#b866ff}
+.gx-projects{margin-top:22px;border-top:1px solid #ffffff12;padding-top:22px}
+.gx-projects-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.gx-new{border:1px solid #b45cff;background:linear-gradient(110deg,#713cff,#e847a8);color:#fff;border-radius:12px;padding:10px 16px;font-weight:800;cursor:pointer}
+@media(max-width:700px){.gx-home{width:min(100% - 18px,560px);margin-top:10px}.gx-project{padding:18px;border-radius:18px}.gx-types{grid-template-columns:1fr;gap:10px}.gx-type{min-height:105px}.gx-projects-head{align-items:flex-start}}
+</style>
 </head>
 
 <body>
 
 <nav>
-  <div class="logo">
-<span class="geo">GeoX</span><span class="xshorts">Shorts</span><span class="logo-emoji">🎬</span></div>
-  <div class="badge">AI VIDEO CLIPS</div>
+  <span class="gx-brand"><span class="gx-name">GeoX</span><span class="gx-shorts">Shorts</span><span class="gx-cam">🎥</span></span><span class="xshorts">Shorts</span><span class="logo-emoji">🎬</span></div>
+  <div class="badge">AI VIDEO CLIPS<section class="gx-home"><div class="gx-project"><h1>Creează un proiect nou</h1><div class="gx-sub">Alege tipul proiectului și începe editarea.</div><div class="gx-types"><button class="gx-type" data-kind="video"><span class="ico">🎬</span><b>VIDEO</b><small>Mai multe videoclipuri</small></button><button class="gx-type" data-kind="photo"><span class="ico">🖼️</span><b>PHOTO</b><small>Mai multe fotografii</small></button><button class="gx-type" data-kind="collage"><span class="ico">▦</span><b>COLAJE</b><small>Selectează fotografii</small></button></div><div class="gx-projects"><div class="gx-projects-head"><div><b>Proiectele mele</b><div class="msg" style="color:#9588a5;font-size:12px;margin-top:5px">Proiectele tale apar aici.</div></div><button class="gx-new">＋ Nou</button></div></div></div></section></div>
 </nav>
 
 <main class="hero">
@@ -6509,6 +6530,13 @@ if(audioCtx.state==="suspended")await audioCtx.resume();
 if(document.readyState==="loading")document.addEventListener("DOMContentLoaded",init);
 else init();
 setTimeout(init,1000);
+})();
+</script>
+
+<script id="GeoXProUIJS">
+(()=>{const F=(t,m,a)=>{let i=document.createElement("input");i.type=t;i.accept=a;i.multiple=true;i.style.display="none";document.body.appendChild(i);i.onchange=()=>{if(i.files.length){m.textContent=i.files.length+" fișiere selectate";m.dataset.files="1"}i.remove()};i.click()};
+document.addEventListener("click",e=>{let b=e.target.closest(".gx-type,.gx-new");if(!b)return;let m=b.querySelector(".msg")||b.parentElement.querySelector(".msg")||document.body;
+if(b.dataset.kind==="video")F("file",m,"video/*");else if(b.dataset.kind==="photo")F("file",m,"image/*");else if(b.dataset.kind==="collage")F("file",m,"image/*");else if(b.classList.contains("gx-new"))F("file",m,"video/*,image/*")});
 })();
 </script>
 </body>
