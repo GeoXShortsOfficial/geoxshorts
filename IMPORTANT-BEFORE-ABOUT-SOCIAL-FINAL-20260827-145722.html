@@ -15,211 +15,48 @@ filter:drop-shadow(0 0 5px #fff) drop-shadow(0 0 12px #fff)
 @keyframes gxIgGlow{
 50%{box-shadow:0 0 12px #fff,0 0 28px #fff9,0 0 45px #fff6!important}
 }
+</style></head><body><div class="wrap"><header class="head"><div class="logo"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></div><div class="gx-social-top" aria-label="Social media"><a class="yt gx-instagram-hot" href="https://youtube.com/@geo_ff" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.9V8.1l6.5 3.9-6.5 3.9z"/></svg></a><a class="tt" href="https://www.tiktok.com/@geo_ff.hs" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 3c.3 2.2 1.5 3.7 3.4 4.3v3.1a8.2 8.2 0 0 1-3.4-1v6.2a6.4 6.4 0 1 1-5.5-6.3v3.3a3.1 3.1 0 1 0 2.4 3V3h3.1z"/></svg></a><a class="dc" href="https://discord.gg/cTwvS6xfY" target="_blank" rel="noopener noreferrer" aria-label="Discord"><svg viewBox="0 0 24 24"><path d="M19.5 5.1A16 16 0 0 0 15.7 4l-.5 1a14 14 0 0 0-6.4 0l-.5-1a16 16 0 0 0-3.8 1.1C2.1 8.2 1.5 11.2 1.7 14.2a15.5 15.5 0 0 0 4.7 2.4l1.1-1.5c-.6-.2-1.1-.5-1.6-.8l.4-.3a11 11 0 0 0 11.4 0l.4.3c-.5.3-1 .6-1.6.8l1.1 1.5a15.5 15.5 0 0 0 4.7-2.4c.2-3-.4-6-2.3-9.1zM8.8 13.1c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm6.4 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"/></svg></a><a class="ig" href="https://www.instagram.com/geo_ff.hs" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 12 16.5 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 12 14.5 2.5 2.5 0 0 0 12 9.5zM17.5 6.2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg></a></div><button class="btn" onclick="about()">About Me</button></header><main id="home"><section class="card center"><h1 class="gx-hero-title">Creeaza un proiect nou</h1><p class="gx-hero-subtitle">Invata sa editezi, creeaza videoclipuri care atrag atentia, realizeaza thumbnail-uri puternice si descopera strategii practice pentru continut online.</p><div class="grid"><button class="btn" onclick="pick('video')"><span class="icon">🎥</span>VIDEO</button><button class="btn" onclick="pick('photo')"><span class="icon">🖼️</span>THUMBNAIL</button><button class="btn" onclick="gxTipsOpen()"><span class="icon">💡</span>CREATOR TIPS</button></div></section><section class="card"><div style="display:flex;justify-content:space-between;align-items:center"><h2>Proiectele mele</h2><button class="btn" onclick="newProject()">＋ Nou</button></div><div id="projects" class="projects"></div></section></main><main id="editor" class="hidden"><div class="card"><button class="btn" onclick="home()">← Inapoi</button><h2 id="ename">Editor GeoXShorts</h2><div class="preview" id="preview">Selecteaza materiale pentru preview</div><div class="timeline" id="timeline"></div><div class="tools" id="tools"></div><button class="btn" onclick="saveProject()">💾 Salveaza proiectul</button><button class="btn" onclick="exportVideo()">⬇ Export 1080p</button></div></main></div><input id="files" type="file" multiple><div id="modal" class="modal" style="display:none"><div><button class="close" onclick="closeModal()">×</button><h2>About Me</h2><p>GeoXShorts este un proiect creat de GeoXShorts — creator de continut YouTube, TikTok si Instagram, construit pentru o comunitate de peste 60.000 de oameni.</p><p>Editorul este conceput pentru creare rapida de videoclipuri, Shorts, Reels si proiecte foto.</p>
+<div id="gx-about-social">
+<style>
+#gx-about-social{margin-top:22px;padding-top:20px;border-top:1px solid #3b244d}
+#gx-about-social h3{margin:0 0 7px;font-size:18px;color:#fff;text-shadow:0 0 10px rgba(255,255,255,.25)}
+#gx-about-social .gx-about-desc{margin:0 0 15px;color:#cfc5d8;font-size:13px;line-height:1.55}
+#gx-about-social .gx-social-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#gx-about-social a{position:relative;display:flex;align-items:center;gap:10px;padding:12px 13px;border:1px solid #49305d;background:#21132e;border-radius:13px;color:#fff;text-decoration:none;font-weight:800;transition:.2s ease;overflow:hidden}
+#gx-about-social a:hover{transform:translateY(-2px);border-color:#bd6cff;box-shadow:0 0 15px #bd6cff55}
+#gx-about-social svg{width:22px;height:22px;fill:currentColor;flex:none}
+#gx-about-social .yt{color:#ff4b5c;text-shadow:0 0 9px #ff4b5c99}
+#gx-about-social .tt{color:#fff;text-shadow:0 0 9px #fff8}
+#gx-about-social .dc{color:#a78bfa;text-shadow:0 0 10px #a78bfa99}
+#gx-about-social .ig{color:#fff;text-shadow:0 0 8px #fff,0 0 16px #fff8;box-shadow:0 0 8px #fff5,0 0 20px #fff2}
+#gx-about-social .ig:hover{border-color:#fff;box-shadow:0 0 10px #fff,0 0 25px #fff7,0 0 40px #fff3}
+#gx-about-social .gx-discord-note{grid-column:1/-1;margin-top:2px;padding:11px 12px;border-left:2px solid #a78bfa;background:#1a1025;color:#bdb1c8;font-size:12px;line-height:1.5;border-radius:8px}
+@media(max-width:650px){#gx-about-social .gx-social-grid{grid-template-columns:1fr}}
 </style>
-<style id="gx-about-social-premium">
-#gx-about-social-premium{
-  margin-top:20px;
-  padding-top:18px;
-  border-top:1px solid #3b244d;
-}
 
-#gx-about-social-premium .gx-social-title{
-  margin:0 0 6px;
-  color:#fff;
-  font-size:17px;
-  font-weight:900;
-  text-shadow:0 0 8px rgba(255,255,255,.35),
-              0 0 18px rgba(255,255,255,.12);
-}
+<h3>Conectează-te cu GeoXShorts</h3>
+<p class="gx-about-desc">Urmărește proiectul și rămâi la curent cu cele mai noi materiale, actualizări și informații despre comunitatea GeoXShorts.</p>
 
-#gx-about-social-premium .gx-social-subtitle{
-  margin:0 0 14px;
-  color:#fff;
-  font-size:13px;
-  line-height:1.5;
-  opacity:.92;
-  text-shadow:0 0 7px rgba(255,255,255,.18);
-}
+<div class="gx-social-grid">
 
-#gx-about-social-premium .gx-social-links{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:10px;
-}
-
-#gx-about-social-premium .gx-social-link{
-  position:relative;
-  display:flex;
-  align-items:center;
-  gap:10px;
-  min-height:48px;
-  padding:10px 12px;
-  border:1px solid rgba(255,255,255,.18);
-  border-radius:13px;
-  background:linear-gradient(135deg,#24152f,#181020);
-  color:#fff!important;
-  text-decoration:none;
-  font-weight:900;
-  letter-spacing:.2px;
-  text-shadow:0 0 8px rgba(255,255,255,.4);
-  box-shadow:0 0 10px rgba(255,255,255,.04);
-  transition:transform .2s ease,
-             border-color .2s ease,
-             box-shadow .2s ease,
-             filter .2s ease;
-  overflow:hidden;
-}
-
-#gx-about-social-premium .gx-social-link:hover{
-  transform:translateY(-2px) scale(1.015);
-  border-color:rgba(255,255,255,.65);
-  box-shadow:0 0 12px rgba(255,255,255,.22),
-             0 0 25px rgba(255,255,255,.10);
-  filter:brightness(1.12);
-}
-
-#gx-about-social-premium .gx-social-link svg{
-  width:22px;
-  height:22px;
-  flex:none;
-  fill:currentColor;
-}
-
-#gx-about-social-premium .gx-social-link span{
-  color:#fff;
-  text-shadow:0 0 6px rgba(255,255,255,.45),
-              0 0 13px rgba(255,255,255,.16);
-}
-
-#gx-about-social-premium .gx-youtube{
-  color:#ff4b5c!important;
-  border-color:rgba(255,75,92,.35);
-  box-shadow:0 0 10px rgba(255,75,92,.10);
-}
-
-#gx-about-social-premium .gx-tiktok{
-  color:#fff!important;
-  border-color:rgba(255,255,255,.30);
-  box-shadow:0 0 10px rgba(255,255,255,.10);
-}
-
-#gx-about-social-premium .gx-discord{
-  color:#a78bfa!important;
-  border-color:rgba(167,139,250,.38);
-  box-shadow:0 0 10px rgba(167,139,250,.12);
-}
-
-#gx-about-social-premium .gx-instagram{
-  color:#fff!important;
-  border-color:rgba(255,255,255,.70);
-  box-shadow:0 0 8px rgba(255,255,255,.28),
-             0 0 18px rgba(255,255,255,.14);
-  animation:gxAboutInstagramGlow 2.2s ease-in-out infinite;
-}
-
-#gx-about-social-premium .gx-instagram svg{
-  filter:drop-shadow(0 0 4px #fff)
-         drop-shadow(0 0 10px rgba(255,255,255,.65));
-}
-
-#gx-about-social-premium .gx-discord-note{
-  grid-column:1/-1;
-  margin-top:2px;
-  padding:10px 12px;
-  border-left:2px solid #a78bfa;
-  border-radius:8px;
-  background:#160d21;
-  color:#fff;
-  font-size:11.5px;
-  line-height:1.55;
-  text-shadow:0 0 5px rgba(255,255,255,.18);
-}
-
-@keyframes gxAboutInstagramGlow{
-  0%,100%{
-    box-shadow:0 0 7px rgba(255,255,255,.25),
-               0 0 16px rgba(255,255,255,.10);
-  }
-  50%{
-    box-shadow:0 0 11px rgba(255,255,255,.55),
-               0 0 25px rgba(255,255,255,.22),
-               0 0 38px rgba(255,255,255,.10);
-  }
-}
-
-@media(max-width:650px){
-  #gx-about-social-premium .gx-social-links{
-    grid-template-columns:1fr;
-  }
-}
-</style>
-</head><body><div class="wrap"><header class="head"><div class="logo"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></div><div class="gx-social-top" aria-label="Social media"><a class="yt gx-instagram-hot" href="https://youtube.com/@geo_ff" target="_blank" rel="noopener noreferrer" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.9V8.1l6.5 3.9-6.5 3.9z"/></svg></a><a class="tt" href="https://www.tiktok.com/@geo_ff.hs" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 3c.3 2.2 1.5 3.7 3.4 4.3v3.1a8.2 8.2 0 0 1-3.4-1v6.2a6.4 6.4 0 1 1-5.5-6.3v3.3a3.1 3.1 0 1 0 2.4 3V3h3.1z"/></svg></a><a class="dc" href="https://discord.gg/cTwvS6xfY" target="_blank" rel="noopener noreferrer" aria-label="Discord"><svg viewBox="0 0 24 24"><path d="M19.5 5.1A16 16 0 0 0 15.7 4l-.5 1a14 14 0 0 0-6.4 0l-.5-1a16 16 0 0 0-3.8 1.1C2.1 8.2 1.5 11.2 1.7 14.2a15.5 15.5 0 0 0 4.7 2.4l1.1-1.5c-.6-.2-1.1-.5-1.6-.8l.4-.3a11 11 0 0 0 11.4 0l.4.3c-.5.3-1 .6-1.6.8l1.1 1.5a15.5 15.5 0 0 0 4.7-2.4c.2-3-.4-6-2.3-9.1zM8.8 13.1c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm6.4 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"/></svg></a><a class="ig" href="https://www.instagram.com/geo_ff.hs" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 12 16.5 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 12 14.5 2.5 2.5 0 0 0 12 9.5zM17.5 6.2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg></a></div><button class="btn" onclick="about()">About Me</button></header><main id="home"><section class="card center"><h1 class="gx-hero-title">Creeaza un proiect nou</h1><p class="gx-hero-subtitle">Invata sa editezi, creeaza videoclipuri care atrag atentia, realizeaza thumbnail-uri puternice si descopera strategii practice pentru continut online.</p><div class="grid"><button class="btn" onclick="pick('video')"><span class="icon">🎥</span>VIDEO</button><button class="btn" onclick="pick('photo')"><span class="icon">🖼️</span>THUMBNAIL</button><button class="btn" onclick="gxTipsOpen()"><span class="icon">💡</span>CREATOR TIPS</button></div></section><section class="card"><div style="display:flex;justify-content:space-between;align-items:center"><h2>Proiectele mele</h2><button class="btn" onclick="newProject()">＋ Nou</button></div><div id="projects" class="projects"></div></section></main><main id="editor" class="hidden"><div class="card"><button class="btn" onclick="home()">← Inapoi</button><h2 id="ename">Editor GeoXShorts</h2><div class="preview" id="preview">Selecteaza materiale pentru preview</div><div class="timeline" id="timeline"></div><div class="tools" id="tools"></div><button class="btn" onclick="saveProject()">💾 Salveaza proiectul</button><button class="btn" onclick="exportVideo()">⬇ Export 1080p</button></div></main></div><input id="files" type="file" multiple><div id="modal" class="modal" style="display:none"><div><button class="close" onclick="closeModal()">×</button><h2>About Me</h2>
-<p>GeoXShorts este un proiect creat pentru creatori și pentru comunitatea pasionată de conținut digital. Editorul este conceput pentru creare rapidă de videoclipuri, Shorts, Reels și proiecte foto.</p>
-
-<div id="gx-about-social-premium">
-
-<h3 class="gx-social-title">Conectează-te cu GeoXShorts</h3>
-
-<p class="gx-social-subtitle">
-Urmărește GeoXShorts pe rețelele de mai jos pentru cele mai noi videoclipuri,
-actualizări și informații despre proiect și comunitate.
-</p>
-
-<div class="gx-social-links">
-
-<a class="gx-social-link gx-youtube"
-   href="https://youtube.com/@geo_ff"
-   target="_blank"
-   rel="noopener noreferrer"
-   aria-label="YouTube Geo FF">
-<svg viewBox="0 0 24 24" aria-hidden="true">
-<path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.9V8.1l6.5 3.9-6.5 3.9z"/>
-</svg>
-<span>YouTube</span>
+<a class="yt" href="https://youtube.com/@geo_ff" target="_blank" rel="noopener noreferrer" aria-label="YouTube Geo FF">
+<svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.9V8.1l6.5 3.9-6.5 3.9z"/></svg> YouTube
 </a>
 
-<a class="gx-social-link gx-tiktok"
-   href="https://www.tiktok.com/@geo_ff.hs"
-   target="_blank"
-   rel="noopener noreferrer"
-   aria-label="TikTok Geo FF">
-<svg viewBox="0 0 24 24" aria-hidden="true">
-<path d="M16.6 3c.3 2.2 1.5 3.7 3.4 4.3v3.1a8.2 8.2 0 0 1-3.4-1v6.2a6.4 6.4 0 1 1-5.5-6.3v3.3a3.1 3.1 0 1 0 2.4 3V3h3.1z"/>
-</svg>
-<span>TikTok</span>
+<a class="tt" href="https://www.tiktok.com/@geo_ff.hs" target="_blank" rel="noopener noreferrer" aria-label="TikTok Geo FF">
+<svg viewBox="0 0 24 24"><path d="M16.6 3c.3 2.2 1.5 3.7 3.4 4.3v3.1a8.2 8.2 0 0 1-3.4-1v6.2a6.4 6.4 0 1 1-5.5-6.3v3.3a3.1 3.1 0 1 0 2.4 3V3h3.1z"/></svg> TikTok
 </a>
 
-<a class="gx-social-link gx-discord"
-   href="https://discord.gg/cTwvS6xfY"
-   target="_blank"
-   rel="noopener noreferrer"
-   aria-label="Serverul Discord GeoXShorts">
-<svg viewBox="0 0 24 24" aria-hidden="true">
-<path d="M19.5 5.1A16 16 0 0 0 15.7 4l-.5 1a14 14 0 0 0-6.4 0l-.5-1a16 16 0 0 0-3.8 1.1C2.1 8.2 1.5 11.2 1.7 14.2a15.5 15.5 0 0 0 4.7 2.4l1.1-1.5c-.6-.2-1.1-.5-1.6-.8l.4-.3a11 11 0 0 0 11.4 0l.4.3c-.5.3-1 .6-1.6.8l1.1 1.5a15.5 15.5 0 0 0 4.7-2.4c.2-3-.4-6-2.3-9.1zM8.8 13.1c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm6.4 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"/>
-</svg>
-<span>Discord</span>
+<a class="dc" href="https://discord.gg/cTwvS6xfY" target="_blank" rel="noopener noreferrer" aria-label="Serverul Discord GeoXShorts">
+<svg viewBox="0 0 24 24"><path d="M19.5 5.1A16 16 0 0 0 15.7 4l-.5 1a14 14 0 0 0-6.4 0l-.5-1a16 16 0 0 0-3.8 1.1C2.1 8.2 1.5 11.2 1.7 14.2a15.5 15.5 0 0 0 4.7 2.4l1.1-1.5c-.6-.2-1.1-.5-1.6-.8l.4-.3a11 11 0 0 0 11.4 0l.4.3c-.5.3-1 .6-1.6.8l1.1 1.5a15.5 15.5 0 0 0 4.7-2.4c.2-3-.4-6-2.3-9.1zM8.8 13.1c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm6.4 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"/></svg> Discord
 </a>
 
-<a class="gx-social-link gx-instagram"
-   href="https://www.instagram.com/geo_ff.hs"
-   target="_blank"
-   rel="noopener noreferrer"
-   aria-label="Instagram Geo FF">
-<svg viewBox="0 0 24 24" aria-hidden="true">
-<path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 12 16.5 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 12 14.5 2.5 2.5 0 0 0 12 9.5zM17.5 6.2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/>
-</svg>
-<span>Instagram</span>
+<a class="ig" href="https://www.instagram.com/geo_ff.hs" target="_blank" rel="noopener noreferrer" aria-label="Instagram Geo FF">
+<svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 12 16.5 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 12 14.5 2.5 2.5 0 0 0 12 9.5zM17.5 6.2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg> Instagram
 </a>
 
 <div class="gx-discord-note">
-<strong>Discord:</strong> serverul oficial GeoXShorts poate fi accesat prin invitația de mai sus.
-Linkul de invitație este temporar și poate expira. Dacă invitația nu mai este valabilă,
-trimite-mi un mesaj pe Instagram sau TikTok pentru a primi o nouă invitație.
-Username Discord: <strong>geoff2003</strong>.
-</div>
-
-</div>
-</div>
+Serverul oficial Discord GeoXShorts este accesibil prin invitația de mai sus. Linkul de invitație este temporar și poate expira. Dacă nu mai este valabil, trimite un mesaj pe Instagram sau TikTok pentru a solicita o nouă invitație. Username Discord: <strong>geoff2003</strong>.
 </div>
 </div>
 </div>
