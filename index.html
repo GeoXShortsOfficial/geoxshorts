@@ -1747,449 +1747,6 @@ main.hero > .box{
 
 </style>
 
-
-<style id="geoTabsRebuildStyles">
-.geo-hidden{display:none!important}
-
-#geoEditorTabs{
-  display:flex!important;
-  flex-wrap:wrap!important;
-  gap:8px!important;
-  margin:0 0 14px!important;
-  padding:8px!important;
-}
-
-#geoEditorTabs .geo-tab{
-  display:inline-flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-  min-height:42px!important;
-  padding:8px 13px!important;
-  border-radius:10px!important;
-  cursor:pointer!important;
-}
-
-.geo-tab.active{
-  outline:2px solid #a855f7!important;
-}
-
-.geo-tab-panel{
-  display:none!important;
-}
-
-.geo-tab-panel.geo-tab-panel-active{
-  display:block!important;
-}
-
-#geoMediaPanel,
-#geoTextPanel,
-#geoAudioPanel,
-#geoAdjustPanel,
-#geoEffectsPanel,
-#geoExportPanel{
-  margin-top:10px!important;
-}
-
-.geo-reset-zero{
-  min-width:46px!important;
-  margin-left:8px!important;
-}
-</style>
-
-
-<style id="geoAdjustStyles">
-.adjust-panel{
-  padding:14px;
-  border-radius:14px;
-  margin:10px 0;
-}
-
-.geo-section-title{
-  font-size:18px;
-  font-weight:800;
-  margin-bottom:14px;
-}
-
-.geo-adjust-row{
-  margin:12px 0;
-}
-
-.geo-adjust-row label{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:6px;
-  font-weight:600;
-}
-
-.geo-adjust-row output{
-  min-width:42px;
-  text-align:right;
-  opacity:.8;
-}
-
-.geo-adjust-row input[type="range"]{
-  width:100%;
-}
-
-#geoAdjustReset{
-  width:100%;
-  margin-top:12px;
-  padding:10px;
-  border-radius:10px;
-  cursor:pointer;
-}
-</style>
-
-
-<style id="geoAboutRebuildStyles">
-.geo-about-panel{
-  position:fixed;
-  inset:0;
-  z-index:99999;
-  display:none;
-}
-
-.geo-about-panel.geo-about-open{
-  display:block;
-}
-
-.geo-about-overlay{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.72);
-  backdrop-filter:blur(8px);
-}
-
-.geo-about-card{
-  position:relative;
-  width:min(720px,calc(100% - 28px));
-  max-height:90vh;
-  overflow:auto;
-  margin:5vh auto;
-  padding:28px;
-  border-radius:22px;
-  background:#100c18;
-  border:1px solid #352442;
-  box-shadow:0 25px 80px rgba(0,0,0,.55);
-  color:#f7f3fb;
-}
-
-.geo-about-close{
-  position:absolute;
-  top:12px;
-  right:12px;
-  width:38px;
-  height:38px;
-  border:0;
-  border-radius:12px;
-  cursor:pointer;
-}
-
-.geo-about-card h2{
-  margin-top:0;
-}
-
-.geo-about-card p{
-  color:#aaa;
-  line-height:1.7;
-}
-
-.geo-about-box{
-  margin:18px 0;
-  padding:16px;
-  border-radius:15px;
-  background:#0b0a10;
-  border:1px solid #292136;
-}
-
-.geo-about-links{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-.geo-about-links a{
-  display:inline-flex;
-  align-items:center;
-  gap:6px;
-  padding:10px 13px;
-  border-radius:12px;
-  background:#171020;
-  border:1px solid #332341;
-  color:#fff;
-  text-decoration:none;
-}
-
-.geo-about-community{
-  margin-top:20px;
-  display:flex;
-  justify-content:space-between;
-  gap:15px;
-  padding:14px;
-  border-radius:14px;
-  background:#171020;
-  border:1px solid #332341;
-}
-</style>
-
-
-<style id="geoInfoPanelsStyles">
-.geo-info-panel{
-  position:fixed;
-  inset:0;
-  z-index:100000;
-  display:none;
-}
-
-.geo-info-panel.geo-info-open{
-  display:block;
-}
-
-.geo-info-overlay{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.72);
-  backdrop-filter:blur(8px);
-}
-
-.geo-info-card{
-  position:relative;
-  width:min(760px,calc(100% - 28px));
-  max-height:90vh;
-  overflow:auto;
-  margin:5vh auto;
-  padding:28px;
-  border-radius:22px;
-  background:#100c18;
-  border:1px solid #352442;
-  box-shadow:0 25px 80px rgba(0,0,0,.55);
-  color:#f7f3fb;
-}
-
-.geo-info-card h2{
-  margin:0 0 18px;
-}
-
-.geo-info-card p{
-  color:#aaa;
-  line-height:1.7;
-}
-
-.geo-info-close{
-  position:absolute;
-  top:12px;
-  right:12px;
-  width:38px;
-  height:38px;
-  border:0;
-  border-radius:12px;
-  cursor:pointer;
-}
-
-.geo-info-step{
-  display:flex;
-  flex-direction:column;
-  gap:5px;
-  padding:15px;
-  margin:10px 0;
-  border-radius:14px;
-  background:#171020;
-  border:1px solid #332341;
-}
-
-.geo-info-step span{
-  color:#aaa;
-  line-height:1.5;
-}
-
-.geo-feature-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:10px;
-}
-
-.geo-feature{
-  padding:15px;
-  border-radius:14px;
-  background:#171020;
-  border:1px solid #332341;
-}
-
-.geo-feature span{
-  display:block;
-  margin-top:6px;
-  color:#aaa;
-  line-height:1.5;
-}
-
-.geo-info-note{
-  margin-top:20px;
-  padding:14px;
-  border-radius:14px;
-  background:#0b0a10;
-  border:1px solid #292136;
-}
-
-@media(max-width:600px){
-  .geo-feature-grid{
-    grid-template-columns:1fr;
-  }
-}
-</style>
-
-
-<style id="geoUnifiedInfoHide">
-#aboutGeoXShorts,
-#geoAboutPanel,
-#geoInfoPanels{
-  display:none!important;
-}
-</style>
-
-
-<style id="geoUnifiedInfoStyles">
-
-#geoUnifiedInfo{
-  position:fixed;
-  inset:0;
-  z-index:100001;
-  display:none;
-}
-
-#geoUnifiedInfo.geo-ui-open{
-  display:block;
-}
-
-.geo-ui-overlay{
-  position:absolute;
-  inset:0;
-  background:rgba(0,0,0,.72);
-  backdrop-filter:blur(8px);
-}
-
-.geo-ui-card{
-  position:relative;
-  width:min(780px,calc(100% - 28px));
-  max-height:90vh;
-  overflow:auto;
-  margin:5vh auto;
-  padding:28px;
-  border-radius:22px;
-  background:#100c18;
-  border:1px solid #352442;
-  box-shadow:0 25px 80px rgba(0,0,0,.55);
-  color:#f7f3fb;
-}
-
-.geo-ui-card section{
-  display:none;
-}
-
-.geo-ui-card section.geo-ui-active{
-  display:block;
-}
-
-.geo-ui-close{
-  position:absolute;
-  top:12px;
-  right:12px;
-  width:38px;
-  height:38px;
-  border:0;
-  border-radius:12px;
-  cursor:pointer;
-}
-
-.geo-ui-card p{
-  color:#aaa;
-  line-height:1.7;
-}
-
-.geo-ui-box,
-.geo-ui-step,
-.geo-ui-grid>div{
-  padding:15px;
-  margin:10px 0;
-  border-radius:14px;
-  background:#171020;
-  border:1px solid #332341;
-}
-
-.geo-ui-step{
-  display:flex;
-  flex-direction:column;
-  gap:5px;
-}
-
-.geo-ui-step span,
-.geo-ui-grid span{
-  color:#aaa;
-  margin-top:5px;
-  display:block;
-  line-height:1.5;
-}
-
-.geo-ui-grid{
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:10px;
-}
-
-.geo-ui-links{
-  display:flex;
-  flex-wrap:wrap;
-  gap:10px;
-}
-
-.geo-ui-links a{
-  padding:10px 13px;
-  border-radius:12px;
-  background:#171020;
-  border:1px solid #332341;
-  color:#fff;
-  text-decoration:none;
-}
-
-.geo-ui-community{
-  margin-top:18px;
-  padding:14px;
-  border-radius:14px;
-  background:#171020;
-  border:1px solid #332341;
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-}
-
-.geo-ui-note{
-  padding:14px;
-  border-radius:14px;
-  background:#0b0a10;
-  border:1px solid #292136;
-}
-
-.geo-ui-card details{
-  margin:10px 0;
-  padding:14px;
-  border-radius:14px;
-  background:#171020;
-  border:1px solid #332341;
-}
-
-.geo-ui-card summary{
-  cursor:pointer;
-  font-weight:700;
-}
-
-@media(max-width:600px){
-  .geo-ui-grid{
-    grid-template-columns:1fr;
-  }
-}
-
-</style>
-
 </head>
 
 <body>
@@ -3366,97 +2923,14 @@ btn.onclick=async function(){
 </script>
 
 
-<script data-geo-tabs-old="1" type="text/plain" id="geoEditorTabsEngine">
+<script id="geoEditorTabsEngine">
 (function(){
 
 const props=document.querySelector(".geo-properties");
 if(!props)return;
 if(document.getElementById("geoEditorTabs"))return;
 
-props.insertAdjacentHTML("afterbegin", `
-
-<div id="adjustPanel" class="adjust-panel">
-
-  <div class="geo-section-title">🎚️ ADJUST</div>
-
-  <div class="geo-adjust-row">
-    <label>
-      Contrast
-      <output id="geoAdjustContrastVal">0</output>
-    </label>
-    <input id="geoAdjustContrast"
-           type="range"
-           min="-100"
-           max="100"
-           value="0">
-  </div>
-
-  <div class="geo-adjust-row">
-    <label>
-      Saturation
-      <output id="geoAdjustSaturationVal">0</output>
-    </label>
-    <input id="geoAdjustSaturation"
-           type="range"
-           min="-100"
-           max="100"
-           value="0">
-  </div>
-
-  <div class="geo-adjust-row">
-    <label>
-      Vibrance
-      <output id="geoAdjustVibranceVal">0</output>
-    </label>
-    <input id="geoAdjustVibrance"
-           type="range"
-           min="-100"
-           max="100"
-           value="0">
-  </div>
-
-  <div class="geo-adjust-row">
-    <label>
-      Sharpen
-      <output id="geoAdjustSharpenVal">0</output>
-    </label>
-    <input id="geoAdjustSharpen"
-           type="range"
-           min="0"
-           max="100"
-           value="0">
-  </div>
-
-  <div class="geo-adjust-row">
-    <label>
-      Clarity
-      <output id="geoAdjustClarityVal">0</output>
-    </label>
-    <input id="geoAdjustClarity"
-           type="range"
-           min="0"
-           max="100"
-           value="0">
-  </div>
-
-  <div class="geo-adjust-row">
-    <label>
-      Structure
-      <output id="geoAdjustStructureVal">0</output>
-    </label>
-    <input id="geoAdjustStructure"
-           type="range"
-           min="0"
-           max="100"
-           value="0">
-  </div>
-
-  <button id="geoAdjustReset" type="button">
-    ↩️ Reset Adjust
-  </button>
-
-</div>
-
+props.insertAdjacentHTML("beforeend", `("afterbegin",`
 <div id="geoEditorTabs">
 <button class="geo-tab active" data-tab="media">🎬 Media</button>
 <button class="geo-tab" data-tab="text">📝 Text</button>
@@ -3521,15 +2995,16 @@ section("media");
 })();
 </script>
 
-<script id="geoTimelineProEngine">(function(){
-const v=document.getElementById("videoPreview");
-const t=document.querySelector(".geo-timeline");
-if(!v||!t)return;
+<script id="geoTimelineProEngine">
+(function(){
 
-const old=document.getElementById("geoTimelinePro");
-if(old)old.remove();
+const video=document.getElementById("videoPreview");
+const timeline=document.querySelector(".geo-timeline");
 
-t.insertAdjacentHTML("beforeend",`
+if(!video || !timeline)return;
+if(document.getElementById("geoTimelinePro"))return;
+
+timeline.insertAdjacent
 <div id="geoTimelinePro">
 <div class="geo-time-row">
 <span id="geoCurrentTime">00:00</span>
@@ -3537,134 +3012,319 @@ t.insertAdjacentHTML("beforeend",`
 </div>
 <input id="geoTimelineSeek" type="range" min="0" max="1000" value="0">
 <div class="geo-marker-row">
-<button id="geoMarkStart">✂️ Start</button>
-<button id="geoMarkEnd">✂️ End</button>
-<button id="geoJumpStart">⏮️ Start</button>
-<button id="geoJumpEnd">⏭️ End</button>
+<button class="geo-marker" id="geoMarkStart">✂️ Mark Start</button>
+<button class="geo-marker" id="geoMarkEnd">✂️ Mark End</button>
+<button class="geo-marker" id="geoJumpStart">⏮️ Start</button>
+<button class="geo-marker" id="geoJumpEnd">⏭️ End</button>
 </div>
-</div>`);
+</div>
+("beforeend",`
+<div id="geoTimelinePro">
+<div class="geo-time-row">
+<span id="geoCurrentTime">00:00</span>
+<span id="geoDuration">00:00</span>
+</div>
+<input id="geoTimelineSeek" type="range" min="0" max="1000" value="0">
+<div class="geo-marker-row">
+<button class="geo-marker" id="geoMarkStart">✂️ Mark Start</button>
+<button class="geo-marker" id="geoMarkEnd">✂️ Mark End</button>
+<button class="geo-marker" id="geoJumpStart">⏮️ Start</button>
+<button class="geo-marker" id="geoJumpEnd">⏭️ End</button>
+</div>
+</div>
+`);
 
 const seek=document.getElementById("geoTimelineSeek");
-const cur=document.getElementById("geoCurrentTime");
-const dur=document.getElementById("geoDuration");
+const current=document.getElementById("geoCurrentTime");
+const duration=document.getElementById("geoDuration");
 
-function fmt(x){
-x=Number(x)||0;
-let m=Math.floor(x/60),s=Math.floor(x%60);
-return String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+let markStart=null;
+let markEnd=null;
+
+function format(t){
+ if(!Number.isFinite(t))return "00:00";
+ const m=Math.floor(t/60);
+ const sec=Math.floor(t%60);
+ return String(m).padStart(2,"0")+":"+String(sec).padStart(2,"0");
 }
 
 function update(){
-let d=v.duration||0;
-cur.textContent=fmt(v.currentTime);
-dur.textContent=fmt(d);
-seek.value=d?Math.round(v.currentTime/d*1000):0;
+ const d=video.duration||0;
+ const t=video.currentTime||0;
+ current.textContent=format(t);
+ duration.textContent=format(d);
+ seek.value=d?Math.round((t/d)*1000):0;
 }
 
-v.addEventListener("loadedmetadata",update);
-v.addEventListener("timeupdate",update);
+video.addEventListener("loadedmetadata",update);
+video.addEventListener("timeupdate",update);
+video.addEventListener("durationchange",update);
 
-seek.oninput=()=>{
-if(v.duration)v.currentTime=seek.value/1000*v.duration;
+seek.addEventListener("input",()=>{
+ if(video.duration){
+   video.currentTime=(Number(seek.value)/1000)*video.duration;
+ }
+});
+
+document.getElementById("geoJumpStart").onclick=()=>{
+ video.currentTime=0;
 };
 
-document.getElementById("geoJumpStart").onclick=()=>v.currentTime=0;
-
 document.getElementById("geoJumpEnd").onclick=()=>{
-if(v.duration)v.currentTime=Math.max(0,v.duration-.05);
+ if(video.duration)video.currentTime=Math.max(0,video.duration-.05);
 };
 
 document.getElementById("geoMarkStart").onclick=()=>{
-document.getElementById("geoMarkStart").textContent="✂️ Start "+fmt(v.currentTime);
+ markStart=video.currentTime;
+ document.getElementById("geoMarkStart").textContent=
+   "✂️ Start "+format(markStart);
 };
 
 document.getElementById("geoMarkEnd").onclick=()=>{
-document.getElementById("geoMarkEnd").textContent="✂️ End "+fmt(v.currentTime);
+ markEnd=video.currentTime;
+ document.getElementById("geoMarkEnd").textContent=
+   "✂️ End "+format(markEnd);
 };
 
 update();
-})();</script>
 
-<script id="geoKeyframesEngine">(function(){
-const v=document.getElementById("videoPreview");
-const p=document.querySelector(".geo-properties");
-if(!v||!p)return;
+})();
+</script>
 
-const old=document.getElementById("geoKeyframesPro");
-if(old)old.remove();
+<script id="geoKeyframesEngine">
+(function(){
 
-p.insertAdjacentHTML("beforeend",`
+const video=document.getElementById("videoPreview");
+const props=document.querySelector(".geo-properties");
+
+if(!video||!props)return;
+if(document.getElementById("geoKeyframesPro"))return;
+
+props.insertAdjacentHTML("beforeend", `("beforeend",`
 <div id="geoKeyframesPro">
 <div class="geo-kf-title">🔑 KEYFRAMES PRO</div>
-<label>🔍 Zoom <input id="geoKfZoom" type="range" min="50" max="300" value="100"></label>
-<label>↔️ X <input id="geoKfX" type="range" min="-100" max="100" value="0"></label>
-<label>↕️ Y <input id="geoKfY" type="range" min="-100" max="100" value="0"></label>
-<label>🔄 Rotation <input id="geoKfRotation" type="range" min="-180" max="180" value="0"></label>
-<label>🌫️ Opacity <input id="geoKfOpacity" type="range" min="0" max="100" value="100"></label>
+
+<div class="geo-kf-grid">
+<label>🔍 Zoom
+<input id="geoKfZoom" type="range" min="50" max="300" value="100">
+</label>
+
+<label>↔️ Position X
+<input id="geoKfX" type="range" min="-100" max="100" value="0">
+</label>
+
+<label>↕️ Position Y
+<input id="geoKfY" type="range" min="-100" max="100" value="0">
+</label>
+
+<label>🔄 Rotation
+<input id="geoKfRotation" type="range" min="-180" max="180" value="0">
+</label>
+
+<label>🌫️ Opacity
+<input id="geoKfOpacity" type="range" min="0" max="100" value="100">
+</label>
+</div>
+
+<div class="geo-kf-actions">
 <button id="geoAddKeyframe">🔑 Add</button>
 <button id="geoDeleteKeyframe">🗑️ Delete</button>
 <button id="geoResetKeyframes">↩️ Reset</button>
-<div id="geoKeyframeList"></div>
-</div>`);
+</div>
 
-const z=document.getElementById("geoKfZoom");
-const x=document.getElementById("geoKfX");
-const y=document.getElementById("geoKfY");
-const r=document.getElementById("geoKfRotation");
-const o=document.getElementById("geoKfOpacity");
+<div id="geoKeyframeList"></div>
+</div>
+`);
+
+const zoom=document.getElementById("geoKfZoom");
+const posX=document.getElementById("geoKfX");
+const posY=document.getElementById("geoKfY");
+const rotation=document.getElementById("geoKfRotation");
+const opacity=document.getElementById("geoKfOpacity");
 const list=document.getElementById("geoKeyframeList");
-let keys=[],sel=-1;
+
+let keyframes=[];
+let selected=-1;
 
 function state(){
-return {
-time:v.currentTime||0,
-zoom:+z.value,x:+x.value,y:+y.value,
-rotation:+r.value,opacity:+o.value
-};
+ return {
+  time:video.currentTime||0,
+  zoom:Number(zoom.value),
+  x:Number(posX.value),
+  y:Number(posY.value),
+  rotation:Number(rotation.value),
+  opacity:Number(opacity.value)
+ };
 }
 
 function apply(k){
-if(!k)return;
-z.value=k.zoom;x.value=k.x;y.value=k.y;
-r.value=k.rotation;o.value=k.opacity;
-v.style.transform=
-`translate(${k.x/2}%,${k.y/2}%) scale(${k.zoom/100}) rotate(${k.rotation}deg)`;
-v.style.opacity=k.opacity/100;
+ if(!k)return;
+
+ zoom.value=k.zoom;
+ posX.value=k.x;
+ posY.value=k.y;
+ rotation.value=k.rotation;
+ opacity.value=k.opacity;
+
+ video.style.transform=
+   "translate("+(k.x/2)+"%,"+(k.y/2)+"%) "+
+   "scale("+(k.zoom/100)+") "+
+   "rotate("+k.rotation+"deg)";
+
+ video.style.opacity=k.opacity/100;
 }
 
-function render(){
-list.innerHTML="";
-keys.forEach((k,i)=>{
-const b=document.createElement("button");
-b.textContent=(i+1)+" • "+k.time.toFixed(2)+"s";
-b.onclick=()=>{sel=i;apply(k)};
-list.appendChild(b);
-});
+function interpolate(a,b,t){
+ return {
+  time:video.currentTime,
+  zoom:a.zoom+(b.zoom-a.zoom)*t,
+  x:a.x+(b.x-a.x)*t,
+  y:a.y+(b.y-a.y)*t,
+  rotation:a.rotation+(b.rotation-a.rotation)*t,
+  opacity:a.opacity+(b.opacity-a.opacity)*t
+ };
+}
+
+function renderList(){
+
+ list.inner
+<div id="geoKeyframesPro">
+<div class="geo-kf-title">🔑 KEYFRAMES PRO</div>
+
+<div class="geo-kf-grid">
+<label>🔍 Zoom
+<input id="geoKfZoom" type="range" min="50" max="300" value="100">
+</label>
+
+<label>↔️ Position X
+<input id="geoKfX" type="range" min="-100" max="100" value="0">
+</label>
+
+<label>↕️ Position Y
+<input id="geoKfY" type="range" min="-100" max="100" value="0">
+</label>
+
+<label>🔄 Rotation
+<input id="geoKfRotation" type="range" min="-180" max="180" value="0">
+</label>
+
+<label>🌫️ Opacity
+<input id="geoKfOpacity" type="range" min="0" max="100" value="100">
+</label>
+</div>
+
+<div class="geo-kf-actions">
+<button id="geoAddKeyframe">🔑 Add</button>
+<button id="geoDeleteKeyframe">🗑️ Delete</button>
+<button id="geoResetKeyframes">↩️ Reset</button>
+</div>
+
+<div id="geoKeyframeList"></div>
+</div>
+="";
+
+ keyframes.forEach((k,i)=>{
+  const b=document.createElement("button");
+  b.className="geo-kf-chip"+(i===selected?" active":"");
+  b.textContent="🔑 "+i+" • "+k.time.toFixed(2)+"s";
+
+  b.onclick=()=>{
+   selected=i;
+   video.currentTime=k.time;
+   apply(k);
+   renderList();
+  };
+
+  list.appendChild(b);
+ });
+}
+
+function animate(){
+
+ if(keyframes.length===0)return;
+
+ const t=video.currentTime;
+
+ if(t<=keyframes[0].time){
+   apply(keyframes[0]);
+   return;
+ }
+
+ const last=keyframes[keyframes.length-1];
+
+ if(t>=last.time){
+   apply(last);
+   return;
+ }
+
+ let a=keyframes[0];
+ let b=keyframes[1];
+
+ for(let i=0;i<keyframes.length-1;i++){
+   if(t>=keyframes[i].time && t<=keyframes[i+1].time){
+     a=keyframes[i];
+     b=keyframes[i+1];
+     break;
+   }
+ }
+
+ const span=b.time-a.time;
+ const progress=span?((t-a.time)/span):0;
+
+ apply(interpolate(a,b,progress));
 }
 
 document.getElementById("geoAddKeyframe").onclick=()=>{
-keys.push(state());
-keys.sort((a,b)=>a.time-b.time);
-sel=keys.length-1;
-render();
+
+ const k=state();
+
+ const existing=keyframes.findIndex(
+   x=>Math.abs(x.time-k.time)<0.05
+ );
+
+ if(existing>=0){
+   keyframes[existing]=k;
+   selected=existing;
+ }else{
+   keyframes.push(k);
+   keyframes.sort((a,b)=>a.time-b.time);
+   selected=keyframes.findIndex(x=>x===k);
+ }
+
+ renderList();
 };
 
 document.getElementById("geoDeleteKeyframe").onclick=()=>{
-if(sel<0)return;
-keys.splice(sel,1);
-sel=-1;
-render();
+
+ if(selected<0)return;
+
+ keyframes.splice(selected,1);
+ selected=-1;
+ renderList();
 };
 
 document.getElementById("geoResetKeyframes").onclick=()=>{
-keys=[];sel=-1;
-v.style.transform="";
-v.style.opacity=1;
-render();
+
+ keyframes=[];
+ selected=-1;
+
+ zoom.value=100;
+ posX.value=0;
+ posY.value=0;
+ rotation.value=0;
+ opacity.value=100;
+
+ video.style.transform="";
+ video.style.opacity="1";
+
+ renderList();
 };
 
-render();
-})();</script>
+video.addEventListener("timeupdate",animate);
+video.addEventListener("seeked",animate);
+
+})();
+</script>
 
 <div id="geoKfTimeline"></div>
 
@@ -3751,7 +3411,7 @@ const props=document.querySelector(".geo-properties");
 if(!video||!props)return;
 if(document.getElementById("geoChromaKeyPro"))return;
 
-props.insertAdjacentHTML("beforeend", `
+props.insertAdjacentHTML("beforeend", `("beforeend",`
 <div id="geoChromaKeyPro">
 <div class="geo-chroma-title">🟢 GREEN SCREEN / CHROMA KEY</div>
 
@@ -4360,7 +4020,7 @@ const video=document.getElementById("videoPreview");
 if(!props||!video)return;
 if(document.getElementById("geoCanvasPro"))return;
 
-props.insertAdjacentHTML("beforeend", `
+props.insertAdjacentHTML("beforeend", `("beforeend",`
 <div id="geoCanvasPro">
 
 <div class="geo-canvas-title">📐 CANVAS & RESIZE PRO</div>
@@ -4484,108 +4144,306 @@ setRatio("9:16");
 })();
 </script>
 
-<script id="geoAudioTracksEngine">(function(){
-const p=document.querySelector(".geo-properties");
-const v=document.getElementById("videoPreview");
-if(!p||!v)return;
+<script id="geoAudioTracksEngine">
+(function(){
 
-const old=document.getElementById("geoAudioTracksPro");
-if(old)old.remove();
+const props=document.querySelector(".geo-properties");
+const video=document.getElementById("videoPreview");
 
-p.insertAdjacentHTML("beforeend",`
+if(!props||!video)return;
+if(document.getElementById("geoAudioTracksPro"))return;
+
+props.insertAdjacentHTML("beforeend", `("beforeend",`
 <div id="geoAudioTracksPro">
+
 <div class="geo-audio-title">🎵 AUDIO TRACKS PRO</div>
+
 <div class="geo-audio-buttons">
 <button id="geoAddAudio">＋ Add Audio</button>
 <button id="geoRecordVoice">🎙️ Voice-over</button>
 </div>
+
 <input id="geoAudioFile" type="file" accept="audio/*" hidden>
+
 <div id="geoAudioTracksList"></div>
+
 <div id="geoAudioStatus" class="geo-audio-status">
 No audio tracks
 </div>
-</div>`);
 
-const file=document.getElementById("geoAudioFile");
-const add=document.getElementById("geoAddAudio");
-const voice=document.getElementById("geoRecordVoice");
+</div>
+`);
+
+const fileInput=document.getElementById("geoAudioFile");
 const list=document.getElementById("geoAudioTracksList");
 const status=document.getElementById("geoAudioStatus");
 
-let tracks=[];
+const tracks=[];
+let recorder=null;
+let recordingStream=null;
+let recordingChunks=[];
 
-add.onclick=()=>file.click();
+function format(t){
+ if(!Number.isFinite(t))return "00:00";
+ const m=Math.floor(t/60);
+ const sec=Math.floor(t%60);
+ return String(m).padStart(2,"0")+":"+String(sec).padStart(2,"0");
+}
 
-file.onchange=()=>{
-const f=file.files&&file.files[0];
-if(!f)return;
+function createTrack(name,url){
 
-const url=URL.createObjectURL(f);
+ const audio=new Audio(url);
+ audio.preload="auto";
 
-tracks.push({
-name:f.name,
-url:url,
-volume:1
-});
+ const track={
+  id:Date.now()+Math.random(),
+  name,
+  url,
+  audio,
+  start:0,
+  volume:1,
+  muted:false,
+  loop:false,
+  fadeIn:0,
+  fadeOut:0
+ };
 
+ tracks.push(track);
 render();
-file.value="";
-};
+return track;
+}
 
 function render(){
-list.innerHTML="";
 
-if(!tracks.length){
-status.textContent="No audio tracks";
-return;
+ list.inner
+<div id="geoAudioTracksPro">
+
+<div class="geo-audio-title">🎵 AUDIO TRACKS PRO</div>
+
+<div class="geo-audio-buttons">
+<button id="geoAddAudio">＋ Add Audio</button>
+<button id="geoRecordVoice">🎙️ Voice-over</button>
+</div>
+
+<input id="geoAudioFile" type="file" accept="audio/*" hidden>
+
+<div id="geoAudioTracksList"></div>
+
+<div id="geoAudioStatus" class="geo-audio-status">
+No audio tracks
+</div>
+
+</div>
+="";
+
+ tracks.forEach((track,index)=>{
+
+  const box=document.createElement("div");
+  box.className="geo-audio-track";
+
+  box.inner
+<div id="geoAudioTracksPro">
+
+<div class="geo-audio-title">🎵 AUDIO TRACKS PRO</div>
+
+<div class="geo-audio-buttons">
+<button id="geoAddAudio">＋ Add Audio</button>
+<button id="geoRecordVoice">🎙️ Voice-over</button>
+</div>
+
+<input id="geoAudioFile" type="file" accept="audio/*" hidden>
+
+<div id="geoAudioTracksList"></div>
+
+<div id="geoAudioStatus" class="geo-audio-status">
+No audio tracks
+</div>
+
+</div>
+=`
+   <div class="geo-audio-track-head">
+    <span>🎵 ${track.name}</span>
+    <button data-remove="${index}">🗑️</button>
+   </div>
+
+   <label style="font-size:10px;color:#888">
+    Volume
+    <input data-volume="${index}" type="range"
+      min="0" max="100" value="${track.volume*100}">
+   </label>
+
+   <label style="font-size:10px;color:#888">
+    Start
+    <input data-start="${index}" type="range"
+      min="0" max="100" value="${Math.min(100,track.start)}">
+   </label>
+
+   <div style="display:flex;gap:5px;margin-top:7px">
+    <button data-mute="${index}">
+      ${track.muted?"🔇 Muted":"🔊 Mute"}
+    </button>
+    <button data-loop="${index}">
+      ${track.loop?"🔁 Loop ON":"🔁 Loop"}
+    </button>
+   </div>
+  `;
+
+  list.appendChild(box);
+ });
+
+ status.textContent=
+ tracks.length+
+ (tracks.length===1?" audio track":" audio tracks");
 }
 
-status.textContent=tracks.length+" audio track"+
-(tracks.length===1?"":"s");
-
-tracks.forEach((t,i)=>{
-const box=document.createElement("div");
-box.className="geo-audio-track";
-
-const name=document.createElement("span");
-name.textContent=t.name;
-
-const audio=document.createElement("audio");
-audio.controls=true;
-audio.src=t.url;
-
-const vol=document.createElement("input");
-vol.type="range";
-vol.min=0;
-vol.max=100;
-vol.value=100;
-
-vol.oninput=()=>{
-t.volume=Number(vol.value)/100;
-audio.volume=t.volume;
+document.getElementById("geoAddAudio").onclick=()=>{
+ fileInput.click();
 };
 
-const del=document.createElement("button");
-del.textContent="🗑️";
-del.onclick=()=>{
-URL.revokeObjectURL(t.url);
-tracks.splice(i,1);
-render();
+fileInput.onchange=()=>{
+
+ const file=fileInput.files?.[0];
+ if(!file)return;
+
+ const url=URL.createObjectURL(file);
+ createTrack(file.name,url);
+
+ fileInput.value="";
 };
 
-box.append(name,audio,vol,del);
-list.appendChild(box);
+list.addEventListener("input",e=>{
+
+ const i=e.target.dataset.volume;
+
+ if(i!==undefined){
+  tracks[i].volume=Number(e.target.value)/100;
+  tracks[i].audio.volume=tracks[i].muted?0:tracks[i].volume;
+ }
+
+ const st=e.target.dataset.start;
+
+ if(st!==undefined){
+  tracks[st].start=Number(e.target.value);
+ }
 });
 
-}
+list.addEventListener("click",e=>{
 
-voice.onclick=()=>{
-status.textContent="Voice-over: selectează înregistrarea audio";
-file.click();
+ const remove=e.target.dataset.remove;
+
+ if(remove!==undefined){
+  const t=tracks[Number(remove)];
+  t.audio.pause();
+  URL.revokeObjectURL(t.url);
+  tracks.splice(Number(remove),1);
+  render();
+  return;
+ }
+
+ const mute=e.target.dataset.mute;
+
+ if(mute!==undefined){
+  const t=tracks[Number(mute)];
+  t.muted=!t.muted;
+  t.audio.muted=t.muted;
+  render();
+  return;
+ }
+
+ const loop=e.target.dataset.loop;
+
+ if(loop!==undefined){
+  const t=tracks[Number(loop)];
+  t.loop=!t.loop;
+  t.audio.loop=t.loop;
+  render();
+ }
+});
+
+document.getElementById("geoRecordVoice").onclick=async()=>{
+
+ const button=document.getElementById("geoRecordVoice");
+
+ if(recorder && recorder.state==="recording"){
+  recorder.stop();
+  button.textContent="🎙️ Voice-over";
+  return;
+ }
+
+ if(!navigator.mediaDevices?.getUserMedia){
+  status.textContent="Microphone unavailable in this browser";
+  return;
+ }
+
+ try{
+
+  recordingStream=
+   await navigator.mediaDevices.getUserMedia({audio:true});
+
+  recordingChunks=[];
+
+  recorder=new MediaRecorder(recordingStream);
+
+  recorder.ondataavailable=e=>{
+   if(e.data.size)recordingChunks.push(e.data);
+  };
+
+  recorder.onstop=()=>{
+
+   const blob=new Blob(recordingChunks,{type:"audio/webm"});
+   const url=URL.createObjectURL(blob);
+
+   createTrack("Voice-over",url);
+
+   recordingStream.getTracks().forEach(t=>t.stop());
+   recordingStream=null;
+  };
+
+  recorder.start();
+  button.textContent="⏹️ Stop Recording";
+  status.textContent="🎙️ Recording voice-over...";
+
+ }catch(err){
+
+  status.textContent="Microphone permission denied";
+ }
 };
 
+video.addEventListener("timeupdate",()=>{
+
+ const now=video.currentTime;
+
+ tracks.forEach(t=>{
+
+  const shouldPlay=
+   now>=t.start &&
+   now<=t.start+(t.audio.duration||Infinity);
+
+  if(shouldPlay && video.playing){
+   if(t.audio.paused){
+    try{t.audio.currentTime=0}catch(e){}
+    t.audio.play().catch(()=>{});
+   }
+  }else if(!shouldPlay && !t.audio.paused){
+   t.audio.pause();
+  }
+
+  t.audio.volume=t.muted?0:t.volume;
+ });
+});
+
+video.addEventListener("pause",()=>{
+ tracks.forEach(t=>t.audio.pause());
+});
+
+video.addEventListener("ended",()=>{
+ tracks.forEach(t=>t.audio.pause());
+});
+
 render();
-})();</script>
+
+})();
+</script>
 
 <script id="geoEnhanceFreeEngine">
 (function(){
@@ -4596,7 +4454,7 @@ const video = document.getElementById("videoPreview");
 if(!props || !video) return;
 if(document.getElementById("geoEnhanceFree")) return;
 
-props.insertAdjacentHTML("beforeend", `
+props.insertAdjacentHTML("beforeend", `("beforeend",`
 
 `);
 
@@ -4674,831 +4532,6 @@ document.getElementById("geoStartExport")
 
 })();
 </script>
-<script id="geoEditorTabsEngine">
-(function(){
-  const props=document.querySelector(".geo-properties");
-  if(!props)return;
-
-  const old=document.getElementById("geoEditorTabs");
-  if(old)old.remove();
-
-  const oldEngine=document.querySelector(
-    'script[data-geo-tabs-old="1"]'
-  );
-  if(oldEngine)oldEngine.remove();
-
-  const tabsHtml=`
-  <div id="geoEditorTabs">
-    <button class="geo-tab active" data-tab="media">🎬 Media</button>
-    <button class="geo-tab" data-tab="text">📝 Text</button>
-    <button class="geo-tab" data-tab="audio">🎵 Audio</button>
-    <button class="geo-tab" data-tab="adjust">🎚️ Adjust</button>
-    <button class="geo-tab" data-tab="effects">✨ Effects</button>
-    <button class="geo-tab" data-tab="export">📤 Export</button>
-  </div>`;
-
-  props.insertAdjacentHTML("afterbegin",tabsHtml);
-
-  const panelsHtml=`
-  <div id="geoMediaPanel" class="geo-tab-panel geo-tab-panel-active"></div>
-  <div id="geoTextPanel" class="geo-tab-panel"></div>
-  <div id="geoAudioPanel" class="geo-tab-panel"></div>
-  <div id="geoAdjustPanel" class="geo-tab-panel"></div>
-  <div id="geoEffectsPanel" class="geo-tab-panel"></div>
-  <div id="geoExportPanel" class="geo-tab-panel"></div>`;
-
-  document.getElementById("geoEditorTabs")
-    .insertAdjacentHTML("afterend",panelsHtml);
-
-  const panel={
-    media:document.getElementById("geoMediaPanel"),
-    text:document.getElementById("geoTextPanel"),
-    audio:document.getElementById("geoAudioPanel"),
-    adjust:document.getElementById("geoAdjustPanel"),
-    effects:document.getElementById("geoEffectsPanel"),
-    export:document.getElementById("geoExportPanel")
-  };
-
-  function move(id,target){
-    const el=document.getElementById(id);
-    if(el && target && el.parentElement!==target){
-      target.appendChild(el);
-    }
-  }
-
-  // TEXT
-  move("geoTextPro2",panel.text);
-
-  // AUDIO
-  move("geoAudioPro",panel.audio);
-  move("geoAudioTracksPro",panel.audio);
-
-  // ADJUST - vom construi panoul complet in pasul urmator
-  move("adjustPanel",panel.adjust);
-
-  // EFFECTS
-  move("geoEffectsPro",panel.effects);
-  move("geoChromaKeyPro",panel.effects);
-
-  // EXPORT
-  move("geoExportPro",panel.export);
-
-  // MEDIA
-  [
-    "geoTransformPro",
-    "geoCanvasPro",
-    "geoKeyframesPro"
-  ].forEach(id=>move(id,panel.media));
-
-  // Timeline ramane jos, nu in panoul lateral
-  // geoTimelinePro nu este mutat
-
-  function show(name){
-    Object.entries(panel).forEach(([key,el])=>{
-      el.classList.toggle(
-        "geo-tab-panel-active",
-        key===name
-      );
-    });
-
-    document.querySelectorAll("#geoEditorTabs .geo-tab")
-      .forEach(btn=>{
-        btn.classList.toggle(
-          "active",
-          btn.dataset.tab===name
-        );
-      });
-  }
-
-  document.querySelectorAll("#geoEditorTabs .geo-tab")
-    .forEach(btn=>{
-      btn.addEventListener("click",()=>{
-        show(btn.dataset.tab);
-      });
-    });
-
-  show("media");
-
-  // Redenumire vizuala Transform Pro -> Transform
-  const tr=document.getElementById("geoTransformPro");
-  if(tr){
-    tr.querySelectorAll("*").forEach(el=>{
-      if(el.children.length===0 &&
-         el.textContent.trim()==="TRANSFORM PRO"){
-        el.textContent="TRANSFORM";
-      }
-    });
-  }
-
-  // Scoatem controalele vechi/blocate daca exista
-  document.querySelectorAll(
-    'button,select,label,div,span'
-  ).forEach(el=>{
-    const t=(el.textContent||"").trim();
-    if(
-      t==="Select Element" ||
-      t==="Transform Timing"
-    ){
-      el.remove();
-    }
-  });
-
-  console.log("GeoX Shorts: tabs rebuilt");
-})();
-</script>
-
-<script id="geoAdjustEngine">
-(function(){
-
-const v=document.getElementById("videoPreview");
-
-const controls={
-  contrast:document.getElementById("geoAdjustContrast"),
-  saturation:document.getElementById("geoAdjustSaturation"),
-  vibrance:document.getElementById("geoAdjustVibrance"),
-  sharpen:document.getElementById("geoAdjustSharpen"),
-  clarity:document.getElementById("geoAdjustClarity"),
-  structure:document.getElementById("geoAdjustStructure")
-};
-
-if(!v)return;
-
-function val(name){
-  return Number(controls[name]?.value||0);
-}
-
-function update(){
-
-  const contrast=val("contrast");
-  const saturation=val("saturation");
-
-  const brightness=1;
-  const contrastValue=(100+contrast)/100;
-  const saturationValue=(100+saturation)/100;
-
-  v.style.filter=
-    `brightness(${brightness}) `+
-    `contrast(${contrastValue}) `+
-    `saturate(${saturationValue})`;
-
-  for(const [name,input] of Object.entries(controls)){
-    const out=document.getElementById(
-      "geoAdjust"+
-      name.charAt(0).toUpperCase()+
-      name.slice(1)+
-      "Val"
-    );
-
-    if(out)out.textContent=input.value;
-  }
-}
-
-Object.values(controls).forEach(input=>{
-  if(input){
-    input.addEventListener("input",update);
-  }
-});
-
-const reset=document.getElementById("geoAdjustReset");
-
-if(reset){
-  reset.addEventListener("click",()=>{
-
-    Object.entries(controls).forEach(([name,input])=>{
-      if(!input)return;
-      input.value=
-        (name==="contrast"||name==="saturation")
-        ? 0
-        : 0;
-    });
-
-    v.style.filter="";
-    update();
-  });
-}
-
-update();
-
-console.log("GeoX Shorts Adjust ready");
-
-})();
-</script>
-
-
-<div id="geoAboutPanel" class="geo-about-panel" aria-hidden="true">
-  <div class="geo-about-overlay"></div>
-
-  <div class="geo-about-card">
-    <button id="geoAboutClose" class="geo-about-close" type="button">✕</button>
-
-    <h2>About GeoXShorts 🎬</h2>
-
-    <p>
-      <strong>GeoXShorts</strong> este un proiect independent creat de
-      <strong>Geo FF</strong>, dedicat creării rapide de videoclipuri
-      verticale și Shorts.
-    </p>
-
-    <p>
-      Proiectul este dezvoltat cu ajutorul instrumentelor AI, iar direcția,
-      conceptul și deciziile finale aparțin creatorului.
-    </p>
-
-    <div class="geo-about-box">
-      <h3>🛡️ Trust & Transparency</h3>
-      <p>
-        GeoXShorts este un proiect independent și identificabil.
-        Nu solicităm parole de social media, parole GitHub sau date
-        bancare pentru utilizarea de bază a editorului.
-      </p>
-    </div>
-
-    <h3>👤 Creator & Social Media</h3>
-
-    <div class="geo-about-links">
-      <a href="https://youtube.com/@geo_ff" target="_blank" rel="noopener">▶️ YouTube</a>
-      <a href="https://www.tiktok.com/@geo_ff.hs" target="_blank" rel="noopener">🎵 TikTok</a>
-      <a href="https://www.instagram.com/geo_ff.hs" target="_blank" rel="noopener">📸 Instagram</a>
-      <a href="https://github.com/GeoXShortsOfficial/geoxshorts" target="_blank" rel="noopener">💻 GitHub</a>
-      <a href="https://discord.gg/cTwvS6xfY" target="_blank" rel="noopener">💬 Discord Server</a>
-    </div>
-
-    <p class="geo-discord-user">
-      Discord: <strong>geoff2003</strong>
-    </p>
-
-    <div class="geo-about-box">
-      <h3>📧 Support</h3>
-      <p>
-        Official support email will be published here before the public launch.
-      </p>
-    </div>
-
-    <div class="geo-about-community">
-      <strong>👥 GeoXShorts Community</strong>
-      <span id="geoUserMilestone">100+ users</span>
-    </div>
-  </div>
-</div>
-
-
-<script type="text/plain" data-old-menu="disabled">
-(function(){
-
-const panel=document.getElementById("geoAboutPanel");
-const close=document.getElementById("geoAboutClose");
-
-if(!panel)return;
-
-function openAbout(){
-  panel.classList.add("geo-about-open");
-  panel.setAttribute("aria-hidden","false");
-}
-
-function closeAbout(){
-  panel.classList.remove("geo-about-open");
-  panel.setAttribute("aria-hidden","true");
-}
-
-const buttons=document.querySelectorAll(
-  "#geoAboutMenuBtn,[data-about-open],[data-action='about']"
-);
-
-buttons.forEach(btn=>{
-  btn.addEventListener("click",e=>{
-    e.preventDefault();
-    openAbout();
-  });
-});
-
-if(close){
-  close.addEventListener("click",closeAbout);
-}
-
-const overlay=panel.querySelector(".geo-about-overlay");
-
-if(overlay){
-  overlay.addEventListener("click",closeAbout);
-}
-
-document.addEventListener("keydown",e=>{
-  if(e.key==="Escape")closeAbout();
-});
-
-})();
-</script>
-
-
-<div id="geoInfoPanels">
-
-  <div id="geoHowPanel" class="geo-info-panel" aria-hidden="true">
-    <div class="geo-info-overlay"></div>
-    <div class="geo-info-card">
-
-      <button class="geo-info-close" data-close-info type="button">✕</button>
-
-      <h2>⚙️ Cum funcționează</h2>
-
-      <p>
-        GeoXShorts este creat pentru a transforma rapid videoclipuri
-        lungi în conținut vertical potrivit pentru Shorts, TikTok și Reels.
-      </p>
-
-      <div class="geo-info-step">
-        <strong>1. 📤 Încarcă videoclipul</strong>
-        <span>Selectează videoclipul pe care vrei să îl editezi.</span>
-      </div>
-
-      <div class="geo-info-step">
-        <strong>2. ✂️ Editează videoclipul</strong>
-        <span>
-          Taie porțiuni, ajustează imaginea, modifică poziția,
-          adaugă text, audio și efecte.
-        </span>
-      </div>
-
-      <div class="geo-info-step">
-        <strong>3. 🎨 Personalizează</strong>
-        <span>
-          Folosește filtre, Adjust, Transform, text, audio și
-          alte instrumente pentru a crea stilul dorit.
-        </span>
-      </div>
-
-      <div class="geo-info-step">
-        <strong>4. 📱 Pregătește formatul</strong>
-        <span>
-          Alege formatul vertical 9:16 sau unul dintre celelalte
-          formate disponibile.
-        </span>
-      </div>
-
-      <div class="geo-info-step">
-        <strong>5. 📤 Exportă</strong>
-        <span>
-          Exportă proiectul în formatul și calitatea potrivită
-          pentru platforma pe care îl vei publica.
-        </span>
-      </div>
-
-      <p class="geo-info-note">
-        🚧 GeoXShorts este în continuă dezvoltare, iar funcțiile
-        editorului sunt îmbunătățite constant.
-      </p>
-
-    </div>
-  </div>
-
-
-  <div id="geoFeaturesPanel" class="geo-info-panel" aria-hidden="true">
-    <div class="geo-info-overlay"></div>
-    <div class="geo-info-card">
-
-      <button class="geo-info-close" data-close-info type="button">✕</button>
-
-      <h2>✨ Funcții GeoXShorts</h2>
-
-      <div class="geo-feature-grid">
-
-        <div class="geo-feature">
-          <strong>🎬 Media</strong>
-          <span>Încarcă și gestionează videoclipurile.</span>
-        </div>
-
-        <div class="geo-feature">
-          <strong>📝 Text</strong>
-          <span>Adaugă text, stiluri, culori și formatare.</span>
-        </div>
-
-        <div class="geo-feature">
-          <strong>🎵 Audio</strong>
-          <span>Adaugă muzică, audio și voice-over.</span>
-        </div>
-
-        <div class="geo-feature">
-          <strong>🎚️ Adjust</strong>
-          <span>Controlează contrastul, saturația, claritatea și structura.</span>
-        </div>
-
-        <div class="geo-feature">
-          <strong>🎨 Filters</strong>
-          <span>Aplică filtre vizuale pentru diferite stiluri.</span>
-        </div>
-
-        <div class="geo-feature">
-          <strong>✨ Effects</strong>
-          <span>Adaugă efecte vizuale și animații.</span>
-        </div>
-
-        <div class="geo-feature">
-          <strong>🔄 Transform</strong>
-          <span>Mută, scalează, rotește și ajustează transparența.</span>
-        </div>
-
-        <div class="geo-feature">
-          <strong>🔑 Keyframes</strong>
-          <span>Creează animații folosind puncte pe timeline.</span>
-        </div>
-
-        <div class="geo-feature">
-          <strong>📐 Canvas</strong>
-          <span>Lucrează cu 9:16, 16:9 și 1:1.</span>
-        </div>
-
-        <div class="geo-feature">
-          <strong>📤 Export</strong>
-          <span>Pregătește videoclipul pentru publicare.</span>
-        </div>
-
-      </div>
-
-      <p class="geo-info-note">
-        🚀 Mai multe funcții sunt în dezvoltare și vor fi adăugate
-        pe măsură ce GeoXShorts evoluează.
-      </p>
-
-    </div>
-  </div>
-
-</div>
-
-
-<script id="geoHowFeaturesEngine">
-(function(){
-
-const root=document.getElementById("geoInfoPanels");
-if(!root)return;
-
-const how=document.getElementById("geoHowPanel");
-const features=document.getElementById("geoFeaturesPanel");
-
-function open(panel){
-  [how,features].forEach(x=>{
-    if(x)x.classList.remove("geo-info-open");
-  });
-
-  if(panel){
-    panel.classList.add("geo-info-open");
-    panel.setAttribute("aria-hidden","false");
-  }
-}
-
-function closeAll(){
-  [how,features].forEach(x=>{
-    if(x){
-      x.classList.remove("geo-info-open");
-      x.setAttribute("aria-hidden","true");
-    }
-  });
-}
-
-document.querySelectorAll(
-  '[data-action="how"],[data-info="how"],[data-menu="how"]'
-).forEach(btn=>{
-  btn.addEventListener("click",e=>{
-    e.preventDefault();
-    open(how);
-  });
-});
-
-document.querySelectorAll(
-  '[data-action="features"],[data-info="features"],[data-menu="features"]'
-).forEach(btn=>{
-  btn.addEventListener("click",e=>{
-    e.preventDefault();
-    open(features);
-  });
-});
-
-root.querySelectorAll("[data-close-info]").forEach(btn=>{
-  btn.addEventListener("click",closeAll);
-});
-
-root.querySelectorAll(".geo-info-overlay").forEach(overlay=>{
-  overlay.addEventListener("click",closeAll);
-});
-
-document.addEventListener("keydown",e=>{
-  if(e.key==="Escape")closeAll();
-});
-
-})();
-</script>
-
-
-<div id="geoUnifiedInfo" aria-hidden="true">
-
-  <div class="geo-ui-overlay"></div>
-
-  <div class="geo-ui-card">
-
-    <button id="geoUnifiedClose" type="button" class="geo-ui-close">✕</button>
-
-    <section data-info-panel="about">
-      <h2>ℹ️ About GeoXShorts</h2>
-
-      <p>
-        <strong>GeoXShorts</strong> este un proiect independent creat de
-        <strong>Geo FF</strong>, dedicat creării rapide de videoclipuri
-        verticale și Shorts.
-      </p>
-
-      <p>
-        Proiectul este dezvoltat cu ajutorul instrumentelor AI, iar direcția,
-        conceptul și deciziile finale aparțin creatorului.
-      </p>
-
-      <div class="geo-ui-box">
-        <h3>🛡️ Trust & Transparency</h3>
-        <p>
-          GeoXShorts este un proiect independent și identificabil.
-          Nu solicităm parole de social media, parole GitHub sau date bancare
-          pentru utilizarea de bază a editorului.
-        </p>
-      </div>
-
-      <h3>👤 Creator & Social Media</h3>
-
-      <div class="geo-ui-links">
-        <a href="https://youtube.com/@geo_ff" target="_blank" rel="noopener">▶️ YouTube</a>
-        <a href="https://www.tiktok.com/@geo_ff.hs" target="_blank" rel="noopener">🎵 TikTok</a>
-        <a href="https://www.instagram.com/geo_ff.hs" target="_blank" rel="noopener">📸 Instagram</a>
-        <a href="https://github.com/GeoXShortsOfficial/geoxshorts" target="_blank" rel="noopener">💻 GitHub</a>
-        <a href="https://discord.gg/cTwvS6xfY" target="_blank" rel="noopener">💬 Discord Server</a>
-      </div>
-
-      <p>Discord: <strong>geoff2003</strong></p>
-
-      <div class="geo-ui-box">
-        <h3>📧 Support</h3>
-        <p>
-          Official support email will be published here before the public launch.
-        </p>
-      </div>
-
-      <div class="geo-ui-community">
-        👥 <strong>GeoXShorts Community</strong>
-        <span>600+ Discord members</span>
-      </div>
-    </section>
-
-    <section data-info-panel="how">
-      <h2>⚙️ Cum funcționează</h2>
-
-      <div class="geo-ui-step">
-        <strong>1. 📤 Încarcă videoclipul</strong>
-        <span>Selectează videoclipul pe care vrei să îl editezi.</span>
-      </div>
-
-      <div class="geo-ui-step">
-        <strong>2. ✂️ Editează</strong>
-        <span>
-          Folosește timeline-ul pentru a controla videoclipul și
-          instrumentele editorului pentru modificări.
-        </span>
-      </div>
-
-      <div class="geo-ui-step">
-        <strong>3. 🎨 Personalizează</strong>
-        <span>
-          Aplică filtre, Adjust, Transform, text, audio și efecte.
-        </span>
-      </div>
-
-      <div class="geo-ui-step">
-        <strong>4. 📱 Pregătește formatul</strong>
-        <span>
-          Alege formatul potrivit pentru Shorts, TikTok sau Reels.
-        </span>
-      </div>
-
-      <div class="geo-ui-step">
-        <strong>5. 📤 Exportă</strong>
-        <span>
-          Pregătește videoclipul pentru publicare în formatul ales.
-        </span>
-      </div>
-    </section>
-
-    <section data-info-panel="features">
-      <h2>✨ Funcții</h2>
-
-      <div class="geo-ui-grid">
-        <div><b>🎬 Media</b><span>Importă și gestionează videoclipul.</span></div>
-        <div><b>📝 Text</b><span>Adaugă și stilizează textul.</span></div>
-        <div><b>🎵 Audio</b><span>Muzică, audio și voice-over.</span></div>
-        <div><b>🎚️ Adjust</b><span>Contrast, saturație, claritate și structură.</span></div>
-        <div><b>🎨 Filters</b><span>Filtre vizuale pregătite.</span></div>
-        <div><b>✨ Effects</b><span>Efecte și animații vizuale.</span></div>
-        <div><b>🔄 Transform</b><span>Poziție, scale, rotație și opacitate.</span></div>
-        <div><b>🔑 Keyframes</b><span>Animații bazate pe timpul videoclipului.</span></div>
-        <div><b>📐 Canvas</b><span>9:16, 16:9 și 1:1.</span></div>
-        <div><b>📤 Export</b><span>Pregătirea fișierului final.</span></div>
-      </div>
-
-      <p class="geo-ui-note">
-        🚧 GeoXShorts este în continuă dezvoltare.
-      </p>
-    </section>
-
-    <section data-info-panel="faq">
-      <h2>❓ FAQ</h2>
-
-      <details>
-        <summary>GeoXShorts este gratuit?</summary>
-        <p>
-          Editorul este în dezvoltare, iar funcțiile disponibile pot fi
-          extinse în timp. Funcțiile publice sunt prezentate direct în site.
-        </p>
-      </details>
-
-      <details>
-        <summary>Trebuie să îmi conectez conturile sociale?</summary>
-        <p>
-          Nu. Pentru utilizarea de bază a editorului nu sunt solicitate
-          parole de social media.
-        </p>
-      </details>
-
-      <details>
-        <summary>Ce tip de conținut pot crea?</summary>
-        <p>
-          GeoXShorts este orientat spre videoclipuri verticale și conținut
-          de tip Shorts, TikTok și Reels.
-        </p>
-      </details>
-
-      <details>
-        <summary>Site-ul este terminat?</summary>
-        <p>
-          Nu. GeoXShorts este în continuă dezvoltare și primește constant
-          funcții și îmbunătățiri.
-        </p>
-      </details>
-    </section>
-
-    <section data-info-panel="contact">
-      <h2>📩 Contact</h2>
-
-      <p>
-        Pentru moment, suportul oficial este în pregătire.
-      </p>
-
-      <div class="geo-ui-box">
-        <h3>📧 Support Email</h3>
-        <p>
-          Official support email will be published here before the public launch.
-        </p>
-      </div>
-
-      <h3>🌐 Social</h3>
-
-      <div class="geo-ui-links">
-        <a href="https://youtube.com/@geo_ff" target="_blank" rel="noopener">▶️ YouTube</a>
-        <a href="https://www.tiktok.com/@geo_ff.hs" target="_blank" rel="noopener">🎵 TikTok</a>
-        <a href="https://www.instagram.com/geo_ff.hs" target="_blank" rel="noopener">📸 Instagram</a>
-        <a href="https://discord.gg/cTwvS6xfY" target="_blank" rel="noopener">💬 Discord</a>
-      </div>
-    </section>
-
-    <section data-info-panel="privacy">
-      <h2>🔒 Privacy Policy</h2>
-
-      <p>
-        GeoXShorts respectă confidențialitatea utilizatorilor și este
-        dezvoltat pentru a limita datele personale solicitate.
-      </p>
-
-      <h3>Ce nu solicităm pentru utilizarea de bază</h3>
-      <p>
-        Nu solicităm parole de social media, parole GitHub sau date bancare
-        pentru utilizarea de bază a editorului.
-      </p>
-
-      <h3>Fișiere încărcate</h3>
-      <p>
-        Utilizatorii trebuie să încarce doar materiale pentru care au dreptul
-        să le utilizeze. Funcțiile și modul de procesare pot evolua pe măsură
-        ce proiectul este dezvoltat.
-      </p>
-
-      <p class="geo-ui-note">
-        Această pagină este o descriere informativă a proiectului și poate fi
-        actualizată înainte de lansarea publică.
-      </p>
-    </section>
-
-    <section data-info-panel="terms">
-      <h2>📜 Terms of Service</h2>
-
-      <p>
-        Prin utilizarea GeoXShorts, utilizatorul este responsabil pentru
-        materialele încărcate și pentru modul în care sunt folosite
-        rezultatele exportate.
-      </p>
-
-      <h3>Utilizare responsabilă</h3>
-      <p>
-        Nu utiliza GeoXShorts pentru activități ilegale, pentru încălcarea
-        drepturilor altor persoane sau pentru încărcarea de materiale pe
-        care nu ai dreptul să le folosești.
-      </p>
-
-      <h3>Dezvoltare continuă</h3>
-      <p>
-        Funcțiile, interfața și disponibilitatea serviciului se pot schimba
-        pe măsură ce GeoXShorts este dezvoltat.
-      </p>
-
-      <p class="geo-ui-note">
-        Această secțiune este informativă și poate fi actualizată înainte de
-        lansarea publică a serviciului.
-      </p>
-    </section>
-
-  </div>
-</div>
-
-
-<script id="geoUnifiedInfoEngine">
-(function(){
-
-const root=document.getElementById("geoUnifiedInfo");
-if(!root)return;
-
-const panels=root.querySelectorAll("[data-info-panel]");
-const close=document.getElementById("geoUnifiedClose");
-
-function show(name){
-  panels.forEach(p=>{
-    p.classList.toggle(
-      "geo-ui-active",
-      p.dataset.infoPanel===name
-    );
-  });
-
-  root.classList.add("geo-ui-open");
-  root.setAttribute("aria-hidden","false");
-}
-
-function hide(){
-  root.classList.remove("geo-ui-open");
-  root.setAttribute("aria-hidden","true");
-}
-
-const names={
-  "about":"about",
-  "how":"how",
-  "features":"features",
-  "faq":"faq",
-  "contact":"contact",
-  "privacy":"privacy",
-  "terms":"terms"
-};
-
-document.querySelectorAll(".geo-about-item").forEach(btn=>{
-  const text=(btn.textContent||"").trim();
-
-  let key=null;
-
-  if(text==="Cum funcționează")key="how";
-  if(text==="Funcții")key="features";
-  if(text==="FAQ")key="faq";
-  if(text==="Contact")key="contact";
-  if(text==="Privacy Policy")key="privacy";
-  if(text==="Terms of Service")key="terms";
-
-  if(key){
-    btn.addEventListener("click",e=>{
-      e.preventDefault();
-      show(names[key]);
-    });
-  }
-});
-
-const aboutBtn=document.getElementById("geoAboutMenuBtn");
-
-if(aboutBtn){
-  aboutBtn.addEventListener("click",e=>{
-    e.preventDefault();
-    e.stopPropagation();
-    show("about");
-  });
-}
-
-if(close)close.addEventListener("click",hide);
-
-const overlay=root.querySelector(".geo-ui-overlay");
-
-if(overlay)overlay.addEventListener("click",hide);
-
-document.addEventListener("keydown",e=>{
-  if(e.key==="Escape")hide();
-});
-
-})();
-</script>
-
 </body>
 </html>
 
@@ -5703,7 +4736,8 @@ document.addEventListener("keydown",e=>{
 <div id="geoAboutMenu">
   <button id="geoAboutMenuBtn" type="button" aria-label="Mai multe">⋮</button>
 
-  
+  <div id="geoAboutPanel">
+    <button class="geo-about-item">About GeoXShorts</button>
     <button class="geo-about-item">Cum funcționează</button>
     <button class="geo-about-item">Funcții</button>
     <button class="geo-about-item">FAQ</button>
@@ -5713,7 +4747,7 @@ document.addEventListener("keydown",e=>{
   </div>
 </div>
 
-<script type="text/plain" data-old-menu="disabled">
+<script>
 (function(){
   const btn=document.getElementById('geoAboutMenuBtn');
   const panel=document.getElementById('geoAboutPanel');
