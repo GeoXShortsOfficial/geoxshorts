@@ -379,40 +379,6 @@ function run(a){
 }
 const oe=window.openEditor;window.openEditor=()=>{oe();panel()};panel();
 })();
-</script><style id="gx-flow-fix">.gx-mode{font-size:13px;color:#cbb8d8;margin-left:8px}.gx-empty{padding:30px;text-align:center;color:#a894b5}.gx-go{margin-top:12px;width:100%}</style>
-<script id="gx-flow-fix-engine">
-(()=>{const $=id=>document.getElementById(id);
-function start(m){
- mode=m;$("files").accept=m==="video"?"video/*":"image/*";
- $("files").value="";$("files").click()
-}
-function open(){
- if(!media.length){alert("Selectează cel puțin un material.");return}
- $("home").classList.add("hidden");$("editor").classList.remove("hidden");
- let title=$("ename");title.innerHTML="Editor GeoXShorts";
- let tag=document.createElement("span");tag.className="gx-mode";tag.textContent=`• ${mode.toUpperCase()} • ${media.length} materiale`;
- title.append(tag);
- renderMedia();$("editor").scrollIntoView({behavior:"smooth",block:"start"})
-}
-function renderMedia(){
- let t=$("timeline"),v=$("preview");
- t.innerHTML=media.map((f,i)=>{let u=URL.createObjectURL(f);
- return `<div class="thumb" data-i="${i}" title="${f.name}">${f.type.startsWith("video/")?`<video muted src="${u}"></video>`:`<img src="${u}">`}</div>`}).join("")||'<div class="gx-empty">Nu există materiale.</div>';
- if(media[0]){let u=URL.createObjectURL(media[0]);
- v.innerHTML=media[0].type.startsWith("video/")?`<video controls playsinline src="${u}" style="max-width:100%;max-height:430px"></video>`:`<img src="${u}" style="max-width:100%;max-height:430px;object-fit:contain">`}
-}
-window.gxStart=start;window.gxOpen=open;
-$("files").addEventListener("change",e=>{
- let a=[...e.target.files];if(!a.length)return;
- media=a;open();e.target.value=""
-});
-document.addEventListener("click",e=>{
- let b=e.target.closest('[onclick*="pick(\'video\')"]');if(b){e.preventDefault();start("video")}
- b=e.target.closest('[onclick*="pick(\'photo\')"]');if(b){e.preventDefault();start("photo")}
-});
-const oldHome=window.home;
-window.home=()=>{$("editor").classList.add("hidden");$("home").classList.remove("hidden");media=[];render?.()}
-})();
 </script></body></html>
 <style id="gx-unified-brand">
 .gx,.gx-grad{letter-spacing:-.5px}
