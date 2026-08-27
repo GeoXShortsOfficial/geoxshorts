@@ -1,25 +1,5 @@
 <html lang="ro"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GeoXShorts 🎬 — Editor</title><style>
 *{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#32154f,#100918 55%);color:#fff;font:15px system-ui,sans-serif;min-height:100vh}.wrap{max-width:1100px;margin:auto;padding:20px}.head{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #392447}.logo{font-size:24px;font-weight:900}.gx{background:linear-gradient(100deg,#9b5cff,#ff4fbd);background-clip:text;color:transparent}.cam{display:inline-block;margin-left:8px;animation:p 1.3s infinite}.card{background:#1b1027;border:1px solid #3b244d;border-radius:20px;padding:22px;margin-top:22px;box-shadow:0 15px 40px #0005}.center{text-align:center}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.btn{border:1px solid #492d5d;background:#251536;color:#fff;border-radius:15px;padding:18px;cursor:pointer;font-weight:800}.btn:hover{transform:translateY(-2px);border-color:#bd6cff}.icon{font-size:30px;display:block;margin-bottom:8px;color:#b56cff}.projects{display:grid;gap:10px}.proj{display:flex;align-items:center;justify-content:space-between;background:#251536;border:1px solid #3b244d;padding:14px;border-radius:14px}.hidden{display:none}.tools{display:flex;gap:8px;overflow-x:auto;padding:10px 0}.tool{white-space:nowrap;padding:10px 13px;border:1px solid #49305a;background:#21132e;color:white;border-radius:10px}.preview{background:#08050b;border-radius:18px;min-height:430px;display:flex;align-items:center;justify-content:center;overflow:hidden}.preview video,.preview img{max-width:100%;max-height:430px}.timeline{display:flex;gap:8px;overflow-x:auto;margin-top:12px;padding-bottom:8px}.thumb{min-width:110px;height:70px;background:#29183a;border:2px solid #4a2b5d;border-radius:10px;overflow:hidden}.thumb img,.thumb video{width:100%;height:100%;object-fit:cover}.modal{position:fixed;inset:0;background:#000b;display:flex;align-items:center;justify-content:center;padding:15px;z-index:9}.modal>div{max-width:520px;width:100%;background:#1b1027;border:1px solid #4b2d60;border-radius:20px;padding:22px}.close{float:right;background:none;border:0;color:white;font-size:25px}input{display:none}@keyframes p{50%{transform:scale(1.18) rotate(-4deg);filter:drop-shadow(0 0 8px #ff5cc8)}}@media(max-width:650px){.wrap{padding:12px}.grid{grid-template-columns:1fr}.card{padding:16px}.logo{font-size:20px}.preview{min-height:330px}.head{gap:8px}}
-
-<style id="gx-lock-css">
-.gx-lock{position:relative;margin:22px 0;padding:28px 20px;border:1px solid #5b3a78;border-radius:22px;background:linear-gradient(145deg,#09090d,#17131d);overflow:hidden;text-align:center;box-shadow:0 0 25px #8b5cf633,inset 0 0 30px #000}
-.gx-lock:before{content:"";position:absolute;inset:-50%;background:conic-gradient(transparent,#a855f7,transparent,#d946ef,transparent);animation:gxChain 3s linear infinite;z-index:0}
-.gx-lock:after{content:"";position:absolute;inset:2px;border-radius:20px;background:#111017;z-index:1}
-.gx-lock>*{position:relative;z-index:2}
-.gx-lock h2{margin:4px 0;color:#fff;text-shadow:0 0 8px #fff,0 0 20px #a855f7}
-.gx-lock p{color:#ddd}
-.gx-pad{display:inline-flex;align-items:center;justify-content:center;width:76px;height:76px;margin:10px;border-radius:50%;font-size:38px;background:#21182b;border:2px solid #a855f7;box-shadow:0 0 15px #a855f7,0 0 35px #a855f766;cursor:pointer;transition:.3s;animation:gxPulse 1.8s infinite}
-.gx-pad:hover{transform:scale(1.08);box-shadow:0 0 25px #fff,0 0 55px #a855f7}
-.gx-socials{display:none;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
-.gx-socials button{min-width:125px;padding:13px 18px;border-radius:14px;border:1px solid #9b5cff;background:#20152b;color:#fff;font-weight:900;cursor:pointer;box-shadow:0 0 14px #9b5cff66;transition:.25s}
-.gx-socials button:hover{transform:translateY(-3px);box-shadow:0 0 25px #c084fc}
-.gx-socials button.done{background:#39205a;border-color:#fff;box-shadow:0 0 22px #fff}
-.gx-count{font-weight:900;color:#fff;text-shadow:0 0 10px #a855f7}
-.gx-unlocked{display:none;margin-top:20px;padding:18px;border:1px solid #c084fc;border-radius:16px;background:#191222;box-shadow:0 0 25px #a855f755;animation:gxOpen .8s}
-@keyframes gxChain{to{transform:rotate(360deg)}}
-@keyframes gxPulse{50%{transform:scale(1.06)}}
-@keyframes gxOpen{from{opacity:0;transform:scale(.7);filter:blur(8px)}to{opacity:1;transform:scale(1);filter:none}}
-</style>
 </style><style id="gx-social-top-css">.gx-social-top{display:flex;align-items:center;gap:7px;margin-left:auto;margin-right:8px}.gx-social-top a{width:36px;height:36px;display:grid;place-items:center;border:1px solid #49305d;background:#21132e;color:#fff;border-radius:10px;text-decoration:none;transition:.18s}.gx-social-top a:hover{transform:translateY(-2px);border-color:#bd6cff;box-shadow:0 0 14px #bd6cff55}.gx-social-top svg{width:19px;height:19px;fill:currentColor}.gx-social-top .yt{color:#ff4b5c}.gx-social-top .tt{color:#fff}.gx-social-top .ig{color:#e879f9}.gx-social-top .dc{color:#a78bfa}@media(max-width:650px){.gx-social-top{gap:4px;margin-right:3px}.gx-social-top a{width:32px;height:32px}.gx-social-top svg{width:17px;height:17px}}</style><style id="gx-instagram-glow">
 .gx-social-top .ig{
 color:#fff!important;
@@ -1237,30 +1217,6 @@ profesionist care creste sansele de a construi continut mai bun.
 window.gxTipsOpen=function(){var x=document.getElementById("gxCreatorTipsProWrap");if(x){x.style.display="flex";document.body.style.overflow="hidden"}};
 window.gxTipsClose=function(){var x=document.getElementById("gxCreatorTipsProWrap");if(x){x.style.display="none";document.body.style.overflow=""}};
 document.addEventListener("keydown",function(e){if(e.key==="Escape")gxTipsClose()});
-</script>
-
-<section class="gx-lock" id="gxCreatorLock">
-<h2>🔒 CREATOR TOOLS</h2>
-<p>💡 <b>Vrei sa cresti in online?</b><br>Deblocheaza ideile si strategiile premium pregatite pentru creatori.</p>
-<button class="gx-pad" id="gxLockBtn" aria-label="Deblocheaza Creator Tools">🔒</button>
-<div class="gx-count" id="gxCount">0 / 3 — Deblocare blocata</div>
-<div class="gx-socials" id="gxSocials">
-<button data-x="yt">▶ YouTube</button>
-<button data-x="tt">♪ TikTok</button>
-<button data-x="ig">◎ Instagram</button>
-</div>
-<div class="gx-unlocked" id="gxUnlocked">
-✨ <b>CREATOR TOOLS DEBLOCAT</b> ✨<br>
-Ideile si strategiile sunt acum disponibile.
-</div>
-</section>
-
-<script id="gx-lock-js">
-(()=>{const q=x=>document.getElementById(x),lock=q("gxLockBtn"),box=q("gxSocials"),count=q("gxCount"),ok=q("gxUnlocked"),key="gxCT3";let done=new Set(JSON.parse(localStorage.getItem(key)||"[]"));
-function draw(){document.querySelectorAll("#gxSocials button").forEach(b=>b.classList.toggle("done",done.has(b.dataset.x)));count.textContent=done.size+" / 3 — "+(done.size===3?"Deblocat":"Deblocare blocata");if(done.size===3){ok.style.display="block";lock.textContent="🔓";localStorage.setItem(key,JSON.stringify([...done]));}}
-lock.onclick=()=>{box.style.display=box.style.display==="flex"?"none":"flex";lock.textContent=box.style.display==="flex"?"🔓":"🔒"};
-box.onclick=e=>{let b=e.target.closest("button");if(!b)return;done.add(b.dataset.x);draw()};
-draw()})();
 </script>
 </body></html>
 <style id="gx-unified-brand">
