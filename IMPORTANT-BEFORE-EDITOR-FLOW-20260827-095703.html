@@ -263,28 +263,4 @@ act("gxAdd",()=>q("#files")?.click());
 function install(){let t=q("#tools");if(!t||t.dataset.gx15)return;t.dataset.gx15=1;let d=document.createElement("div");d.className="gx15";d.innerHTML=`<button class=tool onclick="gxMute()">🔇 Mute</button><button class=tool onclick="gxReset()">↺ Reset</button><button class=tool onclick="gxFullscreen()">⛶ Fullscreen</button><button class=tool onclick="gxFit()">▣ Fit</button><button class=tool onclick="gxZoomIn()">＋ Zoom</button><button class=tool onclick="gxZoomOut()">－ Zoom</button><button class=tool onclick="gxRename()">✎ Rename</button><button class=tool onclick="gxClear()">🧹 Clear</button><button class=tool onclick="gxInfo()">ⓘ Info</button><button class=tool onclick="gxDownload()">⇩ Preview</button><button class=tool onclick="gxBack()">← Home</button><button class=tool onclick="gxAdd()">＋ Media</button>`;t.prepend(d);let m=document.createElement("div");m.className="gxmsg";m.textContent="GeoXShorts • 15C active";t.prepend(m)}
 new MutationObserver(install).observe(document.body,{childList:true,subtree:true});install();
 })();
-</script><style id="gxflow">.gxflow{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}.gxflow button{padding:9px 12px}.gxbrand{font-weight:900}.gxbrand .gx{font-weight:900}</style>
-<script id="gxflowengine">
-(()=>{const $=id=>document.getElementById(id),F=$("files");
-function brand(){return `<span class="gxbrand"><span class="gx">GeoX</span> Shorts 🎬</span>`}
-function preview(f){let u=URL.createObjectURL(f);$("preview").innerHTML=f.type.startsWith("video/")?`<video controls autoplay src="${u}" style="max-width:100%;max-height:430px"></video>`:`<img src="${u}" style="max-width:100%;max-height:430px">`}
-window.pick=m=>{mode=m;F.accept=m==="video"?"video/*":"image/*";F.multiple=true;F.value="";F.click()}
-F.onchange=e=>{media=[...media,...e.target.files];if(media.length){sel=media.length-1;openEditor();preview(media[sel])}}
-window.openEditor=()=>{homeEditor();$("ename").innerHTML=brand()+" — Editor";$("timeline").innerHTML=media.map((f,i)=>`<div class="thumb ${i===sel?"gxsel":""}" onclick="gxSelect(${i})">${f.type.startsWith("video/")?`<video src="${URL.createObjectURL(f)}"></video>`:`<img src="${URL.createObjectURL(f)}">`}</div>`).join("");$("tools").innerHTML=`<div class=gxflow><button class=tool onclick="gxAdd()">＋ Media</button><button class=tool onclick="gxDelete()">🗑 Șterge</button><button class=tool onclick="gxRotate()">↻ Rotire</button><button class=tool onclick="gxZoom()">＋ Zoom</button><button class=tool onclick="gxText()">T Text</button><button class=tool onclick="gxFilter()">◉ Filtru</button><button class=tool onclick="gxCrop()">▣ Crop</button><button class=tool onclick="gxSpeed()">⚡ Speed</button><button class=tool onclick="gxVolume()">🔊 Volum</button><button class=tool onclick="gxThumb()">🖼 Thumbnail</button></div>`}
-window.gxSelect=i=>{sel=i;openEditor();if(media[i])preview(media[i])}
-window.gxAdd=()=>F.click()
-window.gxDelete=()=>{if(sel<0)return;media.splice(sel,1);sel=media.length-1;openEditor();if(sel>=0)preview(media[sel])}
-window.gxRotate=()=>{let e=$("preview").querySelector("img,video");if(e)e.style.transform=`rotate(${(+(e.dataset.r||0)+90)%360}deg)`,e.dataset.r=(+(e.dataset.r||0)+90)%360}
-window.gxZoom=()=>{let e=$("preview").querySelector("img,video");if(e)e.style.transform=`scale(1.15)`}
-window.gxText=()=>{let t=prompt("Text:");if(t){let d=document.createElement("div");d.textContent=t;d.style="position:absolute;top:20px;left:20px;z-index:5;font-size:28px;font-weight:900;text-shadow:0 2px 8px #000";$("preview").style.position="relative";$("preview").append(d)}}
-window.gxFilter=()=>{let e=$("preview").querySelector("img,video");if(e)e.style.filter=prompt("none / grayscale / sepia / contrast","contrast")||"none"}
-window.gxCrop=()=>alert("Crop: interfața este pregătită pentru motorul de randare.")
-window.gxSpeed=()=>{let v=$("preview video");if(v)v.playbackRate=+(prompt("Speed:",v.playbackRate)||1)}
-window.gxVolume=()=>{let v=$("preview video");if(v)v.volume=Math.max(0,Math.min(100,+prompt("Volum 0-100:",100)))/100}
-window.gxThumb=()=>{let f=media[sel];if(!f)return;let c=document.createElement("canvas"),ctx=c.getContext("2d"),w=1280,h=720;c.width=w;c.height=h;let im=new Image;im.onload=()=>{ctx.drawImage(im,0,0,w,h);ctx.fillStyle="#0009";ctx.fillRect(0,0,w,h);ctx.fillStyle="#fff";ctx.font="900 70px system-ui";ctx.fillText(prompt("Titlu thumbnail:","GeoX Shorts")||"GeoX Shorts",55,640);c.toBlob(b=>{let a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="GeoXShorts-Thumbnail.png";a.click()})};im.src=URL.createObjectURL(f)}
-let homeOld=window.home;window.home=()=>{homeOld();render()}
-})();
-</script>
-<script id="gxbranding">
-(()=>{document.querySelectorAll("footer").forEach(f=>f.innerHTML='Creat de <b><span class="gx">GeoX</span> FF 🎬</b>');let h=document.querySelector(".logo");if(h)h.innerHTML='<span class="gx">GeoX</span><span> Shorts</span><span class="cam">🎬</span>'})();
 </script></body></html>
