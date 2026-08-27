@@ -72,4 +72,34 @@ S.onclick=()=>{if(imgs.length<2){alert("Select at least 2 photos.");return}let w
 function hook(){[...document.querySelectorAll("button")].forEach(b=>{if(/colaj|collage/i.test(b.textContent)&&!b.dataset.gc){b.dataset.gc=1;b.addEventListener("click",e=>{e.preventDefault();open()})}})}hook();new MutationObserver(hook).observe(document.body,{childList:true,subtree:true});
 })();
 </script>
+
+<style id="GeoMultiClipEngineCSS">
+.geo-multi{margin-top:12px;padding:12px;border:1px solid #38234d;border-radius:14px;background:#0d0a12}
+.geo-multi-list{display:flex;gap:8px;overflow-x:auto;padding:8px 2px}
+.geo-multi-clip{flex:0 0 150px;padding:9px;border:1px solid #352542;border-radius:10px;background:#17121d;color:#ddd;cursor:pointer}
+.geo-multi-clip.active{border-color:#b56cff;box-shadow:0 0 15px #7c3aed55}
+.geo-multi-name{font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.geo-multi-time{font-size:10px;color:#999;margin-top:4px}
+.geo-multi-actions{display:flex;gap:7px;flex-wrap:wrap;margin-top:8px}
+.geo-multi-actions button{height:38px;padding:0 12px}
+</style>
+<script id="GeoMultiClipEngine">
+(()=>{const input=document.getElementById("videoInput"),v=document.getElementById("videoPreview"),t=document.querySelector(".geo-timeline");if(!input||!v||!t)return;
+let clips=[],sel=0,playing=false;
+const ui=document.createElement("div");ui.className="geo-multi";ui.innerHTML=`<b>🎬 MULTI-CLIP TIMELINE</b><div id="gmcList" class="geo-multi-list"></div><div class="geo-multi-actions"><button id="gmcCut">✂️ Split</button><button id="gmcDel">🗑️ Delete</button><button id="gmcPrev">⏮️ Previous</button><button id="gmcNext">Next ⏭️</button></div><div id="gmcInfo" style="margin-top:8px;color:#aaa;font-size:11px"></div>`;
+t.appendChild(ui);
+const list=ui.querySelector("#gmcList"),info=ui.querySelector("#gmcInfo");
+const fmt=x=>{x=Math.max(0,Number(x)||0);return String(Math.floor(x/60)).padStart(2,"0")+":"+String(Math.floor(x%60)).padStart(2,"0")};
+function total(){return clips.reduce((a,c)=>a+c.d,0)}
+function render(){list.innerHTML="";clips.forEach((c,i)=>{let b=document.createElement("button");b.className="geo-multi-clip"+(i===sel?" active":"");b.innerHTML=`<div>${i+1}</div><div class="geo-multi-name">${c.f.name}</div><div class="geo-multi-time">${fmt(c.d)}</div>`;b.onclick=()=>{sel=i;load(i)};list.appendChild(b)});info.textContent=clips.length?`Clips: ${clips.length} • Total: ${fmt(total())} • Selectat: ${sel+1}`:"Încarcă mai multe videoclipuri."}
+function load(i){if(!clips[i])return;sel=i;v.src=clips[i].url;v.load();render()}
+input.addEventListener("change",async()=>{for(const f of [...input.files]){if(!f.type.startsWith("video/"))continue;const u=URL.createObjectURL(f),d=await new Promise(r=>{let x=document.createElement("video");x.preload="metadata";x.onloadedmetadata=()=>r(x.duration||0);x.src=u});clips.push({f,url:u,d});}if(clips.length&&!v.src)load(0);else render()});
+v.addEventListener("ended",()=>{if(sel<clips.length-1){sel++;load(sel);v.play().catch(()=>{})}else playing=false});
+ui.querySelector("#gmcDel").onclick=()=>{if(!clips.length)return;URL.revokeObjectURL(clips[sel].url);clips.splice(sel,1);sel=Math.min(sel,clips.length-1);clips.length?load(sel):(v.removeAttribute("src"),v.load());render()};
+ui.querySelector("#gmcPrev").onclick=()=>{if(sel>0)load(--sel)};
+ui.querySelector("#gmcNext").onclick=()=>{if(sel<clips.length-1)load(++sel)};
+ui.querySelector("#gmcCut").onclick=()=>{let c=clips[sel];if(!c)return;let a=Math.max(0,v.currentTime),b=c.d;if(a<.1||a>=b-.1)return;let f2=new File([c.f],c.f.name.replace(/(\.[^.]+)$/,"-split$1"),{type:c.f.type});clips.splice(sel,1,{f:c.f,url:c.url,d:a},{f:f2,url:c.url,d:b-a});load(sel);render()};
+render();
+})();
+</script>
 </body></html>
