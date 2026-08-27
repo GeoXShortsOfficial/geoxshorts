@@ -2438,6 +2438,23 @@ body{background:radial-gradient(900px 500px at 50% -10%,#32134f 0%,transparent 6
 .gx-media-input{display:none!important}
 .gx-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:99999;background:#20132d;color:#fff;border:1px solid #8b5cf677;border-radius:14px;padding:11px 16px;font:600 13px system-ui;box-shadow:0 10px 35px #0009}
 .gx-pulse{animation:gxblink 1.8s ease-in-out infinite}
+</style><style id="geox-home-premium">
+:root{--gx-purple:#8b5cf6;--gx-pink:#ec4899;--gx-bg:#10091d}
+body{background:radial-gradient(900px 520px at 50% -15%,#35134f 0,transparent 68%),var(--gx-bg)!important}
+.gxbrand{display:inline-flex;align-items:center;gap:7px;font-weight:900;letter-spacing:-.045em;white-space:nowrap}
+.gxbrand .gx{background:linear-gradient(90deg,var(--gx-purple),var(--gx-pink),var(--gx-purple));background-size:220% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:gxgradient 4s linear infinite}
+.gxbrand .shorts{color:#fff}
+.gxbrand .cam{display:inline-block;animation:gxcamera 1.8s ease-in-out infinite}
+@keyframes gxgradient{to{background-position:220% 0}}
+@keyframes gxcamera{0%,100%{transform:scale(1);filter:drop-shadow(0 0 0 transparent)}50%{transform:scale(1.14);filter:drop-shadow(0 0 9px #ec4899)}}
+.gx-projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.gx-project{min-height:125px;display:flex!important;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;border:1px solid #ffffff18;border-radius:18px;background:#ffffff08;transition:.25s ease}
+.gx-project:hover{transform:translateY(-3px);border-color:#9b5cff88;box-shadow:0 12px 35px #0006}
+.gx-project svg{width:28px;height:28px;color:var(--gx-purple)}
+.gx-new{display:inline-flex;align-items:center;justify-content:center;gap:7px}
+.gx-footer{text-align:center;margin-top:45px;padding:25px 10px;color:#8f849c;font-size:12px}
+.gx-footer .gxbrand{font-size:13px}
+@media(max-width:600px){.gx-projects{grid-template-columns:1fr}.gx-project{min-height:105px}}
 </style></head>
 
 <body>
@@ -6617,6 +6634,29 @@ let t=(b.textContent||"").trim().toLowerCase();
 if(t==="add video"||t.includes("încarcă video")||t==="video"){e.preventDefault();V.click()}
 if(t==="add photo"||t.includes("încarcă poze")||t==="photo"||t==="foto"){e.preventDefault();P.click()}});
 document.querySelectorAll("header").forEach(h=>{if(!h.querySelector(".geox-brand")){let el=document.createElement("div");el.className="geox-brand gx-glow";el.innerHTML=brand;h.prepend(el)}});
+})();
+</script><div id="gxHomeEnhancer">
+<input id="gxVideos" type="file" accept="video/*" multiple hidden>
+<input id="gxPhotos" type="file" accept="image/*" multiple hidden>
+<div class="gx-footer"><div class="gxbrand"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></div><div>Creat de GeoX Shorts</div></div>
+</div>
+<script id="geox-home-js">
+(()=>{const V=document.getElementById('gxVideos'),P=document.getElementById('gxPhotos');
+function open(type){(type==='video'?V:P).click()}
+function forward(files,type){let ins=[...document.querySelectorAll('input[type=file]')].filter(x=>x!==V&&x!==P);
+let target=ins.find(x=>type==='video'?/video/i.test(x.accept):/image|photo/i.test(x.accept));
+if(target){let dt=new DataTransfer;[...files].forEach(f=>dt.items.add(f));try{target.multiple=true;target.files=dt.files;target.dispatchEvent(new Event('change',{bubbles:true}))}catch(e){}}
+}
+V.onchange=e=>forward(e.target.files,'video');P.onchange=e=>forward(e.target.files,'photo');
+document.addEventListener('click',e=>{let b=e.target.closest('button,a');if(!b)return;let t=(b.textContent||'').trim().toLowerCase();
+if(t==='video'||t.includes('video')){if(!b.closest('#gxHomeEnhancer')&&!b.closest('header')){if(t==='video'){e.preventDefault();open('video')}}}
+if(t==='photo'||t==='foto'||t.includes('photo')){if(t==='photo'||t==='foto'){e.preventDefault();open('photo')}}
+});
+document.querySelectorAll('h2,h3').forEach(h=>{if(/creeaza un proiect nou|crează un proiect nou/i.test(h.textContent||'')){let box=h.parentElement;
+if(box&&!box.querySelector('.gx-projects')){let old=[...box.querySelectorAll('button')];old.forEach(x=>x.remove());
+let g=document.createElement('div');g.className='gx-projects';g.innerHTML='<button class="gx-project" data-gx="video"><span>🎥</span><b>VIDEO</b></button><button class="gx-project" data-gx="photo"><span>🖼️</span><b>PHOTO</b></button><button class="gx-project" data-gx="collage"><span>▦</span><b>COLAJE</b></button>';box.appendChild(g);
+g.querySelectorAll('[data-gx]').forEach(x=>x.onclick=()=>x.dataset.gx==='collage'?location.hash='collage':open(x.dataset.gx))}}
+});
 })();
 </script></body>
 </html>
