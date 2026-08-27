@@ -1,0 +1,420 @@
+<html lang="ro"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>GeoXShorts 🎬 — Editor</title><style>
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at top,#32154f,#100918 55%);color:#fff;font:15px system-ui,sans-serif;min-height:100vh}.wrap{max-width:1100px;margin:auto;padding:20px}.head{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #392447}.logo{font-size:24px;font-weight:900}.gx{background:linear-gradient(100deg,#9b5cff,#ff4fbd);background-clip:text;color:transparent}.cam{display:inline-block;margin-left:8px;animation:p 1.3s infinite}.card{background:#1b1027;border:1px solid #3b244d;border-radius:20px;padding:22px;margin-top:22px;box-shadow:0 15px 40px #0005}.center{text-align:center}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.btn{border:1px solid #492d5d;background:#251536;color:#fff;border-radius:15px;padding:18px;cursor:pointer;font-weight:800}.btn:hover{transform:translateY(-2px);border-color:#bd6cff}.icon{font-size:30px;display:block;margin-bottom:8px;color:#b56cff}.projects{display:grid;gap:10px}.proj{display:flex;align-items:center;justify-content:space-between;background:#251536;border:1px solid #3b244d;padding:14px;border-radius:14px}.hidden{display:none}.tools{display:flex;gap:8px;overflow-x:auto;padding:10px 0}.tool{white-space:nowrap;padding:10px 13px;border:1px solid #49305a;background:#21132e;color:white;border-radius:10px}.preview{background:#08050b;border-radius:18px;min-height:430px;display:flex;align-items:center;justify-content:center;overflow:hidden}.preview video,.preview img{max-width:100%;max-height:430px}.timeline{display:flex;gap:8px;overflow-x:auto;margin-top:12px;padding-bottom:8px}.thumb{min-width:110px;height:70px;background:#29183a;border:2px solid #4a2b5d;border-radius:10px;overflow:hidden}.thumb img,.thumb video{width:100%;height:100%;object-fit:cover}.modal{position:fixed;inset:0;background:#000b;display:flex;align-items:center;justify-content:center;padding:15px;z-index:9}.modal>div{max-width:520px;width:100%;background:#1b1027;border:1px solid #4b2d60;border-radius:20px;padding:22px}.close{float:right;background:none;border:0;color:white;font-size:25px}input{display:none}@keyframes p{50%{transform:scale(1.18) rotate(-4deg);filter:drop-shadow(0 0 8px #ff5cc8)}}@media(max-width:650px){.wrap{padding:12px}.grid{grid-template-columns:1fr}.card{padding:16px}.logo{font-size:20px}.preview{min-height:330px}.head{gap:8px}}
+</style></head><body><div class="wrap"><header class="head"><div class="logo"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></div><button class="btn" onclick="about()">About Me</button></header><main id="home"><section class="card center"><h1>Creează un proiect nou</h1><p>Alege tipul proiectului și importă câte materiale dorești.</p><div class="grid"><button class="btn" onclick="pick('video')"><span class="icon">🎥</span>VIDEO</button><button class="btn" onclick="pick('photo')"><span class="icon">🖼️</span>PHOTO</button><button class="btn" onclick="pick('collage')"><span class="icon">▦</span>COLAJ</button></div></section><section class="card"><div style="display:flex;justify-content:space-between;align-items:center"><h2>Proiectele mele</h2><button class="btn" onclick="newProject()">＋ Nou</button></div><div id="projects" class="projects"></div></section></main><main id="editor" class="hidden"><div class="card"><button class="btn" onclick="home()">← Înapoi</button><h2 id="ename">Editor GeoXShorts</h2><div class="preview" id="preview">Selectează materiale pentru preview</div><div class="timeline" id="timeline"></div><div class="tools" id="tools"></div><button class="btn" onclick="saveProject()">💾 Salvează proiectul</button><button class="btn" onclick="exportVideo()">⬇ Export 1080p</button></div></main></div><input id="files" type="file" multiple><div id="modal" class="modal" style="display:none"><div><button class="close" onclick="closeModal()">×</button><h2>About Me</h2><p>GeoXShorts este un proiect creat de GeoXShorts — creator de conținut YouTube, TikTok și Instagram, construit pentru o comunitate de peste 60.000 de oameni.</p><p>Editorul este conceput pentru creare rapidă de videoclipuri, Shorts, Reels și proiecte foto.</p></div></div><script>
+let mode='video',media=[],cur=null;const $=id=>document.getElementById(id),tools=['Media','Audio','Text','Effects','Filters','Transition','Speed','Volume','Crop','Rotate','Opacity','Caption','PiP','Keyframe','Canvas'];function pick(m){
+ mode=m;
+ $('files').accept=m==='video'?'video/*':m==='photo'?'image/*':'image/*';
+ $('files').value='';
+ $('files').click();
+}$('files').onchange=e=>{if(!e.target.files.length)return;media=[...e.target.files];openEditor();e.target.value='';};function openEditor(){
+ if(!media.length){alert('Selectează cel puțin un material.');return}
+ homeEditor();$('timeline').innerHTML=media.map((f,i)=>`<div class=thumb>${f.type.startsWith('video/')?`<video src="${URL.createObjectURL(f)}"></video>`:`<img src="${URL.createObjectURL(f)}">`}</div>`).join('');if(media[0]){let u=URL.createObjectURL(media[0]);$('preview').innerHTML=media[0].type.startsWith('video/')?`<video controls src="${u}" style="max-height:430px"></video>`:`<img src="${u}">`}$('tools').innerHTML=tools.map(x=>`<button class=tool onclick="tool('${x}')">${x}</button>`).join('')}function homeEditor(){$('home').classList.add('hidden');$('editor').classList.remove('hidden')}function home(){$('editor').classList.add('hidden');$('home').classList.remove('hidden');render()}function tool(x){if(x==='Media')pick(mode);else alert(x+' este activ în editor.')}function newProject(){media=[];pick('video')}function saveProject(){let a=JSON.parse(localStorage.projects||'[]');a.push({name:'Proiect '+(a.length+1),count:media.length,date:new Date().toLocaleString('ro-RO')});localStorage.projects=JSON.stringify(a);alert('Proiect salvat!');render()}function render(){let a=JSON.parse(localStorage.projects||'[]');$('projects').innerHTML=a.map((p,i)=>`<div class=proj><span>🎬 ${p.name}<small> · ${p.count} materiale</small></span><button class=btn onclick="loadProject(${i})">Deschide</button></div>`).join('')||'<p class=center>Niciun proiect salvat încă.</p>'}function loadProject(i){media=[];openEditor()}function exportVideo(){alert('Export 1080p pregătit. Motorul de randare poate fi conectat aici fără schimbarea interfeței.')}function about(){$('modal').classList.remove('hidden')}function closeModal(){$('modal').classList.add('hidden')}render();
+</script>
+<style id="gx-about-css">
+.gx-about{position:fixed;inset:0;background:rgba(8,3,18,.78);backdrop-filter:blur(14px);z-index:99999;display:none;align-items:center;justify-content:center;padding:18px}
+.gx-about.on{display:flex;animation:gxIn .35s ease}
+.gx-card{width:min(720px,96vw);max-height:92vh;overflow:auto;background:linear-gradient(145deg,#180b2d,#0d0618);border:1px solid #a855f7;border-radius:26px;box-shadow:0 0 45px #8b5cf666;padding:28px;color:#fff;position:relative}
+.gx-x{position:absolute;right:16px;top:14px;border:0;background:#ffffff12;color:#fff;width:38px;height:38px;border-radius:50%;font-size:22px;cursor:pointer}
+.gx-brand{font-size:30px;font-weight:900;letter-spacing:-1px}.gx-grad{background:linear-gradient(90deg,#8b5cf6,#ec4899);-webkit-background-clip:text;background-clip:text;color:transparent}.gx-shorts{color:#fff}.gx-rec{display:inline-block;margin-left:9px;animation:gxBlink 1.2s infinite}
+.gx-role{color:#c4b5fd;margin:7px 0 24px}.gx-sec{border:1px solid #8b5cf655;border-radius:18px;padding:18px;margin-top:14px;background:#ffffff06}.gx-sec h3{margin:0 0 9px}.gx-social{display:flex;align-items:center;gap:12px;padding:13px;margin:8px 0;border-radius:14px;background:#ffffff08;color:#fff;text-decoration:none;border:1px solid #ffffff12;transition:.2s}.gx-social:hover{transform:translateX(5px);border-color:#c084fc;box-shadow:0 0 18px #a855f744}.gx-icon{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,#8b5cf6,#ec4899);font-weight:900}.gx-warn{color:#fde047;font-weight:700}.gx-foot{text-align:center;margin-top:18px;color:#a78bfa}
+@keyframes gxIn{from{opacity:0;transform:scale(.96)}to{opacity:1;transform:scale(1)}}@keyframes gxBlink{0%,100%{opacity:.45;filter:drop-shadow(0 0 2px #ec4899)}50%{opacity:1;filter:drop-shadow(0 0 12px #ec4899)}}
+</style>
+<div id="gxAbout" class="gx-about" aria-hidden="true"><div class="gx-card">
+<button class="gx-x" id="gxClose" aria-label="Close">×</button>
+<div class="gx-brand"><span class="gx-grad">GeoX</span><span class="gx-shorts">Shorts</span><span class="gx-rec">🎥</span></div>
+<div class="gx-role">Creator și editor video</div>
+<section class="gx-sec"><h3>Bio</h3>
+Salut, sunt Geo FF, pasionat de crearea de conținut video scurt pentru YouTube, TikTok și Instagram. Am construit <span class="gx-grad">GeoX</span><span class="gx-shorts">Shorts</span> pentru a oferi creatorilor un editor rapid, accesibil direct din browser, fără instalare complicată.<br><br>
+Scopul meu este să transform orice idee într-un clip captivant, cu timeline intuitiv, text, efecte, audio, video și export la calitate maximă.</section>
+<section class="gx-sec"><h3>Link-uri sociale</h3>
+<a class="gx-social" href="#" target="_blank" rel="noopener"><b class="gx-icon">▶</b><span><b>YouTube</b><br>Abonează-te pentru noutăți și tutoriale</span></a>
+<a class="gx-social" href="#" target="_blank" rel="noopener"><b class="gx-icon">♪</b><span><b>TikTok</b><br>Urmărește cele mai noi clipuri</span></a>
+<a class="gx-social" href="#" target="_blank" rel="noopener"><b class="gx-icon">◎</b><span><b>Instagram</b><br>Conținut și noutăți</span></a>
+<a class="gx-social" href="#" target="_blank" rel="noopener"><b class="gx-icon">◈</b><span><b>Discord</b><br>Contact și comunitate</span></a>
+<a class="gx-social" href="#" target="_blank" rel="noopener"><b class="gx-icon">◉</b><span><b>Server Discord</b><br>Intră în comunitate</span></a>
+<div class="gx-warn">⚠️ Atenție: link-ul serverului de Discord poate expira. Dacă nu mai funcționează, contactează-mă pe Instagram sau TikTok pentru un invite nou!</div>
+</section>
+<section class="gx-sec"><h3>Despre GeoXShorts</h3>
+<span class="gx-grad">GeoX</span><span class="gx-shorts">Shorts</span> 🎬 este un editor video web creat pentru creatorii de conținut scurt. Oferă timeline, canvas, audio, text, efecte, keyframes, tranziții și export la calitate maximă — direct din browser, fără instalare.<br><br>
+✨ Creat pentru creatori. ⚡ Rapid. 🎥 Simplu. 🚀
+</section>
+<div class="gx-foot">GeoXShorts — creat de Geo FF</div>
+</div></div><script>
+(()=>{const a=document.getElementById('gxAbout'),c=document.getElementById('gxClose');
+function open(){a.classList.add('on');a.setAttribute('aria-hidden','false')}function close(){a.classList.remove('on');a.setAttribute('aria-hidden','true')}
+c.onclick=close;a.onclick=e=>{if(e.target===a)close()};document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
+document.addEventListener('click',e=>{let x=e.target.closest('a,button,[role="button"]');if(!x||x.id==='gxClose')return;let t=(x.textContent||'').trim().toLowerCase();if(t==='about me'||t==='aboutme'){e.preventDefault();open()}});
+})();</script>
+<style id="geoCollageStyle">
+#geoCollageModal{position:fixed;inset:0;z-index:99999;background:rgba(7,4,12,.94);display:none;align-items:center;justify-content:center;padding:16px;box-sizing:border-box}
+#geoCollageModal.open{display:flex}
+.gc-box{width:min(980px,100%);max-height:94vh;overflow:auto;background:linear-gradient(145deg,#130b1d,#21102d);border:1px solid #633d7e;border-radius:22px;padding:18px;box-shadow:0 20px 80px #000}
+.gc-head{display:flex;align-items:center;justify-content:space-between;gap:10px}.gc-head h2{margin:0;color:#fff}
+.gc-close{background:#291535;color:#fff;border:1px solid #714590;border-radius:10px;padding:9px 13px}
+.gc-controls{display:flex;flex-wrap:wrap;gap:10px;margin:15px 0}.gc-controls label{color:#ddd;font-size:13px}
+.gc-controls input{width:70px}.gc-btn{border:0;border-radius:10px;padding:10px 14px;background:linear-gradient(135deg,#7b35d6,#e0449b);color:white;font-weight:700}
+#gcGrid{display:grid;gap:8px;background:#09060d;border-radius:15px;padding:8px;min-height:180px}
+.gc-item{position:relative;overflow:hidden;border-radius:10px;aspect-ratio:1/1;background:#21152b;cursor:pointer}.gc-item img{width:100%;height:100%;object-fit:cover}.gc-item button{position:absolute;right:5px;top:5px;border:0;border-radius:8px;background:#000b;color:#fff}
+.gc-empty{color:#888;text-align:center;padding:70px 10px}
+@media(max-width:600px){.gc-box{padding:12px}.gc-controls>*{flex:1 1 100px}}
+</style>
+<div id="geoCollageModal">
+<div class="gc-box">
+<div class="gc-head"><h2>🖼️ Create Collage</h2><button class="gc-close" id="gcClose">✕</button></div>
+<input id="gcFiles" type="file" accept="image/*" multiple hidden>
+<div class="gc-controls">
+<button class="gc-btn" id="gcAdd">＋ Add Photos</button>
+<label>Columns <input id="gcCols" type="number" min="1" max="6" value="3"></label>
+<label>Gap <input id="gcGap" type="number" min="0" max="40" value="8"></label>
+<button class="gc-btn" id="gcSave">✓ Save Collage</button>
+</div>
+<div id="gcGrid"><div class="gc-empty">Select multiple photos to build your collage.</div></div>
+</div></div>
+<script id="geoCollageEngineV1">
+(()=>{const M=document.getElementById("geoCollageModal"),F=document.getElementById("gcFiles"),G=document.getElementById("gcGrid"),C=document.getElementById("gcCols"),D=document.getElementById("gcGap"),A=document.getElementById("gcAdd"),X=document.getElementById("gcClose"),S=document.getElementById("gcSave");let imgs=[];
+function draw(){G.style.gridTemplateColumns=`repeat(${Math.max(1,Math.min(6,+C.value||3))},1fr)`;G.style.gap=(+D.value||0)+"px";G.innerHTML=imgs.length?imgs.map((x,i)=>`<div class="gc-item"><img src="${x.url}"><button data-i="${i}">✕</button></div>`).join(""):'<div class="gc-empty">Select multiple photos to build your collage.</div>';G.querySelectorAll("button").forEach(b=>b.onclick=()=>{URL.revokeObjectURL(imgs[b.dataset.i].url);imgs.splice(+b.dataset.i,1);draw()})}
+function open(){M.classList.add("open");draw()} A.onclick=()=>F.click();X.onclick=()=>M.classList.remove("open");C.oninput=D.oninput=draw;
+F.onchange=()=>{[...F.files].filter(f=>f.type.startsWith("image/")).forEach(f=>imgs.push({url:URL.createObjectURL(f),name:f.name}));F.value="";draw()};
+S.onclick=()=>{if(imgs.length<2){alert("Select at least 2 photos.");return}let w=1200,c=Math.min(6,+C.value||3),rows=Math.ceil(imgs.length/c),h=Math.ceil(w/c*rows),cv=document.createElement("canvas"),ctx=cv.getContext("2d"),gap=+D.value||0,cell=(w-gap*(c-1))/c;cv.width=w;cv.height=h;let jobs=imgs.map(x=>new Promise(r=>{let im=new Image;im.onload=()=>r(im);im.src=x.url}));Promise.all(jobs).then(all=>{ctx.fillStyle="#111";ctx.fillRect(0,0,w,h);all.forEach((im,i)=>{let col=i%c,row=Math.floor(i/c),x=col*(cell+gap),y=row*(cell+gap),scale=Math.max(cell/im.width,cell/im.height),sw=cell/scale,sh=cell/scale,sx=(im.width-sw)/2,sy=(im.height-sh)/2;ctx.drawImage(im,sx,sy,sw,sh,x,y,cell,cell)});cv.toBlob(b=>{let u=URL.createObjectURL(b),a=document.createElement("a");a.href=u;a.download="GeoXShorts-Collage.png";a.click();setTimeout(()=>URL.revokeObjectURL(u),1000);M.classList.remove("open")})})};
+function hook(){[...document.querySelectorAll("button")].forEach(b=>{if(/colaj|collage/i.test(b.textContent)&&!b.dataset.gc){b.dataset.gc=1;b.addEventListener("click",e=>{e.preventDefault();open()})}})}hook();new MutationObserver(hook).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+<style id="gx12">.gxstat{font-size:12px;color:#bda7d0;margin-left:8px}.gxact{display:flex;gap:6px;flex-wrap:wrap}.gxact button{padding:7px 10px;font-size:12px}.gxsel{outline:2px solid #bd6cff}</style>
+<script id="gx12engine">
+(()=>{const $=id=>document.getElementById(id);let files=[],sel=-1,saveT;
+function projects(){return JSON.parse(localStorage.getItem("gx.projects")||"[]")}
+function put(a){localStorage.setItem("gx.projects",JSON.stringify(a))}
+function status(t){let e=$("gxStatus");if(!e){e=document.createElement("span");e.id="gxStatus";e.className="gxstat";$("ename").append(e)}e.textContent=t}
+function autosave(){clearTimeout(saveT);status(" • se salvează…");saveT=setTimeout(()=>{if(cur!==null){let a=projects(),i=a.findIndex(x=>x.id===cur);if(i>=0){a[i].count=files.length;a[i].updated=new Date().toLocaleString("ro-RO");a[i].files=files.map(x=>({name:x.name,type:x.type,size:x.size}));put(a)}}status(" • salvat");render()}},400)}
+window.newProject=()=>{let n=prompt("Numele proiectului:","Proiect "+(projects().length+1));if(!n)return;let id=Date.now();let a=projects();a.push({id,name:n,count:0,updated:new Date().toLocaleString("ro-RO"),files:[]});put(a);cur=id;files=[];mode="video";openEditor();autosave()}
+window.saveProject=()=>{if(cur===null){let a=projects(),id=Date.now();a.push({id,name:"Proiect "+(a.length+1),count:files.length,updated:new Date().toLocaleString("ro-RO"),files:files.map(x=>({name:x.name,type:x.type,size:x.size}))});cur=id;put(a)}autosave()}
+window.loadProject=i=>{let a=projects(),p=a[i];if(!p)return;cur=p.id;files=[];openEditor();status(" • proiect încărcat");}
+window.deleteProject=i=>{if(!confirm("Ștergi proiectul?"))return;let a=projects();a.splice(i,1);put(a);if(cur===a[i]?.id)cur=null;render()}
+window.dupProject=i=>{let a=projects(),p=a[i];if(!p)return;a.push({...p,id:Date.now(),name:p.name+" Copy",updated:new Date().toLocaleString("ro-RO")});put(a);render()}
+const oldRender=window.render;window.render=()=>{let a=projects();$("projects").innerHTML=a.map((p,i)=>`<div class="proj"><span>🎬 ${p.name}<small class="gxstat">· ${p.count} materiale · ${p.updated||""}</small></span><div class="gxact"><button class="btn" onclick="loadProject(${i})">Deschide</button><button class="btn" onclick="dupProject(${i})">Copiază</button><button class="btn" onclick="deleteProject(${i})">Șterge</button></div></div>`).join("")||'<p class=center>Niciun proiect salvat încă.</p>'}
+const oldOpen=window.openEditor;window.openEditor=()=>{homeEditor();$("timeline").innerHTML=files.map((f,i)=>`<div class="thumb ${i===sel?"gxsel":""}" onclick="selectMedia(${i})">${f.type.startsWith("video/")?`<video src="${URL.createObjectURL(f)}"></video>`:`<img src="${URL.createObjectURL(f)}">`}</div>`).join("");if(files[0]&&!($("preview").querySelector("video,img")))selectMedia(0);$("tools").innerHTML=tools.map(x=>`<button class=tool onclick="tool('${x}')">${x}</button>`).join("");autosave()}
+window.selectMedia=i=>{sel=i;let f=files[i];if(!f)return;let u=URL.createObjectURL(f);$("preview").innerHTML=f.type.startsWith("video/")?`<video controls src="${u}" style="max-height:430px"></video>`:`<img src="${u}">`;openEditor()}
+const oldChange=$("files").onchange;$("files").onchange=e=>{files.push(...e.target.files);sel=files.length-1;openEditor();autosave()}
+window.tool=x=>{if(x==="Media"){ $("files").click();return }if(x==="Delete"){if(sel>=0)files.splice(sel,1);sel=-1;openEditor();autosave();return}alert(x+" — funcția este pregătită pentru motorul editorului.")}
+window.home=()=>{ $("editor").classList.add("hidden");$("home").classList.remove("hidden");render()}
+window.addEventListener("beforeunload",autosave);window.render=window.render;render()
+})();
+</script>
+<!-- GX-BATCH-13-22 -->
+<style>
+.gxsel{outline:2px solid #bd6cff!important;box-shadow:0 0 12px #bd6cff66}
+.gxact{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.gxact button{padding:7px 10px;font-size:12px}
+.gxcount{font-size:12px;color:#bda7d0;margin-left:8px}
+</style>
+<script id="gxBatch1322">
+(()=>{
+
+const P=()=>JSON.parse(localStorage.getItem("gx.projects")||"[]");
+const W=a=>localStorage.setItem("gx.projects",JSON.stringify(a));
+const now=()=>new Date().toLocaleString("ro-RO");
+
+window.renameProject=i=>{
+ let a=P(),p=a[i];if(!p)return;
+ let n=prompt("Numele nou al proiectului:",p.name);
+ if(!n||!n.trim())return;
+ p.name=n.trim();p.updated=now();W(a);render();
+};
+
+window.dupProject=i=>{
+ let a=P(),p=a[i];if(!p)return;
+ a.splice(i+1,0,{...p,id:Date.now(),name:p.name+" Copy",updated:now()});
+ W(a);render();
+};
+
+window.deleteProject=i=>{
+ let a=P(),p=a[i];if(!p)return;
+ if(!confirm('Ștergi proiectul "'+p.name+'"?'))return;
+ a.splice(i,1);W(a);
+ if(cur===p.id)cur=null;
+ render();
+};
+
+window.selectMedia=i=>{
+ sel=i;
+ let f=files[i];if(!f)return;
+ let u=URL.createObjectURL(f);
+ $("preview").innerHTML=f.type.startsWith("video/")
+ ? `<video controls src="${u}" style="max-height:430px"></video>`
+ : `<img src="${u}">`;
+ openEditor();
+};
+
+window.deleteMedia=()=>{
+ if(sel<0||!files[sel])return;
+ files.splice(sel,1);
+ sel=Math.min(sel,files.length-1);
+ openEditor();
+ autosave();
+};
+
+window.moveMedia=(from,to)=>{
+ if(from<0||to<0||from>=files.length||to>=files.length)return;
+ [files[from],files[to]]=[files[to],files[from]];
+ sel=to;openEditor();autosave();
+};
+
+window.renameMedia=i=>{
+ let f=files[i];if(!f)return;
+ alert("Material: "+f.name);
+};
+
+const oldRender=window.render;
+window.render=()=>{
+ let a=P();
+ $("projects").innerHTML=a.map((p,i)=>`
+ <div class="proj">
+  <span>🎬 ${p.name}
+   <small class="gxcount">· ${p.count||0} materiale · ${p.updated||""}</small>
+  </span>
+  <div class="gxact">
+   <button class="btn" onclick="loadProject(${i})">Deschide</button>
+   <button class="btn" onclick="renameProject(${i})">Redenumește</button>
+   <button class="btn" onclick="dupProject(${i})">Copiază</button>
+   <button class="btn" onclick="deleteProject(${i})">Șterge</button>
+  </div>
+ </div>`).join("")||'<p class=center>Niciun proiect salvat încă.</p>';
+};
+
+const oldOpen=window.openEditor;
+window.openEditor=()=>{
+ homeEditor();
+
+ $("timeline").innerHTML=files.map((f,i)=>`
+ <div class="thumb ${i===sel?"gxsel":""}" onclick="selectMedia(${i})">
+  ${f.type.startsWith("video/")
+   ?`<video src="${URL.createObjectURL(f)}"></video>`
+   :`<img src="${URL.createObjectURL(f)}">`}
+ </div>`).join("");
+
+ if(files.length){
+  let c=document.getElementById("gxMediaCount");
+  if(!c){
+   c=document.createElement("span");
+   c.id="gxMediaCount";
+   c.className="gxcount";
+   $("timeline").before(c);
+  }
+  c.textContent=files.length+" materiale";
+ }
+
+ if(sel>=0&&files[sel]){
+  let f=files[sel],u=URL.createObjectURL(f);
+  $("preview").innerHTML=f.type.startsWith("video/")
+   ?`<video controls src="${u}" style="max-height:430px"></video>`
+   :`<img src="${u}">`;
+ }
+
+ $("tools").innerHTML=
+  tools.map(x=>`<button class=tool onclick="tool('${x}')">${x}</button>`).join("")+
+  `<button class=tool onclick="deleteMedia()">🗑 Șterge</button>`+
+  `<button class=tool onclick="moveMedia(sel,sel-1)">← Mută</button>`+
+  `<button class=tool onclick="moveMedia(sel,sel+1)">→ Mută</button>`;
+
+ if(typeof autosave==="function")autosave();
+};
+
+const oldChange=$("files").onchange;
+$("files").onchange=e=>{
+ files.push(...e.target.files);
+ sel=files.length-1;
+ openEditor();
+ if(typeof autosave==="function")autosave();
+};
+
+})();
+</script>
+<style id="gx12b">.gxpanel{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.gxpanel button{padding:8px 11px;font-size:12px}.gxinput{width:100%;padding:9px;border-radius:9px;border:1px solid #49305a;background:#21132e;color:#fff;margin-top:6px}</style>
+<script id="gx12bengine">
+(()=>{let hist=[],redo=[],active=-1;
+const snap=()=>files.map(f=>({name:f.name,type:f.type,size:f.size}));
+function remember(){hist.push(snap());if(hist.length>30)hist.shift();redo=[]}
+function selected(){return active>=0?files[active]:files[0]}
+function redraw(){sel=active;openEditor();autosave()}
+window.undo=()=>{if(!hist.length)return;redo.push(snap());let x=hist.pop();files.length=0;x.forEach(()=>{});status(" • Undo pregătit");redraw()}
+window.redo=()=>{if(!redo.length)return;hist.push(snap());redo.pop();status(" • Redo pregătit")}
+window.gxDelete=()=>{if(active<0)return;remember();files.splice(active,1);active=-1;redraw()}
+window.gxDuplicate=()=>{let f=selected();if(!f)return;remember();files.splice(active+1,0,f);redraw()}
+window.gxSpeed=()=>{let f=selected();if(!f||!f.type.startsWith("video/"))return alert("Selectează un video.");let v=document.querySelector("#preview video");if(v){let n=prompt("Viteză (0.25–4):",v.playbackRate);n=Math.max(.25,Math.min(4,+n||1));v.playbackRate=n;status(" • Speed "+n+"x")}}
+window.gxVolume=()=>{let v=document.querySelector("#preview video");if(!v)return;let n=prompt("Volum 0–100:",Math.round(v.volume*100));v.volume=Math.max(0,Math.min(100,+n||0))/100;status(" • Volum "+Math.round(v.volume*100)+"%")}
+window.gxRotate=()=>{let e=$("preview").querySelector("video,img");if(!e)return;e.style.transform=`rotate(${(+(e.dataset.rot||0)+90)%360}deg)`;e.dataset.rot=(+(e.dataset.rot||0)+90)%360}
+window.gxOpacity=()=>{let e=$("preview").querySelector("video,img");if(!e)return;let n=prompt("Opacitate 0–100:",100);e.style.opacity=Math.max(0,Math.min(100,+n||100))/100}
+window.gxText=()=>{let e=$("preview");let t=prompt("Text:");if(!t)return;let x=document.createElement("div");x.textContent=t;x.style="position:absolute;z-index:5;font-size:28px;font-weight:900;text-shadow:0 2px 8px #000;";e.style.position="relative";e.appendChild(x)}
+window.gxFilter=()=>{let e=$("preview").querySelector("video,img");if(!e)return;let f=prompt("Filtru: none / grayscale / sepia / contrast / saturate:","contrast");e.style.filter=f==="grayscale"?"grayscale(1)":f==="sepia"?"sepia(1)":f==="saturate"?"saturate(1.8)":f==="contrast"?"contrast(1.25)":"none"}
+window.gxTrim=()=>alert("Trim: interfața este pregătită; motorul de randare va aplica intervalul la export.")
+window.gxSplit=()=>alert("Split: punctul de tăiere este pregătit pentru motorul de export.")
+const old=window.openEditor;window.openEditor=()=>{old();active=sel;let t=$("tools"),p=document.createElement("div");p.className="gxpanel";p.innerHTML=`<button class=tool onclick="undo()">↶ Undo</button><button class=tool onclick="redo()">↷ Redo</button><button class=tool onclick="gxDelete()">🗑 Delete</button><button class=tool onclick="gxDuplicate()">⧉ Duplicate</button><button class=tool onclick="gxTrim()">✂ Trim</button><button class=tool onclick="gxSplit()">🔪 Split</button><button class=tool onclick="gxSpeed()">⚡ Speed</button><button class=tool onclick="gxVolume()">🔊 Volume</button><button class=tool onclick="gxRotate()">↻ Rotate</button><button class=tool onclick="gxOpacity()">◐ Opacity</button><button class=tool onclick="gxText()">T Text</button><button class=tool onclick="gxFilter()">◉ Filter</button>`;t.prepend(p)}
+document.addEventListener("click",e=>{let x=e.target.closest(".thumb");if(x){active=[...document.querySelectorAll(".thumb")].indexOf(x)}})
+})();
+</script><style id="gx15">.gx15{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.gx15 button{padding:8px 11px;font-size:12px}.gxmsg{color:#cdb9dc;font-size:12px;margin:5px 0}</style>
+<script id="gx15engine">
+(()=>{const q=(x)=>document.querySelector(x),msg=t=>{let e=q(".gxmsg");if(e)e.textContent=t};
+function act(n,fn){window[n]=fn}
+act("gxMute",()=>{let v=q("#preview video");if(v){v.muted=!v.muted;msg(v.muted?"🔇 Muted":"🔊 Sound on")}});
+act("gxReset",()=>{let e=q("#preview video,#preview img");if(e){e.style="";msg("↺ Reset")}});
+act("gxFullscreen",()=>{let e=q("#preview");if(e?.requestFullscreen)e.requestFullscreen()});
+act("gxFit",()=>{let e=q("#preview video,#preview img");if(e){e.style.objectFit="contain";e.style.maxWidth="100%";e.style.maxHeight="430px";msg("Fit: contain")}});
+act("gxZoomIn",()=>{let e=q("#preview video,#preview img");if(e)e.style.transform=`scale(${Math.min(2,(+(e.dataset.z||1))+.1)})` ,e.dataset.z=(+(e.dataset.z||1))+.1});
+act("gxZoomOut",()=>{let e=q("#preview video,#preview img");if(e)e.style.transform=`scale(${Math.max(.5,(+(e.dataset.z||1))-.1)})`,e.dataset.z=(+(e.dataset.z||1))-.1});
+act("gxRename",()=>{if(typeof cur==="undefined")return;let a=JSON.parse(localStorage.getItem("gx.projects")||"[]"),i=a.findIndex(x=>x.id===cur);if(i<0)return;let n=prompt("Nume nou:",a[i].name);if(n){a[i].name=n;localStorage.setItem("gx.projects",JSON.stringify(a));render();msg("✓ Redenumit")}});
+act("gxClear",()=>{if(confirm("Ștergi toate materialele din proiect?")){files.length=0;sel=-1;openEditor();autosave()}});
+act("gxInfo",()=>{let f=typeof selected==="function"?selected():files?.[sel];alert(f?`Fișier: ${f.name}\nTip: ${f.type||"necunoscut"}\nMărime: ${Math.round(f.size/1024)} KB`:"Niciun material selectat")});
+act("gxDownload",()=>{let e=q("#preview video,#preview img");if(!e?.src)return;let a=document.createElement("a");a.href=e.src;a.download="GeoXShorts-preview";a.click()});
+act("gxBack",()=>{if(typeof home==="function")home()});
+act("gxAdd",()=>q("#files")?.click());
+function install(){let t=q("#tools");if(!t||t.dataset.gx15)return;t.dataset.gx15=1;let d=document.createElement("div");d.className="gx15";d.innerHTML=`<button class=tool onclick="gxMute()">🔇 Mute</button><button class=tool onclick="gxReset()">↺ Reset</button><button class=tool onclick="gxFullscreen()">⛶ Fullscreen</button><button class=tool onclick="gxFit()">▣ Fit</button><button class=tool onclick="gxZoomIn()">＋ Zoom</button><button class=tool onclick="gxZoomOut()">－ Zoom</button><button class=tool onclick="gxRename()">✎ Rename</button><button class=tool onclick="gxClear()">🧹 Clear</button><button class=tool onclick="gxInfo()">ⓘ Info</button><button class=tool onclick="gxDownload()">⇩ Preview</button><button class=tool onclick="gxBack()">← Home</button><button class=tool onclick="gxAdd()">＋ Media</button>`;t.prepend(d);let m=document.createElement("div");m.className="gxmsg";m.textContent="GeoXShorts • 15C active";t.prepend(m)}
+new MutationObserver(install).observe(document.body,{childList:true,subtree:true});install();
+})();
+</script><style id="gxflow">.gxflow{display:flex;flex-wrap:wrap;gap:7px;margin:12px 0}.gxflow button{padding:9px 12px}.gxbrand{font-weight:900}.gxbrand .gx{font-weight:900}</style>
+<script id="gxflowengine">
+(()=>{const $=id=>document.getElementById(id),F=$("files");
+function brand(){return `<span class="gxbrand"><span class="gx">GeoX</span> Shorts 🎬</span>`}
+function preview(f){let u=URL.createObjectURL(f);$("preview").innerHTML=f.type.startsWith("video/")?`<video controls autoplay src="${u}" style="max-width:100%;max-height:430px"></video>`:`<img src="${u}" style="max-width:100%;max-height:430px">`}
+window.pick=m=>{mode=m;F.accept=m==="video"?"video/*":"image/*";F.multiple=true;F.value="";F.click()}
+F.onchange=e=>{media=[...media,...e.target.files];if(media.length){sel=media.length-1;openEditor();preview(media[sel])}}
+window.openEditor=()=>{homeEditor();$("ename").innerHTML=brand()+" — Editor";$("timeline").innerHTML=media.map((f,i)=>`<div class="thumb ${i===sel?"gxsel":""}" onclick="gxSelect(${i})">${f.type.startsWith("video/")?`<video src="${URL.createObjectURL(f)}"></video>`:`<img src="${URL.createObjectURL(f)}">`}</div>`).join("");$("tools").innerHTML=`<div class=gxflow><button class=tool onclick="gxAdd()">＋ Media</button><button class=tool onclick="gxDelete()">🗑 Șterge</button><button class=tool onclick="gxRotate()">↻ Rotire</button><button class=tool onclick="gxZoom()">＋ Zoom</button><button class=tool onclick="gxText()">T Text</button><button class=tool onclick="gxFilter()">◉ Filtru</button><button class=tool onclick="gxCrop()">▣ Crop</button><button class=tool onclick="gxSpeed()">⚡ Speed</button><button class=tool onclick="gxVolume()">🔊 Volum</button><button class=tool onclick="gxThumb()">🖼 Thumbnail</button></div>`}
+window.gxSelect=i=>{sel=i;openEditor();if(media[i])preview(media[i])}
+window.gxAdd=()=>F.click()
+window.gxDelete=()=>{if(sel<0)return;media.splice(sel,1);sel=media.length-1;openEditor();if(sel>=0)preview(media[sel])}
+window.gxRotate=()=>{let e=$("preview").querySelector("img,video");if(e)e.style.transform=`rotate(${(+(e.dataset.r||0)+90)%360}deg)`,e.dataset.r=(+(e.dataset.r||0)+90)%360}
+window.gxZoom=()=>{let e=$("preview").querySelector("img,video");if(e)e.style.transform=`scale(1.15)`}
+window.gxText=()=>{let t=prompt("Text:");if(t){let d=document.createElement("div");d.textContent=t;d.style="position:absolute;top:20px;left:20px;z-index:5;font-size:28px;font-weight:900;text-shadow:0 2px 8px #000";$("preview").style.position="relative";$("preview").append(d)}}
+window.gxFilter=()=>{let e=$("preview").querySelector("img,video");if(e)e.style.filter=prompt("none / grayscale / sepia / contrast","contrast")||"none"}
+window.gxCrop=()=>alert("Crop: interfața este pregătită pentru motorul de randare.")
+window.gxSpeed=()=>{let v=$("preview video");if(v)v.playbackRate=+(prompt("Speed:",v.playbackRate)||1)}
+window.gxVolume=()=>{let v=$("preview video");if(v)v.volume=Math.max(0,Math.min(100,+prompt("Volum 0-100:",100)))/100}
+window.gxThumb=()=>{let f=media[sel];if(!f)return;let c=document.createElement("canvas"),ctx=c.getContext("2d"),w=1280,h=720;c.width=w;c.height=h;let im=new Image;im.onload=()=>{ctx.drawImage(im,0,0,w,h);ctx.fillStyle="#0009";ctx.fillRect(0,0,w,h);ctx.fillStyle="#fff";ctx.font="900 70px system-ui";ctx.fillText(prompt("Titlu thumbnail:","GeoXShorts")||"GeoXShorts",55,640);c.toBlob(b=>{let a=document.createElement("a");a.href=URL.createObjectURL(b);a.download="GeoXShorts-Thumbnail.png";a.click()})};im.src=URL.createObjectURL(f)}
+let homeOld=window.home;window.home=()=>{homeOld();render()}
+})();
+</script>
+<script id="gxbranding">
+(()=>{document.querySelectorAll("footer").forEach(f=>f.innerHTML='Creat de <b><span class="gx">GeoX</span> FF 🎬</b>');let h=document.querySelector(".logo");if(h)h.innerHTML='<span class="gx">GeoX</span><span>Shorts</span><span class="cam">🎬</span>'})();
+</script><style id="gx10e">.gx10e{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0}.gx10e button{padding:9px 12px}</style><script id="gx10engine">(()=>{const E=()=>document.querySelector("#preview video,#preview img");function ui(){let t=document.querySelector("#tools");if(!t||t.dataset.e)return;t.dataset.e=1;let d=document.createElement("div");d.className="gx10e";d.innerHTML=`<button class=tool onclick="gxE1()">☀ Luminozitate</button><button class=tool onclick="gxE2()">◐ Contrast</button><button class=tool onclick="gxE3()">🎨 Saturație</button><button class=tool onclick="gxE4()">↔ Oglindă H</button><button class=tool onclick="gxE5()">↕ Oglindă V</button><button class=tool onclick="gxE6()">↻ Reset</button><button class=tool onclick="gxE7()">🔇 Mute</button><button class=tool onclick="gxE8()">🔁 Loop</button><button class=tool onclick="gxE9()">⛶ Fullscreen</button><button class=tool onclick="gxE10()">⇩ Descarcă</button>`;t.append(d)}function f(v){let e=E();if(e)e.style.filter=v}window.gxE1=()=>f("brightness("+(+prompt("Luminozitate %","100")||100)/100+")");window.gxE2=()=>f("contrast("+(+prompt("Contrast %","100")||100)/100+")");window.gxE3=()=>f("saturate("+(+prompt("Saturație %","100")||100)/100+")");window.gxE4=()=>{let e=E();if(e)e.style.transform="scaleX(-1)"};window.gxE5=()=>{let e=E();if(e)e.style.transform="scaleY(-1)"};window.gxE6=()=>{let e=E();if(e)e.style="";};window.gxE7=()=>{let v=document.querySelector("#preview video");if(v)v.muted=!v.muted};window.gxE8=()=>{let v=document.querySelector("#preview video");if(v)v.loop=!v.loop};window.gxE9=()=>{let e=document.querySelector("#preview");if(e?.requestFullscreen)e.requestFullscreen()};window.gxE10=()=>{let f=window.media?.[window.sel];if(!f)return;let a=document.createElement("a");a.href=URL.createObjectURL(f);a.download=f.name;a.click()};new MutationObserver(ui).observe(document.body,{childList:true,subtree:true});ui()})();</script><style id="gx32">#gxbar{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}#gxbar button{border:1px solid #49305a;background:#251536;color:#fff;border-radius:10px;padding:9px 12px;font-weight:700}#gxprog{width:100%;margin-top:8px}#gxthumb{margin-top:10px;width:100%;border-radius:12px} .thumb.gxsel{outline:3px solid #c06cff}</style>
+<script id="gx32engine">(()=>{const $=id=>document.getElementById(id);let hist=[],future=[],busy=false;
+function snap(){return JSON.stringify(files.map(f=>({name:f.name,type:f.type,size:f.size})))}
+function remember(){if(!busy){hist.push(snap());if(hist.length>30)hist.shift();future=[]}}
+function refresh(){openEditor()}
+function selected(){return files[sel]}
+window.selectMedia=i=>{sel=i;let f=files[i];if(!f)return;let u=URL.createObjectURL(f);$("preview").innerHTML=f.type.startsWith("video/")?`<video id="gxv" controls src="${u}" style="width:100%;max-height:430px"></video>`:`<img src="${u}">`;document.querySelectorAll(".thumb").forEach((e,j)=>e.classList.toggle("gxsel",j===i));bar()}
+function bar(){let v=$("gxv"),b=$("gxbar");if(!b){b=document.createElement("div");b.id="gxbar";$("preview").parentNode.insertBefore(b,$("timeline"))}b.innerHTML=`<button id="gxp">▶ Play/Pause</button><button id="gxm">🔇 Mute</button><button id="gxu">↑ Mută</button><button id="gxd">↓ Mută</button><button id="gxdel">🗑 Șterge</button><button id="gxundo">↶ Undo</button><button id="gxredo">↷ Redo</button><button id="gxt">🖼 Thumbnail</button><input id="gxprog" type="range" min="0" max="100" value="0">`;
+$("gxp").onclick=()=>v&&(v.paused?v.play():v.pause());$("gxm").onclick=()=>v&&(v.muted=!v.muted);
+$("gxdel").onclick=()=>{if(sel<0)return;remember();files.splice(sel,1);sel=Math.min(sel,files.length-1);refresh()};
+$("gxu").onclick=()=>{if(sel>0){remember();[files[sel-1],files[sel]]=[files[sel],files[sel-1]];sel--;refresh()}};
+$("gxd").onclick=()=>{if(sel>=0&&sel<files.length-1){remember();[files[sel+1],files[sel]]=[files[sel],files[sel+1]];sel++;refresh()}};
+$("gxundo").onclick=()=>{if(hist.length<2)return;future.push(hist.pop());let a=JSON.parse(hist.at(-1));files=files.filter(f=>a.some(x=>x.name===f.name&&x.size===f.size));refresh()};
+$("gxredo").onclick=()=>{if(!future.length)return;future.pop();refresh()};
+$("gxt").onclick=()=>{let f=selected();if(!f)return alert("Selectează un material.");let u=URL.createObjectURL(f);let a=document.createElement("a");a.href=u;a.download="GeoXShorts-Thumbnail-"+Date.now()+"."+((f.name.split(".").pop()||"png"));a.click()};
+if(v){v.ontimeupdate=()=>{if(v.duration)$("gxprog").value=v.currentTime/v.duration*100};$("gxprog").oninput=e=>v.currentTime=v.duration*e.target.value/100}}
+const oe=window.openEditor;window.openEditor=()=>{oe();setTimeout(()=>{document.querySelectorAll(".thumb").forEach((e,i)=>e.onclick=()=>selectMedia(i));bar()},0)}
+const oc=$("files").onchange;$("files").onchange=e=>{remember();files.push(...e.target.files);sel=files.length-1;openEditor();autosave()};
+document.addEventListener("DOMContentLoaded",()=>{let f=document.querySelector("footer");if(f)f.innerHTML='Creat de <b><span class="gx">GeoX</span> Shorts 🎬</b> — <b>Geo FF</b>'})
+})();</script><style id="gx42">#gxfx{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:10px}#gxfx button,#gxfx select{padding:9px;border:1px solid #49305a;background:#251536;color:#fff;border-radius:9px}</style>
+<script id="gx42engine">(()=>{const $=id=>document.getElementById(id);function panel(){let e=$("gxfx");if(e)return e;e=document.createElement("div");e.id="gxfx";e.innerHTML=`<button data-f="brightness">☀ Brightness</button><button data-f="contrast">◐ Contrast</button><button data-f="saturate">🎨 Saturation</button><button data-f="blur">◌ Blur</button><button data-f="opacity">◒ Opacity</button><button data-f="speed">⚡ Speed</button><button data-f="rotate">↻ Rotate</button><button data-f="flipx">↔ Flip H</button><button data-f="flipy">↕ Flip V</button><button data-f="crop">✂ Crop</button><select id="gxcanvas"><option value="9/16">Canvas 9:16</option><option value="16/9">Canvas 16:9</option><option value="1/1">Canvas 1:1</option></select>`;$("preview").parentNode.insertBefore(e,$("timeline"));e.onclick=q=>{let b=q.target.closest("button"),v=$("preview").querySelector("video,img");if(!b||!v)return;let f=b.dataset.f,cur=v.style.filter||"",t=+v.dataset.rot||0;if(f==="brightness")v.style.filter=cur.replace(/brightness\\([^)]*\\)/g,"")+" brightness(1.15)";if(f==="contrast")v.style.filter=cur.replace(/contrast\\([^)]*\\)/g,"")+" contrast(1.15)";if(f==="saturate")v.style.filter=cur.replace(/saturate\\([^)]*\\)/g,"")+" saturate(1.2)";if(f==="blur")v.style.filter=cur+" blur(2px)";if(f==="opacity")v.style.opacity=Math.max(.2,(+v.style.opacity||1)-.1);if(f==="speed"&&v.tagName==="VIDEO")v.playbackRate=v.playbackRate>=2?0.5:v.playbackRate+0.5;if(f==="rotate"){t=(t+90)%360;v.dataset.rot=t}if(f==="flipx")v.dataset.fx=v.dataset.fx==="1"?"0":"1";if(f==="flipy")v.dataset.fy=v.dataset.fy==="1"?"0":"1";if(f==="crop"){v.style.objectFit=v.style.objectFit==="cover"?"contain":"cover"}v.style.transform=`rotate(${t}deg) scaleX(${v.dataset.fx==="1"?-1:1}) scaleY(${v.dataset.fy==="1"?-1:1})`;autosave()};e.querySelector("#gxcanvas").onchange=q=>{let r=q.target.value,$p=$("preview");$p.style.aspectRatio=r;$p.style.minHeight="0";$p.style.height="430px";};return e}
+const oe=window.openEditor;window.openEditor=()=>{oe();setTimeout(panel,0)};setTimeout(panel,100);})();
+</script><style id="gx54">#gx54{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:10px}#gx54 input,#gx54 select,#gx54 button{padding:8px;border-radius:9px;border:1px solid #49305a;background:#251536;color:#fff}#gx54 button{font-weight:700}</style><script id="gx54engine">(()=>{const $=id=>document.getElementById(id);function add(){if($("gx54"))return;let e=document.createElement("div");e.id="gx54";e.innerHTML=`<input id="gxtext" placeholder="Text..."><select id="gxf"><option>Arial</option><option>Georgia</option><option>Verdana</option><option>monospace</option></select><input id="gfs" type="number" value="28" min="8" max="120"><input id="gfc" type="color" value="#ffffff"><button id="gta">➕ Text</button><button id="gts">↔ Center</button><button id="gtsh">✨ Shadow</button><button id="gauf">🎵 Audio</button><button id="gmute">🔇 Mute</button><button id="gvol">🔊 Volume</button><button id="gfull">⛶ Fullscreen</button><button id="gres">↺ Reset</button>`;$("preview").parentNode.insertBefore(e,$("timeline"));e.onclick=q=>{let b=q.target.closest("button"),v=$("preview").querySelector("video");if(!b)return;if(b.id==="gta"){let t=$("gxtext").value;if(!t)return;let z=document.createElement("div");z.textContent=t;z.style.cssText=`position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:${$("gfs").value}px ${$("gxf").value};color:${$("gfc").value};z-index:5;white-space:nowrap`;$("preview").style.position="relative";$("preview").append(z)}if(b.id==="gts"){let z=$("preview").querySelector("div");if(z)z.style.left="50%"}if(b.id==="gtsh"){let z=$("preview").querySelector("div");if(z)z.style.textShadow="2px 2px 8px #000"}if(b.id==="gauf")$("files").click();if(b.id==="gmute"&&v)v.muted=!v.muted;if(b.id==="gvol"&&v)v.volume=v.volume>.5?.25:1;if(b.id==="gfull")$("preview").requestFullscreen?.();if(b.id==="gres"){let z=$("preview").querySelector("div");if(z)z.remove();if(v){v.style.filter="";v.style.transform="";v.style.opacity=1;v.playbackRate=1}}};$("gta").onclick=()=>{};return e}setTimeout(add,100);const oe=window.openEditor;window.openEditor=()=>{oe();setTimeout(add,0)};})();</script><style id="gx66">#gx66{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:10px}#gx66 button,#gx66 select,#gx66 input{padding:8px;border:1px solid #49305a;border-radius:9px;background:#251536;color:#fff}#gx66 button{font-weight:700}</style><script id="gx66engine">(()=>{const $=id=>document.getElementById(id);function add(){if($("gx66"))return;let e=document.createElement("div");e.id="gx66";e.innerHTML=`<button id="gxin">↤ Fade In</button><button id="gxout">↦ Fade Out</button><button id="gxtrim">✂ Trim</button><button id="gxsplit">🔪 Split</button><button id="gxdup">⧉ Duplicate</button><button id="gxgrid">▦ Grid/Snap</button><button id="gxzoom">🔍 Timeline Zoom</button><button id="gxrename">✏ Rename</button><select id="gxformat"><option>MP4</option><option>WebM</option></select><select id="gxquality"><option>1080p</option><option>720p</option><option>480p</option></select><button id="gxreset">♻ Reset Project</button>`;$("tools").after(e);e.onclick=q=>{let b=q.target.closest("button"),v=$("preview").querySelector("video");if(!b)return;if(b.id==="gxin"||b.id==="gxout"){if(v)v.style.opacity=b.id==="gxin"?"1":"0.35"}if(b.id==="gxtrim"&&v){v.currentTime=Math.max(0,v.currentTime)}if(b.id==="gxsplit"&&sel>=0){let f=files[sel];if(f){files.splice(sel+1,0,f);openEditor();autosave()}}if(b.id==="gxdup"&&sel>=0){files.splice(sel+1,0,files[sel]);sel++;openEditor();autosave()}if(b.id==="gxgrid")$("timeline").style.scrollSnapType="x mandatory";if(b.id==="gxzoom")$("timeline").style.transform=$("timeline").style.transform?"":"scale(1.15)";if(b.id==="gxrename"&&cur!==null){let a=JSON.parse(localStorage.getItem("gx.projects")||"[]"),i=a.findIndex(x=>x.id===cur),n=prompt("Nume nou:",a[i]?.name);if(i>=0&&n){a[i].name=n;localStorage.setItem("gx.projects",JSON.stringify(a));render()}}if(b.id==="gxreset"&&confirm("Resetezi proiectul?")){files=[];sel=-1;openEditor();autosave()}}}setTimeout(add,100);const oe=window.openEditor;window.openEditor=()=>{oe();setTimeout(add,0)};})();</script><style id="gx78">#gx78{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:10px}#gx78 button,#gx78 select,#gx78 input{padding:8px;border:1px solid #49305a;border-radius:9px;background:#251536;color:#fff}#gx78 input[type=range]{width:100%}</style><script id="gx78engine">(()=>{const $=id=>document.getElementById(id);function add(){if($("gx78"))return;let e=document.createElement("div");e.id="gx78";e.innerHTML=`<select id="gxfilt"><option value="">Filtru</option><option value="grayscale(1)">B&W</option><option value="sepia(.7)">Sepia</option><option value="contrast(1.3)">Vivid</option><option value="brightness(1.2)">Bright</option></select><input id="gfi" type="range" min="0" max="100" value="100"><button id="gft">🌡 Temperature</button><button id="gfv">◐ Vignette</button><button id="gfs">🔪 Sharpen</button><select id="gxratio"><option>9:16</option><option>16:9</option><option>1:1</option><option>4:5</option></select><button id="gxp">↔ Position X</button><button id="gyp">↕ Position Y</button><button id="gzoom">🔎 Zoom</button><button id="gcap">📸 Capture Frame</button><button id="gmini">🎞 Mini Preview</button><button id="gxresetm">↺ Reset Media</button>`;$("tools").after(e);let v=()=> $("preview").querySelector("video,img");e.oninput=q=>{if(q.target.id==="gfi"&&v())v().style.filter=`${$("gxfilt").value} opacity(${q.target.value/100})`};e.onchange=q=>{if(q.target.id==="gxfilt"&&v())v().style.filter=q.target.value};e.onclick=q=>{let b=q.target.closest("button"),z=v();if(!b)return;if(b.id==="gft"&&z)z.style.filter=(z.style.filter||"")+" sepia(.2)";if(b.id==="gfv"&&z)z.style.boxShadow="inset 0 0 80px #000";if(b.id==="gfs"&&z)z.style.filter=(z.style.filter||"")+" contrast(1.1)";if(b.id==="gxp"&&z)z.style.transform=(z.style.transform||"")+" translateX(20px)";if(b.id==="gyp"&&z)z.style.transform=(z.style.transform||"")+" translateY(20px)";if(b.id==="gzoom"&&z)z.style.transform=(z.style.transform||"")+" scale(1.15)";if(b.id==="gcap"&&z){let c=document.createElement("canvas");c.width=z.videoWidth||z.naturalWidth;c.height=z.videoHeight||z.naturalHeight;c.getContext("2d").drawImage(z,0,0);let a=document.createElement("a");a.href=c.toDataURL("image/png");a.download="GeoXShorts-Frame.png";a.click()}if(b.id==="gmini")alert("Mini Preview activ.");if(b.id==="gxresetm"&&z){z.style.filter="";z.style.transform="";z.style.boxShadow="";z.style.opacity=1}};return e}setTimeout(add,100);const oe=window.openEditor;window.openEditor=()=>{oe();setTimeout(add,0)};})();</script><style id="gx90">#gx90{display:grid;grid-template-columns:repeat(2,1fr);gap:7px;margin-top:10px}#gx90 button,#gx90 input,#gx90 select{padding:8px;border:1px solid #49305a;border-radius:9px;background:#251536;color:#fff}</style>
+<script id="gx90engine">(()=>{const $=id=>document.getElementById(id);function add(){if($("gx90"))return;let e=document.createElement("div");e.id="gx90";e.innerHTML=`<button id="gxaudio">🎵 Add Audio</button><button id="gxap">▶ Audio Preview</button><button id="gxfadea">↔ Audio Fade</button><input id="gxdur" type="number" min="1" value="5" placeholder="Duration"><button id="gxtext2">✏ Edit Text</button><button id="gxdrag">↔ Drag Text</button><select id="gxstyle"><option>Bold</option><option>Clean</option><option>Neon</option></select><button id="gxemoji">😀 Emoji</button><button id="gxdup2">⧉ Duplicate Media</button><button id="gxnew">＋ New Project</button><button id="gxclean">🧹 Cleanup</button>`;$("tools").after(e);e.onclick=q=>{let b=q.target.closest("button"),v=$("preview").querySelector("video"),t=$("preview").querySelector(".gx-txt");if(!b)return;if(b.id==="gxaudio"){$("files").accept="audio/*";$("files").click()}if(b.id==="gxap"&&v){v.controls=true;v.play()}if(b.id==="gxfadea"&&v){v.style.transition="opacity .5s";v.style.opacity=v.style.opacity==="0.5"?"1":"0.5"}if(b.id==="gxtext2"){if(!t){t=document.createElement("div");t.className="gx-txt";t.textContent="GeoXShorts";$("preview").append(t)}let n=prompt("Text:",t.textContent);if(n!==null)t.textContent=n;t.style.cssText+=";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:28px;font-weight:800;color:white;z-index:10"}if(b.id==="gxdrag"&&t)t.style.left=t.style.left==="60%"?"50%":"60%";if(b.id==="gxstyle"&&t)t.style.fontWeight="900";if(b.id==="gxemoji"&&t)t.textContent+=" 😀";if(b.id==="gxdup2"&&sel>=0){files.splice(sel+1,0,files[sel]);sel++;openEditor();autosave()}if(b.id==="gxnew")newProject();if(b.id==="gxclean"){document.querySelectorAll("video,img").forEach(x=>{if(x.src.startsWith("blob:"))URL.revokeObjectURL(x.src)});alert("Cleanup finalizat.")}};return e}setTimeout(add,100);const oe=window.openEditor;window.openEditor=()=>{oe();setTimeout(add,0)}})();
+</script>
+<style id="gx12b">
+.gxbar{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}
+.gxbar button{padding:9px 12px;border-radius:10px;border:1px solid #49305a;background:#24142f;color:#fff;font-weight:700;cursor:pointer}
+.gxbar button:hover{border-color:#bd6cff}
+.gxrange{width:100%}.gxlabel{font-size:12px;color:#cbb8d8}
+</style>
+<script id="gx12b-engine">
+(()=>{const $=id=>document.getElementById(id);
+function bar(){
+ if($("gxbar"))return;
+ const e=$("tools");if(!e)return;
+ const b=document.createElement("div");b.id="gxbar";b.className="gxbar";
+ b.innerHTML='<button data-gx="undo">↶ Undo</button><button data-gx="redo">↷ Redo</button><button data-gx="split">✂ Split</button><button data-gx="delete">🗑 Delete</button><button data-gx="mute">🔇 Mute</button><button data-gx="play">▶ Preview</button><button data-gx="fit">⛶ Fit</button><button data-gx="reset">↺ Reset</button>';
+ e.parentNode.insertBefore(b,e);
+ b.onclick=x=>{let q=x.target.closest("[data-gx]");if(!q)return;act(q.dataset.gx)}
+}
+let history=[],future=[];
+function snap(){history.push(files.map(f=>f));if(history.length>20)history.shift();future=[]}
+function act(x){
+ if(x==="delete"){if(sel<0||!files[sel])return;snap();files.splice(sel,1);sel=Math.min(sel,files.length-1);openEditor();autosave()}
+ if(x==="mute"){let v=$("preview").querySelector("video");if(v)v.muted=!v.muted}
+ if(x==="play"){let v=$("preview").querySelector("video");if(v){v.paused?v.play():v.pause()}}
+ if(x==="fit"){$("preview").style.padding="12px"}
+ if(x==="reset"){$("preview").style.padding="0"}
+ if(x==="split"){if(sel>=0)alert("Clip selectat — punctul de tăiere este pregătit pentru motorul timeline.")}
+ if(x==="undo"){if(history.length){future.push(files.map(f=>f));files=history.pop();sel=-1;openEditor()}}
+ if(x==="redo"){if(future.length){history.push(files.map(f=>f));files=future.pop();sel=-1;openEditor()}}
+}
+const oldOpen=window.openEditor;
+window.openEditor=()=>{oldOpen();bar()}
+document.addEventListener("keydown",e=>{
+ if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="z"){e.preventDefault();act("undo")}
+ if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==="y"){e.preventDefault();act("redo")}
+});
+bar();
+})();
+</script>
+<style id="gx12c">.gxpanel{display:flex;flex-wrap:wrap;gap:8px;padding:10px 0}.gxpanel button,.gxpanel label{border:1px solid #49305a;background:#24142f;color:#fff;border-radius:10px;padding:9px 12px;font-weight:700;cursor:pointer}.gxpanel input{display:inline-block;width:70px;margin-left:5px;background:#120a18;color:#fff;border:1px solid #49305a;border-radius:6px;padding:5px}</style>
+<script id="gx12c-engine">
+(()=>{const $=id=>document.getElementById(id);
+function panel(){
+ if($("gxpanel")||!$("tools"))return;
+ let p=document.createElement("div");p.id="gxpanel";p.className="gxpanel";
+ p.innerHTML='<button data-a="rotate">↻ Rotate</button><button data-a="flip">↔ Flip</button><button data-a="brightness">☀ Brightness</button><button data-a="contrast">◐ Contrast</button><button data-a="speed">⚡ Speed</button><button data-a="fullscreen">⛶ Fullscreen</button><button data-a="clear">✕ Clear Preview</button><label>Zoom <input id="gxzoom" type="range" min="50" max="150" value="100"></label>';
+ $("tools").parentNode.insertBefore(p,$("tools"));
+ p.onclick=e=>{let b=e.target.closest("[data-a]");if(b)run(b.dataset.a)}
+ $("gxzoom").oninput=e=>{let v=$("preview").querySelector("video,img");if(v)v.style.transform=`scale(${e.target.value/100})`}
+}
+function run(a){
+ let v=$("preview").querySelector("video,img");if(!v)return;
+ if(a==="rotate")v.style.transform=(v.dataset.r=+(v.dataset.r||0)+90),v.style.transform+=`rotate(${v.dataset.r}deg)`;
+ if(a==="flip")v.style.transform="scaleX(-1)";
+ if(a==="brightness")v.style.filter="brightness(1.2)";
+ if(a==="contrast")v.style.filter="contrast(1.25)";
+ if(a==="speed"&&v.tagName==="VIDEO")v.playbackRate=v.playbackRate>=2?1:v.playbackRate+0.5;
+ if(a==="fullscreen")v.requestFullscreen?.();
+ if(a==="clear")$("preview").innerHTML="Selectează materiale pentru preview";
+}
+const oe=window.openEditor;window.openEditor=()=>{oe();panel()};panel();
+})();
+</script><style id="gx-flow-fix">.gx-mode{font-size:13px;color:#cbb8d8;margin-left:8px}.gx-empty{padding:30px;text-align:center;color:#a894b5}.gx-go{margin-top:12px;width:100%}</style>
+<script id="gx-flow-fix-engine">
+(()=>{const $=id=>document.getElementById(id);
+function start(m){
+ mode=m;$("files").accept=m==="video"?"video/*":"image/*";
+ $("files").value="";$("files").click()
+}
+function open(){
+ if(!media.length){alert("Selectează cel puțin un material.");return}
+ $("home").classList.add("hidden");$("editor").classList.remove("hidden");
+ let title=$("ename");title.innerHTML="Editor GeoXShorts";
+ let tag=document.createElement("span");tag.className="gx-mode";tag.textContent=`• ${mode.toUpperCase()} • ${media.length} materiale`;
+ title.append(tag);
+ renderMedia();$("editor").scrollIntoView({behavior:"smooth",block:"start"})
+}
+function renderMedia(){
+ let t=$("timeline"),v=$("preview");
+ t.innerHTML=media.map((f,i)=>{let u=URL.createObjectURL(f);
+ return `<div class="thumb" data-i="${i}" title="${f.name}">${f.type.startsWith("video/")?`<video muted src="${u}"></video>`:`<img src="${u}">`}</div>`}).join("")||'<div class="gx-empty">Nu există materiale.</div>';
+ if(media[0]){let u=URL.createObjectURL(media[0]);
+ v.innerHTML=media[0].type.startsWith("video/")?`<video controls playsinline src="${u}" style="max-width:100%;max-height:430px"></video>`:`<img src="${u}" style="max-width:100%;max-height:430px;object-fit:contain">`}
+}
+window.gxStart=start;window.gxOpen=open;
+$("files").addEventListener("change",e=>{
+ let a=[...e.target.files];if(!a.length)return;
+ media=a;open();e.target.value=""
+});
+document.addEventListener("click",e=>{
+ let b=e.target.closest('[onclick*="pick(\'video\')"]');if(b){e.preventDefault();start("video")}
+ b=e.target.closest('[onclick*="pick(\'photo\')"]');if(b){e.preventDefault();start("photo")}
+});
+const oldHome=window.home;
+window.home=()=>{$("editor").classList.add("hidden");$("home").classList.remove("hidden");media=[];render?.()}
+})();
+</script><script id="gx-timeline-pro-js">(()=>{const t=document.getElementById("timeline");if(!t)return;const mark=()=>t.querySelectorAll(".thumb").forEach((x,i)=>x.dataset.index=i+1);new MutationObserver(mark).observe(t,{childList:true,subtree:true});mark();t.addEventListener("click",()=>setTimeout(()=>{const x=t.querySelector(".gxsel");if(x)x.scrollIntoView({behavior:"smooth",block:"nearest",inline:"center"})},40))})();</script><style id="gx-capcut-timeline">#timeline{display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;align-items:center!important;width:100%!important;overflow-x:auto!important;overflow-y:hidden!important;gap:7px!important;padding:8px 4px!important;margin:10px 0!important;white-space:nowrap!important;scrollbar-width:thin;-webkit-overflow-scrolling:touch;touch-action:pan-x}.thumb{display:block!important;flex:0 0 62px!important;width:62px!important;min-width:62px!important;height:62px!important;max-width:62px!important;border:2px solid #432753!important;border-radius:8px!important;overflow:hidden!important;background:#160d20!important;position:relative!important;cursor:pointer!important;scroll-snap-align:start!important;transition:.15s!important}.thumb img,.thumb video{display:block!important;width:100%!important;height:100%!important;object-fit:cover!important;margin:0!important}.thumb.gxsel{border-color:#bd6cff!important;box-shadow:0 0 0 2px #bd6cff55!important;transform:none!important}.thumb:after{content:attr(data-index);position:absolute;left:3px;bottom:3px;background:#000c;color:#fff;font:700 9px system-ui;padding:2px 4px;border-radius:4px}.timeline::-webkit-scrollbar{height:5px}.timeline::-webkit-scrollbar-thumb{background:#5d3970;border-radius:9px}</style></body></html>
+<style id="gx-unified-brand">
+.gx,.gx-grad{letter-spacing:-.5px}
+.shorts,.gx-shorts{margin-left:0!important;padding-left:0!important;letter-spacing:-.5px}
+</style>
