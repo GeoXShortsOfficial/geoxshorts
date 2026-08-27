@@ -698,76 +698,7 @@ pointer-events:none!important
 0%,100%{transform:scale(.88);opacity:.25}
 50%{transform:scale(1.12);opacity:.9}
 }
-</style>
-<style id="gxProTipsCSS">
-#gxProTips{position:fixed;inset:0;background:#07040bfa;z-index:99999;overflow:auto;padding:20px}
-.gxTP{max-width:900px;margin:20px auto;background:#120b1b;border:1px solid #9b5cff;border-radius:24px;padding:24px;box-shadow:0 0 45px #9b5cff55;color:#fff}
-.gxTP h1{text-align:center;color:#fff;text-shadow:0 0 10px #fff,0 0 25px #a855f7}
-.gxTP h2{color:#d8b4fe;text-shadow:0 0 12px #a855f7;margin-top:28px}
-.gxTP p{line-height:1.7;color:#eee}.gxTP b{color:#fff;text-shadow:0 0 8px #fff}
-.gxBadge{display:inline-block;padding:5px 10px;border:1px solid #a855f7;border-radius:99px;box-shadow:0 0 12px #a855f744;margin:3px}
-.gxClose{float:right;border:1px solid #a855f7;background:#21132e;color:#fff;border-radius:12px;padding:8px 14px;font-size:18px}
-.gxTip{border:1px solid #39204f;background:#1a1024;border-radius:16px;padding:16px;margin:12px 0;box-shadow:0 0 15px #8b5cf622}
-</style>
-<script>
-window.gxTipsData=[
-["01 • DOMENIUL TAU","Alege un singur domeniu si construieste in jurul lui. Daca faci masini, ramai pe masini. Daca faci gaming, alege jocul si dezvolta-l. Eu am construit continutul Free Fire in jurul aceleiasi directii inca din 2021. La inceput rezultatele au fost mici; cresterea vine prin consecventa si testare."],
-["02 • HOOK-UL","Primele 2–3 secunde sunt decisive. Incepe cu un motiv pentru care omul sa ramana: „Stiai ca...?”, „Adevarul despre...”, „Nimeni nu iti spune asta despre...”, „Uite ce se intampla daca...”. Evita introduceri lungi precum „Salut, ma numesc...” daca nu aduc valoare imediata."],
-["03 • CURIOSITY GAP","Nu oferi tot raspunsul in prima secunda. Deschide o intrebare sau o problema si construieste raspunsul pe parcurs. Curiozitatea trebuie sa fie reala, nu clickbait."],
-["04 • CREATOR SEARCH INSIGHTS","Foloseste Creator Search Insights pentru a vedea ce cauta publicul. Cauta subiecte relevante pentru domeniul tau si observa zonele in care exista interes, dar continutul este insuficient. Acolo poti gasi oportunitati."],
-["05 • CONTENT GAP","Un Content Gap poate deveni o oportunitate: cerere existenta + continut putin = sansa de a veni cu o explicatie, idee sau perspectiva mai buna."],
-["06 • NU COPIA UN VIRAL","Daca un videoclip functioneaza, nu-l copia 1:1. Pastreaza ideea sau categoria care a functionat si creeaza o varianta noua, originala, cu alt unghi, alt hook si alta executie."],
-["07 • POSTEAZA CONSTANT","Nu exista o cifra magica pentru toti creatorii. Poti testa 1, 2 sau chiar 3 videoclipuri pe zi daca poti mentine calitatea. Mai important decat volumul este sa existe un motiv pentru care publicul sa priveasca."],
-["08 • FARA SPAM","10–20 de videoclipuri slabe nu inlocuiesc un videoclip bun. Nu posta doar ca sa bifezi o cifra. Daca fiecare clip nu aduce valoare, vei obtine putine motive pentru interactiune."]
-];
-window.gxTipsRender=function(){
-let h='<div id="gxProTips"><div class="gxTP"><button class="gxClose" onclick="gxTipsClose()">✕</button><h1>💡 CREATOR TIPS</h1><p style="text-align:center"><span class="gxBadge">STRATEGIE</span><span class="gxBadge">CRESTERE</span><span class="gxBadge">CONTENT</span></p>';
-gxTipsData.forEach(x=>h+='<div class="gxTip"><h2>'+x[0]+'</h2><p>'+x[1]+'</p></div>');
-h+='</div></div>';document.body.insertAdjacentHTML('beforeend',h)
-};
-window.gxTipsOpen=function(){gxTipsRender()};
-window.gxTipsClose=function(){let x=document.getElementById("gxProTips");if(x)x.remove()};
-</script>
-
-<script>
-gxTipsData.push(
-["09 • TAIE PAUZELE","Elimina pauzele inutile din editare. Continutul trebuie sa curga natural: idee dupa idee, propozitie dupa propozitie. Daca o pauza nu are rol, taie-o."],
-["10 • SCHIMBA CADRUL","Pentru continut dinamic, schimba vizualul cand atentia incepe sa scada. Poti folosi cadre, zoom-uri, crop-uri sau B-roll. Nu schimba mecanic la fiecare 2 secunde daca asta strica povestea; foloseste ritmul potrivit continutului."],
-["11 • SUBTITRARI","Foloseste subtitrari clare. Multi oameni urmaresc continutul fara sunet: in autobuz, tren, magazin, supermarket, la o petrecere sau intr-un loc aglomerat. Daca mesajul poate fi inteles si fara audio, ai eliminat o bariera importanta."],
-["12 • CALITATE VIDEO","Pastreaza imaginea clara si exporta intr-un format potrivit platformei. Pentru continut vertical, 1080×1920 este o alegere solida. Nu creste artificial rezolutia daca sursa este slaba."],
-["13 • 60 FPS","Daca materialul si dispozitivul permit, 60 FPS poate fi util pentru gaming si miscari rapide. Important este ca filmarea, editarea si exportul sa fie coerente."],
-["14 • COLORIZARE","Colorizarea poate face imaginea mai placuta si mai recognoscibila. Foloseste luminozitate, contrast, saturatie, claritate si highlights cu masura. Scopul este o imagine curata, nu efecte exagerate."],
-["15 • MUZICA SI SUNET","Sunetul conteaza enorm. Foloseste audio potrivit continutului si verifica drepturile de utilizare. Un sunet popular poate ajuta descoperirea, dar nu transforma automat un videoclip slab intr-unul bun."],
-["16 • RETENTIA","Uita-te unde pleaca oamenii din videoclip. Daca pierderea apare imediat, verifica hook-ul. Daca apare la mijloc, verifica ritmul, explicatia si repetitiile."]
-);
-</script>
-
-<script>
-gxTipsData.push(
-["17 • SEO","Foloseste cuvinte pe care publicul chiar le cauta. Integreaza natural termenul principal in titlu, descriere si hashtag-uri relevante. Nu transforma descrierea intr-o lista de cuvinte repetate."],
-["18 • TITLUL","Titlul trebuie sa explice rapid subiectul si sa creeze interes. Evita „Salutare prieteni, azi vom...”. Incearca o promisiune clara, o intrebare, o curiozitate sau un rezultat real."],
-["19 • THUMBNAIL","Thumbnail-ul este important acolo unde platforma il afiseaza. Pastreaza-l simplu, clar si recognoscibil. Pentru TikTok, continutul vertical foloseste 9:16. Pentru thumbnail-ul clasic YouTube, 16:9."],
-["20 • AI PENTRU DESIGN","Daca nu stii sa faci un thumbnail, poti folosi instrumente AI pentru concepte si variante vizuale. Descrie subiectul, personajul, textul, atmosfera si compozitia, apoi adapteaza rezultatul in editor."],
-["21 • POZA DE PROFIL","Poza de profil este oglinda profilului tau. Trebuie sa fie clara si usor de recunoscut. Nu o schimba la fiecare cateva zile daca vrei sa construiesti identitate."],
-["22 • SEMNATURA VIZUALA","Alege elemente pe care oamenii le pot asocia cu tine: personaj, outfit, masina, logo, font, culori, efecte sau stil de editare. Eu am pastrat elemente recognoscibile in continutul meu Free Fire inca din 2021."],
-["23 • POVESTEA TA","Daca ai un element care te reprezinta, transforma-l intr-o poveste. De exemplu, poti crea un videoclip fixat despre povestea unui outfit, a unei masini, a unui logo sau a unui proiect."],
-["24 • BIO","Descrierea profilului trebuie sa raspunda simplu: cine esti, ce creezi si de ce sa te urmareasca cineva. Scurt, clar si memorabil."]
-);
-</script>
-
-<script>
-gxTipsData.push(
-["25 • ANALIZEAZA","Nu te uita doar la vizualizari. Analizeaza retentia, timpul de vizionare, interactiunile, comentariile, distribuirile si subiectele care functioneaza. Datele iti arata ce merita testat din nou."],
-["26 • REPETA CE FUNCTIONEAZA","Daca o categorie functioneaza, creeaza mai mult continut din acea categorie, dar cu idei noi. Nu repeta videoclipul identic."],
-["27 • CONSTRUIESTE COMUNITATEA","Raspunde la comentarii, observa intrebarile repetate si transforma intrebarile publicului in videoclipuri. Comunitatea iti poate oferi urmatoarele idei."],
-["28 • NU RENUNTA","La inceput este normal sa ai rezultate mici. Eu am inceput cu rezultate mult mai mici decat cele pe care le pot obtine acum. Continutul se construieste prin experiment, consecventa si imbunatatire."],
-["29 • MONETIZARE","Monetizarea trebuie privita separat de cresterea audientei. Pot exista reclame, programe oficiale pentru creatori, colaborari, campanii sau alte metode, dar eligibilitatea difera dupa platforma, program si tara. Verifica mereu conditiile oficiale actuale."],
-["30 • REGULA DE AUR","CONTINUT BUN → HOOK → RETENTIE → VALOARE → EDITARE → SEO → IDENTITATE → ANALIZA → IMBUNATATIRE. Nu cauta o formula magica; construieste un sistem pe care il poti imbunatati."],
-["31 • ACTUALIZEAZA-TE","Platformele se schimba permanent. Functiile, regulile si instrumentele pot fi actualizate. Verifica informatiile oficiale si adapteaza strategia atunci cand apar schimbari."],
-["32 • CONTINUA","Daca ai ajuns aici, nu mai cauta perfectiunea inainte sa publici. Creeaza, publica, analizeaza, invata si imbunatateste urmatorul videoclip."]
-);
-</script>
-</body></html>
+</style></body></html>
 <style id="gx-unified-brand">
 .gx,.gx-grad{letter-spacing:-.5px}
 .shorts,.gx-shorts{margin-left:0!important;padding-left:0!important;letter-spacing:-.5px}
