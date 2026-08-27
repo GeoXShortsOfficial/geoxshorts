@@ -2436,12 +2436,19 @@ html,body{background:var(--gxbg)!important;color:#fff!important}
 .gx-new{border:1px solid #b45cff;background:linear-gradient(110deg,#713cff,#e847a8);color:#fff;border-radius:12px;padding:10px 16px;font-weight:800;cursor:pointer}
 @media(max-width:700px){.gx-home{width:min(100% - 18px,560px);margin-top:10px}.gx-project{padding:18px;border-radius:18px}.gx-types{grid-template-columns:1fr;gap:10px}.gx-type{min-height:105px}.gx-projects-head{align-items:flex-start}}
 </style>
-</head>
+<style id="gux-logo-final">
+.gux-logo{display:inline-flex!important;align-items:center!important;gap:0!important;white-space:nowrap!important;font-weight:900!important;line-height:1!important;text-decoration:none!important}
+.gux-geo{color:#fff!important}
+.gux-x{margin:0!important;padding:0!important;background:linear-gradient(110deg,#9b5cff 0%,#d94fae 52%,#ff5ca8 100%)!important;-webkit-background-clip:text!important;background-clip:text!important;color:transparent!important;text-shadow:0 0 18px rgba(190,82,255,.42)!important}
+.gux-shorts{margin:0!important;padding:0!important;color:#fff!important}
+.gux-cam{margin-left:9px!important;padding:0!important;font-style:normal!important;display:inline-block!important;animation:guxCameraPulse 1.65s ease-in-out infinite!important;filter:drop-shadow(0 0 7px rgba(255,92,190,.7))!important}
+@keyframes guxCameraPulse{0%,100%{transform:scale(1);opacity:.72}50%{transform:scale(1.16);opacity:1}}
+</style></head>
 
 <body>
 
 <nav>
-  <span class="gx-brand"><span class="gx-name">GeoX</span><span class="gx-shorts">Shorts</span><span class="gx-cam">🎥</span></span><span class="xshorts">Shorts</span><span class="logo-emoji">🎬</span></div>
+  <span class="gx-brand"><span class="gx-name">GeoX</span><span class="gx-shorts">Shorts</span><span class="gx-cam">🎥</span></span><span class="xshorts">Shorts</span><span class="gux-logo" aria-label="GeoXShorts"><span class="gux-geo">Geo</span><span class="gux-x">X</span><span class="gux-shorts">Shorts</span><span class="gux-cam">🎥</span></span></div>
   <div class="badge">AI VIDEO CLIPS<section class="gx-home"><div class="gx-project"><h1>Creează un proiect nou</h1><div class="gx-sub">Alege tipul proiectului și începe editarea.</div><div class="gx-types"><button class="gx-type" data-kind="video"><span class="ico">🎬</span><b>VIDEO</b><small>Mai multe videoclipuri</small></button><button class="gx-type" data-kind="photo"><span class="ico">🖼️</span><b>PHOTO</b><small>Mai multe fotografii</small></button><button class="gx-type" data-kind="collage"><span class="ico">▦</span><b>COLAJE</b><small>Selectează fotografii</small></button></div><div class="gx-projects"><div class="gx-projects-head"><div><b>Proiectele mele</b><div class="msg" style="color:#9588a5;font-size:12px;margin-top:5px">Proiectele tale apar aici.</div></div><button class="gx-new">＋ Nou</button></div></div></div></section></div>
 </nav>
 
@@ -6967,49 +6974,7 @@ main.hero,
 }
 </style>
 
-<style id="geoRegalPurpleHeader">
-/* GeoXShorts — regal purple header/theme */
-html, body {
-  background: #160b2b !important;
-}
 
-body {
-  color: #f5f3ff !important;
-}
-
-/* Geo X = mov regal, Shorts = alb */
-.logo .geo {
-  color: #a855f7 !important;
-}
-
-.logo .xshorts {
-  color: #ffffff !important;
-}
-
-/* Scoate badge-ul AI VIDEO CLIPS */
-nav .badge {
-  display: none !important;
-}
-
-/* Butonul cu trei puncte */
-#geoAboutMenuBtn {
-  width: 44px !important;
-  height: 44px !important;
-  border-radius: 12px !important;
-  background: #7c3aed !important;
-  border: 1px solid #a855f7 !important;
-  color: #ffffff !important;
-  font-size: 24px !important;
-  box-shadow: 0 6px 20px rgba(124,58,237,.35) !important;
-}
-
-/* Ascunde orice text AI Video rămas în header */
-nav [class*="ai"],
-nav [id*="ai"],
-nav .ai-video {
-  display: none !important;
-}
-</style>
 
 <style id="geoThemeFinal">
 html, body {
