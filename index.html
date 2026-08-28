@@ -73,13 +73,302 @@ body{
  min-height:100vh!important;
 }
 
-/* Negrul ramane DOAR in Creator Tips / ecranul lacatului */
+/* Negrul ramane DOAR în Creator Tips / ecranul lacatului */
 #gxTips.gx-locked,
 #gxTips.gx-locked .gx-lock-screen{
  background:#000!important;
 }
 </style>
-</head><body><div class="wrap"><header class="head"><div class="logo"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></div><div class="gx-social-top" aria-label="Social media"><a class="yt gx-instagram-hot" href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.9V8.1l6.5 3.9-6.5 3.9z"/></svg></a><a class="tt" href="#" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 3c.3 2.2 1.5 3.7 3.4 4.3v3.1a8.2 8.2 0 0 1-3.4-1v6.2a6.4 6.4 0 1 1-5.5-6.3v3.3a3.1 3.1 0 1 0 2.4 3V3h3.1z"/></svg></a><a class="ig" href="#" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 12 16.5 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 12 14.5 2.5 2.5 0 0 0 12 9.5zM17.5 6.2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg></a><a class="dc" href="#" aria-label="Discord"><svg viewBox="0 0 24 24"><path d="M19.5 5.1A16 16 0 0 0 15.7 4l-.5 1a14 14 0 0 0-6.4 0l-.5-1a16 16 0 0 0-3.8 1.1C2.1 8.2 1.5 11.2 1.7 14.2a15.5 15.5 0 0 0 4.7 2.4l1.1-1.5c-.6-.2-1.1-.5-1.6-.8l.4-.3a11 11 0 0 0 11.4 0l.4.3c-.5.3-1 .6-1.6.8l1.1 1.5a15.5 15.5 0 0 0 4.7-2.4c.2-3-.4-6-2.3-9.1zM8.8 13.1c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm6.4 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"/></svg></a></div><button class="btn" onclick="about()">About Me</button></header><main id="home"><section class="card center"><h1 class="gx-hero-title">Creeaza un proiect nou</h1><p class="gx-hero-subtitle">Invata sa editezi, creeaza videoclipuri care atrag atentia, realizeaza thumbnail-uri puternice si descopera strategii practice pentru continut online.</p><div class="grid"><button class="btn" onclick="pick('video')"><span class="icon">🎥</span>VIDEO</button><button class="btn" onclick="pick('photo')"><span class="icon">🖼️</span>THUMBNAIL</button><button class="btn" onclick="gxTipsOpen()"><span class="icon">💡</span>CREATOR TIPS</button></div></section><section class="card"><div style="display:flex;justify-content:space-between;align-items:center"><h2>Proiectele mele</h2><button class="btn" onclick="newProject()">＋ Nou</button></div><div id="projects" class="projects"></div></section></main><main id="editor" class="hidden"><div class="card"><button class="btn" onclick="home()">← Inapoi</button><h2 id="ename">Editor GeoXShorts</h2><div class="preview" id="preview">Selecteaza materiale pentru preview</div><div class="timeline" id="timeline"></div><div class="tools" id="tools"></div><button class="btn" onclick="saveProject()">💾 Salveaza proiectul</button><button class="btn" onclick="exportVideo()">⬇ Export 1080p</button></div></main></div><input id="files" type="file" multiple><div id="modal" class="modal" style="display:none"><div><button class="close" onclick="closeModal()">×</button><h2>About Me</h2><p>GeoXShorts este un proiect creat de GeoXShorts — creator de continut YouTube, TikTok si Instagram, construit pentru o comunitate de peste 60.000 de oameni.</p><p>Editorul este conceput pentru creare rapida de videoclipuri, Shorts, Reels si proiecte foto.</p></div><article class="gx-tip-card"><span class="gx-tip-number">61</span><h3>✨ Primul cadru</h3><p>Incepe direct cu ceva care merita vazut. Daca faci un tutorial, arata rezultatul sau problema chiar din primul cadru, apoi explica. Evita introducerile lungi care intarzie ideea.</p></article><article class="gx-tip-card"><span class="gx-tip-number">62</span><h3>✨ Textul de accent</h3><p>Nu umple ecranul cu propozitii. Evidentiaza doar cuvintele importante. De exemplu, daca explici o greseala, pune vizibil: NU FACE ASTA. Textul trebuie sa ajute, nu sa distraga.</p></article><article class="gx-tip-card"><span class="gx-tip-number">63</span><h3>✨ Sincronizeaza editarea</h3><p>Fa taieturile si schimbarile vizuale in acord cu ceea ce spui. Cand mentionezi un pas, arata pasul respectiv. Aceasta sincronizare face videoclipul mai usor de urmarit.</p></article><article class="gx-tip-card"><span class="gx-tip-number">64</span><h3>✨ Pastreaza-ti vocea</h3><p>Inspira-te de la alti creatori, dar pastreaza-ti identitatea. Modul tau de a vorbi, exemplele tale si perspectiva ta fac continutul recognoscibil.</p></article><article class="gx-tip-card"><span class="gx-tip-number">65</span><h3>✨ Fa un final bun</h3><p>Nu lasa videoclipul sa se termine brusc. Incheie cu rezultatul promis sau cu ideea principala, astfel incat spectatorul sa stie exact ce a invatat.</p></article><article class="gx-tip-card"><span class="gx-tip-number">66</span><h3>✨ Foloseste payoff-ul</h3><p>Daca promiti o informatie la inceput, livreaz-o. Creeaza curiozitate, dar nu o prelungi inutil. Spectatorul trebuie sa simta ca timpul investit a meritat.</p></article><article class="gx-tip-card"><span class="gx-tip-number">67</span><h3>✨ Transforma greselile in lectii</h3><p>O greseala poate deveni continut valoros. Explica ce ai facut gresit, de ce nu a functionat si ce ai schimba data viitoare.</p></article><article class="gx-tip-card"><span class="gx-tip-number">68</span><h3>✨ Arata procesul</h3><p>Nu arata numai rezultatul final. Prezinta pe scurt ideea, materialele, editarea si rezultatul. Procesul ofera transparenta si poate deveni continut in sine.</p></article><article class="gx-tip-card"><span class="gx-tip-number">69</span><h3>✨ Ofera valoare pe parcurs</h3><p>Nu pastra toate informatiile importante pentru final. Ofera exemple si explicatii pe tot parcursul videoclipului, astfel incat fiecare parte sa aiba un scop.</p></article><article class="gx-tip-card"><span class="gx-tip-number">70</span><h3>✨ Leaga videoclipurile</h3><p>Construieste serii in care un subiect il continua pe altul. De exemplu: Hook → Retention → Editare → Analytics. Astfel creezi o ruta naturala catre urmatorul clip.</p></article></div><script>
+
+<style id="gx-logo-size-final">
+.logo{
+display:flex!important;
+align-items:center!important;
+line-height:1!important;
+}
+.logo .gx,.logo .shorts{font-size:1em!important;
+font-size:38px!important;
+line-height:1!important;
+font-weight:900!important;
+}
+.logo .shorts{
+color:#fff!important;
+-webkit-text-fill-color:#fff!important;
+}
+.logo .cam{
+font-size:20px!important;
+line-height:1!important;
+}
+</style>
+
+
+<style id="gx-brand-hero-css">
+.gx-brand-hero{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:18px 12px 8px;
+  box-sizing:border-box;
+}
+.gx-brand-image{
+  display:block;
+  width:min(100%,1100px);
+  height:auto;
+  border-radius:24px;
+  object-fit:contain;
+  box-shadow:
+    0 0 25px rgba(139,70,255,.25),
+    0 0 70px rgba(139,70,255,.12);
+}
+@media(max-width:600px){
+  .gx-brand-hero{padding:12px 8px 6px}
+  .gx-brand-image{border-radius:18px}
+}
+</style>
+
+
+<style id="gx-about-final-css">
+#modal.gx-about-final{
+display:none!important;
+align-items:center!important;
+justify-content:center!important;
+padding:16px!important;
+background:#000c!important;
+backdrop-filter:blur(10px)!important;
+}
+#modal.gx-about-final.gx-show{
+display:flex!important;
+}
+#modal.gx-about-final>div{
+width:min(620px,96vw)!important;
+max-height:88vh!important;
+overflow:auto!important;
+background:linear-gradient(145deg,#1b0d2e,#0e0718)!important;
+border:1px solid #6f3b91!important;
+border-radius:22px!important;
+padding:22px!important;
+box-shadow:0 20px 70px #000b!important;
+}
+.gx-about-title{
+margin:0 0 5px!important;
+font-size:25px!important;
+font-weight:900!important;
+}
+.gx-about-sub{
+margin:0 0 20px!important;
+color:#cdb9dc!important;
+line-height:1.5!important;
+}
+.gx-about-section{
+margin-top:18px!important;
+}
+.gx-about-section h3{
+margin:0 0 10px!important;
+font-size:16px!important;
+}
+.gx-about-card{
+display:flex!important;
+align-items:center!important;
+justify-content:space-between!important;
+gap:12px!important;
+padding:12px 14px!important;
+margin:8px 0!important;
+border:1px solid #3d2750!important;
+background:#241433!important;
+border-radius:13px!important;
+}
+.gx-about-card span{
+font-weight:800!important;
+}
+.gx-about-card a{
+color:#fff!important;
+text-decoration:none!important;
+font-weight:800!important;
+background:#6f35a8!important;
+padding:7px 12px!important;
+border-radius:9px!important;
+}
+.gx-about-card a:hover{
+background:#8d4dca!important;
+}
+.gx-about-note{
+color:#c9bdd0!important;
+line-height:1.55!important;
+margin:7px 0!important;
+}
+.gx-about-close{
+float:right!important;
+border:0!important;
+background:#ffffff12!important;
+color:#fff!important;
+border-radius:9px!important;
+padding:6px 11px!important;
+font-size:19px!important;
+cursor:pointer!important;
+}
+@media(max-width:650px){
+#modal.gx-about-final>div{padding:18px!important}
+.gx-about-card{padding:10px!important}
+}
+</style>
+
+<style id="gx-about-premium-css">
+.gx-about-final>div{
+background:linear-gradient(145deg,#190b2b,#0b0612)!important;
+border:1px solid #9b5cff!important;
+box-shadow:0 0 18px #8b5cf655,0 20px 70px #000c!important;
+}
+.gx-about-title{
+background:linear-gradient(90deg,#fff,#c084fc,#fff,#e879f9,#fff);
+background-size:250% auto;
+-webkit-background-clip:text;
+background-clip:text;
+color:transparent!important;
+animation:gxShine 3s linear infinite,gxPulse 2s ease-in-out infinite;
+text-shadow:0 0 18px #c084fc66;
+}
+.gx-about-section{
+margin:18px 0!important;
+padding:15px!important;
+border:1px solid #8b5cf688!important;
+border-radius:16px!important;
+background:linear-gradient(145deg,#ffffff08,#8b5cf508)!important;
+box-shadow:0 0 12px #8b5cf522,inset 0 0 18px #8b5cf511!important;
+}
+.gx-about-section h3{
+color:#e9d5ff!important;
+text-shadow:0 0 10px #b56cff!important;
+animation:gxGlow 2s ease-in-out infinite;
+}
+.gx-about-card{
+border:1px solid #9b5cff88!important;
+background:linear-gradient(100deg,#251238,#32164b)!important;
+box-shadow:0 0 10px #8b5cf522!important;
+transition:.2s!important;
+}
+.gx-about-card:hover{
+transform:translateY(-2px);
+border-color:#d8b4fe!important;
+box-shadow:0 0 18px #a855f766!important;
+}
+.gx-about-card span{
+color:#fff!important;
+text-shadow:0 0 7px #d8b4fe55!important;
+}
+.gx-about-card a{
+background:linear-gradient(100deg,#7c3aed,#c026d3)!important;
+box-shadow:0 0 10px #a855f766!important;
+}
+.gx-about-note b{
+color:#d8b4fe!important;
+text-shadow:0 0 9px #a855f7!important;
+animation:gxGlow 2s ease-in-out infinite;
+}
+@keyframes gxShine{
+0%{background-position:0% center}
+100%{background-position:250% center}
+}
+@keyframes gxPulse{
+50%{text-shadow:0 0 25px #d8b4fe,0 0 45px #a855f766}
+}
+@keyframes gxGlow{
+50%{text-shadow:0 0 14px #c084fc,0 0 24px #8b5cf755}
+}
+</style>
+
+<style id="gx-geo-ff-nowrap">
+.gx-nowrap{
+display:inline-block!important;
+white-space:nowrap!important;
+}
+</style>
+
+<style id="gx-thumbnail-home-final">
+#gxt-modal,
+#gxt,
+.gxt-modal,
+.gxt-wrap{
+  display:none;
+}
+#gxt-modal.gxt-open,
+#gxt.gxt-open,
+.gxt-modal.gxt-open,
+.gxt-wrap.gxt-open{
+  display:flex;
+}
+</style>
+
+
+<style id="gx-thumbnail-home-publish-fix">
+#gxt-format-stage,
+#gxt-photo-stage,
+#gxt-edit-stage{
+  display:none;
+}
+</style>
+<script id="gx-thumbnail-home-publish-js">
+(function(){
+  function getBox(){
+    const stage=document.getElementById("gxt-format-stage");
+    if(!stage)return null;
+    let x=stage;
+    for(let i=0;i<8 && x.parentElement;i++){
+      const p=x.parentElement;
+      const t=(p.innerText||"").toLowerCase();
+      if(
+        t.includes("creeaza un thumbnail") ||
+        t.includes("alege fotografia") ||
+        t.includes("export 1080p")
+      ){
+        x=p;
+      }else break;
+    }
+    return x;
+  }
+
+  function hide(){
+    const x=getBox();
+    if(x)x.dataset.gxHomeThumb="hidden";
+  }
+
+  function show(){
+    const x=getBox();
+    if(x)x.dataset.gxHomeThumb="open";
+  }
+
+  const css=document.createElement("style");
+  css.textContent='[data-gx-home-thumb="hidden"]{display:none!important}[data-gx-home-thumb="open"]{display:flex!important}';
+  document.head.appendChild(css);
+
+  const obs=new MutationObserver(()=>{
+    const x=getBox();
+    if(x && !x.dataset.gxHomeThumb)x.dataset.gxHomeThumb="hidden";
+  });
+  obs.observe(document.body,{childList:true,subtree:true});
+
+  document.addEventListener("click",e=>{
+    const b=e.target.closest("button,a,[role=button]");
+    if(!b)return;
+    const t=(b.textContent||"").trim().toLowerCase();
+    if(t.includes("thumbnail"))setTimeout(show,50);
+    if(t==="închide"||t==="inchide"||t==="×")setTimeout(hide,50);
+  },true);
+
+  setTimeout(hide,100);
+  setTimeout(hide,500);
+})();
+</script>
+
+</head><body><div class="wrap"><header class="head"><div class="logo"><span class="gx">GeoX</span><span class="shorts">Shorts</span><span class="cam">🎬</span></div><div class="gx-social-top" aria-label="Social media"><a class="yt gx-instagram-hot" href="https://youtube.com/@geo_ff" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.9V8.1l6.5 3.9-6.5 3.9z"/></svg></a><a class="tt" href="https://www.tiktok.com/@geo_ff.hs" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M16.6 3c.3 2.2 1.5 3.7 3.4 4.3v3.1a8.2 8.2 0 0 1-3.4-1v6.2a6.4 6.4 0 1 1-5.5-6.3v3.3a3.1 3.1 0 1 0 2.4 3V3h3.1z"/></svg></a><a class="ig" href="https://www.instagram.com/geo_ff.hs" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 12 16.5 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 12 14.5 2.5 2.5 0 0 0 12 9.5zM17.5 6.2a1.1 1.1 0 1 1 0 2.2 1.1 1.1 0 0 1 0-2.2z"/></svg></a><a class="dc" href="https://discord.gg/cTwvS6xfY" target="_blank" rel="noopener" aria-label="Discord"><svg viewBox="0 0 24 24"><path d="M19.5 5.1A16 16 0 0 0 15.7 4l-.5 1a14 14 0 0 0-6.4 0l-.5-1a16 16 0 0 0-3.8 1.1C2.1 8.2 1.5 11.2 1.7 14.2a15.5 15.5 0 0 0 4.7 2.4l1.1-1.5c-.6-.2-1.1-.5-1.6-.8l.4-.3a11 11 0 0 0 11.4 0l.4.3c-.5.3-1 .6-1.6.8l1.1 1.5a15.5 15.5 0 0 0 4.7-2.4c.2-3-.4-6-2.3-9.1zM8.8 13.1c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2zm6.4 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2z"/></svg></a></div><button class="btn" onclick="window.about()">About Me</button></header><section class="gx-brand-hero">
+  <img src="geoxshorts-logo.jpg"
+       alt="GeoX Shorts — Grow, Edit, Optimize"
+       class="gx-brand-image">
+</section>
+<main id="home"><section class="card center"><h1 class="gx-hero-title">Creeaza un proiect nou</h1><p class="gx-hero-subtitle">Invata sa editezi, creeaza videoclipuri care atrag atentia, realizeaza thumbnail-uri puternice si descopera strategii practice pentru continut online.</p><div class="grid"><button class="btn" onclick="pick('video')"><span class="icon">🎥</span>VIDEO</button><button class="btn" onclick="pick('photo')"><span class="icon">🖼️</span>THUMBNAIL</button><button class="btn" onclick="gxTipsOpen()"><span class="icon">💡</span>CREATOR TIPS</button></div></section><section class="card"><div style="display:flex;justify-content:space-between;align-items:center"><h2>Proiectele mele</h2><button class="btn" onclick="newProject()">＋ Nou</button></div><div id="projects" class="projects"></div></section></main>
+
+<main id="editor" class="hidden"><div class="card"><button class="btn" onclick="home()">← Inapoi</button><h2 id="ename">Editor GeoXShorts</h2><div class="preview" id="preview">Selecteaza materiale pentru preview</div><div class="timeline" id="timeline"></div><div class="tools" id="tools"></div><button class="btn" onclick="saveProject()">💾 Salveaza proiectul</button><button class="btn" onclick="exportVideo()">⬇ Export 1080p</button></div></main></div><input id="files" type="file" multiple><div id="modal" class="modal" style="display:none"><div>
+</div></div><script>
 let mode='video',media=[],cur=null;const $=id=>document.getElementById(id),tools=['Media','Audio','Text','Effects','Filters','Transition','Speed','Volume','Crop','Rotate','Opacity','Caption','PiP','Keyframe','Canvas'];function pick(m){
  mode=m;
  $('files').accept=m==='video'?'video/*':m==='photo'?'image/*':'image/*';
@@ -87,7 +376,7 @@ let mode='video',media=[],cur=null;const $=id=>document.getElementById(id),tools
  $('files').click();
 }$('files').onchange=e=>{if(!e.target.files.length)return;media=[...e.target.files];openEditor();e.target.value='';};function openEditor(){
  if(!media.length){alert('Selecteaza cel putin un material.');return}
- homeEditor();$('timeline').innerHTML=media.map((f,i)=>`<div class=thumb>${f.type.startsWith('video/')?`<video src="${URL.createObjectURL(f)}"></video>`:`<img src="${URL.createObjectURL(f)}">`}</div>`).join('');if(media[0]){let u=URL.createObjectURL(media[0]);$('preview').innerHTML=media[0].type.startsWith('video/')?`<video controls src="${u}" style="max-height:430px"></video>`:`<img src="${u}">`}$('tools').innerHTML=tools.map(x=>`<button class=tool onclick="tool('${x}')">${x}</button>`).join('')}function homeEditor(){$('home').classList.add('hidden');$('editor').classList.remove('hidden')}function home(){$('editor').classList.add('hidden');$('home').classList.remove('hidden');render()}function tool(x){if(x==='Media')pick(mode);else alert(x+' este activ in editor.')}function newProject(){media=[];pick('video')}function saveProject(){let a=JSON.parse(localStorage.projects||'[]');a.push({name:'Proiect '+(a.length+1),count:media.length,date:new Date().toLocaleString('ro-RO')});localStorage.projects=JSON.stringify(a);alert('Proiect salvat!');render()}function render(){let a=JSON.parse(localStorage.projects||'[]');$('projects').innerHTML=a.map((p,i)=>`<div class=proj><span>🎬 ${p.name}<small> · ${p.count} materiale</small></span><button class=btn onclick="loadProject(${i})">Deschide</button></div>`).join('')||'<p class=center>Niciun proiect salvat inca.</p>'}function loadProject(i){media=[];openEditor()}function exportVideo(){alert('Export 1080p pregatit. Motorul de randare poate fi conectat aici fara schimbarea interfetei.')}function about(){$('modal').classList.remove('hidden')}function closeModal(){$('modal').classList.add('hidden')}render();
+ homeEditor();$('timeline').innerHTML=media.map((f,i)=>`<div class=thumb>${f.type.startsWith('video/')?`<video src="${URL.createObjectURL(f)}"></video>`:`<img src="${URL.createObjectURL(f)}">`}</div>`).join('');if(media[0]){let u=URL.createObjectURL(media[0]);$('preview').innerHTML=media[0].type.startsWith('video/')?`<video controls src="${u}" style="max-height:430px"></video>`:`<img src="${u}">`}$('tools').innerHTML=tools.map(x=>`<button class=tool onclick="tool('${x}')">${x}</button>`).join('')}function homeEditor(){$('home').classList.add('hidden');$('editor').classList.remove('hidden')}function home(){$('editor').classList.add('hidden');$('home').classList.remove('hidden');render()}function tool(x){if(x==='Media')pick(mode);else alert(x+' este activ în editor.')}function newProject(){media=[];pick('video')}function saveProject(){let a=JSON.parse(localStorage.projects||'[]');a.push({name:'Proiect '+(a.length+1),count:media.length,date:new Date().toLocaleString('ro-RO')});localStorage.projects=JSON.stringify(a);alert('Proiect salvat!');render()}function render(){let a=JSON.parse(localStorage.projects||'[]');$('projects').innerHTML=a.map((p,i)=>`<div class=proj><span>🎬 ${p.name}<small> · ${p.count} materiale</small></span><button class=btn onclick="loadProject(${i})">Deschide</button></div>`).join('')||'<p class=center>Niciun proiect salvat inca.</p>'}function loadProject(i){media=[];openEditor()}function exportVideo(){alert('Export 1080p pregatit. Motorul de randare poate fi conectat aici fara schimbarea interfetei.')}render();
 
 
 </script>
@@ -112,7 +401,7 @@ Scopul meu este sa transform orice idee intr-un clip captivant, cu timeline intu
 <a class="gx-social" href="#" target="_blank" rel="noopener"><b class="gx-icon">♪</b><span><b>TikTok</b><br>Urmareste cele mai noi clipuri</span></a>
 <a class="gx-social" href="#" target="_blank" rel="noopener"><b class="gx-icon">◎</b><span><b>Instagram</b><br>Continut si noutati</span></a>
 <a class="gx-social" href="#" target="_blank" rel="noopener"><b class="gx-icon">◈</b><span><b>Discord</b><br>Contact si comunitate</span></a>
-<a class="gx-social" href="#" target="_blank" rel="noopener"><b class="gx-icon">◉</b><span><b>Server Discord</b><br>Intra in comunitate</span></a>
+<a class="gx-social" href="#" target="_blank" rel="noopener"><b class="gx-icon">◉</b><span><b>Server Discord</b><br>Intra în comunitate</span></a>
 <div class="gx-warn">⚠️ Atentie: link-ul serverului de Discord poate expira. Daca nu mai functioneaza, contacteaza-ma pe Instagram sau TikTok pentru un invite nou!</div>
 </section>
 <section class="gx-sec"><h3>Despre GeoXShorts</h3>
@@ -124,8 +413,7 @@ Scopul meu este sa transform orice idee intr-un clip captivant, cu timeline intu
 (()=>{const a=document.getElementById('gxAbout'),c=document.getElementById('gxClose');
 function open(){a.classList.add('on');a.setAttribute('aria-hidden','false')}function close(){a.classList.remove('on');a.setAttribute('aria-hidden','true')}
 c.onclick=close;a.onclick=e=>{if(e.target===a)close()};document.addEventListener('keydown',e=>{if(e.key==='Escape')close()});
-document.addEventListener('click',e=>{let x=e.target.closest('a,button,[role="button"]');if(!x||x.id==='gxClose')return;let t=(x.textContent||'').trim().toLowerCase();if(t==='about me'||t==='aboutme'){e.preventDefault();open()}});
-})();</script>
+();</script>
 <style id="geoCollageStyle">
 #geoCollageModal{position:fixed;inset:0;z-index:99999;background:rgba(7,4,12,.94);display:none;align-items:center;justify-content:center;padding:16px;box-sizing:border-box}
 #geoCollageModal.open{display:flex}
@@ -176,7 +464,7 @@ const oldRender=window.render;window.render=()=>{let a=projects();$("projects").
 const oldOpen=window.openEditor;window.openEditor=()=>{homeEditor();$("timeline").innerHTML=files.map((f,i)=>`<div class="thumb ${i===sel?"gxsel":""}" onclick="selectMedia(${i})">${f.type.startsWith("video/")?`<video src="${URL.createObjectURL(f)}"></video>`:`<img src="${URL.createObjectURL(f)}">`}</div>`).join("");if(files[0]&&!($("preview").querySelector("video,img")))selectMedia(0);$("tools").innerHTML=tools.map(x=>`<button class=tool onclick="tool('${x}')">${x}</button>`).join("");autosave()}
 window.selectMedia=i=>{sel=i;let f=files[i];if(!f)return;let u=URL.createObjectURL(f);$("preview").innerHTML=f.type.startsWith("video/")?`<video controls src="${u}" style="max-height:430px"></video>`:`<img src="${u}">`;openEditor()}
 const oldChange=$("files").onchange;$("files").onchange=e=>{files.push(...e.target.files);sel=files.length-1;openEditor();autosave()}
-window.tool=x=>{if(x==="Media"){ $("files").click();return }if(x==="Delete"){if(sel>=0)files.splice(sel,1);sel=-1;openEditor();autosave();return}alert(x+" — functia este pregatita pentru motorul editorului.")}
+
 window.home=()=>{ $("editor").classList.add("hidden");$("home").classList.remove("hidden");render()}
 window.addEventListener("beforeunload",autosave);window.render=window.render;render()
 })();
@@ -382,7 +670,7 @@ function remember(){if(!busy){hist.push(snap());if(hist.length>30)hist.shift();f
 function refresh(){openEditor()}
 function selected(){return files[sel]}
 window.selectMedia=i=>{sel=i;let f=files[i];if(!f)return;let u=URL.createObjectURL(f);$("preview").innerHTML=f.type.startsWith("video/")?`<video id="gxv" controls src="${u}" style="width:100%;max-height:430px"></video>`:`<img src="${u}">`;document.querySelectorAll(".thumb").forEach((e,j)=>e.classList.toggle("gxsel",j===i));bar()}
-function bar(){let v=$("gxv"),b=$("gxbar");if(!b){b=document.createElement("div");b.id="gxbar";$("preview").parentNode.insertBefore(b,$("timeline"))}b.innerHTML=`<button id="gxp">▶ Play/Pause</button><button id="gxm">🔇 Mute</button><button id="gxu">↑ Muta</button><button id="gxd">↓ Muta</button><button id="gxdel">🗑 Sterge</button><button id="gxundo">↶ Undo</button><button id="gxredo">↷ Redo</button><button id="gxt">🖼 Thumbnail</button><input id="gxprog" type="range" min="0" max="100" value="0">`;
+function bar(){let v=$("gxv"),b=$("gxbar");if(!b){b=document.createElement("div");b.id="gxbar";$("preview").parentNode.insertBefore(b,$("timeline"))}b.innerHTML=`<button id="gxp">▶ Play/Pause</button><button id="gxm">🔇 Mute</button><button id="gxu">↑ Muta</button><button id="gxd">↓ Muta</button><button id="gxdel">🗑 Sterge</button><button id="gxundo">↶ Undo</button><button id="gxredo">↷ Redo</button><button id="gxt" style="display:none">🖼 Thumbnail</button><input id="gxprog" type="range" min="0" max="100" value="0">`;
 $("gxp").onclick=()=>v&&(v.paused?v.play():v.pause());$("gxm").onclick=()=>v&&(v.muted=!v.muted);
 $("gxdel").onclick=()=>{if(sel<0)return;remember();files.splice(sel,1);sel=Math.min(sel,files.length-1);refresh()};
 $("gxu").onclick=()=>{if(sel>0){remember();[files[sel-1],files[sel]]=[files[sel],files[sel-1]];sel--;refresh()}};
@@ -497,11 +785,7 @@ window.home=()=>{$("editor").classList.add("hidden");$("home").classList.remove(
 <div class="gx-lock-screen" id="gxLockScreen">
 <div class="gx-lock-box">
 <div class="gx-lock-icon">🔒</div>
-<div class="gx-lock-chain">
-<span>⛓️ ⛓️</span>
-<span class="gx-lock-center-line"> </span>
-<span>⛓️ ⛓️</span>
-</div>
+<div class="gx-lock-chain"><span>⛓️</span><span>⛓️</span><span>⛓️</span><span>⛓️</span><span>⛓️</span><span>⛓️</span><span>⛓️</span><span>⛓️</span></div>
 <div class="gx-lock-title">
 <span class="gx-title-white">CREATOR TIPS ESTE</span>
 <span class="gx-title-gold"> BLOCAT</span>
@@ -509,23 +793,23 @@ window.home=()=>{$("editor").classList.add("hidden");$("home").classList.remove(
 <p class="gx-lock-text">
 <strong>💡 100 DE SFATURI PRACTICE</strong><br>
 pentru a crea continut mai bun, a-ti construi audienta
-si a reusi in online.
+si a reusi în online.
 <br>
-<span class="gx-money-line">Sfaturi pentru care multi ar plati ca sa le afle 🤑</span>
+<span class="gx-money-line">Sfaturi pentru care multi ar plati<br>ca sa le afle 🤑</span>
 <br>
 <span class="gx-small-line">Deblocheaza accesul pentru a vedea ghidul complet</span><span class="gx-free-line">GRATUIT 😮</span>
 </p>
 <div class="gx-lock-links">
-<button type="button" data-gx-social="youtube">YouTube</button>
-<button type="button" data-gx-social="tiktok">TikTok</button>
-<button type="button" data-gx-social="instagram">Instagram</button>
+<button type="button" data-gx-social="youtube" onclick="window.open('https://youtube.com/@geo_ff','_blank','noopener')">YouTube</button>
+<button type="button" data-gx-social="tiktok" onclick="window.open('https://www.tiktok.com/@geo_ff.hs','_blank','noopener')">TikTok</button>
+<button type="button" data-gx-social="instagram" onclick="window.open('https://www.instagram.com/geo_ff.hs','_blank','noopener')">Instagram</button>
 </div>
 <div class="gx-lock-status" id="gxLockStatus">0 / 3 PLATFORME ACCESATE</div>
 </div>
 </div>
 
 
-<article class="gx-tip-card"><span class="gx-tip-number">01</span><h3>Nisa</h3><p>Alege un domeniu clar si construieste-ti identitatea in jurul lui.</p></article><article class="gx-tip-card"><span class="gx-tip-number">02</span><h3>Consecventa</h3><p>Daca alegi masini, gaming sau alt domeniu, ramai concentrat pe acea directie.</p></article><article class="gx-tip-card"><span class="gx-tip-number">03</span><h3>Exemplul Free Fire</h3><p>Am inceput cu Free Fire si am construit continutul in jurul acelui joc.</p></article><article class="gx-tip-card"><span class="gx-tip-number">04</span><h3>Rabdarea</h3><p>Rezultatele mici de la inceput nu inseamna ca proiectul nu poate creste.</p></article><article class="gx-tip-card"><span class="gx-tip-number">05</span><h3>Publicul</h3><p>Construieste pentru oamenii care te urmaresc, nu pentru algoritm in mod mecanic.</p></article><article class="gx-tip-card"><span class="gx-tip-number">06</span><h3>Hook-ul</h3><p>Primele 2-3 secunde trebuie sa ofere un motiv real pentru a continua.</p></article><article class="gx-tip-card"><span class="gx-tip-number">07</span><h3>Curiozitatea</h3><p>Deschide clipul cu o intrebare, o surpriza sau o informatie interesanta.</p></article><article class="gx-tip-card"><span class="gx-tip-number">08</span><h3>Fara introduceri inutile</h3><p>Evita sa consumi primele secunde cu formule lungi de salut.</p></article><article class="gx-tip-card"><span class="gx-tip-number">09</span><h3>Promisiunea</h3><p>Spune clar ce informatie sau valoare va primi privitorul.</p></article><article class="gx-tip-card"><span class="gx-tip-number">10</span><h3>Hook-uri diferite</h3><p>Testeaza mai multe inceputuri pentru aceeasi categorie de continut.</p></article><article class="gx-tip-card"><span class="gx-tip-number">11</span><h3>Creator Search Insights</h3><p>Cauta subiectele pe care oamenii le cauta deja.</p></article><article class="gx-tip-card"><span class="gx-tip-number">12</span><h3>Content Gap</h3><p>Identifica subiecte cautate pentru care exista putin continut bun.</p></article><article class="gx-tip-card"><span class="gx-tip-number">13</span><h3>Cerere mare</h3><p>Cauta subiecte unde exista interes real din partea publicului.</p></article><article class="gx-tip-card"><span class="gx-tip-number">14</span><h3>Concurenta</h3><p>Studiaza concurenta pentru a gasi un unghi diferit.</p></article><article class="gx-tip-card"><span class="gx-tip-number">15</span><h3>Nu copia</h3><p>Inspira-te din concepte, dar construieste propria executie.</p></article><article class="gx-tip-card"><span class="gx-tip-number">16</span><h3>Frecventa</h3><p>Posteaza suficient de des pentru a putea testa ce functioneaza.</p></article><article class="gx-tip-card"><span class="gx-tip-number">17</span><h3>Calitatea</h3><p>Mai multe videoclipuri nu inseamna automat rezultate mai bune.</p></article><article class="gx-tip-card"><span class="gx-tip-number">18</span><h3>Evita spamul</h3><p>Nu publica in exces continut fara valoare doar pentru volum.</p></article><article class="gx-tip-card"><span class="gx-tip-number">19</span><h3>Repeta succesul</h3><p>Daca o tema functioneaza, dezvolta alte idei din aceeasi categorie.</p></article><article class="gx-tip-card"><span class="gx-tip-number">20</span><h3>Nu copia 1:1</h3><p>Schimba povestea, unghiul, hook-ul si montajul.</p></article><article class="gx-tip-card"><span class="gx-tip-number">21</span><h3>Serii</h3><p>Transforma o idee buna intr-o serie cu episoade diferite.</p></article><article class="gx-tip-card"><span class="gx-tip-number">22</span><h3>Comentariile</h3><p>Foloseste intrebarile publicului ca inspiratie pentru clipuri noi.</p></article><article class="gx-tip-card"><span class="gx-tip-number">23</span><h3>Raspunsuri video</h3><p>O intrebare buna poate deveni direct urmatorul videoclip.</p></article><article class="gx-tip-card"><span class="gx-tip-number">24</span><h3>Elimina pauzele</h3><p>Taie momentele moarte din montaj.</p></article><article class="gx-tip-card"><span class="gx-tip-number">25</span><h3>Ritm</h3><p>Pastreaza informatia in miscare, fara segmente inutile.</p></article><article class="gx-tip-card"><span class="gx-tip-number">26</span><h3>Schimbarea cadrelor</h3><p>Variaza imaginile aproximativ la 1-2 secunde cand materialul permite.</p></article><article class="gx-tip-card"><span class="gx-tip-number">27</span><h3>B-roll</h3><p>Foloseste cadre suplimentare pentru a sustine ceea ce spui.</p></article><article class="gx-tip-card"><span class="gx-tip-number">28</span><h3>Zoom</h3><p>Foloseste zoom-ul pentru accent, nu permanent.</p></article><article class="gx-tip-card"><span class="gx-tip-number">29</span><h3>Efecte</h3><p>Foloseste efecte pentru dinamism, dar pastreaza mesajul clar.</p></article><article class="gx-tip-card"><span class="gx-tip-number">30</span><h3>Subtitrari</h3><p>Adauga subtitrari pentru persoanele care urmaresc fara sunet.</p></article><article class="gx-tip-card"><span class="gx-tip-number">31</span><h3>Contextul publicului</h3><p>Unii oameni urmaresc TikTok in autobuz, tren, magazin sau alte locuri.</p></article><article class="gx-tip-card"><span class="gx-tip-number">32</span><h3>Vocea</h3><p>Asigura-te ca vocea este clara si usor de inteles.</p></article><article class="gx-tip-card"><span class="gx-tip-number">33</span><h3>Muzica</h3><p>Alege muzica potrivita pentru atmosfera si subiect.</p></article><article class="gx-tip-card"><span class="gx-tip-number">34</span><h3>Sunete in trend</h3><p>Urmareste sunetele populare si foloseste-le cand se potrivesc continutului.</p></article><article class="gx-tip-card"><span class="gx-tip-number">35</span><h3>Drepturi de autor</h3><p>Respecta regulile platformei si drepturile asupra materialelor.</p></article><article class="gx-tip-card"><span class="gx-tip-number">36</span><h3>1080p</h3><p>Foloseste o calitate clara, potrivita pentru platforma.</p></article><article class="gx-tip-card"><span class="gx-tip-number">37</span><h3>60 FPS</h3><p>Pentru continut dinamic, 60 FPS poate oferi o miscare mai fluida.</p></article><article class="gx-tip-card"><span class="gx-tip-number">38</span><h3>Nu exagera cu 4K</h3><p>O rezolutie mai mare nu garanteaza un videoclip mai bun.</p></article><article class="gx-tip-card"><span class="gx-tip-number">39</span><h3>Colorizare</h3><p>Ajusteaza luminozitatea, contrastul, saturatia si claritatea cu masura.</p></article><article class="gx-tip-card"><span class="gx-tip-number">40</span><h3>Stil vizual</h3><p>Construieste un aspect recognoscibil pentru continutul tau.</p></article><article class="gx-tip-card"><span class="gx-tip-number">41</span><h3>SEO</h3><p>Foloseste natural termenii pe care publicul ii cauta.</p></article><article class="gx-tip-card"><span class="gx-tip-number">42</span><h3>Titlul</h3><p>Titlul trebuie sa fie clar, relevant si interesant.</p></article><article class="gx-tip-card"><span class="gx-tip-number">43</span><h3>Descrierea</h3><p>Foloseste descrierea pentru context si cuvinte relevante.</p></article><article class="gx-tip-card"><span class="gx-tip-number">44</span><h3>Hashtaguri</h3><p>Alege hashtaguri direct legate de subiect.</p></article><article class="gx-tip-card"><span class="gx-tip-number">45</span><h3>Nu forta SEO</h3><p>Nu repeta artificial aceleasi cuvinte.</p></article><article class="gx-tip-card"><span class="gx-tip-number">46</span><h3>Thumbnail</h3><p>Creeaza o imagine clara si atractiva acolo unde platforma o foloseste.</p></article><article class="gx-tip-card"><span class="gx-tip-number">47</span><h3>Format TikTok</h3><p>Pentru continut vertical foloseste formatul 9:16.</p></article><article class="gx-tip-card"><span class="gx-tip-number">48</span><h3>AI</h3><p>Foloseste instrumente AI pentru idei vizuale si concepte creative.</p></article><article class="gx-tip-card"><span class="gx-tip-number">49</span><h3>Identitate proprie</h3><p>Nu transforma profilul intr-o copie a altui creator.</p></article><article class="gx-tip-card"><span class="gx-tip-number">50</span><h3>Poza de profil</h3><p>Poza de profil este oglinda vizuala a profilului tau.</p></article><article class="gx-tip-card"><span class="gx-tip-number">51</span><h3>Personaj recognoscibil</h3><p>In gaming, un personaj sau o tinuta poate deveni parte din brand.</p></article><article class="gx-tip-card"><span class="gx-tip-number">52</span><h3>Branding</h3><p>Foloseste elemente vizuale constante pentru recunoastere.</p></article><article class="gx-tip-card"><span class="gx-tip-number">53</span><h3>Recunoastere</h3><p>Construieste elemente pe care publicul sa le asocieze cu tine.</p></article><article class="gx-tip-card"><span class="gx-tip-number">54</span><h3>Analytics</h3><p>Analizeaza vizualizarile, retentia si interactiunile.</p></article><article class="gx-tip-card"><span class="gx-tip-number">55</span><h3>Abandonul</h3><p>Daca oamenii pleaca rapid, verifica primele secunde.</p></article><article class="gx-tip-card"><span class="gx-tip-number">56</span><h3>Retentia</h3><p>Observa unde raman oamenii si unde abandoneaza.</p></article><article class="gx-tip-card"><span class="gx-tip-number">57</span><h3>Compara</h3><p>Compara videoclipurile bune cu cele slabe si cauta diferentele.</p></article><article class="gx-tip-card"><span class="gx-tip-number">58</span><h3>Invata din esecuri</h3><p>Un clip slab poate oferi informatii utile pentru urmatorul.</p></article><article class="gx-tip-card"><span class="gx-tip-number">59</span><h3>Nu renunta</h3><p>Cresterea poate avea perioade bune si perioade slabe.</p></article><article class="gx-tip-card"><span class="gx-tip-number">60</span><h3>Pe termen lung</h3><p>Construieste prin continut bun, consecventa, analiza si adaptare.</p></article><article class="gx-tip-card"><span class="gx-tip-number">71</span><h3>✨ Testeaza idei diferite</h3><p>Nu presupune ca o singura formula va functiona mereu. Testeaza hook-uri, subiecte, editari si moduri diferite de prezentare. Pastreaza ceea ce aduce rezultate mai bune.</p></article><article class="gx-tip-card"><span class="gx-tip-number">72</span><h3>✨ Invata din videoclipurile bune</h3><p>Cand un clip performeaza bine, nu te uita doar la vizualizari. Analizeaza inceputul, durata, ritmul, subiectul si motivul pentru care oamenii au ramas.</p></article><article class="gx-tip-card"><span class="gx-tip-number">73</span><h3>✨ Construieste o poveste</h3><p>Chiar si un videoclip scurt are nevoie de o directie. Porneste de la problema, dezvolta ideea si ajungi la un rezultat clar. Spectatorul trebuie sa stie de ce sa continue.</p></article><article class="gx-tip-card"><span class="gx-tip-number">74</span><h3>✨ Nu aglomera ecranul</h3><p>Prea multe texte, emoji-uri si efecte pot face continutul greu de urmarit. Pastreaza elementele importante vizibile si elimina ceea ce nu ajuta mesajul.</p></article><article class="gx-tip-card"><span class="gx-tip-number">75</span><h3>✨ Foloseste exemple concrete</h3><p>O explicatie devine mai usor de inteles cand este insotita de un exemplu. In loc sa spui doar «fa un hook bun», arata concret cum ai transforma un inceput slab intr-unul mai interesant.</p></article><article class="gx-tip-card"><span class="gx-tip-number">76</span><h3>✨ Rezultatul trebuie sa fie clar</h3><p>Cand promiti ceva in videoclip, arata rezultatul. Daca explici editarea unui clip, prezinta diferenta dintre varianta initiala si cea finala.</p></article><article class="gx-tip-card"><span class="gx-tip-number">77</span><h3>✨ Invata din comentarii</h3><p>Comentariile pot arata ce nu a fost inteles, ce a placut sau ce isi doreste publicul. Foloseste aceste informatii pentru urmatoarele videoclipuri.</p></article><article class="gx-tip-card"><span class="gx-tip-number">78</span><h3>✨ Optimizeaza, nu perfectiona la nesfarsit</h3><p>Un videoclip nu trebuie tinut la nesfarsit in editare. Stabileste ce trebuie imbunatatit, finalizeaza si publica. Experienta reala iti ofera date pentru urmatorul clip.</p></article><article class="gx-tip-card"><span class="gx-tip-number">79</span><h3>✨ Construieste incredere</h3><p>Fii clar si sincer cu publicul. Daca prezinti o metoda, explica si limitele ei. Oamenii revin mai usor la creatori in care pot avea incredere.</p></article><article class="gx-tip-card"><span class="gx-tip-number">80</span><h3>✨ Fiecare clip trebuie sa invete ceva</h3><p>Dupa fiecare publicare, intreaba-te ce ai invatat. Poate fi despre hook, durata, subiect, thumbnail, retentie sau comentarii. Foloseste acea lectie la urmatorul videoclip.</p></article><article class="gx-tip-card"><span class="gx-tip-number">81</span><h3>✨ Alege o idee clara</h3><p>Un videoclip bun porneste de la o idee usor de explicat. Daca nu poti spune despre ce este clipul intr-o singura propozitie, simplifica ideea inainte sa filmezi.</p></article><article class="gx-tip-card"><span class="gx-tip-number">82</span><h3>✨ Cunoaste publicul</h3><p>Gandeste-te cine va urmari videoclipul si ce problema, intrebare sau curiozitate are. Cu cat intelegi mai bine publicul, cu atat poti crea continut mai relevant.</p></article><article class="gx-tip-card"><span class="gx-tip-number">83</span><h3>✨ Promisiunea din inceput</h3><p>Primele secunde trebuie sa stabileasca motivul pentru care merita sa ramai. Spune sau arata clar ce va obtine spectatorul daca continua sa urmareasca.</p></article><article class="gx-tip-card"><span class="gx-tip-number">84</span><h3>✨ Pastreaza ritmul</h3><p>Daca o scena nu adauga informatie, emotie sau progres, intreaba-te daca este necesara. Un montaj mai curat face mesajul mai usor de urmarit.</p></article><article class="gx-tip-card"><span class="gx-tip-number">85</span><h3>✨ Foloseste contrastul</h3><p>Compara doua variante pentru a explica mai usor o idee. De exemplu: editare slaba versus editare imbunatatita. Diferenta vizibila face lectia mai memorabila.</p></article><article class="gx-tip-card"><span class="gx-tip-number">86</span><h3>✨ Nu ignora audio</h3><p>Imaginea buna nu compenseaza complet un sunet greu de inteles. Verifica vocea, muzica si efectele astfel incat informatia principala sa ramana clara.</p></article><article class="gx-tip-card"><span class="gx-tip-number">87</span><h3>✨ Construieste anticipare</h3><p>Poti anunta partial ce urmeaza, fara sa dai imediat tot raspunsul. Spectatorul are astfel un motiv suplimentar sa continue.</p></article><article class="gx-tip-card"><span class="gx-tip-number">88</span><h3>✨ Foloseste un CTA natural</h3><p>Daca vrei un comentariu sau un follow, leaga cererea de continut. De exemplu, cere opinia spectatorului despre rezultatul prezentat, nu adauga automat aceeasi fraza la fiecare clip.</p></article><article class="gx-tip-card"><span class="gx-tip-number">89</span><h3>✨ Recicleaza inteligent</h3><p>O idee buna poate fi transformata in mai multe formate. Un videoclip lung poate deveni Shorts, un comentariu poate deveni un clip, iar o intrebare poate deveni o serie.</p></article><article class="gx-tip-card"><span class="gx-tip-number">90</span><h3>✨ Fa urmatorul clip mai bun</h3><p>Nu incerca sa repari totul deodata. Alege o singura lectie din analiza ultimului videoclip si aplic-o la urmatorul. Imbunatatirile mici, repetate, construiesc progresul.</p></article><article class="gx-tip-card"><span class="gx-tip-number">91</span><h3>✨ Studiaza primele secunde</h3><p>Uita-te la inceputul videoclipurilor tale si intreaba-te daca ideea principala apare suficient de repede. Daca spectatorul trebuie sa astepte prea mult, scurteaza introducerea.</p></article><article class="gx-tip-card"><span class="gx-tip-number">92</span><h3>✨ Fa continut usor de inteles</h3><p>Evita explicatiile complicate atunci cand poti spune acelasi lucru simplu. Un spectator trebuie sa inteleaga rapid ce vrei sa transmiti.</p></article><article class="gx-tip-card"><span class="gx-tip-number">93</span><h3>✨ Foloseste energia potrivita</h3><p>Tonul, vocea, imaginile si montajul trebuie sa se potriveasca subiectului. Continutul dinamic poate avea un ritm mai rapid, iar un tutorial poate avea un ritm mai clar si mai calm.</p></article><article class="gx-tip-card"><span class="gx-tip-number">94</span><h3>✨ Verifica inainte de publicare</h3><p>Inainte sa publici, verifica textul, sunetul, imaginea, formatul si eventualele greseli. O verificare de cateva minute poate evita probleme care afecteaza experienta spectatorului.</p></article><article class="gx-tip-card"><span class="gx-tip-number">95</span><h3>✨ Nu sterge imediat un clip slab</h3><p>Un videoclip poate continua sa primeasca vizualizari si dupa publicare. In loc sa reactionezi imediat, analizeaza datele si invata ce poti imbunatati.</p></article><article class="gx-tip-card"><span class="gx-tip-number">96</span><h3>✨ Construieste un sistem</h3><p>Nu te baza doar pe inspiratie. Creeaza un proces: idee → hook → filmare → editare → publicare → analiza. Un sistem te ajuta sa produci mai constant.</p></article><article class="gx-tip-card"><span class="gx-tip-number">97</span><h3>✨ Pastreaza ideile bune</h3><p>Cand iti vine o idee, noteaz-o. Poti folosi o lista cu subiecte, hook-uri si concepte, astfel incat sa nu ramai fara idei atunci cand vrei sa creezi.</p></article><article class="gx-tip-card"><span class="gx-tip-number">98</span><h3>✨ Invata continuu</h3><p>Platformele, formatele si preferintele publicului se schimba. Testeaza lucruri noi si adapteaza-ti continutul fara sa pierzi identitatea pe care ai construit-o.</p></article><article class="gx-tip-card"><span class="gx-tip-number">99</span><h3>✨ Gandeste ca un creator</h3><p>Nu urmari doar numarul de vizualizari. Intreaba-te ce ai invatat despre public, continut si procesul tau. Fiecare videoclip poate deveni o lectie.</p></article><article class="gx-tip-card"><span class="gx-tip-number">100</span><h3>✨ Construieste pe termen lung</h3><p>Nu cauta doar un videoclip viral. Construieste un canal recognoscibil, publica, analizeaza, imbunatateste si repeta. Succesul durabil vine din multe imbunatatiri mici facute constant.</p></article></div></div></div>
+<article class="gx-tip-card"><span class="gx-tip-number">01</span><h3>✨ Nisa</h3><p>Alege un domeniu clar si construieste-ti identitatea in jurul lui.</p></article><article class="gx-tip-card"><span class="gx-tip-number">02</span><h3>✨ Obiectivul</h3><p>Stabileste ce vrei sa construiesti: comunitate, educatie, divertisment sau brand personal.</p></article><article class="gx-tip-card"><span class="gx-tip-number">03</span><h3>✨ Publicul</h3><p>Gandeste-te cine va urmari continutul si ce problema sau curiozitate are.</p></article><article class="gx-tip-card"><span class="gx-tip-number">04</span><h3>✨ Directia</h3><p>Alege o directie pe care o poti sustine pe termen lung.</p></article><article class="gx-tip-card"><span class="gx-tip-number">05</span><h3>✨ Formatul</h3><p>Alege formatul potrivit pentru idee: Shorts, videoclip lung, Reel, TikTok sau foto.</p></article><article class="gx-tip-card"><span class="gx-tip-number">06</span><h3>✨ Ideea</h3><p>Porneste de la o idee simpla pe care o poti explica intr-o singura propozitie.</p></article><article class="gx-tip-card"><span class="gx-tip-number">07</span><h3>✨ Problema</h3><p>Porneste de la o problema sau intrebare reala pe care continutul o poate rezolva.</p></article><article class="gx-tip-card"><span class="gx-tip-number">08</span><h3>✨ Cererea</h3><p>Cauta subiecte pentru care exista interes real din partea publicului.</p></article><article class="gx-tip-card"><span class="gx-tip-number">09</span><h3>✨ Content Gap</h3><p>Identifica subiecte cautate pentru care exista putin continut bun.</p></article><article class="gx-tip-card"><span class="gx-tip-number">10</span><h3>✨ Creator Search Insights</h3><p>Cauta subiecte si expresii pe care oamenii le cauta deja.</p></article><article class="gx-tip-card"><span class="gx-tip-number">11</span><h3>✨ Concurenta</h3><p>Studiaza creatorii din aceeasi categorie pentru a intelege ce functioneaza.</p></article><article class="gx-tip-card"><span class="gx-tip-number">12</span><h3>✨ Unghiul</h3><p>Cauta o perspectiva proprie asupra unei teme cunoscute.</p></article><article class="gx-tip-card"><span class="gx-tip-number">13</span><h3>✨ Nu copia</h3><p>Inspira-te din concepte, dar construieste propria executie.</p></article><article class="gx-tip-card"><span class="gx-tip-number">14</span><h3>✨ Valoarea ta</h3><p>Decide ce aduci diferit prin experienta, stil sau perspectiva.</p></article><article class="gx-tip-card"><span class="gx-tip-number">15</span><h3>✨ Documentarea</h3><p>Verifica informatiile importante inainte de publicare.</p></article><article class="gx-tip-card"><span class="gx-tip-number">16</span><h3>✨ Planificarea</h3><p>Grupeaza ideile intr-un plan simplu pentru urmatoarele videoclipuri.</p></article><article class="gx-tip-card"><span class="gx-tip-number">17</span><h3>✨ Banca de idei</h3><p>Pastreaza titluri, hook-uri, concepte si intrebari intr-un singur loc.</p></article><article class="gx-tip-card"><span class="gx-tip-number">18</span><h3>✨ Seriile</h3><p>O idee buna poate deveni o serie cu episoade diferite.</p></article><article class="gx-tip-card"><span class="gx-tip-number">19</span><h3>✨ Comentariile</h3><p>Foloseste intrebarile publicului ca inspiratie pentru clipuri noi.</p></article><article class="gx-tip-card"><span class="gx-tip-number">20</span><h3>✨ Raspunsuri video</h3><p>O intrebare buna din comentarii poate deveni urmatorul videoclip.</p></article><article class="gx-tip-card"><span class="gx-tip-number">21</span><h3>✨ Planul de filmare</h3><p>Stabileste cadrele si secventele necesare inainte de filmare.</p></article><article class="gx-tip-card"><span class="gx-tip-number">22</span><h3>✨ Scriptul</h3><p>Scrie ideile principale inainte de filmare pentru a reduce repetitiile.</p></article><article class="gx-tip-card"><span class="gx-tip-number">23</span><h3>✨ Promisiunea</h3><p>Spune clar ce informatie sau rezultat va primi spectatorul.</p></article><article class="gx-tip-card"><span class="gx-tip-number">24</span><h3>✨ Structura</h3><p>Construieste clipul simplu: hook, context, dezvoltare si rezultat.</p></article><article class="gx-tip-card"><span class="gx-tip-number">25</span><h3>✨ Hook-ul</h3><p>Primele 2-3 secunde trebuie sa ofere un motiv real pentru a continua.</p></article><article class="gx-tip-card"><span class="gx-tip-number">26</span><h3>✨ Curiozitatea</h3><p>Deschide cu o intrebare, surpriza sau informatie interesanta.</p></article><article class="gx-tip-card"><span class="gx-tip-number">27</span><h3>✨ Fara introduceri inutile</h3><p>Nu consuma primele secunde cu formule lungi de salut.</p></article><article class="gx-tip-card"><span class="gx-tip-number">28</span><h3>✨ Hook-uri diferite</h3><p>Testeaza mai multe inceputuri pentru aceeasi categorie.</p></article><article class="gx-tip-card"><span class="gx-tip-number">29</span><h3>✨ Primul cadru</h3><p>Arata rapid subiectul, problema sau rezultatul promis.</p></article><article class="gx-tip-card"><span class="gx-tip-number">30</span><h3>✨ Anticiparea</h3><p>Anunta partial ce urmeaza fara sa ascunzi inutil informatia.</p></article><article class="gx-tip-card"><span class="gx-tip-number">31</span><h3>✨ Filmare</h3><p>Asigura-te ca materialul principal este clar si usor de folosit.</p></article><article class="gx-tip-card"><span class="gx-tip-number">32</span><h3>✨ Vocea</h3><p>Asigura-te ca vocea este clara si usor de inteles.</p></article><article class="gx-tip-card"><span class="gx-tip-number">33</span><h3>✨ Microfonul</h3><p>Verifica microfonul si nivelul audio inainte de filmarea completa.</p></article><article class="gx-tip-card"><span class="gx-tip-number">34</span><h3>✨ B-roll</h3><p>Foloseste cadre suplimentare pentru a sustine ceea ce spui.</p></article><article class="gx-tip-card"><span class="gx-tip-number">35</span><h3>✨ Elimina pauzele</h3><p>Taie momentele moarte din montaj.</p></article><article class="gx-tip-card"><span class="gx-tip-number">36</span><h3>✨ Ritm</h3><p>Pastreaza informatia in miscare fara segmente inutile.</p></article><article class="gx-tip-card"><span class="gx-tip-number">37</span><h3>✨ Schimbarea cadrelor</h3><p>Variaza imaginile cand materialul permite.</p></article><article class="gx-tip-card"><span class="gx-tip-number">38</span><h3>✨ Sincronizarea</h3><p>Fa taieturile si schimbarile vizuale in acord cu ceea ce spui.</p></article><article class="gx-tip-card"><span class="gx-tip-number">39</span><h3>✨ Zoom</h3><p>Foloseste zoom-ul pentru accent, nu permanent.</p></article><article class="gx-tip-card"><span class="gx-tip-number">40</span><h3>✨ Efecte</h3><p>Foloseste efecte pentru dinamism, dar pastreaza mesajul clar.</p></article><article class="gx-tip-card"><span class="gx-tip-number">41</span><h3>✨ Tranzitii</h3><p>Foloseste tranzitii simple atunci cand ajuta legatura dintre scene.</p></article><article class="gx-tip-card"><span class="gx-tip-number">42</span><h3>✨ Subtitrari</h3><p>Adauga subtitrari pentru persoanele care urmaresc fara sunet.</p></article><article class="gx-tip-card"><span class="gx-tip-number">43</span><h3>✨ Textul de accent</h3><p>Evidentiaza doar cuvintele importante.</p></article><article class="gx-tip-card"><span class="gx-tip-number">44</span><h3>✨ Audio</h3><p>Imaginea buna nu compenseaza un sunet greu de inteles.</p></article><article class="gx-tip-card"><span class="gx-tip-number">45</span><h3>✨ Muzica</h3><p>Alege muzica potrivita pentru atmosfera si subiect.</p></article><article class="gx-tip-card"><span class="gx-tip-number">46</span><h3>✨ Sunete in trend</h3><p>Foloseste sunete populare cand se potrivesc continutului.</p></article><article class="gx-tip-card"><span class="gx-tip-number">47</span><h3>✨ Drepturi de autor</h3><p>Respecta regulile platformei si drepturile asupra materialelor.</p></article><article class="gx-tip-card"><span class="gx-tip-number">48</span><h3>✨ 1080p</h3><p>Foloseste o calitate clara potrivita pentru platforma.</p></article><article class="gx-tip-card"><span class="gx-tip-number">49</span><h3>✨ 60 FPS</h3><p>Pentru continut dinamic, 60 FPS poate oferi miscare mai fluida.</p></article><article class="gx-tip-card"><span class="gx-tip-number">50</span><h3>✨ Nu exagera cu 4K</h3><p>O rezolutie mai mare nu garanteaza un videoclip mai bun.</p></article><article class="gx-tip-card"><span class="gx-tip-number">51</span><h3>✨ Colorizare</h3><p>Ajusteaza luminozitatea, contrastul, saturatia si claritatea cu masura.</p></article><article class="gx-tip-card"><span class="gx-tip-number">52</span><h3>✨ Paleta vizuala</h3><p>Foloseste elemente vizuale constante pentru recunoastere.</p></article><article class="gx-tip-card"><span class="gx-tip-number">53</span><h3>✨ Stil vizual</h3><p>Construieste un aspect recognoscibil pentru continutul tau.</p></article><article class="gx-tip-card"><span class="gx-tip-number">54</span><h3>✨ Branding</h3><p>Foloseste elemente vizuale constante pentru identitate.</p></article><article class="gx-tip-card"><span class="gx-tip-number">55</span><h3>✨ Identitate proprie</h3><p>Nu transforma profilul intr-o copie a altui creator.</p></article><article class="gx-tip-card"><span class="gx-tip-number">56</span><h3>✨ Personaj recognoscibil</h3><p>In gaming, un personaj poate deveni parte din brand.</p></article><article class="gx-tip-card"><span class="gx-tip-number">57</span><h3>✨ Poza de profil</h3><p>Poza de profil este oglinda vizuala a profilului tau.</p></article><article class="gx-tip-card"><span class="gx-tip-number">58</span><h3>✨ Thumbnail</h3><p>Creeaza o imagine clara si atractiva.</p></article><article class="gx-tip-card"><span class="gx-tip-number">59</span><h3>✨ Format vertical</h3><p>Pentru continut vertical foloseste formatul 9:16.</p></article><article class="gx-tip-card"><span class="gx-tip-number">60</span><h3>✨ AI</h3><p>Foloseste instrumente AI pentru idei vizuale si concepte creative.</p></article><article class="gx-tip-card"><span class="gx-tip-number">61</span><h3>✨ Titlul</h3><p>Titlul trebuie sa fie clar, relevant si interesant.</p></article><article class="gx-tip-card"><span class="gx-tip-number">62</span><h3>✨ SEO</h3><p>Foloseste natural termenii pe care publicul ii cauta.</p></article><article class="gx-tip-card"><span class="gx-tip-number">63</span><h3>✨ Descrierea</h3><p>Foloseste descrierea pentru context si cuvinte relevante.</p></article><article class="gx-tip-card"><span class="gx-tip-number">64</span><h3>✨ Hashtaguri</h3><p>Alege hashtaguri direct legate de subiect.</p></article><article class="gx-tip-card"><span class="gx-tip-number">65</span><h3>✨ Nu forta SEO</h3><p>Nu repeta artificial aceleasi cuvinte.</p></article><article class="gx-tip-card"><span class="gx-tip-number">66</span><h3>✨ CTA natural</h3><p>Leaga cererea de follow sau comentariu direct de continut.</p></article><article class="gx-tip-card"><span class="gx-tip-number">67</span><h3>✨ Promovarea ideii</h3><p>Pastreaza aceeasi promisiune in hook, titlu si thumbnail.</p></article><article class="gx-tip-card"><span class="gx-tip-number">68</span><h3>✨ Testarea exportului</h3><p>Verifica imaginea, sunetul, textul si sincronizarea dupa export.</p></article><article class="gx-tip-card"><span class="gx-tip-number">69</span><h3>✨ Organizarea</h3><p>Grupeaza materialele pentru a le gasi rapid.</p></article><article class="gx-tip-card"><span class="gx-tip-number">70</span><h3>✨ Versiunile</h3><p>Pastreaza versiunile importante ale proiectului.</p></article><article class="gx-tip-card"><span class="gx-tip-number">71</span><h3>✨ Proces repetabil</h3><p>Transforma pasii care functioneaza intr-un proces repetabil.</p></article><article class="gx-tip-card"><span class="gx-tip-number">72</span><h3>✨ Publicarea</h3><p>Publica atunci cand videoclipul este pregatit.</p></article><article class="gx-tip-card"><span class="gx-tip-number">73</span><h3>✨ Frecventa</h3><p>Posteaza suficient de des pentru a putea testa ce functioneaza.</p></article><article class="gx-tip-card"><span class="gx-tip-number">74</span><h3>✨ Calitatea</h3><p>Mai multe videoclipuri nu inseamna automat rezultate mai bune.</p></article><article class="gx-tip-card"><span class="gx-tip-number">75</span><h3>✨ Evita spamul</h3><p>Nu publica in exces continut fara valoare.</p></article><article class="gx-tip-card"><span class="gx-tip-number">76</span><h3>✨ Repeta succesul</h3><p>Dezvolta alte idei dintr-o tema care functioneaza.</p></article><article class="gx-tip-card"><span class="gx-tip-number">77</span><h3>✨ Testeaza</h3><p>Schimba cate un singur element cand experimentezi.</p></article><article class="gx-tip-card"><span class="gx-tip-number">78</span><h3>✨ Analytics</h3><p>Analizeaza vizualizarile, retentia si interactiunile.</p></article><article class="gx-tip-card"><span class="gx-tip-number">79</span><h3>✨ Abandonul</h3><p>Daca oamenii pleaca rapid, verifica primele secunde.</p></article><article class="gx-tip-card"><span class="gx-tip-number">80</span><h3>✨ Retentia</h3><p>Observa unde raman oamenii si unde abandoneaza.</p></article><article class="gx-tip-card"><span class="gx-tip-number">81</span><h3>✨ Compara</h3><p>Compara videoclipurile bune cu cele slabe si cauta diferentele.</p></article><article class="gx-tip-card"><span class="gx-tip-number">82</span><h3>✨ Invata din esecuri</h3><p>Un clip slab poate oferi informatii utile pentru urmatorul.</p></article><article class="gx-tip-card"><span class="gx-tip-number">83</span><h3>✨ Feedback</h3><p>Uita-te la comentarii si observa ce a fost inteles sau neinteles.</p></article><article class="gx-tip-card"><span class="gx-tip-number">84</span><h3>✨ Optimizeaza</h3><p>Imbunatateste ce conteaza fara sa perfectionezi la nesfarsit.</p></article><article class="gx-tip-card"><span class="gx-tip-number">85</span><h3>✨ Nu sterge imediat</h3><p>Un videoclip poate continua sa primeasca vizualizari.</p></article><article class="gx-tip-card"><span class="gx-tip-number">86</span><h3>✨ Arata procesul</h3><p>Procesul de creatie poate deveni continut valoros.</p></article><article class="gx-tip-card"><span class="gx-tip-number">87</span><h3>✨ Foloseste exemple</h3><p>O explicatie devine mai clara cu un exemplu concret.</p></article><article class="gx-tip-card"><span class="gx-tip-number">88</span><h3>✨ Contrastul</h3><p>Compara doua variante pentru a face o idee mai usor de inteles.</p></article><article class="gx-tip-card"><span class="gx-tip-number">89</span><h3>✨ Rezultatul</h3><p>Cand promiti ceva, arata rezultatul promis.</p></article><article class="gx-tip-card"><span class="gx-tip-number">90</span><h3>✨ Finalul</h3><p>Incheie cu rezultatul sau ideea principala.</p></article><article class="gx-tip-card"><span class="gx-tip-number">91</span><h3>✨ Payoff</h3><p>Daca promiti o informatie la inceput, livreaz-o.</p></article><article class="gx-tip-card"><span class="gx-tip-number">92</span><h3>✨ Continut reutilizabil</h3><p>O idee buna poate fi transformata in mai multe formate.</p></article><article class="gx-tip-card"><span class="gx-tip-number">93</span><h3>✨ Sistem</h3><p>Foloseste procesul: idee, hook, filmare, editare, publicare, analiza.</p></article><article class="gx-tip-card"><span class="gx-tip-number">94</span><h3>✨ Ideile bune</h3><p>Noteaza ideile imediat pentru a nu le pierde.</p></article><article class="gx-tip-card"><span class="gx-tip-number">95</span><h3>✨ Invata continuu</h3><p>Platformele, formatele si preferintele publicului se schimba.</p></article><article class="gx-tip-card"><span class="gx-tip-number">96</span><h3>✨ Gandeste ca un creator</h3><p>Nu urmari doar vizualizarile; intreaba-te ce ai invatat.</p></article><article class="gx-tip-card"><span class="gx-tip-number">97</span><h3>✨ Construieste incredere</h3><p>Fii clar si sincer cu publicul.</p></article><article class="gx-tip-card"><span class="gx-tip-number">98</span><h3>✨ Nu renunta</h3><p>Cresterea poate avea perioade bune si perioade slabe.</p></article><article class="gx-tip-card"><span class="gx-tip-number">99</span><h3>✨ Fa urmatorul clip mai bun</h3><p>Aplica la urmatorul clip o lectie din analiza precedentului.</p></article><article class="gx-tip-card"><span class="gx-tip-number">100</span><h3>✨ Pe termen lung</h3><p>Construieste prin continut bun, consecventa, analiza si adaptare.</p></article></div></div></div>
 <script id="gx-tips-js">function gxTipsOpen(){document.getElementById("gxTips").classList.add("on")}function gxTipsClose(){document.getElementById("gxTips").classList.remove("on")}document.addEventListener("keydown",e=>{if(e.key==="Escape")gxTipsClose()})</script><style id="gx-main-glow">#home .grid>.btn{position:relative;border:1px solid #a855f7!important;background:linear-gradient(145deg,#2b1740,#1b0d29)!important;box-shadow:0 0 8px #a855f766,0 0 22px #8b5cf633,inset 0 0 12px #a855f722!important;transition:transform .2s,box-shadow .2s,border-color .2s!important;overflow:hidden}#home .grid>.btn:before{content:"";position:absolute;inset:-2px;border-radius:16px;background:linear-gradient(90deg,#8b5cf6,#d946ef,#a855f7);opacity:.18;filter:blur(8px);z-index:-1}#home .grid>.btn:hover{transform:translateY(-4px) scale(1.02)!important;border-color:#e879f9!important;box-shadow:0 0 12px #c084fcaa,0 0 35px #a855f766,0 0 60px #8b5cf633,inset 0 0 18px #c084fc33!important}#home .grid>.btn:active{transform:scale(.98)!important;box-shadow:0 0 10px #c084fcaa!important}#home .grid>.btn .icon{filter:drop-shadow(0 0 7px #c084fc);text-shadow:0 0 12px #c084fc}#home .grid>.btn:first-child .icon{filter:drop-shadow(0 0 8px #a855f7)}#home .grid>.btn:nth-child(2) .icon{filter:drop-shadow(0 0 8px #d946ef)}#home .grid>.btn:nth-child(3) .icon{filter:drop-shadow(0 0 8px #c084fc)}@media(max-width:650px){#home .grid>.btn{box-shadow:0 0 8px #a855f766,0 0 18px #8b5cf633!important}} </style><style id="gx-full-glow">
 #home>.card{position:relative;border-color:#8b5cf688!important;box-shadow:0 0 10px #a855f744,0 0 28px #8b5cf633,0 0 55px #7c3aed22,inset 0 0 20px #a855f711!important;transition:box-shadow .3s,border-color .3s,transform .3s!important}
 #home>.card:first-child{overflow:hidden}
@@ -586,18 +870,18 @@ box-shadow:0 0 7px #ff8a3d,0 0 18px #ff6b2c99,0 0 30px #ff8a3d55!important;
 /* VIDEO — albastru animat */
 #home .grid>.btn:nth-child(1) .icon{
 text-shadow:0 0 8px #38bdf8,0 0 18px #0ea5e9,0 0 30px #38bdf866!important;
-animation:gxVideoMove 2.8s ease-in-out infinite;
+animation:gxVideoMove 2.8s ease-în-out infinite;
 }
 /* THUMBNAIL — portocaliu + miscare */
 #home .grid>.btn:nth-child(2) .icon{
 text-shadow:0 0 8px #ff9d3d,0 0 18px #ff7a18,0 0 30px #ff8a3d66!important;
-animation:gxThumbMove 2.4s ease-in-out infinite;
+animation:gxThumbMove 2.4s ease-în-out infinite;
 }
 /* CREATOR TIPS — bec galben care sclipeste */
 #home .grid>.btn:nth-child(3) .icon{
 color:#fff!important;
 text-shadow:0 0 7px #fff,0 0 14px #ffe600,0 0 28px #ffd000,0 0 42px #ffb30088!important;
-animation:gxBulbSpark 1.35s ease-in-out infinite;
+animation:gxBulbSpark 1.35s ease-în-out infinite;
 }
 @keyframes gxVideoMove{
 0%,100%{transform:translateX(-2px);filter:drop-shadow(0 0 5px #38bdf8)}
@@ -619,7 +903,7 @@ animation:gxBulbSpark 1.35s ease-in-out infinite;
   color:#fff!important;
   border:2px solid #ff7a3d!important;
   box-shadow:0 0 6px #ff3c96,0 0 14px #ff7a3d,0 0 26px #ff5c8a99!important;
-  animation:gxIgGlow 2.2s ease-in-out infinite;
+  animation:gxIgGlow 2.2s ease-în-out infinite;
 }
 @keyframes gxIgGlow{
   0%,100%{box-shadow:0 0 6px #ff3c96,0 0 14px #ff7a3d,0 0 24px #ff5c8a66}
@@ -640,7 +924,7 @@ animation:gxBulbSpark 1.35s ease-in-out infinite;
   color:transparent!important;
   text-shadow:0 0 24px #a855f755!important;
   filter:drop-shadow(0 0 10px #a855f733);
-  animation:gxHeroPulse 3s ease-in-out infinite;
+  animation:gxHeroPulse 3s ease-în-out infinite;
 }
 .gx-hero-title:after{
   content:"";
@@ -666,7 +950,7 @@ animation:gxBulbSpark 1.35s ease-in-out infinite;
     0 0 6px #ff7a18,
     0 0 16px #ff8c3a,
     0 0 30px #ff6a0088!important;
-  animation:gxInstagramGlow 2s ease-in-out infinite;
+  animation:gxInstagramGlow 2s ease-în-out infinite;
 }
 @keyframes gxInstagramGlow{
   0%,100%{box-shadow:0 0 6px #ff7a18,0 0 16px #ff8c3a,0 0 28px #ff6a0066}
@@ -704,7 +988,7 @@ box-shadow:
 0 0 14px #ff3d96,
 0 0 26px #ff4fa388,
 0 0 40px #ff149355!important;
-animation:gxInstagramPink 2s ease-in-out infinite;
+animation:gxInstagramPink 2s ease-în-out infinite;
 }
 @keyframes gxInstagramPink{
 0%,100%{
@@ -738,7 +1022,7 @@ inset:-7px;
 border:2px solid #ff4fa388;
 border-radius:50%;
 box-shadow:0 0 10px #ff4fa3,0 0 24px #ff149388;
-animation:gxIgRing 2.2s ease-in-out infinite;
+animation:gxIgRing 2.2s ease-în-out infinite;
 pointer-events:none;
 }
 .gx-social-top .ig .gx-icon:after{
@@ -748,7 +1032,7 @@ inset:-13px;
 border-radius:50%;
 border:1px solid #ff8ac466;
 box-shadow:0 0 18px #ff4fa355;
-animation:gxIgRing2 2.2s ease-in-out infinite;
+animation:gxIgRing2 2.2s ease-în-out infinite;
 pointer-events:none;
 }
 @keyframes gxIgRing{
@@ -777,7 +1061,7 @@ background:#1b1027!important;
 color:#fff!important;
 border:3px solid #ff4fa3!important;
 box-shadow:0 0 8px #ff4fa3,0 0 18px #ff7a3d,0 0 34px #ff1493!important;
-animation:gxIgHit 1.15s ease-in-out infinite!important
+animation:gxIgHit 1.15s ease-în-out infinite!important
 }
 a.gx-instagram-hot .gx-icon:before{
 content:""!important;
@@ -786,7 +1070,7 @@ inset:-9px!important;
 border:3px solid #ff7a18!important;
 border-radius:50%!important;
 box-shadow:0 0 8px #ff7a18,0 0 18px #ff4fa3,0 0 34px #ff1493!important;
-animation:gxIgRing 1.15s ease-in-out infinite!important;
+animation:gxIgRing 1.15s ease-în-out infinite!important;
 pointer-events:none!important
 }
 a.gx-instagram-hot .gx-icon:after{
@@ -796,7 +1080,7 @@ inset:-16px!important;
 border:2px solid #ff4fa3!important;
 border-radius:50%!important;
 box-shadow:0 0 16px #ff4fa3,0 0 32px #ff7a3d!important;
-animation:gxIgOuter 1.15s ease-in-out infinite!important;
+animation:gxIgOuter 1.15s ease-în-out infinite!important;
 pointer-events:none!important
 }
 @keyframes gxIgHit{
@@ -824,10 +1108,10 @@ pointer-events:none!important
 </style>
 <script>
 window.gxTipsData=[
-["01 • DOMENIUL TAU","Alege un singur domeniu si construieste in jurul lui. Daca faci masini, ramai pe masini. Daca faci gaming, alege jocul si dezvolta-l. Eu am construit continutul Free Fire in jurul aceleiasi directii inca din 2021. La inceput rezultatele au fost mici; cresterea vine prin consecventa si testare."],
+["01 • DOMENIUL TAU","Alege un singur domeniu si construieste în jurul lui. Daca faci masini, ramai pe masini. Daca faci gaming, alege jocul si dezvolta-l. Eu am construit continutul Free Fire în jurul aceleiasi directii inca din 2021. La inceput rezultatele au fost mici; cresterea vine prin consecventa si testare."],
 ["02 • HOOK-UL","Primele 2–3 secunde sunt decisive. Incepe cu un motiv pentru care omul sa ramana: „Stiai ca...?”, „Adevarul despre...”, „Nimeni nu iti spune asta despre...”, „Uite ce se intampla daca...”. Evita introduceri lungi precum „Salut, ma numesc...” daca nu aduc valoare imediata."],
-["03 • CURIOSITY GAP","Nu oferi tot raspunsul in prima secunda. Deschide o intrebare sau o problema si construieste raspunsul pe parcurs. Curiozitatea trebuie sa fie reala, nu clickbait."],
-["04 • CREATOR SEARCH INSIGHTS","Foloseste Creator Search Insights pentru a vedea ce cauta publicul. Cauta subiecte relevante pentru domeniul tau si observa zonele in care exista interes, dar continutul este insuficient. Acolo poti gasi oportunitati."],
+["03 • CURIOSITY GAP","Nu oferi tot raspunsul în prima secunda. Deschide o intrebare sau o problema si construieste raspunsul pe parcurs. Curiozitatea trebuie sa fie reala, nu clickbait."],
+["04 • CREATOR SEARCH INSIGHTS","Foloseste Creator Search Insights pentru a vedea ce cauta publicul. Cauta subiecte relevante pentru domeniul tau si observa zonele în care exista interes, dar continutul este insuficient. Acolo poti gasi oportunitati."],
 ["05 • CONTENT GAP","Un Content Gap poate deveni o oportunitate: cerere existenta + continut putin = sansa de a veni cu o explicatie, idee sau perspectiva mai buna."],
 ["06 • NU COPIA UN VIRAL","Daca un videoclip functioneaza, nu-l copia 1:1. Pastreaza ideea sau categoria care a functionat si creeaza o varianta noua, originala, cu alt unghi, alt hook si alta executie."],
 ["07 • POSTEAZA CONSTANT","Nu exista o cifra magica pentru toti creatorii. Poti testa 1, 2 sau chiar 3 videoclipuri pe zi daca poti mentine calitatea. Mai important decat volumul este sa existe un motiv pentru care publicul sa priveasca."],
@@ -846,7 +1130,7 @@ window.gxTipsClose=function(){let x=document.getElementById("gxProTips");if(x)x.
 gxTipsData.push(
 ["09 • TAIE PAUZELE","Elimina pauzele inutile din editare. Continutul trebuie sa curga natural: idee dupa idee, propozitie dupa propozitie. Daca o pauza nu are rol, taie-o."],
 ["10 • SCHIMBA CADRUL","Pentru continut dinamic, schimba vizualul cand atentia incepe sa scada. Poti folosi cadre, zoom-uri, crop-uri sau B-roll. Nu schimba mecanic la fiecare 2 secunde daca asta strica povestea; foloseste ritmul potrivit continutului."],
-["11 • SUBTITRARI","Foloseste subtitrari clare. Multi oameni urmaresc continutul fara sunet: in autobuz, tren, magazin, supermarket, la o petrecere sau intr-un loc aglomerat. Daca mesajul poate fi inteles si fara audio, ai eliminat o bariera importanta."],
+["11 • SUBTITRARI","Foloseste subtitrari clare. Multi oameni urmaresc continutul fara sunet: în autobuz, tren, magazin, supermarket, la o petrecere sau intr-un loc aglomerat. Daca mesajul poate fi inteles si fara audio, ai eliminat o bariera importanta."],
 ["12 • CALITATE VIDEO","Pastreaza imaginea clara si exporta intr-un format potrivit platformei. Pentru continut vertical, 1080×1920 este o alegere solida. Nu creste artificial rezolutia daca sursa este slaba."],
 ["13 • 60 FPS","Daca materialul si dispozitivul permit, 60 FPS poate fi util pentru gaming si miscari rapide. Important este ca filmarea, editarea si exportul sa fie coerente."],
 ["14 • COLORIZARE","Colorizarea poate face imaginea mai placuta si mai recognoscibila. Foloseste luminozitate, contrast, saturatie, claritate si highlights cu masura. Scopul este o imagine curata, nu efecte exagerate."],
@@ -857,12 +1141,12 @@ gxTipsData.push(
 
 <script>
 gxTipsData.push(
-["17 • SEO","Foloseste cuvinte pe care publicul chiar le cauta. Integreaza natural termenul principal in titlu, descriere si hashtag-uri relevante. Nu transforma descrierea intr-o lista de cuvinte repetate."],
+["17 • SEO","Foloseste cuvinte pe care publicul chiar le cauta. Integreaza natural termenul principal în titlu, descriere si hashtag-uri relevante. Nu transforma descrierea intr-o lista de cuvinte repetate."],
 ["18 • TITLUL","Titlul trebuie sa explice rapid subiectul si sa creeze interes. Evita „Salutare prieteni, azi vom...”. Incearca o promisiune clara, o intrebare, o curiozitate sau un rezultat real."],
 ["19 • THUMBNAIL","Thumbnail-ul este important acolo unde platforma il afiseaza. Pastreaza-l simplu, clar si recognoscibil. Pentru TikTok, continutul vertical foloseste 9:16. Pentru thumbnail-ul clasic YouTube, 16:9."],
-["20 • AI PENTRU DESIGN","Daca nu stii sa faci un thumbnail, poti folosi instrumente AI pentru concepte si variante vizuale. Descrie subiectul, personajul, textul, atmosfera si compozitia, apoi adapteaza rezultatul in editor."],
+["20 • AI PENTRU DESIGN","Daca nu stii sa faci un thumbnail, poti folosi instrumente AI pentru concepte si variante vizuale. Descrie subiectul, personajul, textul, atmosfera si compozitia, apoi adapteaza rezultatul în editor."],
 ["21 • POZA DE PROFIL","Poza de profil este oglinda profilului tau. Trebuie sa fie clara si usor de recunoscut. Nu o schimba la fiecare cateva zile daca vrei sa construiesti identitate."],
-["22 • SEMNATURA VIZUALA","Alege elemente pe care oamenii le pot asocia cu tine: personaj, outfit, masina, logo, font, culori, efecte sau stil de editare. Eu am pastrat elemente recognoscibile in continutul meu Free Fire inca din 2021."],
+["22 • SEMNATURA VIZUALA","Alege elemente pe care oamenii le pot asocia cu tine: personaj, outfit, masina, logo, font, culori, efecte sau stil de editare. Eu am pastrat elemente recognoscibile în continutul meu Free Fire inca din 2021."],
 ["23 • POVESTEA TA","Daca ai un element care te reprezinta, transforma-l intr-o poveste. De exemplu, poti crea un videoclip fixat despre povestea unui outfit, a unei masini, a unui logo sau a unui proiect."],
 ["24 • BIO","Descrierea profilului trebuie sa raspunda simplu: cine esti, ce creezi si de ce sa te urmareasca cineva. Scurt, clar si memorabil."]
 );
@@ -872,7 +1156,7 @@ gxTipsData.push(
 gxTipsData.push(
 ["25 • ANALIZEAZA","Nu te uita doar la vizualizari. Analizeaza retentia, timpul de vizionare, interactiunile, comentariile, distribuirile si subiectele care functioneaza. Datele iti arata ce merita testat din nou."],
 ["26 • REPETA CE FUNCTIONEAZA","Daca o categorie functioneaza, creeaza mai mult continut din acea categorie, dar cu idei noi. Nu repeta videoclipul identic."],
-["27 • CONSTRUIESTE COMUNITATEA","Raspunde la comentarii, observa intrebarile repetate si transforma intrebarile publicului in videoclipuri. Comunitatea iti poate oferi urmatoarele idei."],
+["27 • CONSTRUIESTE COMUNITATEA","Raspunde la comentarii, observa intrebarile repetate si transforma intrebarile publicului în videoclipuri. Comunitatea iti poate oferi urmatoarele idei."],
 ["28 • NU RENUNTA","La inceput este normal sa ai rezultate mici. Eu am inceput cu rezultate mult mai mici decat cele pe care le pot obtine acum. Continutul se construieste prin experiment, consecventa si imbunatatire."],
 ["29 • MONETIZARE","Monetizarea trebuie privita separat de cresterea audientei. Pot exista reclame, programe oficiale pentru creatori, colaborari, campanii sau alte metode, dar eligibilitatea difera dupa platforma, program si tara. Verifica mereu conditiile oficiale actuale."],
 ["30 • REGULA DE AUR","CONTINUT BUN → HOOK → RETENTIE → VALOARE → EDITARE → SEO → IDENTITATE → ANALIZA → IMBUNATATIRE. Nu cauta o formula magica; construieste un sistem pe care il poti imbunatati."],
@@ -999,11 +1283,11 @@ color:#eee
 <div class="gx-ct-head">
 <div>
 <h2 class="gx-ct-title">💡 Creator Tips</h2>
-<p class="gx-ct-sub">Strategii practice pentru crestere, continut si dezvoltare in online.</p>
+<p class="gx-ct-sub">Strategii practice pentru crestere, continut si dezvoltare în online.</p>
 </div>
 <button class="gx-ct-close" type="button" onclick="gxCloseCreatorTips()">✕ Inchide</button>
 </div>
-<div class="gx-ct-grid"><article class="gx-pro-tip"><div class="gx-pro-tip-num">01</div><h3>Nisa</h3><p>Alege un domeniu clar si construieste-ti identitatea in jurul lui.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">02</div><h3>Consecventa</h3><p>Daca alegi masini, gaming sau alt domeniu, ramai concentrat pe acea directie.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">03</div><h3>Exemplul Free Fire</h3><p>Am inceput cu Free Fire si am construit continutul in jurul acelui joc.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">04</div><h3>Rabdarea</h3><p>Rezultatele mici de la inceput nu inseamna ca proiectul nu poate creste.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">05</div><h3>Publicul</h3><p>Construieste pentru oamenii care te urmaresc, nu pentru algoritm in mod mecanic.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">06</div><h3>Hook-ul</h3><p>Primele 2-3 secunde trebuie sa ofere un motiv real pentru a continua.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">07</div><h3>Curiozitatea</h3><p>Deschide clipul cu o intrebare, o surpriza sau o informatie interesanta.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">08</div><h3>Fara introduceri inutile</h3><p>Evita sa consumi primele secunde cu formule lungi de salut.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">09</div><h3>Promisiunea</h3><p>Spune clar ce informatie sau valoare va primi privitorul.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">10</div><h3>Hook-uri diferite</h3><p>Testeaza mai multe inceputuri pentru aceeasi categorie de continut.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">11</div><h3>Creator Search Insights</h3><p>Cauta subiectele pe care oamenii le cauta deja.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">12</div><h3>Content Gap</h3><p>Identifica subiecte cautate pentru care exista putin continut bun.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">13</div><h3>Cerere mare</h3><p>Cauta subiecte unde exista interes real din partea publicului.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">14</div><h3>Concurenta</h3><p>Studiaza concurenta pentru a gasi un unghi diferit.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">15</div><h3>Nu copia</h3><p>Inspira-te din concepte, dar construieste propria executie.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">16</div><h3>Frecventa</h3><p>Posteaza suficient de des pentru a putea testa ce functioneaza.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">17</div><h3>Calitatea</h3><p>Mai multe videoclipuri nu inseamna automat rezultate mai bune.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">18</div><h3>Evita spamul</h3><p>Nu publica in exces continut fara valoare doar pentru volum.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">19</div><h3>Repeta succesul</h3><p>Daca o tema functioneaza, dezvolta alte idei din aceeasi categorie.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">20</div><h3>Nu copia 1:1</h3><p>Schimba povestea, unghiul, hook-ul si montajul.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">21</div><h3>Serii</h3><p>Transforma o idee buna intr-o serie cu episoade diferite.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">22</div><h3>Comentariile</h3><p>Foloseste intrebarile publicului ca inspiratie pentru clipuri noi.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">23</div><h3>Raspunsuri video</h3><p>O intrebare buna poate deveni direct urmatorul videoclip.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">24</div><h3>Elimina pauzele</h3><p>Taie momentele moarte din montaj.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">25</div><h3>Ritm</h3><p>Pastreaza informatia in miscare, fara segmente inutile.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">26</div><h3>Schimbarea cadrelor</h3><p>Variaza imaginile aproximativ la 1-2 secunde cand materialul permite.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">27</div><h3>B-roll</h3><p>Foloseste cadre suplimentare pentru a sustine ceea ce spui.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">28</div><h3>Zoom</h3><p>Foloseste zoom-ul pentru accent, nu permanent.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">29</div><h3>Efecte</h3><p>Foloseste efecte pentru dinamism, dar pastreaza mesajul clar.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">30</div><h3>Subtitrari</h3><p>Adauga subtitrari pentru persoanele care urmaresc fara sunet.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">31</div><h3>Contextul publicului</h3><p>Unii oameni urmaresc TikTok in autobuz, tren, magazin sau alte locuri.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">32</div><h3>Vocea</h3><p>Asigura-te ca vocea este clara si usor de inteles.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">33</div><h3>Muzica</h3><p>Alege muzica potrivita pentru atmosfera si subiect.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">34</div><h3>Sunete in trend</h3><p>Urmareste sunetele populare si foloseste-le cand se potrivesc continutului.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">35</div><h3>Drepturi de autor</h3><p>Respecta regulile platformei si drepturile asupra materialelor.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">36</div><h3>1080p</h3><p>Foloseste o calitate clara, potrivita pentru platforma.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">37</div><h3>60 FPS</h3><p>Pentru continut dinamic, 60 FPS poate oferi o miscare mai fluida.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">38</div><h3>Nu exagera cu 4K</h3><p>O rezolutie mai mare nu garanteaza un videoclip mai bun.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">39</div><h3>Colorizare</h3><p>Ajusteaza luminozitatea, contrastul, saturatia si claritatea cu masura.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">40</div><h3>Stil vizual</h3><p>Construieste un aspect recognoscibil pentru continutul tau.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">41</div><h3>SEO</h3><p>Foloseste natural termenii pe care publicul ii cauta.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">42</div><h3>Titlul</h3><p>Titlul trebuie sa fie clar, relevant si interesant.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">43</div><h3>Descrierea</h3><p>Foloseste descrierea pentru context si cuvinte relevante.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">44</div><h3>Hashtaguri</h3><p>Alege hashtaguri direct legate de subiect.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">45</div><h3>Nu forta SEO</h3><p>Nu repeta artificial aceleasi cuvinte.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">46</div><h3>Thumbnail</h3><p>Creeaza o imagine clara si atractiva acolo unde platforma o foloseste.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">47</div><h3>Format TikTok</h3><p>Pentru continut vertical foloseste formatul 9:16.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">48</div><h3>AI</h3><p>Foloseste instrumente AI pentru idei vizuale si concepte creative.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">49</div><h3>Identitate proprie</h3><p>Nu transforma profilul intr-o copie a altui creator.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">50</div><h3>Poza de profil</h3><p>Poza de profil este oglinda vizuala a profilului tau.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">51</div><h3>Personaj recognoscibil</h3><p>In gaming, un personaj sau o tinuta poate deveni parte din brand.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">52</div><h3>Branding</h3><p>Foloseste elemente vizuale constante pentru recunoastere.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">53</div><h3>Recunoastere</h3><p>Construieste elemente pe care publicul sa le asocieze cu tine.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">54</div><h3>Analytics</h3><p>Analizeaza vizualizarile, retentia si interactiunile.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">55</div><h3>Abandonul</h3><p>Daca oamenii pleaca rapid, verifica primele secunde.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">56</div><h3>Retentia</h3><p>Observa unde raman oamenii si unde abandoneaza.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">57</div><h3>Compara</h3><p>Compara videoclipurile bune cu cele slabe si cauta diferentele.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">58</div><h3>Invata din esecuri</h3><p>Un clip slab poate oferi informatii utile pentru urmatorul.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">59</div><h3>Nu renunta</h3><p>Cresterea poate avea perioade bune si perioade slabe.</p></article></div>
+<div class="gx-ct-grid"><article class="gx-pro-tip"><div class="gx-pro-tip-num">01</div><h3>Nisa</h3><p>Alege un domeniu clar si construieste-ti identitatea în jurul lui.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">02</div><h3>Consecventa</h3><p>Daca alegi masini, gaming sau alt domeniu, ramai concentrat pe acea directie.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">03</div><h3>Exemplul Free Fire</h3><p>Am inceput cu Free Fire si am construit continutul în jurul acelui joc.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">04</div><h3>Rabdarea</h3><p>Rezultatele mici de la inceput nu inseamna ca proiectul nu poate creste.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">05</div><h3>Publicul</h3><p>Construieste pentru oamenii care te urmaresc, nu pentru algoritm în mod mecanic.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">06</div><h3>Hook-ul</h3><p>Primele 2-3 secunde trebuie sa ofere un motiv real pentru a continua.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">07</div><h3>Curiozitatea</h3><p>Deschide clipul cu o intrebare, o surpriza sau o informatie interesanta.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">08</div><h3>Fara introduceri inutile</h3><p>Evita sa consumi primele secunde cu formule lungi de salut.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">09</div><h3>Promisiunea</h3><p>Spune clar ce informatie sau valoare va primi privitorul.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">10</div><h3>Hook-uri diferite</h3><p>Testeaza mai multe inceputuri pentru aceeasi categorie de continut.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">11</div><h3>Creator Search Insights</h3><p>Cauta subiectele pe care oamenii le cauta deja.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">12</div><h3>Content Gap</h3><p>Identifica subiecte cautate pentru care exista putin continut bun.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">13</div><h3>Cerere mare</h3><p>Cauta subiecte unde exista interes real din partea publicului.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">14</div><h3>Concurenta</h3><p>Studiaza concurenta pentru a gasi un unghi diferit.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">15</div><h3>Nu copia</h3><p>Inspira-te din concepte, dar construieste propria executie.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">16</div><h3>Frecventa</h3><p>Posteaza suficient de des pentru a putea testa ce functioneaza.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">17</div><h3>Calitatea</h3><p>Mai multe videoclipuri nu inseamna automat rezultate mai bune.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">18</div><h3>Evita spamul</h3><p>Nu publica în exces continut fara valoare doar pentru volum.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">19</div><h3>Repeta succesul</h3><p>Daca o tema functioneaza, dezvolta alte idei din aceeasi categorie.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">20</div><h3>Nu copia 1:1</h3><p>Schimba povestea, unghiul, hook-ul si montajul.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">21</div><h3>Serii</h3><p>Transforma o idee buna intr-o serie cu episoade diferite.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">22</div><h3>Comentariile</h3><p>Foloseste intrebarile publicului ca inspiratie pentru clipuri noi.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">23</div><h3>Raspunsuri video</h3><p>O intrebare buna poate deveni direct urmatorul videoclip.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">24</div><h3>Elimina pauzele</h3><p>Taie momentele moarte din montaj.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">25</div><h3>Ritm</h3><p>Pastreaza informatia în miscare, fara segmente inutile.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">26</div><h3>Schimbarea cadrelor</h3><p>Variaza imaginile aproximativ la 1-2 secunde cand materialul permite.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">27</div><h3>B-roll</h3><p>Foloseste cadre suplimentare pentru a sustine ceea ce spui.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">28</div><h3>Zoom</h3><p>Foloseste zoom-ul pentru accent, nu permanent.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">29</div><h3>Efecte</h3><p>Foloseste efecte pentru dinamism, dar pastreaza mesajul clar.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">30</div><h3>Subtitrari</h3><p>Adauga subtitrari pentru persoanele care urmaresc fara sunet.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">31</div><h3>Contextul publicului</h3><p>Unii oameni urmaresc TikTok în autobuz, tren, magazin sau alte locuri.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">32</div><h3>Vocea</h3><p>Asigura-te ca vocea este clara si usor de inteles.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">33</div><h3>Muzica</h3><p>Alege muzica potrivita pentru atmosfera si subiect.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">34</div><h3>Sunete în trend</h3><p>Urmareste sunetele populare si foloseste-le cand se potrivesc continutului.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">35</div><h3>Drepturi de autor</h3><p>Respecta regulile platformei si drepturile asupra materialelor.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">36</div><h3>1080p</h3><p>Foloseste o calitate clara, potrivita pentru platforma.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">37</div><h3>60 FPS</h3><p>Pentru continut dinamic, 60 FPS poate oferi o miscare mai fluida.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">38</div><h3>Nu exagera cu 4K</h3><p>O rezolutie mai mare nu garanteaza un videoclip mai bun.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">39</div><h3>Colorizare</h3><p>Ajusteaza luminozitatea, contrastul, saturatia si claritatea cu masura.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">40</div><h3>Stil vizual</h3><p>Construieste un aspect recognoscibil pentru continutul tau.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">41</div><h3>SEO</h3><p>Foloseste natural termenii pe care publicul ii cauta.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">42</div><h3>Titlul</h3><p>Titlul trebuie sa fie clar, relevant si interesant.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">43</div><h3>Descrierea</h3><p>Foloseste descrierea pentru context si cuvinte relevante.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">44</div><h3>Hashtaguri</h3><p>Alege hashtaguri direct legate de subiect.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">45</div><h3>Nu forta SEO</h3><p>Nu repeta artificial aceleasi cuvinte.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">46</div><h3>Thumbnail</h3><p>Creeaza o imagine clara si atractiva acolo unde platforma o foloseste.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">47</div><h3>Format TikTok</h3><p>Pentru continut vertical foloseste formatul 9:16.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">48</div><h3>AI</h3><p>Foloseste instrumente AI pentru idei vizuale si concepte creative.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">49</div><h3>Identitate proprie</h3><p>Nu transforma profilul intr-o copie a altui creator.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">50</div><h3>Poza de profil</h3><p>Poza de profil este oglinda vizuala a profilului tau.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">51</div><h3>Personaj recognoscibil</h3><p>In gaming, un personaj sau o tinuta poate deveni parte din brand.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">52</div><h3>Branding</h3><p>Foloseste elemente vizuale constante pentru recunoastere.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">53</div><h3>Recunoastere</h3><p>Construieste elemente pe care publicul sa le asocieze cu tine.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">54</div><h3>Analytics</h3><p>Analizeaza vizualizarile, retentia si interactiunile.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">55</div><h3>Abandonul</h3><p>Daca oamenii pleaca rapid, verifica primele secunde.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">56</div><h3>Retentia</h3><p>Observa unde raman oamenii si unde abandoneaza.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">57</div><h3>Compara</h3><p>Compara videoclipurile bune cu cele slabe si cauta diferentele.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">58</div><h3>Invata din esecuri</h3><p>Un clip slab poate oferi informatii utile pentru urmatorul.</p></article><article class="gx-pro-tip"><div class="gx-pro-tip-num">59</div><h3>Nu renunta</h3><p>Cresterea poate avea perioade bune si perioade slabe.</p></article></div>
 </div>
 </div>
 
@@ -1206,7 +1490,7 @@ padding:8px 11px!important;
 
 
 
-<style id="gx-thumb-flow">
+<style id="gx-thumb-flow-style">
 #gx-thumb-flow{
 position:fixed;
 inset:0;
@@ -1404,6 +1688,8 @@ box-shadow:0 0 18px #d4af3766
 }
 </style>
 
+
+
 <div id="gx-thumb-flow">
 <div class="gxt-box">
 
@@ -1452,8 +1738,7 @@ box-shadow:0 0 18px #d4af3766
 </div>
 </div>
 </div>
-
-<script id="gx-thumb-flow">
+<script id="gx-thumb-flow-script">
 (function(){
 
 const M=document.getElementById("gx-thumb-flow");
@@ -1637,7 +1922,7 @@ text-shadow:
 0 0 12px #ffd000,
 0 0 25px #f0a800,
 0 0 42px #ff8c00!important;
-animation:gxGoldBlink 1.35s ease-in-out infinite!important;
+animation:gxGoldBlink 1.35s ease-în-out infinite!important;
 }
 
 #gxTips.gx-locked .gx-money-line{
@@ -1669,7 +1954,7 @@ text-shadow:
 0 0 5px #fff2a6,
 0 0 12px #ffd000,
 0 0 25px #f59e0b!important;
-animation:gxFreePulse 1.4s ease-in-out infinite!important;
+animation:gxFreePulse 1.4s ease-în-out infinite!important;
 }
 
 @keyframes gxGoldBlink{
@@ -1689,57 +1974,30 @@ animation:gxFreePulse 1.4s ease-in-out infinite!important;
 
 
 <style id="gx-single-unlock-final">
-
-/* Butoanele pornesc GRI */
 #gxTips .gx-lock-links button{
- color:#fff!important;
- background:linear-gradient(180deg,#666,#444)!important;
+ color:#eee!important;
+ background:#555!important;
  border:1px solid #888!important;
- box-shadow:
-   inset 0 2px 8px #ffffff22,
-   inset 0 -7px 12px #0005!important;
+ box-shadow:inset 0 2px 8px #ffffff22,inset 0 -7px 12px #0005!important;
  text-shadow:0 1px 3px #000!important;
- transition:
-   background .35s,
-   border-color .35s,
-   box-shadow .35s,
-   transform .25s!important;
+ transition:.35s!important;
 }
-
-/* YouTube = MOV + AURA ROSIE */
 #gxTips .gx-lock-links button[data-gx-social="youtube"].done{
- background:linear-gradient(180deg,#9b4fba,#612476)!important;
- border-color:#ff4141!important;
- box-shadow:
-   0 0 0 1px #710000,
-   0 0 12px #ff2525aa,
-   0 0 28px #ff252555,
-   inset 0 2px 10px #ffffff22!important;
+ background:#e53935!important;
+ border-color:#ff5c5c!important;
+ box-shadow:0 0 18px #ff3030aa!important;
 }
-
-/* TikTok = MOV + AURA ALBASTRA */
 #gxTips .gx-lock-links button[data-gx-social="tiktok"].done{
- background:linear-gradient(180deg,#9b4fba,#612476)!important;
- border-color:#47baff!important;
- box-shadow:
-   0 0 0 1px #07527d,
-   0 0 12px #25aaffaa,
-   0 0 28px #25aaff55,
-   inset 0 2px 10px #ffffff22!important;
+ background:#1687e8!important;
+ border-color:#55b5ff!important;
+ box-shadow:0 0 18px #1687e8aa!important;
 }
-
-/* Instagram = MOV + AURA PORTOCALIE */
 #gxTips .gx-lock-links button[data-gx-social="instagram"].done{
- background:linear-gradient(180deg,#9b4fba,#612476)!important;
- border-color:#ff982f!important;
- box-shadow:
-   0 0 0 1px #783000,
-   0 0 12px #ff8422aa,
-   0 0 28px #ff842255,
-   inset 0 2px 10px #ffffff22!important;
+ background:#f07818!important;
+ border-color:#ffab55!important;
+ box-shadow:0 0 18px #f07818aa!important;
 }
-
-/* Doua lanturi in stanga/dreapta */
+/* Doua lanturi în stanga/dreapta */
 #gxTips .gx-lock-chain{
  display:flex!important;
  align-items:center!important;
@@ -1931,7 +2189,580 @@ border-color:#33aaff!important
 background:#ff7a00!important;
 border-color:#ff9933!important
 }
-</style></body></html>
+</style>
+<script id="gx-no-visible-thumb-css">
+(function(){
+function clean(){
+const w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT);
+const a=[];
+while(w.nextNode()){
+const t=w.currentNode;
+if(t.nodeValue && t.nodeValue.includes("#gx-thumb-flow{"))
+a.push(t);
+}
+a.forEach(t=>t.parentNode&&t.parentNode.removeChild(t));
+}
+if(document.readyState==="loading")
+document.addEventListener("DOMContentLoaded",clean);
+else clean();
+new MutationObserver(clean).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+
+<style id="gx-creator-tips-fix">
+.gx-lock-chain{
+display:flex!important;
+justify-content:center!important;
+align-items:center!important;
+gap:2px!important;
+letter-spacing:-3px!important;
+font-size:25px!important;
+white-space:nowrap!important;
+margin:8px auto!important
+}
+.gx-money-line{
+display:block!important;
+width:100%!important;
+max-width:100%!important;
+white-space:normal!important;
+overflow:visible!important;
+text-overflow:clip!important;
+word-break:normal!important;
+overflow-wrap:break-word!important;
+line-height:1.45!important;
+box-sizing:border-box!important
+}
+</style>
+<style id="gx-chain-money-final">
+.gx-lock-chain{
+display:flex!important;
+align-items:center!important;
+justify-content:center!important;
+width:100%!important;
+gap:10px!important;
+margin:10px auto 14px!important;
+box-sizing:border-box!important;
+white-space:nowrap!important;
+}
+.gx-chain-side{
+display:flex!important;
+align-items:center!important;
+gap:1px!important;
+letter-spacing:-3px!important;
+font-size:23px!important;
+white-space:nowrap!important;
+}
+.gx-chain-lock{
+display:inline-flex!important;
+align-items:center!important;
+justify-content:center!important;
+font-size:28px!important;
+flex:0 0 auto!important;
+}
+.gx-money-line{
+display:block!important;
+width:100%!important;
+max-width:100%!important;
+box-sizing:border-box!important;
+white-space:normal!important;
+overflow:visible!important;
+text-overflow:clip!important;
+word-break:normal!important;
+overflow-wrap:anywhere!important;
+text-align:center!important;
+line-height:1.45!important;
+padding:0 6px!important;
+}
+</style><style id="gx-chain-centered-final">
+.gx-lock-chain{
+display:flex!important;
+align-items:center!important;
+justify-content:center!important;
+gap:3px!important;
+width:100%!important;
+margin:10px auto 14px!important;
+padding:0!important;
+box-sizing:border-box!important;
+white-space:nowrap!important;
+overflow:hidden!important;
+transform:translateX(-4px)!important;
+}
+.gx-lock-chain span{
+display:inline-flex!important;
+align-items:center!important;
+justify-content:center!important;
+flex:0 0 auto!important;
+font-size:22px!important;
+line-height:1!important;
+margin:0!important;
+padding:0!important;
+}
+</style><style id="gx-lock-text-final">
+.gx-lock-text strong{
+display:inline-block!important;
+font-family:Georgia,"Times New Roman",serif!important;
+font-size:21px!important;
+font-weight:900!important;
+letter-spacing:.4px!important;
+line-height:1.25!important;
+}
+.gx-lock-text strong:first-letter{
+font-size:30px!important;
+}
+.gx-lock-text .gx-money-line{
+display:block!important;
+font-family:Arial,sans-serif!important;
+font-size:12px!important;
+line-height:1.4!important;
+white-space:normal!important;
+overflow:visible!important;
+text-overflow:clip!important;
+overflow-wrap:anywhere!important;
+word-break:normal!important;
+text-align:center!important;
+max-width:100%!important;
+padding:0 8px!important;
+box-sizing:border-box!important;
+}
+.gx-lock-text strong{
+text-shadow:0 0 8px #f59e0b,0 0 16px #f59e0b55!important;
+}
+@keyframes gxBulbPulse{
+0%,100%{opacity:1;transform:scale(1);filter:drop-shadow(0 0 3px #ffd54a)}
+50%{opacity:.72;transform:scale(1.12);filter:drop-shadow(0 0 13px #ffd54a)}
+}
+.gx-lock-text strong::first-letter{
+animation:gxBulbPulse 1.25s ease-în-out infinite!important;
+}
+</style><style id="gx-lock-text-mobile-final">
+.gx-lock-text strong{
+display:block!important;
+width:100%!important;
+font-family:Georgia,"Times New Roman",serif!important;
+font-size:clamp(15px,5vw,21px)!important;
+font-weight:900!important;
+line-height:1.15!important;
+letter-spacing:0!important;
+white-space:nowrap!important;
+text-align:center!important;
+box-sizing:border-box!important;
+text-shadow:0 0 8px #f59e0b,0 0 16px #f59e0b55!important;
+}
+.gx-lock-text .gx-money-line{
+display:block!important;
+width:100%!important;
+max-width:330px!important;
+margin:6px auto 0!important;
+font-family:Arial,sans-serif!important;
+font-size:12px!important;
+line-height:1.35!important;
+white-space:normal!important;
+overflow:visible!important;
+text-overflow:clip!important;
+overflow-wrap:break-word!important;
+word-break:normal!important;
+text-align:center!important;
+box-sizing:border-box!important;
+}
+</style><style id="gx-money-line-exact">
+.gx-money-line{
+display:block!important;
+font-size:12px!important;
+line-height:1.45!important;
+white-space:normal!important;
+text-align:center!important;
+overflow:visible!important;
+}
+</style><style id="gx-money-force-2-lines">
+.gx-money-line{
+display:block!important;
+width:100%!important;
+max-width:100%!important;
+white-space:normal!important;
+overflow:visible!important;
+text-overflow:clip!important;
+text-align:center!important;
+line-height:1.5!important;
+}
+.gx-money-line br{
+display:block!important;
+content:""!important;
+}
+</style>
+<script id="gx-social-initial-gray">
+(function(){
+  function resetSocialButtons(){
+    document.querySelectorAll('#gxTips [data-gx-social]').forEach(b=>{
+      b.classList.remove(
+        'done',
+        'gx-done-youtube',
+        'gx-done-tiktok',
+        'gx-done-instagram',
+        'gx-social-done'
+      );
+      b.style.background='#666';
+      b.style.backgroundImage='none';
+      b.style.borderColor='#888';
+      b.style.boxShadow='none';
+      b.style.color='#fff';
+      b.style.textShadow='none';
+    });
+  }
+
+  window.addEventListener('load',resetSocialButtons);
+
+  const oldOpen=window.gxTipsOpen;
+  window.gxTipsOpen=function(){
+    resetSocialButtons();
+    if(oldOpen) oldOpen();
+  };
+})();
+</script>
+
+<style id="gx-creator-tips-unlocked-black-glow">
+/* FUNDAL NEGRU DOAR PENTRU STAREA DEBLOCATA */
+#gxTips:not(.gx-locked),
+#gxTips:not(.gx-locked) .gx-tips-content,
+#gxTips:not(.gx-locked) .gx-tips-list{
+  background:#000!important;
+}
+
+/* ELIMINA BLOCUL GRI DE FUNDAL */
+#gxTips:not(.gx-locked) .gx-tips-content{
+  box-shadow:none!important;
+}
+
+/* MOV LUMINOS PENTRU ZONELE DE SFATURI */
+#gxTips:not(.gx-locked) .gx-tip,
+#gxTips:not(.gx-locked) .tip-card,
+#gxTips:not(.gx-locked) .tips-card{
+  border-color:#b86cff!important;
+  box-shadow:
+    0 0 6px #b86cff,
+    0 0 14px #9b4dff,
+    0 0 28px #7c3aed66!important;
+}
+
+/* PASTREAZA CONTINUTUL FARA SA MODIFICE DIMENSIUNILE */
+#gxTips:not(.gx-locked) .gx-tip,
+#gxTips:not(.gx-locked) .tip-card,
+#gxTips:not(.gx-locked) .tips-card{
+  box-sizing:border-box!important;
+}
+</style>
+
+
+<style id="gx-all-100-tips-purple-glow">
+/* TOATE SFATURILE - AURA MOV */
+#gxTips:not(.gx-locked) .gx-tip,
+#gxTips:not(.gx-locked) .tip-card,
+#gxTips:not(.gx-locked) .tips-card,
+#gxTips:not(.gx-locked) [class*="tip-card"],
+#gxTips:not(.gx-locked) [class*="gx-tip"]{
+  border-color:#b56cff!important;
+  box-shadow:
+    0 0 5px #b56cff,
+    0 0 12px #a855f7,
+    0 0 22px #8b5cf666!important;
+}
+
+/* TEXT PRINCIPAL ALB LUMINOS */
+#gxTips:not(.gx-locked) .gx-tip strong,
+#gxTips:not(.gx-locked) .tip-card strong,
+#gxTips:not(.gx-locked) .tips-card strong,
+#gxTips:not(.gx-locked) [class*="tip-card"] strong,
+#gxTips:not(.gx-locked) [class*="gx-tip"] strong{
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  text-shadow:
+    0 0 3px #fff,
+    0 0 8px #fff,
+    0 0 14px #d8b4fe!important;
+}
+
+/* TITLURILE SFATURILOR */
+#gxTips:not(.gx-locked) .gx-tip h3,
+#gxTips:not(.gx-locked) .tip-card h3,
+#gxTips:not(.gx-locked) .tips-card h3,
+#gxTips:not(.gx-locked) [class*="tip-card"] h3{
+  color:#fff!important;
+  text-shadow:
+    0 0 4px #fff,
+    0 0 10px #c084fc!important;
+}
+</style>
+
+
+<style id="gx-tips-number-no-box">
+#gxTips:not(.gx-locked) .gx-tip-number,
+#gxTips:not(.gx-locked) .tip-number,
+#gxTips:not(.gx-locked) .tips-number,
+#gxTips:not(.gx-locked) [class*="tip-number"],
+#gxTips:not(.gx-locked) [class*="number"]{
+  background:transparent!important;
+  border:none!important;
+  box-shadow:none!important;
+  outline:none!important;
+  border-radius:0!important;
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  text-shadow:
+    0 0 3px #fff,
+    0 0 8px #fff,
+    0 0 14px #d8b4fe!important;
+}
+</style>
+
+
+<script id="gx-about-final-js">
+(()=>{
+const m=document.getElementById("modal");
+if(!m)return;
+
+m.classList.add("gx-about-final");
+
+m.innerHTML=`
+<div>
+<button class="gx-about-close" onclick="closeModal()">×</button>
+
+<h2 class="gx-about-title">About GeoXShorts</h2>
+<p class="gx-about-sub">
+GeoXShorts este un proiect independent creat de <b class="gx-nowrap">Geo FF</b>
+dedicat crearii rapide de videoclipuri scurte pentru YouTube,
+TikTok si Instagram.
+</p>
+
+<div class="gx-about-section">
+<h3>🛡️ Trust & Transparency</h3>
+<p class="gx-about-note">
+GeoXShorts este un proiect independent. Nu solicitam parole,
+date bancare sau date de conectare la retelele sociale pentru
+utilizarea de baza a editorului.
+</p>
+<p class="gx-about-note">
+Conceptul, directia si deciziile finale ale proiectului apartin
+creatorului.
+</p>
+</div>
+
+<div class="gx-about-section">
+<h3>⚡ Creator & Social Media</h3>
+
+<div class="gx-about-card">
+<span>Creator: Geo FF</span>
+</div>
+
+<div class="gx-about-card">
+<span>YouTube</span>
+<a href="https://youtube.com/@geo_ff" target="_blank" rel="noopener">Deschide</a>
+</div>
+
+<div class="gx-about-card">
+<span>TikTok</span>
+<a href="https://www.tiktok.com/@geo_ff.hs" target="_blank" rel="noopener">Deschide</a>
+</div>
+
+<div class="gx-about-card">
+<span>Instagram</span>
+<a href="https://www.instagram.com/geo_ff.hs" target="_blank" rel="noopener">Deschide</a>
+</div>
+
+<div class="gx-about-card">
+<span>Discord</span>
+<a href="https://discord.gg/cTwvS6xfY" target="_blank" rel="noopener">Server</a>
+</div>
+
+<p class="gx-about-note">
+Discord: <b>geoff2003</b>
+</p>
+</div>
+
+<div class="gx-about-section">
+<h3>📧 Support & Feedback</h3>
+<p class="gx-about-note">
+Pentru feedback, sugestii sau informatii despre GeoXShorts,
+ma poti contacta prin retelele sociale sau pe Discord.
+</p>
+<p class="gx-about-note">
+Official support email will be published here before the public launch.
+</p>
+</div>
+</div>`;
+
+window.about=()=>{
+m.classList.remove("hidden");
+m.classList.add("gx-show");
+};
+
+window.closeModal=()=>{
+m.classList.remove("gx-show");
+};
+})();
+</script>
+
+<style id="gx-thumbnail-home-fix">
+.gx-thumb-ui-home-hidden{display:none!important}
+</style>
+<script id="gx-thumbnail-home-fix-js">
+(function(){
+  function findThumbUI(){
+    const all=document.querySelectorAll("div,section,article,form");
+    for(const el of all){
+      const t=(el.innerText||"").replace(/\s+/g," ").trim().toLowerCase();
+      if(
+        t.includes("alege fotografia") &&
+        t.includes("reset") &&
+        t.includes("export 1080p") &&
+        t.includes("60 fps") &&
+        t.includes("schimba formatul")
+      ){
+        const parent=el.parentElement;
+        if(parent && (parent.innerText||"").length < 9000) return parent;
+        return el;
+      }
+    }
+    return null;
+  }
+
+  function hideThumbUI(){
+    const el=findThumbUI();
+    if(el) el.classList.add("gx-thumb-ui-home-hidden");
+  }
+
+  function showThumbUI(){
+    const el=findThumbUI();
+    if(el) el.classList.remove("gx-thumb-ui-home-hidden");
+  }
+
+  function setup(){
+    hideThumbUI();
+
+    document.addEventListener("click",function(e){
+      const b=e.target.closest("button,[role='button'],a");
+      if(!b)return;
+
+      const txt=(b.innerText||b.textContent||"").trim().toLowerCase();
+
+      if(
+        txt.includes("thumbnail") ||
+        txt.includes("creeaza un thumbnail") ||
+        txt.includes("creaza un thumbnail")
+      ){
+        setTimeout(showThumbUI,50);
+      }
+
+      if(
+        txt==="închide" ||
+        txt==="inchide" ||
+        txt==="close" ||
+        txt==="×"
+      ){
+        setTimeout(hideThumbUI,50);
+      }
+    },true);
+
+    const obs=new MutationObserver(function(){
+      if(!document.querySelector(".gx-thumb-ui-home-hidden")){
+        hideThumbUI();
+      }
+    });
+    obs.observe(document.body,{childList:true,subtree:true});
+  }
+
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",setup);
+  }else{
+    setup();
+  }
+})();
+</script>
+
+
+<style id="gx-thumb-home-v2">
+.gx-thumb-home-hidden{display:none!important}
+</style>
+<script id="gx-thumb-home-v2-js">
+(function(){
+  function scan(){
+    const els=[...document.querySelectorAll("div,section,article,form")];
+
+    for(const el of els){
+      if(el.classList.contains("gx-thumb-home-hidden")) continue;
+
+      const text=(el.innerText||"").replace(/\s+/g," ").trim().toLowerCase();
+
+      const isThumb=
+        text.includes("creeaza un thumbnail") &&
+        text.includes("alege fotografia") &&
+        text.includes("export 1080p") &&
+        text.includes("60 fps") &&
+        text.includes("schimba formatul");
+
+      if(!isThumb) continue;
+
+      let target=el;
+
+      for(let i=0;i<5 && target.parentElement;i++){
+        const parent=target.parentElement;
+        const pt=(parent.innerText||"").replace(/\s+/g," ").trim().toLowerCase();
+
+        if(
+          pt.includes("proiectele mele") ||
+          pt.includes("creeaza un proiect") ||
+          pt.includes("editor geoxshorts")
+        ) break;
+
+        if(
+          pt.includes("creeaza un thumbnail") &&
+          pt.includes("alege fotografia") &&
+          pt.includes("export 1080p") &&
+          pt.length<6000
+        ){
+          target=parent;
+        }else{
+          break;
+        }
+      }
+
+      target.classList.add("gx-thumb-home-hidden");
+      target.dataset.gxThumbHidden="1";
+    }
+  }
+
+  function restoreInsideThumbnail(){
+    document.querySelectorAll("[data-gx-thumb-hidden='1']").forEach(el=>{
+      const thumb=el.closest(
+        ".modal,.gx-modal,[id*='thumb' i],[class*='thumb' i]"
+      );
+
+      if(thumb && getComputedStyle(thumb).display!=="none"){
+        el.classList.remove("gx-thumb-home-hidden");
+      }
+    });
+  }
+
+  function run(){
+    scan();
+    restoreInsideThumbnail();
+  }
+
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",run);
+  }else{
+    run();
+  }
+
+  setTimeout(run,300);
+  setTimeout(run,1000);
+  setTimeout(run,2000);
+
+  new MutationObserver(function(){
+    scan();
+  }).observe(document.body,{childList:true,subtree:true});
+})();
+</script>
+
+</body></html>
 <style id="gx-unified-brand">
 .gx,.gx-grad{letter-spacing:-.5px}
 .shorts,.gx-shorts{margin-left:0!important;padding-left:0!important;letter-spacing:-.5px}
@@ -2093,7 +2924,7 @@ border-color:#ff9933!important
     0 2px 3px #000!important;
 }
 
-/* Daca fraza este text simplu in paragraf, o evidentiere
+/* Daca fraza este text simplu în paragraf, o evidentiere
    vizuala discreta a intregului text ramane aurie doar pentru
    elementele marcate explicit de HTML. */
 
@@ -2171,3 +3002,345 @@ border-color:#ff9933!important
 
 </style>
 
+
+<style id="gx-money-mobile-only">
+@media(max-width:600px){
+  .gx-money-line{
+    display:block!important;
+    width:100%!important;
+    max-width:280px!important;
+    margin:6px auto!important;
+    padding:0 4px!important;
+    box-sizing:border-box!important;
+    white-space:normal!important;
+    overflow:visible!important;
+    text-overflow:clip!important;
+    overflow-wrap:anywhere!important;
+    word-break:normal!important;
+    text-align:center!important;
+    font-size:11px!important;
+    line-height:1.4!important;
+  }
+  .gx-money-line br{
+    display:block!important;
+  }
+}
+</style>
+
+<style id="gx-social-gray-start">
+.gx-lock-links button{
+  background:#555!important;
+  border-color:#777!important;
+  color:#ddd!important;
+  box-shadow:none!important;
+}
+.gx-lock-links button.done[data-gx-social="youtube"]{
+  background:#ff0000!important;
+  border-color:#ff3333!important;
+  color:#fff!important;
+}
+.gx-lock-links button.done[data-gx-social="tiktok"]{
+  background:#1677ff!important;
+  border-color:#3d8cff!important;
+  color:#fff!important;
+}
+.gx-lock-links button.done[data-gx-social="instagram"]{
+  background:#ff7a00!important;
+  border-color:#ff9a33!important;
+  color:#fff!important;
+}
+</style>
+
+<style id="gx-social-gray-initial">
+.gx-lock-links button{
+  background:#555!important;
+  border:1px solid #777!important;
+  color:#eee!important;
+  box-shadow:none!important;
+}
+.gx-lock-links button.done[data-gx-social="youtube"]{
+  background:#ff0000!important;
+  border-color:#ff3333!important;
+  color:#fff!important;
+}
+.gx-lock-links button.done[data-gx-social="tiktok"]{
+  background:#1677ff!important;
+  border-color:#3d8cff!important;
+  color:#fff!important;
+}
+.gx-lock-links button.done[data-gx-social="instagram"]{
+  background:#ff7a00!important;
+  border-color:#ff9a33!important;
+  color:#fff!important;
+}
+</style>
+
+<style id="gx-social-locked-premium">
+.gx-lock-links{
+display:flex!important;
+gap:10px!important;
+justify-content:center!important;
+align-items:center!important;
+width:100%!important;
+}
+
+.gx-lock-links button{
+position:relative!important;
+overflow:hidden!important;
+flex:1!important;
+min-height:58px!important;
+border:1px solid #777!important;
+border-radius:14px!important;
+background:
+linear-gradient(135deg,#3f3f46,#666,#3b3b40)!important;
+color:#d4d4d8!important;
+font-weight:900!important;
+filter:grayscale(1)!important;
+box-shadow:
+inset 0 1px #ffffff22,
+0 5px 15px #0008!important;
+transition:.35s!important;
+}
+
+.gx-lock-links button:before{
+content:"🔒"!important;
+position:absolute!important;
+top:5px!important;
+right:7px!important;
+font-size:11px!important;
+opacity:.65!important;
+}
+
+.gx-lock-links button:after{
+content:""!important;
+position:absolute!important;
+inset:0!important;
+background:
+linear-gradient(125deg,
+transparent 42%,
+#ffffff18 43%,
+#ffffff18 45%,
+transparent 46%,
+transparent 62%,
+#00000025 63%,
+#00000025 65%,
+transparent 66%)!important;
+pointer-events:none!important;
+}
+
+.gx-lock-links button.done{
+filter:none!important;
+box-shadow:0 0 18px #ffffff22!important;
+}
+
+.gx-lock-links button.done[data-gx-social="youtube"]{
+background:#ff0000!important;
+border-color:#ff4444!important;
+color:#fff!important;
+}
+
+.gx-lock-links button.done[data-gx-social="tiktok"]{
+background:#1687ff!important;
+border-color:#55aaff!important;
+color:#fff!important;
+}
+
+.gx-lock-links button.done[data-gx-social="instagram"]{
+background:#ff7a00!important;
+border-color:#ffad55!important;
+color:#fff!important;
+}
+</style>
+<style id="gx-social-gray-only">
+.gx-lock-links button{
+background:#555!important;
+background-image:none!important;
+border-color:#888!important;
+color:#ddd!important;
+box-shadow:inset 0 1px #ffffff22,0 2px 8px #0008!important;
+filter:grayscale(1)!important;
+}
+</style>
+<style id="gx-force-gray-initial">
+#gxTips .gx-lock-links button{
+  background:#666!important;
+  background-image:none!important;
+  color:#eee!important;
+  border:1px solid #999!important;
+}
+#gxTips .gx-lock-links button:not(.done){
+  background:#666!important;
+  color:#eee!important;
+  border-color:#999!important;
+}
+</style>
+<style id="gx-clean-initial-social">
+#gxTips .gx-lock-links button{
+ background:#666!important;
+ background-image:none!important;
+ color:#eee!important;
+ border:1px solid #999!important;
+ box-shadow:none!important;
+ text-shadow:none!important;
+}
+#gxTips .gx-lock-links button:not(.done){
+ background:#666!important;
+ border-color:#999!important;
+ box-shadow:none!important;
+}
+#gxTips .gx-lock-links button[data-gx-social="youtube"].done{
+ background:#e53935!important;
+ border-color:#ff5c5c!important;
+ box-shadow:0 0 18px #ff3030aa!important;
+}
+#gxTips .gx-lock-links button[data-gx-social="tiktok"].done{
+ background:#1687e8!important;
+ border-color:#55b5ff!important;
+ box-shadow:0 0 18px #1687e8aa!important;
+}
+#gxTips .gx-lock-links button[data-gx-social="instagram"].done{
+ background:#f07818!important;
+ border-color:#ffab55!important;
+ box-shadow:0 0 18px #f07818aa!important;
+}
+</style>
+<style id="gx-no-text-glow">
+#gxTips .gx-lock-links button,
+#gxTips .gx-lock-links button.done{
+ color:#fff!important;
+ text-shadow:none!important;
+}
+</style>
+<style id="gx-social-white-text">
+#gxTips .gx-lock-links button,
+#gxTips .gx-lock-links button.done{
+  color:#fff!important;
+  font-weight:900!important;
+  text-shadow:0 0 6px #fff8,0 1px 2px #000!important;
+}
+</style>
+<style id="gx-social-all-white-border">
+#gxTips .gx-lock-links button,
+#gxTips .gx-lock-links button.done,
+#gxTips .gx-lock-links button[data-gx-social="youtube"].done,
+#gxTips .gx-lock-links button[data-gx-social="tiktok"].done,
+#gxTips .gx-lock-links button[data-gx-social="instagram"].done{
+  color:#fff!important;
+  border-color:#fff!important;
+  text-shadow:none!important;
+}
+</style>
+<style id="gx-social-remove-all-glow">
+#gxTips .gx-lock-links button,
+#gxTips .gx-lock-links button.done,
+#gxTips .gx-lock-links button[data-gx-social="youtube"].done,
+#gxTips .gx-lock-links button[data-gx-social="tiktok"].done,
+#gxTips .gx-lock-links button[data-gx-social="instagram"].done{
+  text-shadow:none!important;
+  box-shadow:none!important;
+  filter:none!important;
+}
+</style>
+<style id="gx-social-kill-colors">
+#gxTips .gx-lock-links button.done,
+#gxTips .gx-lock-links button.done::before,
+#gxTips .gx-lock-links button.done::after{
+  color:#fff!important;
+  border-color:#fff!important;
+  outline:none!important;
+  box-shadow:none!important;
+  text-shadow:none!important;
+  background-image:none!important;
+}
+</style>
+<style id="gx-social-text-pure-white">
+#gxTips .gx-lock-links button,
+#gxTips .gx-lock-links button.done{
+  color:#fff!important;
+  text-shadow:none!important;
+  outline:none!important;
+  border:1px solid #fff!important;
+}
+#gxTips .gx-lock-links button.done[data-gx-social="youtube"],
+#gxTips .gx-lock-links button.done[data-gx-social="tiktok"],
+#gxTips .gx-lock-links button.done[data-gx-social="instagram"]{
+  box-shadow:none!important;
+}
+</style>
+<style id="GX-PURE-WHITE-SOCIAL">
+#gxTips .gx-lock-links button,
+#gxTips .gx-lock-links button *,
+#gxTips .gx-lock-links button.done,
+#gxTips .gx-lock-links button.done *{
+ color:#fff!important;
+ -webkit-text-fill-color:#fff!important;
+ text-shadow:0 0 8px #fff!important;
+ filter:none!important;
+ mix-blend-mode:normal!important;
+}
+#gxTips .gx-lock-links button::before,
+#gxTips .gx-lock-links button::after,
+#gxTips .gx-lock-links button.done::before,
+#gxTips .gx-lock-links button.done::after{
+ content:none!important;
+ display:none!important;
+ box-shadow:none!important;
+ background:none!important;
+ border:none!important;
+}
+</style>
+
+<style id="gx-social-white-text-final">
+#gxTips .gx-lock-links button[data-gx-social]{
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  text-shadow:
+    0 0 4px #fff,
+    0 0 8px #fff,
+    0 0 14px #fff!important;
+  filter:none!important;
+}
+#gxTips .gx-lock-links button[data-gx-social].done{
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  text-shadow:
+    0 0 4px #fff,
+    0 0 8px #fff,
+    0 0 14px #fff!important;
+}
+</style>
+
+<style id="gx-social-white-black-outline">
+#gxTips .gx-lock-links button[data-gx-social],
+#gxTips .gx-lock-links button[data-gx-social].done{
+  color:#fff!important;
+  -webkit-text-fill-color:#fff!important;
+  text-shadow:
+    -1px -1px 0 #000,
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000,
+     0 0 3px #fff!important;
+  filter:none!important;
+}
+</style>
+
+<style id="gx-social-cracks">
+#gxTips .gx-lock-links button[data-gx-social]{
+  position:relative;
+  overflow:hidden;
+}
+
+#gxTips .gx-lock-links button[data-gx-social]:not(.done)::after{
+  content:"";
+  position:absolute;
+  inset:5px;
+  pointer-events:none;
+  opacity:.55;
+  background:
+    linear-gradient(125deg,transparent 47%,#111 48%,#111 50%,transparent 51%),
+    linear-gradient(35deg,transparent 54%,#111 55%,#111 57%,transparent 58%),
+    linear-gradient(160deg,transparent 63%,#222 64%,#222 66%,transparent 67%);
+  filter:drop-shadow(0 0 2px #fff);
+}
+</style>
